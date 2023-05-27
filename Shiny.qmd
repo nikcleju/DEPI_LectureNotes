@@ -112,7 +112,7 @@ def server(input, output, session):
     @render.plot(alt="Sine wave")
     def plot_DFT():
         prepare()
-        
+
         # Compute the DFT
         S2 = fft(x)
 
@@ -149,6 +149,7 @@ def server(input, output, session):
         plt.title('The DFT is just sampled from the DTFT')
         plt.xlabel('Frequency')
         plt.ylabel('Magnitude')
-        plt.show()        
+        plt.show()
+
 app = App(app_ui, server)
 ```

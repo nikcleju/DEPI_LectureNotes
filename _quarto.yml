@@ -9,8 +9,8 @@ book:
   chapters:
     - index.qmd
     - 01_Intro.qmd
-    - 04_FourierTransform.qmd
-    - Shiny.qmd
+    - 01_SemnaleAleatoare.qmd
+    #- Shiny.qmd
     - references.qmd
 
 bibliography: references.bib
