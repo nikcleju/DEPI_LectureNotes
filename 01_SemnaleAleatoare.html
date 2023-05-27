@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.269">
+<meta name="generator" content="quarto-1.1.179">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -378,7 +378,7 @@ w_A(x) &amp;= \lim_{\epsilon \to 0}{\frac{P(A \in [x, x+\epsilon])}{\epsilon}} \
 <p><img src="fig/01_RandomSignals_DistributionNormalSampleValues2.png" class="img-fluid" style="width:70.0%" data-max-width="1000px"></p>
 <section id="distribuția-uniformă" class="level3">
 <h3 class="anchored" data-anchor-id="distribuția-uniformă">Distribuția uniformă</h3>
-<p>Densitatea de probabilitate uniformă este o constantă între două limite <span class="math inline">\(a\)</span> și <span class="math inline">\(b\)</span>:</p>
+<p>Densitatea de probabilitate uniformă este o funcție constantă între două limite <span class="math inline">\(a\)</span> și <span class="math inline">\(b\)</span>:</p>
 <p><span class="math display">\[w_A(x) =
 \begin{cases}
 \frac{1}{b-a}, &amp; x \in [a, b] \\
@@ -412,22 +412,16 @@ w_A(x) &amp;= \lim_{\epsilon \to 0}{\frac{P(A \in [x, x+\epsilon])}{\epsilon}} \
 </section>
 <section id="calculul-probabilității-pentru-distribuția-normală" class="level3 page-columns page-full">
 <h3 class="anchored" data-anchor-id="calculul-probabilității-pentru-distribuția-normală">Calculul probabilității pentru distribuția normală</h3>
-<ul>
-<li><p>Cum calculăm <span class="math inline">\(\int_a^b\)</span> dintr-o distribuție normală?</p>
-<ul>
-<li>Nu se poate prin formule algebrice, funcție ne-elementară</li>
-</ul></li>
-<li><p>Se folosește <em>the error function</em>: <span class="math display">\[erf(z) = \frac{2}{\sqrt{\pi}} \int_0^z e^{-t^2} dt\]</span></p></li>
-<li><p>Funcția de repartiție a unei distribuții normale <span class="math inline">\(\mathcal{N}(\mu, \sigma^2)\)</span> <span class="math display">\[F_A(X) = \frac{1}{2}(1 + erf(\frac{x - \mu}{\sigma \sqrt{2}}))\]</span></p></li>
-<li><p>Valorile funcției <em>erf()</em> sunt tabelate / se calculează numeric</p>
-<ul>
-<li>de ex. pe Google, căutați <span class="math inline">\(erf(0.5)\)</span></li>
-<li>Alte valori folositoare:
+<p>Probabilitatea ca <span class="math inline">\(A\)</span> sa aibă valori între <span class="math inline">\(a\)</span> și <span class="math inline">\(b\)</span> este <span class="math inline">\(\int_a^b w_A(x) dx\)</span>, dar pentru expresia distribuției normale această integrală nu se poate calcula prin formula algebrice (este funcție ne-elementară).</p>
+<p>Pentru calcul, se folosesc algoritmi numerici, pe baza <strong>funcției de eroare</strong> <span class="math inline">\(erf(z)\)</span> (“the error function”): <span class="math display">\[erf(z) = \frac{2}{\sqrt{\pi}} \int_0^z e^{-t^2} dt\]</span></p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p>Valorile funcției <em>erf()</em> sunt tabelate sau se calculează numeric cu algoritmi specializati. De ex., pe Google, căutați <span class="math inline">\(erf(0.5)\)</span></p>
+</div></div><p>Funcția de repartiție a unei distribuții normale oarecare <span class="math inline">\(\mathcal{N}(\mu, \sigma^2)\)</span> se poate calcula ca: <span class="math display">\[F_A(X) = \frac{1}{2}(1 + erf(\frac{x - \mu}{\sigma \sqrt{2}}))\]</span></p>
+<p>Alte valori folositoare:</p>
 <ul>
 <li><span class="math inline">\(erf(-\infty) = -1\)</span></li>
 <li><span class="math inline">\(erf(\infty) = 1\)</span></li>
-</ul></li>
-</ul></li>
 </ul>
 <p>Exercițiu:</p>
 <ul>
@@ -446,6 +440,80 @@ w_A(x) &amp;= \lim_{\epsilon \to 0}{\frac{P(A \in [x, x+\epsilon])}{\epsilon}} \
 <div class="no-row-height column-margin column-container"><div class="">
 <p>În multe aplicații, <em>anomaliile</em> într-un set de valori se definesc ca fiind valorile aflate la peste <span class="math inline">\(3 \sigma\)</span> distanță față de medie. De ce oare?</p>
 </div></div></section>
+<section id="medii-statistice" class="level3 page-columns page-full">
+<h3 class="anchored" data-anchor-id="medii-statistice">Medii statistice</h3>
+<p>Variabilele aleatoare sunt caracterizate prin medii statistice (“<em>momente</em>”), care caracterizează densitatea de probabilitate.</p>
+<section id="valoarea-medie" class="level4 page-columns page-full">
+<h4 class="anchored" data-anchor-id="valoarea-medie">valoarea medie</h4>
+<p><strong>Valoarea medie</strong> (momentul de ordin 1) a unei variabila aleatoare <span class="math inline">\(A\)</span>, notată în mod uzual cu <span class="math inline">\(\mu\)</span>, <span class="math inline">\(E\lbrace A \rbrace\)</span> sau <span class="math inline">\(\overline{A}\)</span>, se definește astfel:</p>
+<ul>
+<li><p>Pentru v.a. continue: <span class="math display">\[\overline{A} = E\{A\} = \int_{-\infty}^{\infty} x \cdot w_A(x) dx\]</span></p></li>
+<li><p>Pentru v.a. discrete: <span class="math display">\[\overline{A} = E\{A\} = \sum_{x=-\infty}^{\infty} x \cdot w_A(x)\]</span></p></li>
+</ul>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p>Termenul în limba engleză este “expected value”.</p>
+</div></div><p>In termeni informali, valoarea medie este o sumă în care apar toate valorile posibile <span class="math inline">\(x\)</span> înmulțite cu probabilitatea fiecăreia (pentru cazul continuu, folosim integrala și densitatea de probabilitate, cu aceeași semnificație).</p>
+<p>Exemplu: entropia este valoarea medie a informației <span class="math inline">\(i(s_n) = -\log_2{p(s_n)}\)</span> asociată unui eveniment cu probabilitatea <span class="math inline">\(p(s_n)\)</span>: <span class="math display">\[H(X) = \sum p(s_n) i(s_n)) = - \sum p(s_n) log_2(p(s_n))\]</span></p>
+<p>Ce semnificație are, practic, valoarea medie a unei variabile aleatoare? Informal, ea ne dă valoarea numerică centrală în jurul căreia “se învârt” toate valorile pe care le poate lua <span class="math inline">\(A\)</span>. Ca interpretare grafică, de multe ori ea este situată “pe la mijlocul” distribuției.</p>
+<ul>
+<li><p>Valorile care au probabilitate / densitate de probabilitate ridicată “trag” valoarea medie înspre ele.</p></li>
+<li><p>Pentru distribuții cu formă simetrică (de ex. distribuția normală, distribuția uniformă), valoarea medie este valoarea centrală a funcției. Ambele laturi ale funcției “trag” valoare medie înspre ele în mod egal, valoarea medie rămâne la mijloc.</p></li>
+<li><p>Dacă avem de-a face cu un semnal <span class="math inline">\(x(t)\)</span> sau <span class="math inline">\(x[n]\)</span> a cărui valori respectă o distribuție <span class="math inline">\(w_A(x)\)</span>, valoarea medie a distribuției va fi <strong>componenta continuă</strong> a semnalului respectiv.</p></li>
+</ul>
+<p>Alte câteva interpretări:</p>
+<ul>
+<li><p>Dacă am avea <span class="math inline">\(N \to \infty\)</span> valori aleatoare conform distribuției respective, valoarea medie ar fi media aritmentică a tuturor acestor valori;</p></li>
+<li><p>Dacă trebuie să prezicem valoarea unei variabile aleatoare <span class="math inline">\(X\)</span>, și plătim un cost proporțional cu pătratul erorii pe care o facem, <span class="math inline">\((u - X)^2\)</span>, valoarea medie <span class="math inline">\(\mu\)</span> este cea mai bună alegere, întrucât minimizează costul global: <span class="math display">\[\mu = \arg\min_u \int_{-\infty}^{\infty} (u - x)^2\cdot w(x) dx\]</span></p>
+<ul>
+<li>Demonstrație: la tablă: derivare, derivata = 0</li>
+</ul></li>
+</ul>
+<p>Pentru distribuția normală <span class="math inline">\(\mathcal{N}(\mu, \sigma)\)</span>, valoarea medie este chiar parametrul <span class="math inline">\(\mu\)</span>: <span class="math display">\[\overline{X} = \mu\]</span></p>
+<p>Pentru o distribuție uniformă <span class="math inline">\(\mathcal{U} [a, b]\)</span>, valoarea medie este valoarea de la mijlocul intervalului: <span class="math display">\[\overline{X} = \frac{a + b}{2}\]</span></p>
+<p>Calculul valorii medii este o operație <strong>liniară</strong>. Pentru două variabile aleatoare independente <span class="math inline">\(A\)</span> și <span class="math inline">\(B\)</span>, și oricare două numere reale <span class="math inline">\(c_1\)</span> și <span class="math inline">\(c_2\)</span>, avem: <span class="math display">\[E\{c_1A + c_2B\} = c_1E\{A\} + c_2E\{B\}\]</span></p>
+<p>Sau: <span class="math display">\[E\{cA\} = c E\{A\}, \forall c \in \mathbb{R}\]</span> <span class="math display">\[E\{A + B\} = E\{A\} + E\{B\}\]</span></p>
+<p>Exemplu: Aruncăm trei zaruri <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span>, <span class="math inline">\(C\)</span> și definim <span class="math inline">\(D\)</span> ca suma celor trei valori obținute: <span class="math display">\[D = A+B+C\]</span></p>
+<p>Cât este valoarea medie a lui <span class="math inline">\(D\)</span>?</p>
+</section>
+<section id="valoarea-pătratică-medie" class="level4">
+<h4 class="anchored" data-anchor-id="valoarea-pătratică-medie">Valoarea pătratică medie</h4>
+<p><strong>Valoarea pătratică medie</strong> (momentul de ordin 2) reprezintă valoarea medie a pătratelor valorilor unei variabile <span class="math inline">\(A\)</span>.</p>
+<p>Pentru variabile aleatoare continue: <span class="math display">\[\overline{A^2} = E\{A^2\} = \int_{-\infty}^{\infty} x^2 \cdot w_A(x) dx\]</span></p>
+<p>Și pentru cele discrete: <span class="math display">\[\overline{A^2} = E\{A^2\} = \sum_{-\infty}^{\infty} x^2 \cdot w_A(x)\]</span></p>
+<p>Valoarea pătratică medie are o interpretare legată de magnitudinea valorilor posibile. Dacă avem de-a face cu un semnal <span class="math inline">\(x(t)\)</span> sau <span class="math inline">\(x[n]\)</span> a cărui valori sunt generate de o distribuție <span class="math inline">\(w_A(x)\)</span>, valoarea pătratică medie a distribuției va fi <strong>puterea medie</strong> a semnalului respectiv.</p>
+</section>
+</section>
+<section id="varianța" class="level3">
+<h3 class="anchored" data-anchor-id="varianța">Varianța</h3>
+<p><strong>Varianța</strong> (momentul centrat de ordin 2) reprezintă valoarea pătratică medie a abaterilor față de valoarea medie.</p>
+<p>Pentru variabile aleatoare continue: <span class="math display">\[\sigma^2 = \overline{\left\{ A - \mu \right\}^2} = \int_{-\infty}^{\infty} (x-\mu)^2 \cdot w_A(x) dx\]</span></p>
+<p>Pentru variabile aleatoare discrete: <span class="math display">\[\sigma^2 = \overline{\left\{ A - \mu \right\}^2} = \sum_{-\infty}^{\infty} (x-\mu)^2 \cdot w_A(x)\]</span></p>
+<p>Cu alte cuvinte, din valorile variabilei aleatoare <span class="math inline">\(A\)</span> scădem mereu valoarea medie, obținând astfel valori centrate pe <span class="math inline">\(0\)</span> (media lor devine <span class="math inline">\(0\)</span>), și calculăm apoi varianța a ceea ce obținem.</p>
+<p>Rădăcina pătrată <span class="math inline">\(\sigma\)</span> a varianței unei distribuții se numește <strong>deviație standard</strong>.</p>
+<p>Varianța, sau deviația standard, ne spun cat de mult pot fluctua valorile în jurul valorii medii.</p>
+<ul>
+<li>varianță mică: valorile deviază puțin în jurul mediei, sunt concentrate în jur;</li>
+<li>varianță mare: valorile deviază mult de la medie.</li>
+<li>Dacă avem de-a face cu un semnal <span class="math inline">\(x(t)\)</span> sau <span class="math inline">\(x[n]\)</span> a cărui valori sunt generate de o distribuție <span class="math inline">\(w_A(x)\)</span>, varianța va fi <strong>puterea medie a componentei alternative</strong> a semnalului respectiv (adică puterea medie a semnalului din care am scăzut componenta continuă).</li>
+</ul>
+<section id="legătura-între-cele-trei-mărimi-statistice" class="level4">
+<h4 class="anchored" data-anchor-id="legătura-între-cele-trei-mărimi-statistice">Legătura între cele trei mărimi statistice</h4>
+<p>Pentru orice distribuție, cele trei mărimi statistice satisfac relația următoare: <span class="math display">\[\begin{split}
+\sigma^2 &amp;= \overline{\left\{ A - \mu \right\}^2} \\
+&amp;= \overline{A^2 - 2 \cdot A \cdot \mu + \mu^2} \\
+&amp;= \overline{A^2} - 2 \mu \overline{A} + \mu^2 \\
+&amp;= \overline{A^2} - \mu^2
+\end{split}\]</span></p>
+<p>Dacă avem de-a face cu un semnal <span class="math inline">\(x(t)\)</span> sau <span class="math inline">\(x[n]\)</span> a cărui valori urmează o distribuție <span class="math inline">\(w_A(x)\)</span>, relația poate fi interpretată în sens energetic:</p>
+<ul>
+<li><span class="math inline">\(\overline{A^2}\)</span> este puterea totală a semnalului</li>
+<li><span class="math inline">\(\mu^2\)</span> este puterea componentei continue</li>
+<li><span class="math inline">\(\sigma^2\)</span> este puterea componentei alternative</li>
+<li>puterea totată a semnalului = puterea componentei continue + puterea componentei alternative</li>
+</ul>
+</section>
+</section>
 <section id="operații-cu-variabile-aleatoare" class="level3">
 <h3 class="anchored" data-anchor-id="operații-cu-variabile-aleatoare">Operații cu variabile aleatoare</h3>
 <section id="suma-cu-o-constantă" class="level4">
@@ -459,59 +527,42 @@ w_A(x) &amp;= \lim_{\epsilon \to 0}{\frac{P(A \in [x, x+\epsilon])}{\epsilon}} \
 <li>Răspuns: <span class="math inline">\(w_B(x) = \mathcal{N}(\mu=8, \sigma^2=2)\)</span></li>
 </ul>
 </section>
+<section id="suma-variabilelor-aleatoare" class="level4">
+<h4 class="anchored" data-anchor-id="suma-variabilelor-aleatoare">Suma variabilelor aleatoare</h4>
+<p>Suma a două sau mai multe variabile aleatoare <strong>independente</strong> este tot o variabilă aleatoare, a cărei densitate de probabilitate este <strong>convoluția</strong> densităților termenilor.</p>
+<p>Dacă <span class="math inline">\(C = A + B\)</span>, atunci: <span class="math display">\[w_C(x) = w_A(x) \star w_B(x)\]</span></p>
+<p>Pentru cazul particular cand <span class="math inline">\(A\)</span> și <span class="math inline">\(B\)</span> sunt variabile normale cu <span class="math inline">\(\mathcal{N}(\mu_A, \sigma_A^2)\)</span> și <span class="math inline">\(\mathcal{N}(\mu_B, \sigma_B^2)\)</span>, atunci suma lor <span class="math inline">\(C\)</span> are tot o distribuție normală <span class="math inline">\(\mathcal{N}(\mu_C, \sigma_C^2)\)</span>, având media lui <span class="math inline">\(C\)</span> egală cu suma mediilor lui <span class="math inline">\(A\)</span> și <span class="math inline">\(B\)</span>: <span class="math display">\[\mu_C = \mu_A + \mu_B\]</span> iar varianța egală cu suma varianțelor: <span class="math display">\[\sigma_C^2 = \sigma_A^2 + \sigma_B^2\]</span></p>
 </section>
-<section id="v.a.-ca-funcții-de-alte-v.a" class="level3">
-<h3 class="anchored" data-anchor-id="v.a.-ca-funcții-de-alte-v.a">V.a. ca funcții de alte v.a</h3>
-<ul>
-<li><p>O funcție aplicată unei v.a. produce o altă v.a.</p></li>
-<li><p>Exemple: dacă <span class="math inline">\(A\)</span> este o v.a. distribuită <span class="math inline">\(\mathcal{U}\;[0,10]\)</span>, atunci</p>
+</section>
+<section id="alte-transformări" class="level3">
+<h3 class="anchored" data-anchor-id="alte-transformări">Alte transformări</h3>
+<p>În general, o funcție aplicată unei variabile aleatoare produce o altă variabilă aleatoare, cu altă distribuție, posibil cu totul diferită de cea inițială.</p>
+<p>Exemple: dacă <span class="math inline">\(A\)</span> este o v.a. distribuită <span class="math inline">\(\mathcal{U}\;[0,10]\)</span>, atunci</p>
 <ul>
 <li><span class="math inline">\(B = 5 + A\)</span> este o altă v.a., distribuită <span class="math inline">\(\mathcal{U}\;[5,15]\)</span></li>
 <li><span class="math inline">\(C = A^2\)</span> este de asemenea o v.a.</li>
 <li><span class="math inline">\(D = cos(A)\)</span> este de asemenea o v.a.</li>
-</ul></li>
-<li><p>Motivație: dacă <span class="math inline">\(A\)</span> este aleatoare, și valorile <span class="math inline">\(B\)</span>, <span class="math inline">\(C\)</span>, <span class="math inline">\(D\)</span> sunt aleatoare</p></li>
-<li><p>A, B, C, D nu sunt independente</p>
-<ul>
-<li>O anumită valoare a uneia implică automat și valoarea celorlalte</li>
-</ul></li>
 </ul>
+<p>Variabilele A, B, C, D nu sunt însă independente, întrucât o anumită valoare a uneia implică automat și valoarea celorlalte.</p>
 </section>
-<section id="sisteme-de-mai-multe-variabile-aleatoare" class="level3">
-<h3 class="anchored" data-anchor-id="sisteme-de-mai-multe-variabile-aleatoare">Sisteme de mai multe variabile aleatoare</h3>
-<ul>
-<li><p>Fie un sistem cu două v.a. continue <span class="math inline">\(A\)</span> și <span class="math inline">\(B\)</span></p></li>
-<li><p>Care este probabilitatea ca perechea <span class="math inline">\((A,B)\)</span> să aibă valoarea în jurul <span class="math inline">\((x,y)\)</span>?</p></li>
-<li><p>Distribuția valorilor perechii <span class="math inline">\((A,B)\)</span> este descrisă de:</p>
-<ul>
-<li>Densitatea de probabilitate comună <span class="math inline">\(w_{AB}(x,y)\)</span></li>
-<li>Funcția de repartiție comună <span class="math inline">\(F_{AB}(x,y)\)</span></li>
-</ul></li>
-</ul>
 </section>
-<section id="sisteme-de-mai-multe-variabile-aleatoare-1" class="level3">
-<h3 class="anchored" data-anchor-id="sisteme-de-mai-multe-variabile-aleatoare-1">Sisteme de mai multe variabile aleatoare</h3>
-<ul>
-<li><p>Funcția de repartiție comună: <span class="math display">\[F_{AB}(x,y) = P_{AB}\left\{ A \leq x \cap B \leq y \right\}\]</span></p></li>
-<li><p>Densitatea de probabilitate comună: <span class="math display">\[w_{AB}(x,y) = \frac{\partial^2 F_{AB}(x,y)}{\partial x \partial y}\]</span></p></li>
-<li><p>FDP comună descrie probabilitatea ca perechea <span class="math inline">\((A,B)\)</span> să aibă valoarea într-o vecinătate a <span class="math inline">\((x,y)\)</span></p></li>
-<li><p>Similar pentru v.a discrete: <span class="math display">\[w_{AB}(x,y) = P\left\{ A = x \cap B = y \right\}\]</span></p></li>
-</ul>
-</section>
+<section id="sisteme-de-mai-multe-variabile-aleatoare" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="sisteme-de-mai-multe-variabile-aleatoare">Sisteme de mai multe variabile aleatoare</h2>
+<p>Fie un sistem cu două variabile aleatoare continue, <span class="math inline">\(A\)</span> și <span class="math inline">\(B\)</span>.</p>
+<p>Care este probabilitatea ca <span class="math inline">\(A\)</span> să ia valori în jurul lui <span class="math inline">\(x\)</span> <strong>ȘI</strong> B să ia valori în jurul lui <span class="math inline">\(y\)</span>?</p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p>Aruncând două zaruri <span class="math inline">\(A\)</span> și <span class="math inline">\(B\)</span>, care este probabilitatea ca perechea <span class="math inline">\((A,B)\)</span> să aibă valoarea (6, 4)?</p>
+</div></div><p>Distribuția valorilor perechii <span class="math inline">\((A,B)\)</span> este descrisă de o densitatea de probabilitate comună <span class="math inline">\(w_{AB}(x,y)\)</span>, și de o funcția de repartiție comună <span class="math inline">\(F_{AB}(x,y)\)</span>.</p>
+<p>Funcția de repartiție comună se definește ca: <span class="math display">\[F_{AB}(x,y) = P_{AB}\left\{ A \leq x \cap B \leq y \right\}\]</span></p>
+<p>Densitatea de probabilitate comună: <span class="math display">\[w_{AB}(x,y) = \frac{\partial^2 F_{AB}(x,y)}{\partial x \partial y}\]</span></p>
+<p>Densitatea de probabiliate comună ne dă probabilitatea ca perechea <span class="math inline">\((A,B)\)</span> să aibă valoarea într-o vecinătate a <span class="math inline">\((x,y)\)</span></p>
+<p>Cele două funcții se definesc similar și pentru variabile discrete, înlocuind integralele cu sume: <span class="math display">\[w_{AB}(x,y) = P\left\{ A = x \cap B = y \right\}\]</span></p>
 <section id="variabile-independente" class="level3">
 <h3 class="anchored" data-anchor-id="variabile-independente">Variabile independente</h3>
-<ul>
-<li><p>Două v.a. <span class="math inline">\(A\)</span> și <span class="math inline">\(B\)</span> sunt <strong>independente</strong> dacă valoarea uneia nu influențează în nici un fel valoarea celeilalte</p></li>
-<li><p>Pentru v.a. independente, probabilitatea ca <span class="math inline">\(A\)</span> să fie în jurul lui <span class="math inline">\(x\)</span> și <span class="math inline">\(B\)</span> în jurul lui <span class="math inline">\(y\)</span> este produsul celor două probabilități</p></li>
-</ul>
-<p><span class="math display">\[w_{AB}(x,y) = w_A(x) \cdot w_B(y)\]</span></p>
-<ul>
-<li><p>Valabilă pentru FR / FDP / FMP, v.a. continue sau aleatoare etc.</p></li>
-<li><p>Similar pentru mai mult de două v.a.</p></li>
-</ul>
-</section>
-<section id="variabile-independente-1" class="level3">
-<h3 class="anchored" data-anchor-id="variabile-independente-1">Variabile independente</h3>
+<p>Două variabile <span class="math inline">\(A\)</span> și <span class="math inline">\(B\)</span> sunt <strong>independente</strong> dacă se respectă relația: <span class="math display">\[w_{AB}(x,y) = w_A(x) \cdot w_B(y)\]</span></p>
+<p>Ca interpretare, acest lucru înseamnă că valoarea uneia nu influențează în nici un fel valoarea celeilalte.</p>
+<p>Relația este valabilă și pentru funcția de repartiție, atât pentru variabile continue cât și pentru discrete, și se extinde similar pentru cazul în care sunt mai mult de două variabile.</p>
 <p>Exercițiu:</p>
 <ul>
 <li>Calculați probabilitatea ca trei v.a. <span class="math inline">\(X\)</span>, <span class="math inline">\(Y\)</span> și <span class="math inline">\(Z\)</span> i.i.d. <span class="math inline">\(\mathcal{N}(-1,1)\)</span> să fie toate pozitive
@@ -520,37 +571,81 @@ w_A(x) &amp;= \lim_{\epsilon \to 0}{\frac{P(A \in [x, x+\epsilon])}{\epsilon}} \
 </ul></li>
 </ul>
 </section>
-<section id="multiple-v.a.-normale" class="level3">
-<h3 class="anchored" data-anchor-id="multiple-v.a.-normale">Multiple v.a. normale</h3>
+<section id="distribuția-normală-multivariată" class="level3 page-columns page-full">
+<h3 class="anchored" data-anchor-id="distribuția-normală-multivariată">Distribuția normală multivariată</h3>
+<p>Distribuția normală se poate extinde în mod natural la vectori cu dimensiune <span class="math inline">\(N\)</span>.</p>
+<p>Pentru un vector <span class="math inline">\(\mathbf{x}\)</span> de dimensiune N <span class="math display">\[\mathbf{x} = [x_1, x_2, ... x_N]\]</span> distribuția se definește ca: <span class="math display">\[w_A(\mathbf{x})= \frac{1}{\sqrt{(2\pi)^N |\Sigma|}}
+e^{-\frac{1}{2}(\mathbf{x} - \boldsymbol{\mu})^T\Sigma^{-1}(\mathbf{x} - \boldsymbol{\mu})}\]</span></p>
+<p>Funcția are doi parametri matriciali:</p>
 <ul>
-<li><p>Fie un set de <span class="math inline">\(N\)</span> v.a. normale <span class="math inline">\((A_1, ...A_N)\)</span>, cu medii diferite <span class="math inline">\(\mu_i\)</span> dar aceeași deviație standard <span class="math inline">\(\sigma\)</span></p></li>
-<li><p>Probabilitatea ca <span class="math inline">\((A_1,...A_N)\)</span> să fie în jurul valorii <span class="math inline">\((x_1, ...x_N)\)</span> este <span class="math display">\[w_{A_1,...A_N}(x_1,...x_N) = \frac{1}{(\sigma\sqrt{2\pi})^N} e^{\frac{(x_1-\mu_1)^2+...+(x_N - \mu_N)^2}{2\sigma^2}}\]</span></p></li>
-<li><p>Probabilitatea depinde de <strong>distanța Euclideană</strong> dintre <span class="math inline">\(\mathbf{x}=(x_1,...x_N)\)</span> și <span class="math inline">\(\mathbf{\mu} = (\mu_1,...\mu_N)\)</span></p></li>
+<li><strong>media</strong> <span class="math inline">\(\boldsymbol{\mu} = [\mu_1, \mu_2, ... \mu_N]\)</span> este un vector de dimensiune <span class="math inline">\(N\)</span> care definește “centrul” funcției;</li>
+<li><strong>matricea de covarianță</strong> <span class="math inline">\(\Sigma\)</span> care definește orientarea și forma eliptică a funcției.</li>
 </ul>
-</section>
-<section id="distanța-euclideană" class="level3">
-<h3 class="anchored" data-anchor-id="distanța-euclideană">Distanța Euclideană</h3>
+<p>Distribuția normală multivariată are forma de tipul unui “munte” elipsoid, pentru care media <span class="math inline">\(\boldsymbol{\mu}\)</span> reprezintă coordonatele vârfului central. Matricea de covarianță <span class="math inline">\(\Sigma\)</span> determina forma “muntelui”, în felul următor:</p>
 <ul>
-<li><p><strong>Distanța Euclideană (geometrică)</strong> între 2 vectori N-dimensionali <span class="math display">\[d(\mathbf{u},\mathbf{v}) = \| \mathbf{u}-\mathbf{v} \| = \sqrt{(u_1-v_1)^2+...+(u_N - v_N)^2}\]</span></p></li>
-<li><p>Unidimensional: <span class="math inline">\(\|\mathbf{u}-\mathbf{v}\| = |u-v|\)</span></p></li>
-<li><p>2D: <span class="math inline">\(\|\mathbf{u}-\mathbf{v}\| = \sqrt{(u_1 - v_1)^2 + (u_2 - v_2)^2}\)</span></p></li>
-<li><p>3D: <span class="math inline">\(\|\mathbf{u}-\mathbf{v}\| = \sqrt{(u_1 - v_1)^2 + (u_2 - v_2)^2 + (u_3 - v_3)^2}\)</span></p></li>
-<li><p>…</p></li>
-<li><p>N-dimensional: <span class="math inline">\(\|\mathbf{u}-\mathbf{v}\| = \sqrt{\sum_{i=1}^N(u_i - v_i)^2}\)</span></p></li>
-<li><p>…</p></li>
-<li><p>Semnale continue: <span class="math inline">\(\|\mathbf{u}-\mathbf{v}\| = \sqrt{\int_{-\infty}^{\infty}(u(t) - v(t))^2 dt}\)</span></p></li>
+<li>Matrice are <span class="math inline">\(N\)</span> <strong>vectori proprii</strong> <span class="math inline">\(\mathbf{e_i}\)</span> care dau direcțiile ortogonale ale axelor care definesc elipsa;</li>
+<li>Cele <span class="math inline">\(N\)</span> <strong>valori proprii</strong> <span class="math inline">\(\lambda_i\)</span> controlează extinderea elipsei de-a lungul fiecărei axe.</li>
 </ul>
+<p>GRAFICE, GRAFICE, GRAFICE</p>
+<section id="caz-particular-componente-independente" class="level4">
+<h4 class="anchored" data-anchor-id="caz-particular-componente-independente">Caz particular: componente independente</h4>
+<p>În cazul în care matricea de covarianță este o matrice diagonală:</p>
+<p><span class="math display">\[\Sigma =
+\begin{bmatrix}
+\sigma^2_1 &amp; 0 &amp; 0 &amp; \cdots &amp; 0 \\
+0 &amp; \sigma^2_2 &amp; 0 &amp; \cdots &amp; 0 \\
+0 &amp; 0 &amp; \sigma^2_3 &amp; \cdots &amp; 0 \\
+\vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+0 &amp; 0 &amp; 0 &amp; \cdots &amp; \sigma^2_N \\
+\end{bmatrix}\]</span></p>
+<p>distribuția multiavariată se descompune ca un produs de distribuții individuale, ceea ce reflectă faptul că componentele vectorului <span class="math inline">\(\mathbf{x}\)</span> sunt independente:</p>
+<p><span class="math display">\[\begin{split}
+w_A(\mathbf{x}) &amp;=
+\frac{1}{\sigma_1 \cdot ... \cdot \sigma_N \sqrt{(2\pi)^N}}
+e^{(-\frac{(\mathbf{x_1} - \boldsymbol{\mu_1})^2}{2\sigma^2_1}) \cdot (-\frac{(\mathbf{x_2} - \boldsymbol{\mu_2})^2}{2\sigma^2_2}) \cdot \dots (-\frac{(\mathbf{x_N} - \boldsymbol{\mu_N})^2}{2\sigma^2_N})}  \\
+&amp;=\frac{1}{\sigma_1 \sqrt{(2\pi)}} e^{-\frac{(\mathbf{x_1} - \boldsymbol{\mu_1})^2}{2\sigma^2_1}}
+\cdot
+\frac{1}{\sigma_2 \sqrt{(2\pi)}} e^{-\frac{(\mathbf{x_2} - \boldsymbol{\mu_2})^2}{2\sigma^2_2}}
+\cdot \dots \cdot
+\frac{1}{\sigma_N \sqrt{(2\pi)}} e^{-\frac{(\mathbf{x_N} - \boldsymbol{\mu_N})^2}{2\sigma^2_N}} \\
+&amp;=w_1(x_1) \cdot w_2(x_2) \cdot \dots \cdot w_N(x_N)
+\end{split}\]</span></p>
+<p>Acest lucru înseamnă, practic, că fiecare componentă <span class="math inline">\(x_k\)</span> din vectorul <span class="math inline">\(\mathbf{x}\)</span> este independentă de toate celelalte și respectă o distribuție normală cu media <span class="math inline">\(\mu_k\)</span> și varianța <span class="math inline">\(\sigma^2_k\)</span>. Cu alte cuvinte:</p>
+<p><span class="math display">\[\mathcal{N}(\boldsymbol{\mu}, \Sigma) = \mathcal{N}(\mu_1, \sigma_1) \cdot \mathcal{N}(\mu_2, \sigma_2) \cdot \dots \cdot \mathcal{N}(\mu_N, \sigma_N)\]</span></p>
 </section>
-<section id="multiple-v.a.-normale-1" class="level3">
-<h3 class="anchored" data-anchor-id="multiple-v.a.-normale-1">Multiple v.a. normale</h3>
+<section id="caz-particular-distribuție-izotrop" class="level4 page-columns page-full">
+<h4 class="anchored" data-anchor-id="caz-particular-distribuție-izotrop">Caz particular: distribuție izotrop</h4>
+<p>În cazul în care matricea de covarianță este de forma unei matrici matricea unitate, având aceeași valoare <span class="math inline">\(\sigma\)</span> pe toate liniile: <span class="math display">\[\Sigma = \sigma^2 \mathbf{I}_N\]</span></p>
+<p>avem o distribuție normală multivariată <strong>izotropă</strong>:</p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p>Termenul “izotrop” înseamnă “cu aceleași proprietăți în orice direcție” și se referă la forma circulară a funcției.</p>
+</div></div><p><span class="math display">\[\begin{split}
+w_A(\mathbf{x})= &amp;\frac{1}{\sigma^N \sqrt{(2\pi)^N}}
+e^{-\frac{1}{2}(\mathbf{x} - \boldsymbol{\mu})^T(\mathbf{x} - \boldsymbol{\mu})} \\
+&amp;=
+\end{split}\]</span></p>
+<p>În acest caz, toata componentele <span class="math inline">\(x_k\)</span> sunt independente și respectă fiecare o distribuție normală cu medie <span class="math inline">\(\mu_k\)</span>, dar cu aceeași varianță <span class="math inline">\(\sigma^2\)</span>.</p>
+<p>Se observă că în acest caz valoarea densității de probabilitate într-un punct <span class="math inline">\(\mathbf{x}=[x_1,...x_N]\)</span> depinde de <strong>distanța</strong> de la punctul respectiv la punctul central <span class="math inline">\(\boldsymbol{\mu} = [\mu_1,...\mu_N]\)</span>.</p>
+<p><strong>Distanța Euclideană (geometrică)</strong> între 2 vectori N-dimensionali se definește astfel:</p>
+<p><span class="math display">\[d(\mathbf{u},\mathbf{v}) = \| \mathbf{u}-\mathbf{v} \| = \sqrt{(u_1-v_1)^2+...+(u_N - v_N)^2}\]</span></p>
+<p>Cazuri particulare în funcție de dimensiunea <span class="math inline">\(N\)</span>:</p>
 <ul>
-<li>Probabilitatea a <span class="math inline">\(N\)</span> v.a. normale, independente, cu același <span class="math inline">\(\sigma\)</span> dar diferite <span class="math inline">\(\mu_i\)</span> depinde de <strong>pătratul distanței Euclidiene față de vectorul medie</strong> <span class="math inline">\(\mathbf{\mu} = (\mu_1,...\mu_N)\)</span>
+<li>Unidimensional: <span class="math inline">\(\|\mathbf{u}-\mathbf{v}\| = |u-v|\)</span></li>
+<li>2D: <span class="math inline">\(\|\mathbf{u}-\mathbf{v}\| = \sqrt{(u_1 - v_1)^2 + (u_2 - v_2)^2}\)</span></li>
+<li>3D: <span class="math inline">\(\|\mathbf{u}-\mathbf{v}\| = \sqrt{(u_1 - v_1)^2 + (u_2 - v_2)^2 + (u_3 - v_3)^2}\)</span></li>
+<li>…</li>
+<li>N-dimensional: <span class="math inline">\(\|\mathbf{u}-\mathbf{v}\| = \sqrt{\sum_{i=1}^N(u_i - v_i)^2}\)</span></li>
+</ul>
+<p>Aceeași relație se poate extinde și pentru semnale continue, văzute ca vectori cu o infinitate de puncte unul lângă altul:</p>
+<p>În cazul unei distribuții normale multivariate izotrope, densitatea de probabilitate într-un punct depinde de pătratul distanței Euclidiene față de media <span class="math inline">\(\boldsymbol{\mu} = [\mu_1,...\mu_N]\)</span></p>
 <ul>
-<li>Aproape de <span class="math inline">\(\mu\)</span>: probabilitate mai mare</li>
-<li>Departe de <span class="math inline">\(\mu\)</span>: probabilitate redusă</li>
+<li>Valoarea maximă este chiar in punctul <span class="math inline">\(\boldsymbol{\mu}\)</span></li>
+<li>Puncte aproapiate de <span class="math inline">\(\mu\)</span> au probabilitate mai mare</li>
+<li>Puncte mai depărtate de <span class="math inline">\(\mu\)</span> au probabilitate mai redusă</li>
 <li>Două puncte la aceeași distanță de <span class="math inline">\(\mu\)</span> au aceeași probabilitate</li>
-</ul></li>
 </ul>
+</section>
 </section>
 <section id="distribuția-normală-2d" class="level3">
 <h3 class="anchored" data-anchor-id="distribuția-normală-2d">Distribuția normală 2D</h3>
@@ -566,104 +661,6 @@ w_A(x) &amp;= \lim_{\epsilon \to 0}{\frac{P(A \in [x, x+\epsilon])}{\epsilon}} \
 <li>Probabilitatea scade pe măsură ce crește distanța față de centru, în cercuri concentrice (simetric)</li>
 </ul>
 <p><img src="img/2DNormal-TopView.png" class="id img-fluid" style="width:50.0%"></p>
-</section>
-<section id="medii-statistice" class="level3">
-<h3 class="anchored" data-anchor-id="medii-statistice">Medii statistice</h3>
-<ul>
-<li><p>V.a. sunt caracterizate prin medii statistice (“<em>momente</em>”)</p></li>
-<li><p><strong>Valoarea medie</strong> (momentul de ordin 1)</p></li>
-<li><p>Pentru v.a. continue: <span class="math display">\[\overline{A} = E\{A\} = \int_{-\infty}^{\infty} x \cdot w_A(x) dx\]</span></p></li>
-<li><p>Pentru v.a. discrete: <span class="math display">\[\overline{A} = E\{A\} = \sum_{x=-\infty}^{\infty} x \cdot w_A(x)\]</span></p></li>
-<li><p>(Exemplu: entropia H(X) = valoarea medie a informației)</p></li>
-<li><p>Notație uzuală: <span class="math inline">\(\mu\)</span></p></li>
-</ul>
-</section>
-<section id="ce-înseamna-valoarea-medie" class="level3">
-<h3 class="anchored" data-anchor-id="ce-înseamna-valoarea-medie">Ce înseamna valoarea medie</h3>
-<ul>
-<li><p>Ce înseamnă, practic, valoarea medie a unei variabile aleatoare?</p>
-<ul>
-<li>Dacă avem <span class="math inline">\(N \to \infty\)</span> valori aleatoare conform distribuției respective, valoarea medie = media tuturor acestor valori;</li>
-<li>Dacă trebuie să prezicem valoarea unei variabile aleatoare <span class="math inline">\(X\)</span>, și plătim un cost proporțional cu pătratul erorii pe care o facem, <span class="math inline">\((u - X)^2\)</span>, valoarea medie <span class="math inline">\(\mu\)</span> este cea mai bună alegere, întrucât minimizează costul global:</li>
-</ul>
-<p><span class="math display">\[\mu = \arg\min_u \int_{-\infty}^{\infty} (u - x)^2\cdot w(x) dx\]</span></p>
-<ul>
-<li>Demonstrație: la tablă: derivare, derivata = 0</li>
-</ul></li>
-</ul>
-</section>
-<section id="ce-înseamna-valoarea-medie-1" class="level3">
-<h3 class="anchored" data-anchor-id="ce-înseamna-valoarea-medie-1">Ce înseamna valoarea medie</h3>
-<ul>
-<li><p>Valorile care au probabilitate ridicată “trag” valoarea medie înspre ele</p></li>
-<li><p>Pentru distribuții cu formă simetrică (de ex. distribuția normală), valoarea medie = valoarea centrală a funcției</p>
-<ul>
-<li>Demonstrație: ambele laturi ale funcției “trag” valoare medie înspre ele în mod egal, valoarea medie rămâne la mijloc</li>
-</ul></li>
-<li><p>Pentru distribuția normală, <span class="math inline">\(\overline{X} = \mu\)</span></p></li>
-<li><p>Pentru distribuția uniformă <span class="math inline">\(\mathcal{U} [a, b]\)</span>, <span class="math inline">\(\overline{X} = \frac{a + b}{2}\)</span> (mijlocul intervalului)</p></li>
-</ul>
-</section>
-<section id="proprietățile-valorii-medii" class="level3">
-<h3 class="anchored" data-anchor-id="proprietățile-valorii-medii">Proprietățile valorii medii</h3>
-<ul>
-<li><p>Calculul valorii medii este o operație <strong>liniară</strong></p>
-<ul>
-<li>pentru că, la bază, integrala / suma este o operație liniară</li>
-</ul></li>
-<li><p>Pentru două variabile aleatoare A și B (independente):</p></li>
-<li><p>Liniaritate <span class="math display">\[E\{c_1A + c_2B\} = c_1E\{A\} + c_2E\{B\}\]</span></p></li>
-<li><p>Sau: <span class="math display">\[E\{cA\} = c E\{A\}, \forall c \in \mathbb{R}\]</span> <span class="math display">\[E\{A + B\} = E\{A\} + E\{B\}\]</span></p></li>
-<li><p>Fără demonstrație</p></li>
-</ul>
-</section>
-<section id="valoarea-pătratică-medie" class="level3">
-<h3 class="anchored" data-anchor-id="valoarea-pătratică-medie">Valoarea pătratică medie</h3>
-<ul>
-<li><p>Valoarea pătratică medie = valoarea medie a pătratelor valorilor</p></li>
-<li><p>Momentul de ordin 2</p></li>
-<li><p>Pentru v.a. continue: <span class="math display">\[\overline{A^2} = E\{A^2\} = \int_{-\infty}^{\infty} x^2 \cdot w_A(x) dx\]</span></p></li>
-<li><p>Pentru v.a. discrete: <span class="math display">\[\overline{A^2} = E\{A^2\} = \sum_{-\infty}^{\infty} x^2 \cdot w_A(x)\]</span></p></li>
-<li><p>Interpretare: media pătratelor = energia medie a unui semnal</p></li>
-</ul>
-</section>
-<section id="varianța" class="level3">
-<h3 class="anchored" data-anchor-id="varianța">Varianța</h3>
-<ul>
-<li><p>Varianța = valoarea pătratică medie a abaterii față de valoarea medie :)</p></li>
-<li><p>V.a. continue: <span class="math display">\[\sigma^2 = \overline{\left\{ A - \mu \right\}^2} = \int_{-\infty}^{\infty} (x-\mu)^2 \cdot w_A(x) dx\]</span></p></li>
-<li><p>V.a. discrete: <span class="math display">\[\sigma^2 = \overline{\left\{ A - \mu \right\}^2} = \sum_{-\infty}^{\infty} (x-\mu)^2 \cdot w_A(x)\]</span></p></li>
-<li><p>Interpretare: cât de mult variază valorile în jurul mediei</p>
-<ul>
-<li><span class="math inline">\(\sigma^2 =\)</span> mare: abateri mari față de medie</li>
-<li><span class="math inline">\(\sigma^2 =\)</span> mic: valori concentrate în jurul mediei</li>
-</ul></li>
-</ul>
-</section>
-<section id="legătura-între-cele-trei-mărimi" class="level3">
-<h3 class="anchored" data-anchor-id="legătura-între-cele-trei-mărimi">Legătura între cele trei mărimi</h3>
-<ul>
-<li>Legătura între medie, valoarea pătratică medie și varianță: <span class="math display">\[\begin{split}
-\sigma^2 &amp;= \overline{\left\{ A - \mu \right\}^2} \\
-&amp;= \overline{A^2 - 2 \cdot A \cdot \mu + \mu^2} \\
-&amp;= \overline{A^2} - 2 \mu \overline{A} + \mu^2 \\
-&amp;= \overline{A^2} - \mu^2
-\end{split}\]</span></li>
-</ul>
-</section>
-<section id="suma-variabilelor-aleatoare" class="level3">
-<h3 class="anchored" data-anchor-id="suma-variabilelor-aleatoare">Suma variabilelor aleatoare</h3>
-<ul>
-<li><p>Suma a două sau mai multe v.a. <strong>independente</strong> este tot o v.a.</p></li>
-<li><p>Distribuția ei = <strong>convoluția</strong> distribuțiilor v.a. componente</p></li>
-<li><p>Dacă <span class="math inline">\(C = A + B\)</span>, atunci: <span class="math display">\[w_C(x) = w_A(x) \star w_B(x)\]</span></p></li>
-<li><p>Caz particular: dacă <span class="math inline">\(A\)</span> și <span class="math inline">\(B\)</span> sunt v.a. normale, cu <span class="math inline">\(\mathcal{N}(\mu_A, \sigma_A^2)\)</span> și <span class="math inline">\(\mathcal{N}(\mu_B, \sigma_B^2)\)</span>, atunci:</p>
-<ul>
-<li><span class="math inline">\(C\)</span> este tot o v.a. cu distribuție normală, <span class="math inline">\(\mathcal{N}(\mu_C, \sigma_C^2)\)</span>, având:</li>
-<li>media = suma mediilor: <span class="math inline">\(\mu_C = \mu_A + \mu_B\)</span></li>
-<li>varianța = suma varianțelor: <span class="math inline">\(\sigma_C^2 = \sigma_A^2 + \sigma_B^2\)</span></li>
-</ul></li>
-</ul>
 </section>
 </section>
 <section id="ii.2-procese-aleatoare" class="level2">
@@ -1425,24 +1422,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copied!");
-    let tooltip;
-    if (window.bootstrap) {
-      button.setAttribute("data-bs-toggle", "tooltip");
-      button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
-      tooltip = new bootstrap.Tooltip(button, 
-        { trigger: "manual", 
-          customClass: "code-copy-button-tooltip",
-          offset: [0, -8]});
-      tooltip.show();    
-    }
     setTimeout(function() {
-      if (tooltip) {
-        tooltip.hide();
-        button.removeAttribute("data-bs-title");
-        button.removeAttribute("data-bs-toggle");
-        button.removeAttribute("data-bs-placement");
-      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
@@ -1478,42 +1458,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
-  const findCites = (el) => {
-    const parentEl = el.parentElement;
-    if (parentEl) {
-      const cites = parentEl.dataset.cites;
-      if (cites) {
-        return {
-          el,
-          cites: cites.split(' ')
-        };
-      } else {
-        return findCites(el.parentElement)
-      }
-    } else {
-      return undefined;
-    }
-  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const citeInfo = findCites(ref);
-    if (citeInfo) {
-      tippyHover(citeInfo.el, function() {
-        var popup = window.document.createElement('div');
-        citeInfo.cites.forEach(function(cite) {
-          var citeDiv = window.document.createElement('div');
-          citeDiv.classList.add('hanging-indent');
-          citeDiv.classList.add('csl-entry');
-          var biblioDiv = window.document.getElementById('ref-' + cite);
-          if (biblioDiv) {
-            citeDiv.innerHTML = biblioDiv.innerHTML;
-          }
-          popup.appendChild(citeDiv);
-        });
-        return popup.innerHTML;
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
       });
-    }
+      return popup.innerHTML;
+    });
   }
 });
 </script>

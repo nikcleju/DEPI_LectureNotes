@@ -396,7 +396,7 @@ plt.close()
 
 ### Distribuția uniformă
 
-Densitatea de probabilitate uniformă este o constantă între două limite $a$ și $b$:
+Densitatea de probabilitate uniformă este o funcție constantă între două limite $a$ și $b$:
 
 $$w_A(x) =
 \begin{cases}
@@ -435,20 +435,29 @@ Cum interpretăm distribuția uniformă?
 
 ### Calculul probabilității pentru distribuția normală
 
-- Cum calculăm $\int_a^b$ dintr-o distribuție normală?
-    - Nu se poate prin formule algebrice, funcție ne-elementară
+Probabilitatea ca $A$ sa aibă valori între $a$ și $b$
+este $\int_a^b w_A(x) dx$, dar pentru expresia
+distribuției normale această integrală nu se poate calcula
+prin formula algebrice (este funcție ne-elementară).
 
-- Se folosește *the error function*:
+Pentru calcul, se folosesc algoritmi numerici, pe baza
+**funcției de eroare** $erf(z)$ ("the error function"):
 $$erf(z) = \frac{2}{\sqrt{\pi}} \int_0^z e^{-t^2} dt$$
 
-- Funcția de repartiție a unei distribuții normale $\mathcal{N}(\mu, \sigma^2)$
+::: {.column-margin}
+Valorile funcției *erf()* sunt tabelate
+sau se calculează numeric cu algoritmi specializati.
+De ex., pe Google, căutați $erf(0.5)$
+:::
+
+Funcția de repartiție a unei distribuții normale oarecare
+$\mathcal{N}(\mu, \sigma^2)$ se poate calcula ca:
 $$F_A(X) = \frac{1}{2}(1 + erf(\frac{x - \mu}{\sigma \sqrt{2}}))$$
 
-- Valorile funcției *erf()* sunt tabelate / se calculează numeric
-    - de ex. pe Google, căutați $erf(0.5)$
-    - Alte valori folositoare:
-        - $erf(-\infty) = -1$
-        - $erf(\infty) = 1$
+Alte valori folositoare:
+
+- $erf(-\infty) = -1$
+- $erf(\infty) = 1$
 
 Exercițiu:
 
@@ -468,6 +477,151 @@ ca fiind valorile aflate la peste $3 \sigma$ distanță față de medie.
 De ce oare?
 :::
 
+### Medii statistice
+
+Variabilele aleatoare sunt caracterizate prin medii statistice ("*momente*"),
+care caracterizează densitatea de probabilitate.
+
+#### valoarea medie
+
+**Valoarea medie** (momentul de ordin 1) a unei variabila aleatoare $A$,
+notată în mod uzual cu $\mu$, $E\lbrace A \rbrace$ sau $\overline{A}$, se definește astfel:
+
+- Pentru v.a. continue:
+  $$\overline{A} = E\{A\} = \int_{-\infty}^{\infty} x \cdot w_A(x) dx$$
+
+- Pentru v.a. discrete:
+  $$\overline{A} = E\{A\} = \sum_{x=-\infty}^{\infty} x \cdot w_A(x)$$
+
+::: {.column-margin}
+Termenul în limba engleză este "expected value".
+:::
+
+In termeni informali, valoarea medie este o sumă
+în care apar toate valorile posibile $x$ înmulțite cu probabilitatea fiecăreia
+(pentru cazul continuu, folosim integrala și densitatea de probabilitate,
+cu aceeași semnificație).
+
+Exemplu: entropia este valoarea medie a informației
+$i(s_n) = -\log_2{p(s_n)}$ asociată unui eveniment
+cu probabilitatea $p(s_n)$:
+$$H(X) = \sum p(s_n) i(s_n)) = - \sum p(s_n) log_2(p(s_n))$$
+
+Ce semnificație are, practic, valoarea medie a unei variabile aleatoare?
+Informal, ea ne dă valoarea numerică centrală în jurul căreia "se învârt" toate
+valorile pe care le poate lua $A$. Ca interpretare grafică, de multe ori ea este situată
+"pe la mijlocul" distribuției.
+
+- Valorile care au probabilitate / densitate de probabilitate ridicată "trag" valoarea
+  medie înspre ele.
+
+- Pentru distribuții cu formă simetrică (de ex. distribuția normală,
+  distribuția uniformă), valoarea medie este valoarea centrală a funcției.
+  Ambele laturi ale funcției "trag" valoare medie înspre ele în mod egal,
+  valoarea medie rămâne la mijloc.
+
+- Dacă avem de-a face cu un semnal $x(t)$ sau $x[n]$ a cărui valori
+  respectă o distribuție $w_A(x)$, valoarea medie a distribuției va fi
+  **componenta continuă** a semnalului respectiv.
+
+Alte câteva interpretări:
+
+- Dacă am avea $N \to \infty$ valori aleatoare conform distribuției respective,
+  valoarea medie ar fi media aritmentică a tuturor acestor valori;
+- Dacă trebuie să prezicem valoarea unei variabile aleatoare $X$, și plătim un cost
+  proporțional cu pătratul erorii pe care o facem, $(u - X)^2$, valoarea medie $\mu$ este cea mai bună alegere, întrucât minimizează costul global:
+  $$\mu = \arg\min_u \int_{-\infty}^{\infty} (u - x)^2\cdot w(x) dx$$
+
+  * Demonstrație: la tablă: derivare, derivata = 0
+
+Pentru distribuția normală $\mathcal{N}(\mu, \sigma)$, valoarea medie este chiar parametrul $\mu$:
+$$\overline{X} = \mu$$
+
+Pentru o distribuție uniformă $\mathcal{U} [a, b]$, valoarea medie este valoarea de la mijlocul intervalului:
+$$\overline{X} = \frac{a + b}{2}$$
+
+Calculul valorii medii este o operație **liniară**.
+Pentru două variabile aleatoare independente $A$ și $B$,
+și oricare două numere reale $c_1$ și $c_2$, avem:
+$$E\{c_1A + c_2B\} = c_1E\{A\} + c_2E\{B\}$$
+
+Sau:
+$$E\{cA\} = c E\{A\}, \forall c \in \mathbb{R}$$
+$$E\{A + B\} = E\{A\} + E\{B\}$$
+
+Exemplu: Aruncăm trei zaruri $A$, $B$, $C$ și
+definim $D$ ca suma celor trei valori obținute:
+$$D = A+B+C$$
+
+Cât este valoarea medie a lui $D$?
+
+#### Valoarea pătratică medie
+
+**Valoarea pătratică medie** (momentul de ordin 2)
+reprezintă valoarea medie a pătratelor valorilor unei variabile $A$.
+
+Pentru variabile aleatoare continue:
+$$\overline{A^2} = E\{A^2\} = \int_{-\infty}^{\infty} x^2 \cdot w_A(x) dx$$
+
+Și pentru cele discrete:
+$$\overline{A^2} = E\{A^2\} = \sum_{-\infty}^{\infty} x^2 \cdot w_A(x)$$
+
+Valoarea pătratică medie are o interpretare
+legată de magnitudinea valorilor posibile.
+Dacă avem de-a face cu un semnal $x(t)$ sau $x[n]$ a cărui valori
+sunt generate de o distribuție $w_A(x)$, valoarea pătratică medie a distribuției
+va fi **puterea medie** a semnalului respectiv.
+
+### Varianța
+
+**Varianța** (momentul centrat de ordin 2) reprezintă
+valoarea pătratică medie a abaterilor față de valoarea medie.
+
+Pentru variabile aleatoare continue:
+$$\sigma^2 = \overline{\left\{ A - \mu \right\}^2} = \int_{-\infty}^{\infty} (x-\mu)^2 \cdot w_A(x) dx$$
+
+Pentru variabile aleatoare discrete:
+$$\sigma^2 = \overline{\left\{ A - \mu \right\}^2} = \sum_{-\infty}^{\infty} (x-\mu)^2 \cdot w_A(x)$$
+
+Cu alte cuvinte, din valorile variabilei aleatoare $A$
+scădem mereu valoarea medie, obținând astfel valori centrate pe $0$
+(media lor devine $0$), și calculăm apoi varianța a ceea ce obținem.
+
+Rădăcina pătrată $\sigma$ a varianței unei distribuții se numește **deviație standard**.
+
+Varianța, sau deviația standard, ne spun
+cat de mult pot fluctua valorile în jurul valorii medii.
+
+- varianță mică: valorile deviază puțin în jurul mediei, sunt concentrate în jur;
+- varianță mare: valorile deviază mult de la medie.
+-
+Dacă avem de-a face cu un semnal $x(t)$ sau $x[n]$ a cărui valori
+sunt generate de o distribuție $w_A(x)$, varianța
+va fi **puterea medie a componentei alternative** a semnalului respectiv
+(adică puterea medie a semnalului din care am scăzut componenta continuă).
+
+
+#### Legătura între cele trei mărimi statistice
+
+Pentru orice distribuție, cele trei mărimi statistice satisfac relația următoare:
+$$\begin{split}
+\sigma^2 &= \overline{\left\{ A - \mu \right\}^2} \\
+&= \overline{A^2 - 2 \cdot A \cdot \mu + \mu^2} \\
+&= \overline{A^2} - 2 \mu \overline{A} + \mu^2 \\
+&= \overline{A^2} - \mu^2
+\end{split}$$
+
+Dacă avem de-a face cu un semnal $x(t)$ sau $x[n]$ a cărui valori
+urmează o distribuție $w_A(x)$, relația poate fi interpretată
+în sens energetic:
+
+- $\overline{A^2}$ este puterea totală a semnalului
+- $\mu^2$ este puterea componentei continue
+- $\sigma^2$ este puterea componentei alternative
+- puterea totată a semnalului = puterea componentei continue + puterea componentei alternative
+
+
+
 ### Operații cu variabile aleatoare
 
 #### Suma cu o constantă
@@ -484,60 +638,80 @@ Exemplu:
 - Care este distribuția variabilei $B = 5 + A$?
 - Răspuns: $w_B(x) = \mathcal{N}(\mu=8, \sigma^2=2)$
 
-### V.a. ca funcții de alte v.a
+#### Suma variabilelor aleatoare
 
-- O funcție aplicată unei v.a. produce o altă v.a.
+Suma a două sau mai multe variabile aleatoare **independente** este tot
+o variabilă aleatoare, a cărei densitate de probabilitate este
+**convoluția** densităților termenilor.
 
-- Exemple: dacă $A$ este o v.a. distribuită $\mathcal{U}\;[0,10]$, atunci
-    - $B = 5 + A$ este o altă v.a., distribuită $\mathcal{U}\;[5,15]$
-    - $C = A^2$ este de asemenea o v.a.
-    - $D = cos(A)$ este de asemenea o v.a.
+Dacă $C = A + B$, atunci:
+$$w_C(x) = w_A(x) \star w_B(x)$$
 
-- Motivație: dacă $A$ este aleatoare, și valorile $B$, $C$, $D$ sunt aleatoare
+Pentru cazul particular cand $A$ și $B$ sunt variabile normale
+cu $\mathcal{N}(\mu_A, \sigma_A^2)$ și $\mathcal{N}(\mu_B, \sigma_B^2)$,
+atunci suma lor $C$ are tot o distribuție normală $\mathcal{N}(\mu_C, \sigma_C^2)$,
+având media lui $C$ egală cu suma mediilor lui $A$ și $B$:
+$$\mu_C = \mu_A + \mu_B$$
+iar varianța egală cu suma varianțelor:
+$$\sigma_C^2 = \sigma_A^2 + \sigma_B^2$$
 
-- A, B, C, D nu sunt independente
-    - O anumită valoare a uneia implică automat și valoarea celorlalte
+### Alte transformări
 
-### Sisteme de mai multe variabile aleatoare
+În general, o funcție aplicată unei variabile aleatoare produce o altă
+variabilă aleatoare, cu altă distribuție, posibil cu totul diferită
+de cea inițială.
 
-- Fie un sistem cu două v.a. continue $A$ și $B$
+Exemple: dacă $A$ este o v.a. distribuită $\mathcal{U}\;[0,10]$, atunci
 
-- Care este probabilitatea ca perechea $(A,B)$ să aibă valoarea
-în jurul $(x,y)$?
+- $B = 5 + A$ este o altă v.a., distribuită $\mathcal{U}\;[5,15]$
+- $C = A^2$ este de asemenea o v.a.
+- $D = cos(A)$ este de asemenea o v.a.
 
-- Distribuția valorilor perechii $(A,B)$ este descrisă de:
-    - Densitatea de probabilitate comună $w_{AB}(x,y)$
-    - Funcția de repartiție comună $F_{AB}(x,y)$
+Variabilele A, B, C, D nu sunt însă independente,
+întrucât o anumită valoare a uneia implică automat și valoarea celorlalte.
 
-### Sisteme de mai multe variabile aleatoare
+## Sisteme de mai multe variabile aleatoare
 
-- Funcția de repartiție comună:
+Fie un sistem cu două variabile aleatoare continue, $A$ și $B$.
+
+Care este probabilitatea ca $A$ să ia valori în jurul lui $x$ **ȘI**
+B să ia valori în jurul lui $y$?
+
+::: {.column-margin}
+Aruncând două zaruri $A$ și $B$, care este probabilitatea ca perechea $(A,B)$
+să aibă valoarea (6, 4)?
+:::
+
+Distribuția valorilor perechii $(A,B)$ este descrisă de
+o densitatea de probabilitate comună $w_{AB}(x,y)$,
+și de o funcția de repartiție comună $F_{AB}(x,y)$.
+
+Funcția de repartiție comună se definește ca:
 $$F_{AB}(x,y) = P_{AB}\left\{ A \leq x \cap B \leq y \right\}$$
 
-- Densitatea de probabilitate comună:
+Densitatea de probabilitate comună:
 $$w_{AB}(x,y) = \frac{\partial^2 F_{AB}(x,y)}{\partial x \partial y}$$
 
-* FDP comună descrie probabilitatea ca perechea $(A,B)$
+Densitatea de probabiliate comună
+ne dă probabilitatea ca perechea $(A,B)$
 să aibă valoarea într-o vecinătate a $(x,y)$
 
-* Similar pentru v.a discrete:
+Cele două funcții se definesc similar și pentru variabile discrete,
+înlocuind integralele cu sume:
 $$w_{AB}(x,y) = P\left\{ A = x \cap B = y \right\}$$
 
 ### Variabile independente
 
-- Două v.a. $A$ și $B$ sunt **independente** dacă valoarea uneia nu
-influențează în nici un fel valoarea celeilalte
-
-- Pentru v.a. independente, probabilitatea ca $A$ să fie în jurul lui
- $x$ și $B$ în jurul lui $y$ este produsul celor două probabilități
-
+Două variabile $A$ și $B$ sunt **independente** dacă se
+respectă relația:
 $$w_{AB}(x,y) = w_A(x) \cdot w_B(y)$$
 
-- Valabilă pentru FR / FDP / FMP, v.a. continue sau aleatoare etc.
+Ca interpretare, acest lucru înseamnă că valoarea uneia nu
+influențează în nici un fel valoarea celeilalte.
 
-- Similar pentru mai mult de două v.a.
-
-### Variabile independente
+Relația este valabilă și pentru funcția de repartiție, atât pentru
+variabile continue cât și pentru discrete, și se extinde similar
+pentru cazul în care sunt mai mult de două variabile.
 
 Exercițiu:
 
@@ -545,45 +719,113 @@ Exercițiu:
   să fie toate pozitive
       - ***i.i.d*** = "independente și identic distribuite"
 
-### Multiple v.a. normale
+### Distribuția normală multivariată
 
-- Fie un set de $N$ v.a. normale $(A_1, ...A_N)$,
-cu medii diferite $\mu_i$ dar aceeași deviație standard $\sigma$
+Distribuția normală se poate extinde în mod natural
+la vectori cu dimensiune $N$.
 
-- Probabilitatea ca $(A_1,...A_N)$ să fie în jurul valorii
-$(x_1, ...x_N)$ este
-$$w_{A_1,...A_N}(x_1,...x_N) = \frac{1}{(\sigma\sqrt{2\pi})^N} e^{\frac{(x_1-\mu_1)^2+...+(x_N - \mu_N)^2}{2\sigma^2}}$$
+Pentru un vector $\mathbf{x}$ de dimensiune N
+$$\mathbf{x} = [x_1, x_2, ... x_N]$$
+distribuția se definește ca:
+$$w_A(\mathbf{x})= \frac{1}{\sqrt{(2\pi)^N |\Sigma|}}
+e^{-\frac{1}{2}(\mathbf{x} - \boldsymbol{\mu})^T\Sigma^{-1}(\mathbf{x} - \boldsymbol{\mu})}$$
 
-- Probabilitatea depinde de **distanța Euclideană** dintre
-$\mathbf{x}=(x_1,...x_N)$ și $\mathbf{\mu} = (\mu_1,...\mu_N)$
+Funcția are doi parametri matriciali:
 
-### Distanța Euclideană
+- **media** $\boldsymbol{\mu} = [\mu_1, \mu_2, ... \mu_N]$ este un vector de
+  dimensiune $N$ care definește "centrul" funcției;
+- **matricea de covarianță** $\Sigma$ care definește orientarea și forma eliptică a funcției.
 
-- **Distanța Euclideană (geometrică)** între 2 vectori N-dimensionali
- $$d(\mathbf{u},\mathbf{v}) = \| \mathbf{u}-\mathbf{v} \| = \sqrt{(u_1-v_1)^2+...+(u_N - v_N)^2}$$
+Distribuția normală multivariată are forma de tipul unui "munte" elipsoid, pentru care media $\boldsymbol{\mu}$ reprezintă coordonatele vârfului central. Matricea de covarianță $\Sigma$ determina forma "muntelui", în felul următor:
+
+- Matrice are $N$ **vectori proprii** $\mathbf{e_i}$ care dau direcțiile ortogonale ale axelor care definesc elipsa;
+- Cele $N$ **valori proprii** $\lambda_i$ controlează extinderea elipsei de-a lungul fiecărei axe.
+
+GRAFICE, GRAFICE, GRAFICE
+
+#### Caz particular: componente independente
+
+În cazul în care matricea de covarianță este o matrice diagonală:
+
+$$\Sigma =
+\begin{bmatrix}
+\sigma^2_1 & 0 & 0 & \cdots & 0 \\
+0 & \sigma^2_2 & 0 & \cdots & 0 \\
+0 & 0 & \sigma^2_3 & \cdots & 0 \\
+\vdots & \vdots & \vdots & \ddots & \vdots \\
+0 & 0 & 0 & \cdots & \sigma^2_N \\
+\end{bmatrix}$$
+
+distribuția multiavariată se descompune ca un produs
+de distribuții individuale,
+ceea ce reflectă faptul că componentele vectorului $\mathbf{x}$ sunt independente:
+
+$$\begin{split}
+w_A(\mathbf{x}) &=
+\frac{1}{\sigma_1 \cdot ... \cdot \sigma_N \sqrt{(2\pi)^N}}
+e^{(-\frac{(\mathbf{x_1} - \boldsymbol{\mu_1})^2}{2\sigma^2_1}) \cdot (-\frac{(\mathbf{x_2} - \boldsymbol{\mu_2})^2}{2\sigma^2_2}) \cdot \dots (-\frac{(\mathbf{x_N} - \boldsymbol{\mu_N})^2}{2\sigma^2_N})}  \\
+&=\frac{1}{\sigma_1 \sqrt{(2\pi)}} e^{-\frac{(\mathbf{x_1} - \boldsymbol{\mu_1})^2}{2\sigma^2_1}}
+\cdot
+\frac{1}{\sigma_2 \sqrt{(2\pi)}} e^{-\frac{(\mathbf{x_2} - \boldsymbol{\mu_2})^2}{2\sigma^2_2}}
+\cdot \dots \cdot
+\frac{1}{\sigma_N \sqrt{(2\pi)}} e^{-\frac{(\mathbf{x_N} - \boldsymbol{\mu_N})^2}{2\sigma^2_N}} \\
+&=w_1(x_1) \cdot w_2(x_2) \cdot \dots \cdot w_N(x_N)
+\end{split}$$
+
+Acest lucru înseamnă, practic, că fiecare componentă
+$x_k$ din vectorul $\mathbf{x}$ este independentă de toate celelalte
+și respectă o distribuție normală cu media $\mu_k$ și varianța $\sigma^2_k$. Cu alte cuvinte:
+
+$$\mathcal{N}(\boldsymbol{\mu}, \Sigma) = \mathcal{N}(\mu_1, \sigma_1) \cdot \mathcal{N}(\mu_2, \sigma_2) \cdot \dots \cdot \mathcal{N}(\mu_N, \sigma_N)$$
+
+
+#### Caz particular: distribuție izotrop
+
+În cazul în care matricea de covarianță este de forma unei matrici matricea unitate, având aceeași valoare $\sigma$ pe toate liniile:
+$$\Sigma = \sigma^2 \mathbf{I}_N$$
+
+avem o distribuție normală multivariată **izotropă**:
+
+::: {.column-margin}
+Termenul "izotrop" înseamnă "cu aceleași proprietăți în orice direcție" și
+se referă la forma circulară a funcției.
+:::
+
+$$\begin{split}
+w_A(\mathbf{x})= &\frac{1}{\sigma^N \sqrt{(2\pi)^N}}
+e^{-\frac{1}{2}(\mathbf{x} - \boldsymbol{\mu})^T(\mathbf{x} - \boldsymbol{\mu})} \\
+&=
+\end{split}$$
+
+În acest caz, toata componentele $x_k$ sunt independente și respectă
+fiecare o distribuție normală cu medie $\mu_k$, dar cu
+aceeași varianță $\sigma^2$.
+
+Se observă că în acest caz valoarea densității de probabilitate într-un punct $\mathbf{x}=[x_1,...x_N]$ depinde de **distanța** de la punctul respectiv la punctul central $\boldsymbol{\mu} = [\mu_1,...\mu_N]$.
+
+**Distanța Euclideană (geometrică)** între 2 vectori N-dimensionali
+se definește astfel:
+
+$$d(\mathbf{u},\mathbf{v}) = \| \mathbf{u}-\mathbf{v} \| = \sqrt{(u_1-v_1)^2+...+(u_N - v_N)^2}$$
+
+Cazuri particulare în funcție de dimensiunea $N$:
 
 - Unidimensional: $\|\mathbf{u}-\mathbf{v}\| = |u-v|$
-
 - 2D: $\|\mathbf{u}-\mathbf{v}\| = \sqrt{(u_1 - v_1)^2 + (u_2 - v_2)^2}$
-
 - 3D: $\|\mathbf{u}-\mathbf{v}\| = \sqrt{(u_1 - v_1)^2 + (u_2 - v_2)^2 + (u_3 - v_3)^2}$
-
 - ...
-
 - N-dimensional: $\|\mathbf{u}-\mathbf{v}\| = \sqrt{\sum_{i=1}^N(u_i - v_i)^2}$
 
-- ...
+Aceeași relație se poate extinde și pentru semnale continue, văzute ca vectori cu o infinitate de puncte unul lângă altul:
 
-- Semnale continue: $\|\mathbf{u}-\mathbf{v}\| = \sqrt{\int_{-\infty}^{\infty}(u(t) - v(t))^2 dt}$
+În cazul unei distribuții normale multivariate izotrope,
+densitatea de probabilitate într-un punct depinde
+de pătratul distanței Euclidiene față de media $\boldsymbol{\mu} = [\mu_1,...\mu_N]$
 
-### Multiple v.a. normale
-
-- Probabilitatea a $N$ v.a. normale, independente,
-cu același $\sigma$ dar diferite $\mu_i$
-depinde de **pătratul distanței Euclidiene față de vectorul medie** $\mathbf{\mu} = (\mu_1,...\mu_N)$
-    - Aproape de $\mu$: probabilitate mai mare
-    - Departe de $\mu$: probabilitate redusă
-    - Două puncte la aceeași distanță de $\mu$ au aceeași probabilitate
+- Valoarea maximă este chiar in punctul $\boldsymbol{\mu}$
+- Puncte aproapiate de $\mu$ au probabilitate mai mare
+- Puncte mai depărtate de $\mu$ au probabilitate mai redusă
+- Două puncte la aceeași distanță de $\mu$ au aceeași probabilitate
 
 ### Distribuția normală 2D
 
@@ -598,121 +840,6 @@ depinde de **pătratul distanței Euclidiene față de vectorul medie** $\mathbf
 în cercuri concentrice (simetric)
 
 ![](img/2DNormal-TopView.png){.id width=50%}
-
-
-### Medii statistice
-
-* V.a. sunt caracterizate prin medii statistice ("*momente*")
-
-* **Valoarea medie** (momentul de ordin 1)
-
-* Pentru v.a. continue:
-$$\overline{A} = E\{A\} = \int_{-\infty}^{\infty} x \cdot w_A(x) dx$$
-
-* Pentru v.a. discrete:
-$$\overline{A} = E\{A\} = \sum_{x=-\infty}^{\infty} x \cdot w_A(x)$$
-
-* (Exemplu: entropia H(X) = valoarea medie a informației)
-
-* Notație uzuală: $\mu$
-
-
-### Ce înseamna valoarea medie
-
-* Ce înseamnă, practic, valoarea medie a unei variabile aleatoare?
-
-  * Dacă avem $N \to \infty$ valori aleatoare conform distribuției respective,
-  valoarea medie = media tuturor acestor valori;
-  * Dacă trebuie să prezicem valoarea unei variabile aleatoare $X$, și plătim un cost proporțional
-  cu pătratul erorii pe care o facem, $(u - X)^2$, valoarea medie $\mu$ este cea mai bună alegere,
-  întrucât minimizează costul global:
-
-  $$\mu = \arg\min_u \int_{-\infty}^{\infty} (u - x)^2\cdot w(x) dx$$
-
-  * Demonstrație: la tablă: derivare, derivata = 0
-
-### Ce înseamna valoarea medie
-
-* Valorile care au probabilitate ridicată "trag" valoarea medie înspre ele
-
-* Pentru distribuții cu formă simetrică (de ex. distribuția normală),
-valoarea medie = valoarea centrală a funcției
-  * Demonstrație: ambele laturi ale funcției "trag" valoare medie înspre ele în mod egal,
-  valoarea medie rămâne la mijloc
-
-* Pentru distribuția normală, $\overline{X} = \mu$
-
-* Pentru distribuția uniformă $\mathcal{U} [a, b]$, $\overline{X} = \frac{a + b}{2}$ (mijlocul intervalului)
-
-
-
-### Proprietățile valorii medii
-
-* Calculul valorii medii este o operație **liniară**
-    * pentru că, la bază, integrala / suma este o operație liniară
-
-* Pentru două variabile aleatoare A și B (independente):
-
-* Liniaritate
-$$E\{c_1A + c_2B\} = c_1E\{A\} + c_2E\{B\}$$
-
-* Sau:
-$$E\{cA\} = c E\{A\}, \forall c \in \mathbb{R}$$
-$$E\{A + B\} = E\{A\} + E\{B\}$$
-
-* Fără demonstrație
-
-### Valoarea pătratică medie
-
-* Valoarea pătratică medie = valoarea medie a pătratelor valorilor
-
-* Momentul de ordin 2
-
-* Pentru v.a. continue:
-$$\overline{A^2} = E\{A^2\} = \int_{-\infty}^{\infty} x^2 \cdot w_A(x) dx$$
-
-* Pentru v.a. discrete:
-$$\overline{A^2} = E\{A^2\} = \sum_{-\infty}^{\infty} x^2 \cdot w_A(x)$$
-
-* Interpretare: media pătratelor = energia medie a unui semnal
-
-### Varianța
-
-* Varianța = valoarea pătratică medie a abaterii față de valoarea medie :)
-
-* V.a. continue:
-$$\sigma^2 = \overline{\left\{ A - \mu \right\}^2} = \int_{-\infty}^{\infty} (x-\mu)^2 \cdot w_A(x) dx$$
-
-* V.a. discrete:
-$$\sigma^2 = \overline{\left\{ A - \mu \right\}^2} = \sum_{-\infty}^{\infty} (x-\mu)^2 \cdot w_A(x)$$
-
-* Interpretare: cât de mult variază valorile în jurul mediei
-    * $\sigma^2 =$ mare: abateri mari față de medie
-    * $\sigma^2 =$ mic: valori concentrate în jurul mediei
-
-### Legătura între cele trei mărimi
-
-* Legătura între medie, valoarea pătratică medie și varianță:
-$$\begin{split}
-\sigma^2 &= \overline{\left\{ A - \mu \right\}^2} \\
-&= \overline{A^2 - 2 \cdot A \cdot \mu + \mu^2} \\
-&= \overline{A^2} - 2 \mu \overline{A} + \mu^2 \\
-&= \overline{A^2} - \mu^2
-\end{split}$$
-
-### Suma variabilelor aleatoare
-
-* Suma a două sau mai multe v.a. **independente** este tot o v.a.
-
-* Distribuția ei = **convoluția** distribuțiilor v.a. componente
-
-* Dacă $C = A + B$, atunci:
-$$w_C(x) = w_A(x) \star w_B(x)$$
-
-* Caz particular: dacă $A$ și $B$ sunt v.a. normale, cu $\mathcal{N}(\mu_A, \sigma_A^2)$ și $\mathcal{N}(\mu_B, \sigma_B^2)$, atunci:
-    * $C$ este tot o v.a. cu distribuție normală, $\mathcal{N}(\mu_C, \sigma_C^2)$, având:
-    * media = suma mediilor: $\mu_C = \mu_A + \mu_B$
-    * varianța = suma varianțelor: $\sigma_C^2 = \sigma_A^2 + \sigma_B^2$
 
 
 ## II.2 Procese aleatoare
