@@ -1,0 +1,31 @@
+project:
+  type: book
+
+book:
+  title: "DEPI"
+  subtitle: "Note de curs"
+  author: "Nicolae Cleju"
+  date: "05/25/2023"
+  chapters:
+    - index.qmd
+    - 01_Intro.qmd
+    - 04_FourierTransform.qmd
+    - Shiny.qmd
+    - references.qmd
+
+bibliography: references.bib
+
+format:
+  html:
+    theme: cosmo
+  # PDF fails because of included .gif file
+  # pdf:
+  #   documentclass: scrreprt
+
+jupyter: python3
+
+filters:
+  - shinylive
+
+execute:
+  cache: true
