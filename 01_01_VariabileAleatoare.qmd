@@ -11,7 +11,8 @@ O **realizare** a unei variabile aleatoare este o valoare particulară posibilă
 O variabilă aleatoare este **discretă** dacă $\Omega$ este o mulțime discretă,
 sau **continuă** dacă $\Omega$ este o mulțime compactă.
 
-Exemple:
+::: {.callout-tip icon=false title="Exemple"}
+### Exemple
 
 - Fie $Z$ = numărul obținut prin aruncarea unui zar.
   Spațiul realizărilor este
@@ -31,6 +32,7 @@ Exemple:
   ![](img/RandomVariable_img.pdf){.id width=50%}
 
   (sursa imaginii: *https://www.mathsisfun.com/data/random-variables.html*)
+:::
 
 Variabilele aleatoare modelează semnale afectate de **zgomot**,
 cum ar fi un semnal de tensiune într-un circuit electric (zgomot termic etc),
@@ -163,9 +165,14 @@ Se definește funcția **masă de probabilitate** (FMP) ("probability mass funct
 ca fiind probabilitatea ca $A$ să aibă valoarea egală cu $x$:
 $$w_A(x)= P \left\{A = x \right\}$$
 
-Exemplu: funcția masă de probabilitate pentru valoarile unui zar este următoarea:
+::: {.callout-tip icon=false title="Exemplu"}
+#### Exemplu
 
-::: {.column-margin}
+Funcția masă de probabilitate pentru valoarile unui zar este următoarea:
+
+:::
+
+::: {.callout-tip appearance="simple"}
 FMP mai e numită, în limbaj uzual, "distribuția" variabilei aleatoare.
 :::
 
@@ -181,10 +188,14 @@ $$P\left\{ a \leq A \leq b\right\} = \sum_{x=a}^b w_A(x)$$
 reprezintă probabilitatea ca $A$ să aibă valoarea mai mică sau egală cu $x$:
 $$F_A(x) = P\left\{ A \leq x \right\}$$
 
-Exemplu: funcția de repartiție a valorilor unui zar este următoarea:
+::: {.callout-tip icon=false title="Exemplu"}
+### Exemplu
 
-::: {.column-margin}
-Pentru v.a. discrete, FR este întotdeauna "în trepte".
+Funcția de repartiție a valorilor unui zar este următoarea:
+:::
+
+::: {.callout-tip appearance="simple"}
+Pentru variabile aleatoare discrete, funcția de repartiție este întotdeauna "în trepte".
 :::
 
 Și funcția de repartiție poate fi folosită pentru a calcula diverse probabiități:
@@ -199,7 +210,11 @@ Pentru v.a. discrete, FR este întotdeauna "în trepte".
 FR este suma cumulativă (un fel de "integrală discretă") a FMP:
 $$F_A(x) = \sum_{t = -\infty}^{t = x} w_A(t)$$
 
+::: {.callout-tip icon=false title="Exemplu"}
+### Exemplu
+
 Exemplu pentru zar: grafic, la tablă
+:::
 
 ### Pentru variabile aleatoare continue
 
@@ -212,8 +227,9 @@ Fie o variabilă aleatoare **continuă** $A$.
 probabilitatea ca valoarea lui $A$ să fie într-o vecinătate $\epsilon$ mică în jurul lui $x$, împărțit la $\epsilon$
 $$w_A(x) = \lim_{\epsilon \to 0}{\frac{P(A \in [x, x+\epsilon])}{\epsilon}}$$
 
-::: {.column-margin}
-În limbaj informal, se mai numește și **distribuția** variabilei A.
+::: {.callout-tip appearance="simple"}
+În limbaj informal, densitatea de probabilitate poate fi numită mai simplu
+**"distribuția"** variabilei A.
 :::
 
 **Funcția de repartiție** (FR) $F_A(x)$ se definește la fel ca la variabile discrete,
@@ -233,10 +249,12 @@ w_A(x) &= \lim_{\epsilon \to 0}{\frac{P(A \in [x, x+\epsilon])}{\epsilon}} \\
 &= \frac{\mathrm{d}F_A(x)}{\mathrm{d}x} = F'_A(x)
 \end{split}$$
 
-::: {.column-margin}
-Ca în fizică:
+::: {.callout-tip appearance="simple"}
+Densitatea are o definiție identică în fizică:
+
 $$\rho(x) = \frac{dM}{dV}$$
-densitatea unui punct  = masa unei mic volum V în jurul acelui punct
+
+Densitatea unui punct = masa unei mic volum V în jurul acelui punct
 împărțit la volumul V, pentru $V \to 0$.
 :::
 
@@ -361,6 +379,9 @@ Putem spune următoarele:
 Distribuția exprimă așadar o preferință pentru valori apropiate de $\mu$,
 cu probabilitate din ce în ce mai scăzută la valori mai depărtate de $\mu$.
 
+::: {.callout-tip icon=false title="Exemple"}
+### Exemple
+
 Exemple de valori generate cu distribuția normală standard $\mathcal{N}(\mu=0, \sigma^2=1)$:
 
 ```{.python .cb.run session=plot}
@@ -394,6 +415,7 @@ plt.close()
 ```
 ![](fig/01_RandomSignals_DistributionNormalSampleValues2.png){width=70% max-width=1000px}
 
+:::
 
 ## Distribuția uniformă
 
@@ -441,7 +463,7 @@ Pentru calcul, se folosesc algoritmi numerici, pe baza
 **funcției de eroare** $erf(z)$ ("the error function"):
 $$erf(z) = \frac{2}{\sqrt{\pi}} \int_0^z e^{-t^2} dt$$
 
-::: {.column-margin}
+::: {.callout-tip appearance="simple}
 Valorile funcției *erf()* sunt tabelate
 sau se calculează numeric cu algoritmi specializati.
 De ex., pe Google, căutați $erf(0.5)$
@@ -474,7 +496,7 @@ b. Calculați probabilitatea ca $A$ să fie la cel mult $\pm 2\sigma$ distanță
 c. Calculați probabilitatea ca $A$ să fie la cel mult $\pm 3\sigma$ distanță de valoare medie
 :::
 
-::: {.column-margin}
+::: {.callout-tip appearance="simple"}
 În multe aplicații, *anomaliile* într-un set de valori se definesc
 ca fiind valorile aflate la peste $3 \sigma$ distanță față de medie.
 De ce oare?
@@ -496,7 +518,7 @@ notată în mod uzual cu $\mu$, $E\lbrace A \rbrace$ sau $\overline{A}$, se defi
 - Pentru v.a. discrete:
   $$\overline{A} = E\{A\} = \sum_{x=-\infty}^{\infty} x \cdot w_A(x)$$
 
-::: {.column-margin}
+::: {.callout-tip appearance="simple"}
 Termenul în limba engleză este "expected value".
 :::
 
@@ -505,10 +527,14 @@ In termeni informali, valoarea medie este o sumă
 (pentru cazul continuu, folosim integrala și densitatea de probabilitate,
 cu aceeași semnificație).
 
-Exemplu: entropia este valoarea medie a informației
+::: {.callout-tip icon=false title="Exemplu"}
+### Exemplu
+
+Entropia este valoarea medie a informației
 $i(s_n) = -\log_2{p(s_n)}$ asociată unui eveniment
 cu probabilitatea $p(s_n)$:
 $$H(X) = \sum p(s_n) i(s_n)) = - \sum p(s_n) log_2(p(s_n))$$
+:::
 
 Ce semnificație are, practic, valoarea medie a unei variabile aleatoare?
 Informal, ea ne dă valoarea numerică centrală în jurul căreia "se învârt" toate
@@ -552,9 +578,12 @@ Sau:
 $$E\{cA\} = c E\{A\}, \forall c \in \mathbb{R}$$
 $$E\{A + B\} = E\{A\} + E\{B\}$$
 
-Exemplu: Aruncăm trei zaruri $A$, $B$, $C$ și
+::: {.callout-note icon=false}
+#### Exercițiu
+
+Aruncăm trei zaruri $A$, $B$, $C$ și
 definim $D$ ca suma celor trei valori obținute:
-$$D = A+B+C$$
+$$D = A+B+C$$.
 
 Cât este valoarea medie a lui $D$?
 
@@ -626,18 +655,24 @@ urmează o distribuție $w_A(x)$, relația poate fi interpretată
 
 ## Operații cu variabile aleatoare
 
-Fie o variabilă aleatoare $A$, și fie $D = 5 + A$.
+Fie o variabilă aleatoare $A$, și fie $D = c + A$,
+unde $c$ este un număr real.
 
 $D$ este tot o variabilă aleatoare, a cărui distribuție $w_D(x)$
-este distribuția lui $A$ "translată" cu 5 la dreapta:
+este distribuția lui $A$ "translată" cu $c$ la dreapta:
 
-$$w_D(x) = w_A(x - 5)$$
+$$w_D(x) = w_A(x - c)$$
 
-Exemplu:
+::: {.callout-tip icon=false title="Exemplu"}
+### Exemplu
 
-- A este o v.a. cu distribuție normală $w_A(x) = \mathcal{N}(\mu=3, \sigma^2=2)$
-- Care este distribuția variabilei $D = 5 + A$?
-- Răspuns: $w_D(x) = \mathcal{N}(\mu=8, \sigma^2=2)$
+Fie A o variabilă aleatoare cu distribuție normală $w_A(x) = \mathcal{N}(\mu=3, \sigma^2=2)$.
+
+Distribuția variabilei $D$ definită ca:
+$$D = 5 + A$$
+este:
+$$w_D(x) = \mathcal{N}(\mu=8, \sigma^2=2)$$
+:::
 
 Suma a două sau mai multe variabile aleatoare **independente** este tot
 o variabilă aleatoare, a cărei densitate de probabilitate este
@@ -664,11 +699,15 @@ $$\sigma_C^2 = \sigma_A^2 + \sigma_B^2$$
 variabilă aleatoare, cu altă distribuție, posibil cu totul diferită
 de cea inițială.
 
-Exemple: dacă $A$ este o v.a. distribuită $\mathcal{U}\;[0,10]$, atunci
+::: {.callout-tip icon=false title="Exemple"}
+### Exemple
+
+Dacă $A$ este o v.a. distribuită $\mathcal{U}\;[0,10]$, atunci
 
 - $B = 5 + A$ este o altă v.a., distribuită $\mathcal{U}\;[5,15]$
 - $C = A^2$ este de asemenea o v.a.
 - $D = cos(A)$ este de asemenea o v.a.
+:::
 
 Variabilele A, B, C, D nu sunt însă independente,
 întrucât o anumită valoare a uneia implică automat și valoarea celorlalte.
@@ -679,11 +718,6 @@ Fie un sistem cu două variabile aleatoare continue, $A$ și $B$.
 
 Care este probabilitatea ca $A$ să ia valori în jurul lui $x$ **ȘI**
 B să ia valori în jurul lui $y$?
-
-::: {.column-margin}
-Aruncând două zaruri $A$ și $B$, care este probabilitatea ca perechea $(A,B)$
-să aibă valoarea (6, 4)?
-:::
 
 Distribuția valorilor perechii $(A,B)$ este descrisă de
 o densitatea de probabilitate comună $w_{AB}(x,y)$,
@@ -721,6 +755,7 @@ pentru cazul în care sunt mai mult de două variabile.
 Calculați probabilitatea ca trei v.a. $X$, $Y$ și $Z$ i.i.d. $\mathcal{N}(-1,1)$
 să fie toate pozitive
 (prescuratea **i.i.d*** = "independente și identic distribuite").
+:::
 
 ## Distribuția normală multivariată
 
@@ -788,7 +823,7 @@ $$\Sigma = \sigma^2 \mathbf{I}_N$$
 
 avem o distribuție normală multivariată **izotropă**:
 
-::: {.column-margin}
+::: {.callout-tip appearance="simple"}
 Termenul "izotrop" înseamnă "cu aceleași proprietăți în orice direcție" și
 se referă la forma circulară a funcției.
 :::
