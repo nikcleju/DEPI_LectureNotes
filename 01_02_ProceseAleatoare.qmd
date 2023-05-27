@@ -278,30 +278,30 @@ $$\{1,-1,2,-2,3,-3,4,-4,5,-5\}$$
 
 ## Staționaritate
 
-Până acum, am considerat că mediile statistice depind de timp,
-adică pot fi diferite pentru un eșantion de la momentul $t_1$
-față de momentul $t_2$. În practică, multe fenomene valorile
+Până acum am considerat că mediile statistice depind de timp,
+adică pot fi diferite pentru la momentul $t_1$
+față de momentul $t_2$. În practică, pentru multe fenomene valorile
 mediilor sunt egale între ele, ceea ce simplifică analiza.
 
-Un proces aleator este **staționar**  dacă mediile statistice rămân aceleași
+Un proces aleator este **staționar** dacă mediile statistice rămân aceleași
 la modificarea originii timpului (întârzierea semnalului).
 Altfel spus, distribuțiile eșantioanelor rămân identice la modificarea originii timpului
 cu un $\tau$ oarecare:
 
 $$w_N(x_1,...x_N; t_1,...t_N) = w_N(x_1,...x_N; t_1+\tau,... t_N + \tau)$$
 
-Practic, pentru a fi staționar trebuie ca toate mediile statistice să nu mai depindă de timpul $t$.
+Acest lucru înseamnă că toate mediile statistice nu mai depind explicit de timpul $t$.
 
 Un proces aleator este **staționar în sens strict** dacă
 relația e valabilă pentru distribuțiile de orice ordin $N$,
-ceea ce face ca absolut toate mediile să nu depindă de originea timpului $t$.
-(valoarea medie, valoarea pătratică medie, varianța, autocorelația **și toate celelalte** statistici de ordin superior)
+ceea ce face ca absolut toate mediile să nu depindă de originea timpului $t$
+(valoarea medie, valoarea pătratică medie, varianța, autocorelația **și toate celelalte** statistici de ordin superior).
 
 În practică, condiția aceasta poate fi excesiv de strictă, motiv pentru care
-în unele aplicații se poate folosi o condiție mai relaxată.
+în unele aplicații se folosește o condiție mai relaxată.
 
 Un proces aleator este **staționar în sens larg** dacă
-relația e valabilă doar pentru distribuțiile de ordin $1$ și $n$
+relația e valabilă doar pentru distribuțiile de ordin $1$ și $2$
 (distribuțiile unui singur eșantion și a două eșantioane),
 adică **doar** valoarea medie, valoarea pătratică medie, varianța și autocorelația
 nu depind de originea timpului $t$, dar statisticile de ordin superior pot depinde.
@@ -321,7 +321,8 @@ nu este aceeași la toate momentele de timp.
 ### Consecințe ale staționarității
 
 Pentru un proces aleator staționar în sens larg,
-toate distribuțiile de ordin $1$ (ale unui eșantion) sunt egale:
+toate distribuțiile de ordin $1$ (ale unui eșantion) sunt egale
+și nu mai depind de timp:
 
 $$w_1(x_i;t_1) = w_1(x_i; t_2) = w_1(x_i)$$
 
@@ -333,7 +334,7 @@ $$\overline{f^2(t)} = constant, \forall t$$
 $$\sigma^2(t) = constant, \forall t$$
 
 Distribuțiile de ordin $2$ depind doar de diferența de timp
-între cele două momente de timp, nu de valorile lor absolute:
+între cele două momente, nu de valorile lor absolute:
 
 $$w_2(x_i,x_j;t_1,t_2) = w_2(x_i,x_j;0, t_2-t_1) = w_2(x_i,x_2; t_2-t_1)$$
 
@@ -345,19 +346,19 @@ $$R_{ff}(t_1,t_2) = R_{ff}(0, t_2 - t_1) = R_{ff}(\tau) = \overline{f(t) f(t + \
 Definiția autocorelației statistice rămâne aceeași, dar
 definiția autocorelației temporale se poate simplifica:
 
-- pentru p.a. continue
+- pentru p.a. continue:
   $$\begin{split}
   R_{ff}(\tau) = \overline{f(t) f(t + \tau)} = \lim_{T \to \infty} \frac{1}{T} \int_{-T/2}^{T/2} f^{(k)}(t) f^{(k)}(t + \tau) dt
   \end{split}$$
 
-- pentru p.a. discrete
+- pentru p.a. discrete:
   $$\begin{split}
   R_{ff}(\tau) = \overline{f(t) f(t + \tau)} = \lim_{N \to \infty} \frac{1}{2N+1} \sum_{t=-N}^{N} f^{(k)}[t] f^{(k)}[t + \tau]
   \end{split}$$
 
 - pentru realizări de lungime finită, se limitează integralele / sumele la intervalul avut la dispoziție
 
-Definiția corelației suferă aceleași modificări ca a autocorelației.
+Definiția corelației suferă aceleași modificări ca cea a autocorelației.
 
 ### Interpretarea autocorelației
 
@@ -382,7 +383,7 @@ Sa luăm un exemplu mai detaliat:
 
 - dacp $R_{ff}(2) = 0$, atunci două eșantioane decalate cu 2 secunde sunt **necorelate**
   adică cele două eșantioane au la fel de multe șanse de a fi de același semn sau cu semne contrare,
-  produsele lor fiind în medie 0; în acest caz, dacă se cunoaște una dintre ele, nu se mai poate "ghici" ceva despre cealaltă
+  produsele lor fiind în medie 0; în acest caz, dacă se cunoaște una dintre ele, nu se mai poate "ghici" ceva despre cealaltă.
 
 
 Interpretarea se face la fel și pentru corelație, doar că
