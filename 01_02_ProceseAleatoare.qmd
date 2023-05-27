@@ -1,0 +1,425 @@
+
+## II.2 Procese aleatoare
+
+### Procese aleatoare
+
+- Un **proces aleator** = o secvență de variabile aleatoare indexate (înșiruite) în timp
+
+- Proces aleator **în timp discret** $f[n]$ = o secvență de v.a. la momente de timp discrete
+    - ex: o secvență de 50 aruncări de zar, cotația zilnică a unor acțiuni la bursă
+
+- Proces aleator **în timp continuu** $f(t)$ = o secvență de v.a. la orice moment de timp
+    - ex: un semnal tip zgomot de tensiune
+
+- Fiecare eșantion dintr-un proces aleator este o v.a. de sine stătătoare
+    - ex:. $f(t_0)$  = valoarea la momentul $t_0$ este o v.a.
+
+### Realizări ale proceselor aleatoare
+
+- **Realizare** a unui p.a. = o secvență particulară de realizări ale v.a. componente
+
+    - ex: un anume semnal de zgomot măsurat cu un osciloscop; am obținut o anume realizare, dar am fi putut obține orice altă realizare
+
+- Notația uzuală: $f^{(k)}[n]$ sau $f^{(k)}(t)$
+
+   - $k$ indică realizarea particulară care se consideră
+   - $t$ sau $n$ este timpul
+
+- Când considerăm un p.a., considerăm întregul set de realizări posibile
+    - la fel ca atunci când considerăm o v.a.
+
+
+### Proces aleator = un fenomen 2-D
+
+- Un proces aleator trebuie vizualizat în două dimensiuni:
+
+  - $f^{(k)}[n]$ sau $f^{(k)}(t)$ depind de două variabile:
+
+    - $k$ = realizarea
+
+    - $t$ sau $n$ = timpul
+
+### Proces aleator = un fenomen 2-D
+
+![](img/RandomProcess_2D.gif){.id width=80%}
+
+* sursa: "Information-Based Inversion and Processing with Applications"
+Edited by Tadeusz J. Ulrych, Mauricio D. Sacchi, Volume 36,
+
+### Proces aleator = un fenomen 2-D
+
+![](img/RandomProcess_1.png){.id width=80%}
+
+* sursa: Razdolsky, L. (2014). Random Processes. In Probability-Based Structural Fire Load (pp. 89-136). Cambridge: Cambridge University Press
+
+### Proces aleator = un fenomen 2-D
+
+![](img/RandomProcess_3.png){.id width=60%}
+
+* sursa: https://www.quora.com/What-is-the-difference-between-a-stationary-ergodic-and-a-stationary-non-ergodic-process
+
+### Două feluri de valori medii
+
+- Procesele aleatoare au două tipuri de valori medii:
+
+  - Valori medii **statistice** = calculate la un timp $t$ sau $n$ fixat, de-a lungul tuturor realizărilor posibile
+  - Valori medii **temporale** = calculate pentru o realizare $k$ fixată, de-a lungul timpului
+
+### Două feluri de valori medii
+
+![](img/RandomProcess_2.png){.id width=60%}
+
+* sursa: https://www.quora.com/What-is-the-difference-between-a-stationary-ergodic-and-a-stationary-non-ergodic-process
+
+
+### Distribuții de ordin 1 ale proceselor aleatoare
+
+* Fiecare eșantion $f(t_1)$ dintr-un proces aleator este o v.a.
+    - descris de o **distribuție de ordin 1**
+    - are FR $F_1(x;t_1)$
+    - are FDP / FMP $w_1(x;t_1) = \frac{dF_1(x;t_1)}{dx}$
+    - distribuția depinde de momentul $t_1$
+
+- Un eșantion la alt moment $t_2$ este o v.a. diferită, cu funcții posibil diferite
+    - altă FR $F_1(x;t_2)$
+    - altă FDP / FMP $w_2(x;t_2) = \frac{dF_1(x;t_2)}{dx}$
+
+- Aceste funcții descriu distribuția valorilor unui eșantion
+
+- Indicele $w_1$ arată că considerăm o singură v.a. din proces (distribuții de ordin 1-)
+
+- Similar pentru p.a. discrete
+
+### Distribuții de ordin 2
+
+* O pereche de v.a. $f(t_1)$ și $f(t_2)$ formează un sistem de 2 v.a.:
+
+    - sunt descrise de o **distribuție de ordin 2**
+    - au FR comună $F_2(x_i, x_j; t_1, t_2)$
+    - au FDP / FMP comună $w_2(x_i, x_j; t_1, t_2) = \frac{\partial^2 F_2(x_i, x_j;t_1, t_2)}{\partial x_i \partial x_j}$
+    - distribuția depinde de momentele $t_1$ și $t_2$
+
+- Aceste funcții descriu cum sunt distribuite valorile perechilor (distribuții *de ordin 2*)
+
+- Similar pentru p.a. discrete
+
+### Distribuții de ordin n
+
+- Generalizare la un grup de $n$ eșantioane dintr-un p.a.
+
+- Un set de $n$ v.a. $f(t_1), ...f(t_n)$ dintr-un proces aleator $f(t)$:
+    - sunt descrise de o **distribuție de ordin n**
+    - au FR comună $F_n(x_1,... x_n; t_1,... t_n)$
+    - au FDP / FMP comună $w_n(x_1,... x_n; t_1,... t_n) = \frac{\partial^2 F_n(x_1,... x_n;t_1,... t_n)}{\partial x_1 ... \partial x_n}$
+    - depind de momentele de timp $t_1$, $t_2$, ... $t_n$
+
+- Aceste funcții descriu cum sunt distribuite valorile seturilor de $n$ eșantioane (distribuții *de ordin n*)
+
+- Similar pentru p.a. discrete
+
+### Medii statistice
+
+Procesele aleatoare sunt caracterizate de medii **statistice** și **temporale**
+
+Pentru procese continue:
+
+1. **Valoarea medie**
+$$\overline{f(t_1)} = \mu(t_1) = \int_{-\infty}^{\infty} x \cdot w_1(x; t_1) dx$$
+
+2. **Valoarea pătratică medie**
+$$\overline{f^2(t_1)} = \int_{-\infty}^{\infty} x^2 \cdot w_1(x; t_1) dx$$
+
+### Medii statistice - varianța
+
+3. **Varianța**
+$$\sigma^2(t_1) = \overline{\left\{ f(t_1) - \mu(t_1) \right\}^2} = \int_{-\infty}^{\infty} (x-\mu(t_1)^2 \cdot w_1(x; t_1) dx$$
+
+- Legătura între aceste trei mărimi:
+    $$\begin{split}
+    \sigma^2(t_1) =& \overline{\left\{ f(t_1) - \mu(t_1) \right\}^2} \\
+    =& \overline{f(t_1)^2 - 2f(t_1)\mu(t_1) + \mu(t_1)^2} \\
+    =& \overline{f^2(t_1)} - \mu(t_1)^2
+    \end{split}$$
+
+* Observații:
+    - aceste trei valori sunt calculate pentru toate realizările, la momentul $t_1$
+    - ele caracterizează doar eșantionul de la momentul $t_1$
+    - la alt moment de timp $t_2$, v.a. $f(t_2)$ este diferită, și valorile medii pot diferi
+
+### Medii statistice - autocorelația
+
+Medii statistice care caracterizează **o pereche** de eșantioane:
+
+4. **Funcția de autocorelație**
+$$R_{ff}(t_1,t_2) = \overline{f(t_1) f(t_2)} = \int_{-\infty}^\infty \int_{-\infty}^\infty x_1 x_2 w_2(x_1, x_2; t_1, t_2) dx_1 dx_2$$
+
+5. **Funcția de corelație** (pentru două procese aleatoare diferite $f(t)$ și $g(t)$)
+$$R_{fg}(t_1,t_2) = \overline{f(t_1) g(t_2)} = \int_{-\infty}^\infty \int_{-\infty}^\infty x_1 y_2 w_2(x_1, y_2; t_1, t_2) dx_1 dy_2$$
+
+- Observații:
+    - aceste funcții pot fi diferite pentru perechi de valori luate la momente diferite ($t_1$,$t_2$)
+
+### Procese aleatoare discrete
+
+Pentru **procese aleatoare discrete**, se înlocuiește $\int$ cu $\sum$, și notația $f(t)$ cu $f[t]$:
+
+1. $\overline{f[t_1]} = \mu(t_1) = \sum_{x=-\infty}^{\infty} x \cdot w_1(x; t_1)$
+
+2. $\overline{f^2[t_1]} = \sum_{x=-\infty}^{\infty} x^2 \cdot w_1(x; t_1)$
+
+3. $\sigma^2(t_1) = \overline{\left\{ f[t_1] - \mu(t_1) \right\}^2} = \sum_{x=-\infty}^{\infty} (x-\mu(t_1)^2 \cdot w_1(x; t_1)$
+
+4. $R_{ff}(t_1,t_2) = \overline{f[t_1] f[t_2]} = \sum_{x_1=-\infty}^\infty \sum_{x_2=-\infty}^\infty x_1 x_2 w_2(x_1, x_2; t_1, t_2)$
+
+5. $R_{fg}(t_1,t_2) = \overline{f[t_1] g[t_2]} = \sum_{x_1=-\infty}^\infty \sum_{x_2=-\infty}^\infty x_1 y_2 w_2(x_1, y_2; t_1, t_2)$
+
+
+### Medii temporale
+
+- Dacă avem acces doar la o singură realizare $f^{(k)}(t)$ a procesului?
+
+- Calculăm valorile medii **pentru o singură realizare $f^{(k)(t)}$, de-a lungul timpului**
+
+### Medii temporale
+
+**Medii temporale** pentru procese aleatoare continue:
+
+1. **Valoarea medie temporală**
+    $$\overline{f^{(k)}(t)} = \mu^{(k)} = \lim_{T \to \infty} \frac{1}{T} \int_{T/2}^{T/2} f^{(k)}(t) dt$$
+
+2. **Valoarea medie pătratică temporală**
+    $$\overline{[f^{(k)}(t)]^2} = \lim_{T \to \infty} \frac{1}{T} \int_{-T/2}^{T/2} [f^{(k)}(t)]^2 dt$$
+
+### Varianța temporală
+
+3. **Varianța temporală**
+    $$\sigma^2 = \overline{\left\{ f^{(k)}(t) - \mu^{(k)} \right\}^2} = \lim_{T \to \infty} \frac{1}{T} \int_{-T/2}^{T/2} (f^{(k)}(t)-\mu^{(k)})^2 dt$$
+
+- Relația dintre cele trei mărimi:
+    $$\sigma^2 = \overline{[f^{(k)}(t)]^2} - [\mu^{(k)}]^2$$
+
+- Observație:
+    - aceste valori nu mai depind de timpul $t$
+
+### Autocorelația temporală
+
+4. **Funcția de autocoreație temporală**
+    $$\begin{split}
+    R_{ff}(t_1,t_2) =& \overline{f^{(k)}(t_1 + t) f^{(k)}(t_2+t)} \\
+    =& \lim_{T \to \infty} \frac{1}{T} \int_{-T/2}^{T/2} f^{(k)}(t_1+t) f^{(k)}(t_2 + t) dt
+    \end{split}$$
+
+5. **Funcția de corelație temporală** (pentru două procese diferite $f(t)$ și $g(t)$)
+    $$\begin{split}
+    R_{fg}(t_1,t_2) =& \overline{f^{(k)}(t_1 + t) g^{(k)}(t_2+t)}\\
+    =& \lim_{T \to \infty} \frac{1}{T} \int_{-T/2}^{T/2} f^{(k)}(t_1+t) g^{(k)}(t_2 + t) dt
+    \end{split}$$
+
+### Procese aleatoare discrete
+
+Pentru **procese aleatoare discrete**, se înlocuiește $\int$ cu $\sum$, $T$ cu $N$, și se împarte la $2N+1$ în loc de $2T$
+
+1. $\overline{f^{(k)}[t]} = \mu^{(k)} = \lim_{N \to \infty} \frac{1}{2N+1} \sum_{t=-N}^{N} f^{(k)}[t]$
+
+2. $\overline{[f^{(k)}[t]]^2} = \lim_{N \to \infty} \frac{1}{2N+1} \sum_{t=-N}^{N} (f^{(k)}[t])^2$
+
+3. $\sigma^2 = \overline{\left\{ f^{(k)}[t] - \mu^{[k]} \right\}^2} = \lim_{N \to \infty} \frac{1}{2N+1} \sum_{t=-N}^{N} (f^{(k)}[t]-\mu^{(k)})^2$
+
+### Procese aleatoare discrete
+
+4. Autocorelația temporală:
+
+$$\begin{split}
+R_{ff}(t_1,t_2) =& \overline{f^{(k)}[t_1 + t] f^{(k)}[t_2+t]} \\
+=& \lim_{N \to \infty} \frac{1}{2N+1} \sum_{t=-N}^{N} f^{(k)}[t_1+t] f^{(k)}[t_2 + t]
+\end{split}$$
+
+5. Corelația temporală:
+
+$$\begin{split}
+R_{fg}(t_1,t_2) =& \overline{f^{(k)}[t_1 + t] g^{(k)}[t_2+t]}\\
+=& \lim_{N \to \infty} \frac{1}{2N+1} \sum_{t=-N}^{N} f^{(k)}[t_1+t] g^{(k)}[t_2 + t]
+\end{split}$$
+
+### Realizări de lungime finită
+
+- E posibil să avem o realizare de **lungime finită** (de ex. un vector cu 1000 de eșantioane dintr-o realizare a unui p.a.)
+
+- Cum calculăm mediile temporale?
+
+- Se fac sumele/integralele de la $\int_{t_{min}}^{t_{max}}$ sau $\sum_{t_{min}}^{t_{max}}$ în loc de la $-\infty$ la $\infty$
+
+- Exemplu: calculați mediile temporale pentru realizarea de lungime finită
+$$\{1,-1,2,-2,3,-3,4,-4,5,-5\}$$
+
+
+### Medii statistice și temporale
+
+- Mediile statistice sunt, de obicei, cele de dorit
+
+    - dar necesită cunoașterea distribuțiilor $w(x)$, care în practică sunt rareori cunoscute
+
+- În practică, de obicei avem acces doar la o singură realizare, obținută printr-o măsurătoare
+
+    - deci putem calcula doar mediile temporale pe acea realizare
+
+- Din fericire, în multe cazuri mediile statistice și temporale sunt **identice** ("ergodicitate")
+
+### Procese aleatoare staționare
+
+- Până acum, am considerat că mediile statistice depind de timp
+
+    - pot fi diferite pentru un eșantion de la $t_1$ și de la $t_2$
+
+- Proces aleator **staționar** = dacă mediile statistice rămân aceleași
+la modificarea originii timpului (întârzierea semnalului)
+
+- Altfel spus: distribuțiile (FDP/FMP) eșantioanelor rămân identice la modificarea originii timpului
+    $$w_n(x_1,...x_n; t_1,...t_n) = w_n(x_1,...x_n; t_1+\tau,... t_n + =tau)$$
+
+- Practic, pentru a fi staționar trebuie ca **toate mediile statistice să nu mai depindă de timp** $t$
+
+### Staționar în sens strict sau larg
+
+- Proces aleator **staționar în sens strict**:
+
+    - relația e valabilă pentru distribuțiile de orice ordin $n$
+
+    - valoarea medie, valoarea pătratică medie, varianța, autocorelația **și toate celelalte** statistici de ordin superior
+    nu depind de originea timpului $t$
+
+- Proces aleator **staționar în sens larg**:
+
+    - relația e valabilă doar pentru distribuțiile de ordin $n=1$ și $n=2$ (distribuțiile unui singur eșantion, sau a două eșantioane)
+
+    - **doar** valoarea medie, valoarea pătratică medie, varianța și autocorelația nu depind de originea timpului $t$, dar
+    statisticile de ordin superior pot depinde
+
+### Procese aleatoare staționare
+
+- Este procesul aleator schițat mai jos staționar sau nu?
+
+![](img/RandomProcess_NonStat.png){.id width=60%}
+
+* sursa: SEX, LIES & STATISTICS, Ned Wright, http://www.astro.ucla.edu/~wright/statistics/
+
+### Procese aleatoare staționare
+
+- Răspuns: ne-staționar
+
+- Se observă că varianța nu este aceeași la toate momentele de timp
+
+
+### Consecințe ale staționarității
+
+- Pentru distribuții ale unui singur eșantion (de ordin $n=1$):
+    $$w_1(x_i;t_1) = w_1(x_i; t_2) = w_1(x_i)$$
+
+- Valoarea medie, valoarea medie pătratică, varianța
+unui eșantion sunt **identice la orice moment de timp** $t$
+$$\overline{f(t)} = constant, \forall t$$
+$$\overline{f^2(t)} = constant, \forall t$$
+$$\sigma^2(t) = constant, \forall t$$
+
+### Consecințe ale staționarității
+
+* Pentru distribuții ale unor perechi de eșantioane (de ordin $n=2$):
+    $$w_2(x_i,x_j;t_1,t_2) = w_2(x_i,x_j;0, t_2-t_1) = w_2(x_i,x_2; t_2-t_1)$$
+
+- Funcția de autocorelație depinde doar de **diferența de timp**
+$\tau = t_2 - t_1$ dintre eșantioane
+$$R_{ff}(t_1,t_2) = R_{ff}(0, t_2 - t_1) = R_{ff}(\tau) = \overline{f(t) f(t + \tau)}$$
+
+- Depinde doar de valoarea $\tau = t_2 - t_1$ = diferența de timp dintre cele două eșantioane
+
+### Consecințe ale staționarității
+
+Definiția funcției de autocorelație pentru p.a. **staționare**:
+
+- Autocorelația statistică: formula rămâne aceeași
+
+- Autocorelația temporală:
+    - pentru p.a. continue
+    $$\begin{split}
+    R_{ff}(\tau) = \overline{f(t) f(t + \tau)} = \lim_{T \to \infty} \frac{1}{T} \int_{-T/2}^{T/2} f^{(k)}(t) f^{(k)}(t + \tau) dt
+    \end{split}$$
+
+    - pentru p.a. discrete
+    $$\begin{split}
+    R_{ff}(\tau) = \overline{f(t) f(t + \tau)} = \lim_{N \to \infty} \frac{1}{2N+1} \sum_{t=-N}^{N} f^{(k)}[t] f^{(k)}[t + \tau]
+    \end{split}$$
+
+    - lungime finită: se limitează integralele / sumele la intervalul avut la dispoziție, $\int_{t_{min}}^{t_{max}}$ sau $\sum_{t_{min}}^{t_{max}}$
+
+
+### Consecințe ale staționarității
+
+- Pentru funcția de **corelație**, definiția este similară cu cea de la autocorelație de mai sus
+
+- Corelația depinde doar de **diferența de timp** $\tau = t_2 - t_1$ dintre cele două eșantioane
+$$R_{fg}(t_1,t_2) = R_{fg}(0, t_2 - t_1) = R_{fg}(\tau) = \overline{f(t) g(t + \tau)}$$
+
+
+
+### Interpretarea autocorelației
+
+- $R_{ff}(\tau) = \overline{f(t) f(t + \tau)}$ = **media produsului a două eșantioane situate la distanță de $\tau$**
+
+    - ne spune dacă eșantioanele variază la fel sau nu
+
+- Idem pentru corelație, doar că eșantioanele provin din p.a. diferite, $f$ și $g$
+
+### Interpretarea autocorelației
+
+- Exemple:
+
+    - $R_{ff}(0.5) > 0$: două eșantioane decalate cu $0.5$ secunde tind să varieze în aceeași direcție (ambele pozitive, ambele negative => produsele sunt majoritar pozitive)
+
+        - dacă se cunoaște una dintre ele, se poate "ghici" ceva despre cealaltă
+
+    - $R_{ff}(1) < 0$: două eșantioane decalate cu 1 secundă tind să varieze în direcții opuse (când unul e pozitiv, celălalt e negativ => produsele sunt majoritar negative)
+
+        - dacă se cunoaște una dintre ele, se poate "ghici" ceva despre cealaltă
+
+    - $R_{ff}(2) = 0$: două eșantioane decalate cu 2 secunde sunt **necorelate**
+(produsele sunt în medie 0, deci cele două eșantioane au la fel de multe șanse de a fi de același semn sau cu semne contrare)
+
+        - dacă se cunoaște una dintre ele, **nu** se mai poate "ghici" ceva despre cealaltă
+
+### Procese aleatoare ergodice
+
+- În practică, avem acces la o singură realizare
+
+- Proces aleator **ergodic** = dacă mediile temporale pe orice realizare sunt **identice cu mediile statistice**
+
+- Ergodicitatea înseamnă:
+
+    - Se pot calcula toate mediile pe baza unei singure realizări (oricare)
+        - dar realizarea respectivă trebuie să fie foarte lungă (lungimea $\to \infty$) pentru valori precise
+
+    - Toate realizările sunt similare unele cu altele, dpdv statistic
+        - o realizare este caracteristică pentru întreg procesul aleator
+
+### Procese aleatoare ergodice
+
+- Majoritatea proceselor aleatoare de interes sunt ergodice și staționare
+
+    - de ex. zgomote de tensiune
+
+- Exemplu de proces aleator **ne-ergodic**:
+
+    - se aruncă un zar, următoarele 50 valori sunt identice cu prima valoare
+
+        - o singură realizare nu e caracteristică pentru tot procesul
+
+### Procese aleatoare ergodice
+
+![](img/XKCD_random_number.png){.id width=60%}
+
+- XKCD 221 (link aici: [https://xkcd.com/221/](https://xkcd.com/221/))
+
+- Se consideră toate numerele care s-ar fi putut obține în loc de 4 (1,2,3,5 sau 6)
+
+- Care e problema aici?
+    - proces aleator staționar sau ne-staționar?
+    - proces aleator ergodic sau ne-ergodic?

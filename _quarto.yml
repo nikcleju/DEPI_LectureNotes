@@ -6,10 +6,17 @@ book:
   subtitle: "Note de curs"
   author: "Nicolae Cleju"
   date: "05/25/2023"
+
   chapters:
     - index.qmd
     - 01_Intro.qmd
-    - 01_SemnaleAleatoare.qmd
+    - part: "Semnale Aleatoare"
+      chapters:
+      - 01_01_VariabileAleatoare.qmd
+      - 01_02_ProceseAleatoare.qmd
+      - 01_03_Autocorelatia.qmd
+        #- 01_SemnaleAleatoare.qmd
+    - part: "Decizie"
     #- Shiny.qmd
     - references.qmd
 

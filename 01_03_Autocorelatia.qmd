@@ -1,0 +1,270 @@
+
+
+## I.3 Proprietăți ale autocorelației
+
+### Densitatea spectrală de putere
+
+- **Densitatea spectrală de putere** (DSP) $S_{ff}(\omega)$ reprezintă
+puterea unui semnal în funcție de frecvență ($f$ sau $\omega = 2 \pi f$)
+
+- Pentru un semnal **determinist** (ne-aleator), este dată de modului transf. Fourier la pătrat:
+    $$S_{ff}(\omega) = |F(\omega)|^2$$
+
+- Puterea în banda de frecvență $[f_1, f_2]$ este $\int_{f_1}^{f_2} S_{ff}(\omega) d\omega$
+
+- Puterea totală a procesului aleator este $P = \int_{-\infty}^{\infty} S_{ff}(\omega) d\omega$
+
+- DSP este o funcție măsurabilă practic:
+
+    - poate fi determinată experimental
+    - este importantă în aplicații practice (inginerești)
+
+### Densitatea spectrală de putere
+
+- Ce reprezintă DSP pentru un proces aleator?
+    - nu mai avem un singur semnal, cu o infinitate de realizări posibile
+    - fiecare realizare are o transformată Fourier proprie, diferită
+    - DSP fiind diferită pentru fiecare realizare în parte, este, ea însăși, un proces aleator
+
+- **DSP a unui proces aleator** = media DSP pentru toate realizările posibile
+
+- Are aceeași utilitate și semnificație ca în cazul unui semnal determinist,
+doar că **în medie** în raport cu toate realizările posibile
+    - pentru o realizare particulară, DSP poate varia în jurul DSP medii
+
+
+### Teorema Wiener-Hincin
+
+**Teorema Wiener-Hincin**:
+
+- Densitatea spectrală de putere = **transformata Fourier a funcției de autocorelație**
+    $$S_{ff}(\omega) = \int_{-\infty}^{\infty} R_{ff}(\tau) e^{- j \omega \tau} d\tau$$
+    $$R_{ff}(\tau) = \frac{1}{2 \pi}\int_{-\infty}^{\infty} S_{ff}(\omega) e^{j \omega \tau} d\omega$$
+
+- Fără demonstrație
+
+- Leagă două concepte de natură diferită
+    - Funcția de autocorelație: o proprietate *statistică*
+    - DSP: o proprietate *fizică* (ține de energia semnalului; importantă în aplicații practice)
+
+### Zgomot alb
+
+- **Zgomot alb** = un proces aleator cu **funcția de autocorelație egală cu un Dirac**
+    $$R_{ff}(\tau) = \delta(\tau)$$
+
+    - este proces aleator: orice eșantion este o variabilă aleatoare
+    - autocorelația este un Dirac: este 0 pentru orice $\tau \neq 0$
+    - oricare două eșantioane diferite ($\tau \neq 0$) au corelație zero (necorelate)
+        - valorile a două eșantioane distincte nu au legătură între ele
+
+### Zgomot alb
+
+- **Densitatea spectrală de putere** = transf. Fourier a unui Dirac = **constantă** $\forall \omega$
+    $$S_{ff}(\omega) = constant, \forall \omega $$
+
+    - putere constantă pentru toate frecvențele, până la $f = \infty$
+
+- Zgomotul alb poate avea **orice distribuție** (normală, uniformă etc.)
+
+    - termenul "zgomot alb" nu se referă la distribuția eșantioanelor,
+    ci la faptul că valorile eșantioanele sunt necorelate
+
+### Zgomot alb de bandă limitată
+
+- În lumea reală, pentru orice semnal puterea scade la 0 la frecvențe foarte înalte
+
+    - pentru că puterea totală $P = \int_{-\infty}^{\infty} S_{ff}{\omega}$ nu poate fi infinită
+
+    - se numește zgomot alb **de bandă limitată**
+
+- În acest caz, autocorelația = **aproximativ** un Dirac, dar nu chiar infinit de "subțire"
+
+    - eșantioane foarte apropiate sunt totuși corelate
+
+    - de ex. din cauza unor mici capacități parazite
+
+### AWGN
+
+- **AWGN** = Additive White Gaussian Noise
+
+    - Zgomot alb, Gaussian, aditiv
+
+    - tipul/modelul de zgomot cel mai frecvent întâlnit în aplicații
+
+- Înseamnă:
+
+    - **zgomot**: este un proces aleator (fiecare eșantion este aleator, fiecare realizare este diferită)
+
+    - **gaussian**: eșantioanele au distribuția normală
+
+    - **alb**: valorile eșantioanelor sunt necorelate între ele
+
+    - **aditiv**: zgomotul se adună peste semnalul original (adică de ex. nu se multiplică cu acesta)
+
+
+
+
+### Examen 2020-2021
+
+- Până aici s-a făcut în 2020-2021. Celelalte slide-uri din acest fișier nu se cer.
+
+### Proprietățile funcției de autocorelație
+
+1. Este o funcție pară
+$$R_{ff}(\tau) = R_{ff}(-\tau)$$
+
+    * Demonstrație: Schimbare de variabilă în definiție
+
+2. La infinit, tinde la o valoare constantă
+$$R_{ff}(\infty) = \overline{f(t)}^2 = const$$
+
+    * Dem.: două eșantioane la un interval $\infty$ sunt necesar independente
+
+3. Are valoarea maximă în 0
+$$R_{ff}(0) \geq R_{ff}(\tau)$$
+
+    * Dem.: se pornește de la $\overline{(f(t) - f(t + \tau))^2} \geq 0$
+    * Interpretare: eșantioane diferite mai pot varia diferit, dar un eșantion variază întotdeauna identic cu sine însuși
+
+### Proprietățile funcției de autocorelație
+
+4. Valoarea în 0 = puterea procesului aleator
+$$R_{ff}(0) = \frac{1}{2 \pi} \int_{-\infty}^{\infty} S_{ff}(\omega) d\omega$$
+
+    * Dem.: Se pune $\tau = 0$ în transf. Fourier inversă din teorema Wiener-Hincin
+
+5. Varianța = diferența între valoarea din 0 și cea de la $\infty$
+$$\sigma^2 = R_{ff}(0) - R_{ff}(\infty)$$
+
+    * Dem.: $R_{ff}(0) = \overline{f(t)^2}$, $R_{ff}(\infty) = \overline{f(t)}^2$
+
+### Autocorelația unui proces aleator filtrat
+
+* Fie un proces aleator aplicat la intrarea unui sistem
+    * fie în timp continuu: intrarea $x(t)$, sistemul $H(s)$, ieșirea $y(t)$
+    * fie în timp discret: intrarea $x[n]$, sistemul $H(z)$, ieșirea $y[n]$
+
+* Cum depinde autocorelația ieșirii $y$ de cea a intrării $x$?
+
+* Se știe că $y$ este convoluția lui $x$ cu răspunsul la impuls $h$
+
+### Dezvoltare matematică
+
+* Pentru un proces aleator în timp discret
+$$\begin{split}
+R_{yy}(\tau) =& \overline{y[n] y[n + \tau]}\\
+=& \overline{\sum_{k_1=-\infty}^\infty h[k_1] x[n-k_1] \sum_{k_2=-\infty}^\infty h[k_2] x[n+\tau-k_2]}\\
+=& \sum_{k_1=-\infty}^\infty \sum_{k_2=-\infty}^\infty h[k_1] h[k_2] \overline{x[n-k_1] x[n+\tau-k_2]}\\
+=& \sum_{k_1=-\infty}^\infty \sum_{k_2=-\infty}^\infty h[k_1] h[k_2] R_{xx}[\tau - k_1 + k_2]
+\end{split}$$
+
+* Din teorema Wiener-Hincin se știe că:
+$$S_{ff}(\omega) = \sum_{\tau = -\infty}^{\infty} R_{ff}(\tau) e^{- j \omega \tau}$$
+
+
+### Dezvoltare matematică
+
+* Așadar
+$$
+S_{yy}(\omega) = \sum_{\tau=-\infty}^{\infty} \sum_{k_1=-\infty}^\infty \sum_{k_2=-\infty}^\infty h[k_1] h[k_2] R_{xx}[\tau - k_1 + k_2] e^{- j \omega \tau}
+$$
+
+* Schimbare de variabilă $\tau - k_1 + k_2 = u$
+    * rezultă $\tau = u + k_1 - k_2$
+
+$$\begin{split}
+S_{yy}(\omega) =& \sum_{u=-\infty}^{\infty} \sum_{k_1=-\infty}^\infty \sum_{k_2=-\infty}^\infty h[k_1] h[k_2] R_{xx}[u] e^{- j \omega (u + k_1 + k_2)}\\
+=& \sum_{u=-\infty}^{\infty} R_{xx}[u] e^{- j \omega u} \sum_{k_1=-\infty}^\infty h[k_1] e^{- j \omega k_1} \sum_{k_2=-\infty}^\infty h[k_2]  e^{ j \omega k_2}\\
+=& S_{xx}(\omega) \cdot H(\omega) \cdot H*^(\omega)\\
+=& S_{xx}(\omega) \cdot |H(\omega)|^2\\
+\end{split}$$
+
+### Rezultat
+
+$$S_{yy}(\omega) = S_{xx}(\omega) \cdot |H(\omega)|^2$$
+
+* DSP a lui $y$ = DSP a lui $x$ multiplicată cu răspunsul în amplitudine, la pătrat, al filtrului
+
+* Relația este valabilă și pentru procese aleatoare continue
+
+### Aplicații ale (auto)corelației
+
+* Căutarea unei anume porțiuni într-un semnal mai mare
+
+* Corelația a două semnale = o măsura a **similarității** celor două semnale
+    * Funcția de corelație măsoară similaritatea unui semnal cu toate versiunile decalate ale celuilalt
+    * Exemplu numeric la tablă, semnale de lungime finită
+
+* Corelația poate fi utilizată pentru localizare
+    * Funcția de (auto)corelație are valori mari atunci când cele două semnale se potrivesc
+    * Valori mari sunt atunci când valorile pozitive / negative ale semnalelor se potrivesc
+    * Valori mici atunci când nu se potrivesc
+
+### Semnalul căutat
+
+```{.python .cb.run session=plot}
+import matplotlib.pyplot as plt, numpy as np
+x1 = np.array([1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1])
+x2 = np.hstack((np.random.randn(800), x1, np.random.randn(300)))
+corr = np.correlate(x2, x1)
+plt.figure(figsize=(12,6))
+plt.stem(x1); plt.title ('Signal to look for');plt.axis([0, 20, -1.5, 1.5])
+plt.savefig('fig/01_RandomSignals_CorrSearch_Pattern.png', transparent=True, bbox_inches='tight', dpi=300)
+plt.close()
+```
+![](fig/01_RandomSignals_CorrSearch_Pattern.png){width=70% max-width=1000px}
+
+
+### Semnalul de dimensiuni mari
+
+```{.python .cb.run session=plot}
+import matplotlib.pyplot as plt, numpy as np
+x1 = np.array([1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1])
+x2 = np.hstack((np.random.randn(800), x1, np.random.randn(300)))
+corr = np.correlate(x2, x1)
+plt.figure(figsize=(12,6))
+plt.stem(x2); plt.title ('Signal to search in');
+plt.savefig('fig/01_RandomSignals_CorrSearch_CompleteSignal.png', transparent=True, bbox_inches='tight', dpi=300)
+plt.close()
+```
+![](fig/01_RandomSignals_CorrSearch_CompleteSignal.png){width=70% max-width=1000px}
+
+
+### Rezultatul corelației
+
+```{.python .cb.run session=plot}
+import matplotlib.pyplot as plt, numpy as np
+x1 = np.array([1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1])
+x2 = np.hstack((np.random.randn(800), x1, np.random.randn(300)))
+corr = np.correlate(x2, x1)
+plt.figure(figsize=(12,6))
+plt.stem(corr); plt.title ('Correlation signal');
+plt.savefig('fig/01_RandomSignals_CorrSearch_Result.png', transparent=True, bbox_inches='tight', dpi=300)
+plt.close()
+```
+![](fig/01_RandomSignals_CorrSearch_Result.png){width=70% max-width=1000px}
+
+
+
+### Identificare de sistem
+
+* Determinarea răspunsului la impuls al unui sistem necunoscut, liniar și invariant în timp
+
+* Se bazează pe corelația intrării cu ieșirea sistemlui
+
+![System identification setup](img/SystemIdentif.png){#id .class width=60%}
+
+### Identificare de sistem
+
+$$\begin{split}
+R_{fg}(\tau) =& \overline{f[n] g[n + \tau]}\\
+=& \overline{f[n] \sum_{k=-\infty}^\infty h[k] f[n+\tau-k]}\\
+=& \sum_{k=-\infty}^\infty h[k] \overline{f[n] f[n+\tau-k]}\\
+=& \sum_{k=-\infty}^\infty h[k] R_{ff}[\tau - k]\\
+=& h[\tau] \star R_{ff}[\tau]
+\end{split}$$
+
+* Dacă intrarea $f$ este **zgomot alb** cu puterea $A$, $R_{ff}[n] = A \cdot \delta[n]$, și
+$$R_{fg}(\tau) = h[\tau] \star R_{ff}[\tau] = A \cdot h[\tau] \star \delta[\tau] = A \cdot h[\tau]$$
+
+* Corelația măsurată este proporțională cu răspunsul la impuls al sistemului necunoscut
