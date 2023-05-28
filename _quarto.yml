@@ -17,6 +17,9 @@ book:
       - 01_03_Autocorelatia.qmd
         #- 01_SemnaleAleatoare.qmd
     - part: "Decizie"
+    - part: "Applications"
+      chapters:
+      - 01_OutlierDetection.ipynb
     #- Shiny.qmd
     - references.qmd
 
