@@ -1,114 +1,121 @@
+# Proprietăți ale autocorelației
 
+## Definiții
 
-## I.3 Proprietăți ale autocorelației
+**Reminder:** Pentru un proces aleator staționar (în sens larg) $f$,
+autocorelația, văzută ca o funcție de $\tau$, se definește astfel:
 
-### Densitatea spectrală de putere
+$$R_{ff}(\tau) = \overline{f(t) f(t + \tau)}$$
 
-- **Densitatea spectrală de putere** (DSP) $S_{ff}(\omega)$ reprezintă
-puterea unui semnal în funcție de frecvență ($f$ sau $\omega = 2 \pi f$)
+și reprezintă valoarea medie a produsului între oricare două eșantioane situate
+la o distanță $\tau$ între ele.
 
-- Pentru un semnal **determinist** (ne-aleator), este dată de modului transf. Fourier la pătrat:
-    $$S_{ff}(\omega) = |F(\omega)|^2$$
+**Densitatea spectrală de putere** (DSP) $S_{ff}(\omega)$ este funcția care
+reprezintă puterea unui semnal în funcție de frecvență ($f$ sau $\omega = 2 \pi f$).
+
+Pentru un semnal **determinist** (ne-aleator), DPS este dată de modului transformatei Fourier la pătrat:
+$$S_{ff}(\omega) = |F(\omega)|^2$$
+
+Pentru un semnal aleator, vom vedea mai jos.
+
+DSP este o densitate, și ca atare asupra ei se lucrează cu integrala.
+Integrala din DSP ne dă puterea într-o anumită bandă de frecvențe.
 
 - Puterea în banda de frecvență $[f_1, f_2]$ este $\int_{f_1}^{f_2} S_{ff}(\omega) d\omega$
 
-- Puterea totală a procesului aleator este $P = \int_{-\infty}^{\infty} S_{ff}(\omega) d\omega$
+- Puterea totală este $P = \int_{-\infty}^{\infty} S_{ff}(\omega) d\omega$
 
-- DSP este o funcție măsurabilă practic:
+- Pentru o singură frecvență individuală $f_1$, puterea este mereu 0,
+  excepție făcând daca spectrul semnalului conține un Dirac la acea frecvență.
 
-    - poate fi determinată experimental
-    - este importantă în aplicații practice (inginerești)
+Densitatea spectrală de putere este o funcție măsurabilă practic,
+care poate fi determinată experimental, fiind importantă în aplicații practice (inginerești).
+(de ex. puterea de emisie într-o anumită bandă radio nu trebuie
+să treacă peste un anume nivel, pentru a nu interfera cu alte comunicații).
 
-### Densitatea spectrală de putere
+Ce reprezintă DSP pentru un proces aleator? Spre deosebire de un semnal determinist,
+un proces aletor nu este un singur semnal, ci o infinitate de realizări posibile.
+Fiecare realizare are o transformată Fourier proprie, diferită, așadar
+DSP este de fapt ea însăși un proces aleator.
 
-- Ce reprezintă DSP pentru un proces aleator?
-    - nu mai avem un singur semnal, cu o infinitate de realizări posibile
-    - fiecare realizare are o transformată Fourier proprie, diferită
-    - DSP fiind diferită pentru fiecare realizare în parte, este, ea însăși, un proces aleator
+**DSP a unui proces aleator** trebuie înțeleasă ca fiind media DSP pentru toate realizările posibile.
+Ea are aceeași utilitate și semnificație ca în cazul unui semnal determinist,
+doar că **în medie** în raport cu toate realizările posibile.
 
-- **DSP a unui proces aleator** = media DSP pentru toate realizările posibile
-
-- Are aceeași utilitate și semnificație ca în cazul unui semnal determinist,
-doar că **în medie** în raport cu toate realizările posibile
-    - pentru o realizare particulară, DSP poate varia în jurul DSP medii
-
-
-### Teorema Wiener-Hincin
+## Teorema Wiener-Hincin
 
 **Teorema Wiener-Hincin**:
 
-- Densitatea spectrală de putere = **transformata Fourier a funcției de autocorelație**
-    $$S_{ff}(\omega) = \int_{-\infty}^{\infty} R_{ff}(\tau) e^{- j \omega \tau} d\tau$$
-    $$R_{ff}(\tau) = \frac{1}{2 \pi}\int_{-\infty}^{\infty} S_{ff}(\omega) e^{j \omega \tau} d\omega$$
+Densitatea spectrală de putere este **transformata Fourier a funcției de autocorelație**:
+$$S_{ff}(\omega) = \int_{-\infty}^{\infty} R_{ff}(\tau) e^{- j \omega \tau} d\tau$$
+$$R_{ff}(\tau) = \frac{1}{2 \pi}\int_{-\infty}^{\infty} S_{ff}(\omega) e^{j \omega \tau} d\omega$$
 
-- Fără demonstrație
+Fără demonstrație.
 
-- Leagă două concepte de natură diferită
-    - Funcția de autocorelație: o proprietate *statistică*
-    - DSP: o proprietate *fizică* (ține de energia semnalului; importantă în aplicații practice)
+Teorema Wiener-Hincin e importantă întrucât leagă două concepte de natură complet diferită:
 
-### Zgomot alb
+- funcția de autocorelație, care este o proprietate *statistică*
+  legată de modul de fluctuație al eșantioanelor unui proces aleatpr
+- densitatea spectrală de putere, o proprietate de natură *fizică*,
+  care ține de energia semnalului
 
-- **Zgomot alb** = un proces aleator cu **funcția de autocorelație egală cu un Dirac**
-    $$R_{ff}(\tau) = \delta(\tau)$$
+## Zgomot alb
 
-    - este proces aleator: orice eșantion este o variabilă aleatoare
-    - autocorelația este un Dirac: este 0 pentru orice $\tau \neq 0$
-    - oricare două eșantioane diferite ($\tau \neq 0$) au corelație zero (necorelate)
-        - valorile a două eșantioane distincte nu au legătură între ele
+Un **zgomot alb** este un proces aleator a cărui funcție de autocorelație este **un Dirac** în origine:
+$$R_{ff}(\tau) = \delta(\tau)$$
 
-### Zgomot alb
+sau, echivalent, a cărui densitate spectrală de putere este **constantă** pentru orice frecvență:
 
-- **Densitatea spectrală de putere** = transf. Fourier a unui Dirac = **constantă** $\forall \omega$
-    $$S_{ff}(\omega) = constant, \forall \omega $$
+$$S_{ff}(\omega) = constant, \forall \omega $$
 
-    - putere constantă pentru toate frecvențele, până la $f = \infty$
+(Reminder: transformata Fourier a unui Dirac este un semnal constant).
 
-- Zgomotul alb poate avea **orice distribuție** (normală, uniformă etc.)
+Noțiunile cheie din această definiție sunt următoarele:
 
-    - termenul "zgomot alb" nu se referă la distribuția eșantioanelor,
-    ci la faptul că valorile eșantioanele sunt necorelate
+1. Zgomotul alb este proces aleator, așadar orice eșantion este o variabilă aleatoare care fluctuează
+2. Autocorelația sa este un Dirac, adică este egală cu 0 pentru orice $\tau \neq 0$, adică
+  oricare două eșantioane diferite ($\tau \neq 0$) au corelație zero (necorelate).
+  Ca interpretare, putem spune că valorile a două eșantioane distincte nu au legătură între ele,
+  adică valoarea unuia nu implică nimic legat de valoarea altuia.
+3. Densitatea spectrală de putere este constantă, adică zgomotul afectează
+   în mod egal toate frecvențele, până la $f = \infty$
 
-### Zgomot alb de bandă limitată
+::: {.callout-important icon=false title="Important"}
+### Important
+Zgomotul alb poate avea **orice distribuție** (normală, uniformă etc.).
+Termenul "alb" nu se referă la densitatea de probabilitate a eșantioanelor,
+ci la faptul că valorile eșantioanele sunt necorelate între ele.
+:::
 
-- În lumea reală, pentru orice semnal puterea scade la 0 la frecvențe foarte înalte
+Zgomotul alb este mai degrabă un model matematic. În practică, zgomotele
+se pot abate de la definiție.
 
-    - pentru că puterea totală $P = \int_{-\infty}^{\infty} S_{ff}{\omega}$ nu poate fi infinită
+De exemplu, în practică, pentru orice semnal puterea scade la $0$ când se ajunge la frecvențe foarte înalte,
+pentru că puterea totală $P = \int_{-\infty}^{\infty} S_{ff}(\omega)$ nu poate fi infinită.
+Un astfel de zgomot de numește zgomot alb **de bandă limitată**.
+În acest caz, autocorelația este aproximativ un Dirac, dar nu chiar infinit de "subțire",
+ceea ce face ca eșantioane foarte apropiate să fie totuși corelate
+(de ex. din cauza unor mici capacități parazite inevitabile).
 
-    - se numește zgomot alb **de bandă limitată**
-
-- În acest caz, autocorelația = **aproximativ** un Dirac, dar nu chiar infinit de "subțire"
-
-    - eșantioane foarte apropiate sunt totuși corelate
-
-    - de ex. din cauza unor mici capacități parazite
-
-### AWGN
-
-- **AWGN** = Additive White Gaussian Noise
-
-    - Zgomot alb, Gaussian, aditiv
-
-    - tipul/modelul de zgomot cel mai frecvent întâlnit în aplicații
-
-- Înseamnă:
-
-    - **zgomot**: este un proces aleator (fiecare eșantion este aleator, fiecare realizare este diferită)
-
-    - **gaussian**: eșantioanele au distribuția normală
-
-    - **alb**: valorile eșantioanelor sunt necorelate între ele
-
-    - **aditiv**: zgomotul se adună peste semnalul original (adică de ex. nu se multiplică cu acesta)
+De asemenea, nu toate zgomotele sunt albe. Exista fenomene care produc
+zgomote pentru care DSP scade odată cu frecvența.
+De exemplu, zgomotul tip $1/f$ dintr-un circuit electric este un zgomot
+a cărui DSP este proporțională cu $1/f$.
 
 
+Modelul de zgomot cel mai întâlnit în aplicații este cel de
+zgomot alb, Gaussian, aditiv (**AWGN**, Additive White Gaussian Noise),
+ceea ce înseamnă:
+
+ - **zgomot**: este un proces aleator (fiecare eșantion este aleator, fiecare realizare este diferită)
+ - **alb**: valorile eșantioanelor sunt necorelate între ele
+ - **gaussian**: eșantioanele individuale au distribuția normală
+ - **aditiv**: zgomotul se adună peste semnalul original (adică de ex. nu se multiplică cu acesta)
 
 
-### Examen 2020-2021
+## Proprietățile funcției de autocorelație
 
-- Până aici s-a făcut în 2020-2021. Celelalte slide-uri din acest fișier nu se cer.
-
-### Proprietățile funcției de autocorelație
+Se pot formula o serie de proprietăți ale funcției de autocorelație:
 
 1. Este o funcție pară
 $$R_{ff}(\tau) = R_{ff}(-\tau)$$
@@ -126,31 +133,38 @@ $$R_{ff}(0) \geq R_{ff}(\tau)$$
     * Dem.: se pornește de la $\overline{(f(t) - f(t + \tau))^2} \geq 0$
     * Interpretare: eșantioane diferite mai pot varia diferit, dar un eșantion variază întotdeauna identic cu sine însuși
 
-### Proprietățile funcției de autocorelație
-
-4. Valoarea în 0 = puterea procesului aleator
+1. Valoarea în 0 = puterea procesului aleator
 $$R_{ff}(0) = \frac{1}{2 \pi} \int_{-\infty}^{\infty} S_{ff}(\omega) d\omega$$
 
     * Dem.: Se pune $\tau = 0$ în transf. Fourier inversă din teorema Wiener-Hincin
 
-5. Varianța = diferența între valoarea din 0 și cea de la $\infty$
+1. Varianța = diferența între valoarea din 0 și cea de la $\infty$
 $$\sigma^2 = R_{ff}(0) - R_{ff}(\infty)$$
 
     * Dem.: $R_{ff}(0) = \overline{f(t)^2}$, $R_{ff}(\infty) = \overline{f(t)}^2$
 
-### Autocorelația unui proces aleator filtrat
+## Autocorelația unui proces aleator filtrat
 
-* Fie un proces aleator aplicat la intrarea unui sistem
-    * fie în timp continuu: intrarea $x(t)$, sistemul $H(s)$, ieșirea $y(t)$
-    * fie în timp discret: intrarea $x[n]$, sistemul $H(z)$, ieșirea $y[n]$
+Fie un proces aleator $x$ aplicat la intrarea unui sistem oarecare $H$, producând
+o ieșire $y$:
 
-* Cum depinde autocorelația ieșirii $y$ de cea a intrării $x$?
+- fie în timp continuu: intrarea $x(t)$, sistemul $H(s)$, ieșirea $y(t)$
+- fie în timp discret: intrarea $x[n]$, sistemul $H(z)$, ieșirea $y[n]$
 
-* Se știe că $y$ este convoluția lui $x$ cu răspunsul la impuls $h$
+Dacă se știe că $y$ este convoluția lui $x$ cu răspunsul la impuls $h$ al sistemului,
+cum depinde autocorelația ieșirii $y$ de cea a intrării $x$?
 
-### Dezvoltare matematică
+**Teoremă**
 
-* Pentru un proces aleator în timp discret
+Legătura dintre densitatea spectrală de putere la ieșie unui filtru, $S_{yy}(\omega)$,
+și cea a semnalului de intrare, S_{xx}(\omega), este:
+$$S_{yy}(\omega) = S_{xx}(\omega) \cdot |H(\omega)|^2$$
+
+DSP a lui $y$ este DSP a lui $x$ multiplicată cu răspunsul în amplitudine, la pătrat, al filtrului
+
+**Demonstrație**
+
+Facem demonstrația doar pentru un proces aleator în timp discret. Avem:
 $$\begin{split}
 R_{yy}(\tau) =& \overline{y[n] y[n + \tau]}\\
 =& \overline{\sum_{k_1=-\infty}^\infty h[k_1] x[n-k_1] \sum_{k_2=-\infty}^\infty h[k_2] x[n+\tau-k_2]}\\
@@ -158,20 +172,15 @@ R_{yy}(\tau) =& \overline{y[n] y[n + \tau]}\\
 =& \sum_{k_1=-\infty}^\infty \sum_{k_2=-\infty}^\infty h[k_1] h[k_2] R_{xx}[\tau - k_1 + k_2]
 \end{split}$$
 
-* Din teorema Wiener-Hincin se știe că:
+Din teorema Wiener-Hincin se știe că:
 $$S_{ff}(\omega) = \sum_{\tau = -\infty}^{\infty} R_{ff}(\tau) e^{- j \omega \tau}$$
-
-
-### Dezvoltare matematică
-
-* Așadar
+așadar:
 $$
 S_{yy}(\omega) = \sum_{\tau=-\infty}^{\infty} \sum_{k_1=-\infty}^\infty \sum_{k_2=-\infty}^\infty h[k_1] h[k_2] R_{xx}[\tau - k_1 + k_2] e^{- j \omega \tau}
 $$
 
-* Schimbare de variabilă $\tau - k_1 + k_2 = u$
-    * rezultă $\tau = u + k_1 - k_2$
-
+Se face schimbare de variabilă $\tau - k_1 + k_2 = u$, și rezultă că $\tau = u + k_1 - k_2$.
+Înlocuind:
 $$\begin{split}
 S_{yy}(\omega) =& \sum_{u=-\infty}^{\infty} \sum_{k_1=-\infty}^\infty \sum_{k_2=-\infty}^\infty h[k_1] h[k_2] R_{xx}[u] e^{- j \omega (u + k_1 + k_2)}\\
 =& \sum_{u=-\infty}^{\infty} R_{xx}[u] e^{- j \omega u} \sum_{k_1=-\infty}^\infty h[k_1] e^{- j \omega k_1} \sum_{k_2=-\infty}^\infty h[k_2]  e^{ j \omega k_2}\\
@@ -179,17 +188,11 @@ S_{yy}(\omega) =& \sum_{u=-\infty}^{\infty} \sum_{k_1=-\infty}^\infty \sum_{k_2=
 =& S_{xx}(\omega) \cdot |H(\omega)|^2\\
 \end{split}$$
 
-### Rezultat
+Relația este valabilă și pentru procese aleatoare continue.
 
-$$S_{yy}(\omega) = S_{xx}(\omega) \cdot |H(\omega)|^2$$
+## Aplicații ale (auto)corelației
 
-* DSP a lui $y$ = DSP a lui $x$ multiplicată cu răspunsul în amplitudine, la pătrat, al filtrului
-
-* Relația este valabilă și pentru procese aleatoare continue
-
-### Aplicații ale (auto)corelației
-
-* Căutarea unei anume porțiuni într-un semnal mai mare
+### Căutarea unei anume porțiuni într-un semnal mai mare
 
 * Corelația a două semnale = o măsura a **similarității** celor două semnale
     * Funcția de corelație măsoară similaritatea unui semnal cu toate versiunile decalate ale celuilalt
@@ -200,7 +203,7 @@ $$S_{yy}(\omega) = S_{xx}(\omega) \cdot |H(\omega)|^2$$
     * Valori mari sunt atunci când valorile pozitive / negative ale semnalelor se potrivesc
     * Valori mici atunci când nu se potrivesc
 
-### Semnalul căutat
+Semnalul căutat:
 
 ```{.python .cb.run session=plot}
 import matplotlib.pyplot as plt, numpy as np
@@ -215,7 +218,7 @@ plt.close()
 ![](fig/01_RandomSignals_CorrSearch_Pattern.png){width=70% max-width=1000px}
 
 
-### Semnalul de dimensiuni mari
+Semnalul de dimensiuni mari:
 
 ```{.python .cb.run session=plot}
 import matplotlib.pyplot as plt, numpy as np
@@ -230,7 +233,7 @@ plt.close()
 ![](fig/01_RandomSignals_CorrSearch_CompleteSignal.png){width=70% max-width=1000px}
 
 
-### Rezultatul corelației
+Rezultatul corelației:
 
 ```{.python .cb.run session=plot}
 import matplotlib.pyplot as plt, numpy as np
@@ -245,7 +248,6 @@ plt.close()
 ![](fig/01_RandomSignals_CorrSearch_Result.png){width=70% max-width=1000px}
 
 
-
 ### Identificare de sistem
 
 * Determinarea răspunsului la impuls al unui sistem necunoscut, liniar și invariant în timp
@@ -253,8 +255,6 @@ plt.close()
 * Se bazează pe corelația intrării cu ieșirea sistemlui
 
 ![System identification setup](img/SystemIdentif.png){#id .class width=60%}
-
-### Identificare de sistem
 
 $$\begin{split}
 R_{fg}(\tau) =& \overline{f[n] g[n + \tau]}\\
