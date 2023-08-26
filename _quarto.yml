@@ -17,6 +17,8 @@ book:
       - 01_03_Autocorelatia.qmd
         #- 01_SemnaleAleatoare.qmd
     - part: "Decizie"
+      chapters:
+      - 02_01_Detectia1Esantion.qmd
     - part: "Applications"
       chapters:
       - 01_OutlierDetection.ipynb
