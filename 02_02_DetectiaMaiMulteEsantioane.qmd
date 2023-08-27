@@ -1,0 +1,758 @@
+
+## II.3 Detecția semnalelor cu mai multe eșantioane
+
+### Eșantioane multiple dintr-un semnal
+
+- Contextul rămâne același:
+
+    - Se transmite un semnal $s(t)$
+    - Există **două ipoteze**:
+
+        - $H_0$: semnalul original este $s(t) = s_0(t)$
+        - $H_1$: semnalul original este $s(t) = s_1(t)$
+
+    - Receptorul poate lua **două decizii**:
+
+        - $D_0$: se decide că semnalul a fost $s(t) = s_0(t)$
+        - $D_1$: se decide că semnalul a fost $s(t) = s_1(t)$
+
+    - Există 4 scenarii posibile
+
+### Eșantioane multiple dintr-un semnal
+
+- Contextul rămâne același:
+
+  - Semnalele sunt afectate de zgomot (necunoscut)
+  - Se recepționează un semnal $r(t) = s(t) + n(t)$
+
+- Se iau N eșantioane din $r(t)$, nu doar 1
+
+  - Fiecare eșantion $r_i = r(t_i)$ se ia la momentul $t_i$
+
+- Eșantioanele formează **vectorul de eșantioanelor**
+  $$\vec{r} = [r_1, r_2, ... r_N]$$
+
+### Eșantioane multiple dintr-un semnal
+
+- Fiecare eșantion $r_i$ este o **variabilă aleatoare**
+    - $r(t_i) = s(t_i) + n(t_i)$ = constantă + o v.a.
+
+- Vectorul $\vec{r}$ reprezintă un set de $N$ v.a. dintr-un proces aleator
+
+- Considerând întreg vectorul $\vec{r}$,
+valorile vectorului $\vec{r}$ sunt descrise de **distribuții de ordin $N$**
+
+- În ipoteza $H_0$:
+    $$w_N(\vec{r} | H_0) = w_N(r_1, r_2, ...r_N | H_0)$$
+
+- În ipoteza $H_1$:
+    $$w_N(\vec{r} | H_1) = w_N(r_1, r_2, ...r_N | H_1)$$
+
+
+### Plauzibilitatea vectorului de eșantioane
+
+- Se aplică **aceleași criterii** bazate pe raportul de plauzibilitate în cazul unui singur eșantion
+    $$\frac{w_N(\vec{r} | H_1)}{w_N(\vec{r} | H_0)} \grtlessH K$$
+
+- Observații
+
+    - $\vec{r}$ este un vector; prin el se consideră plauzibilitatea tuturor eșantioanelor
+    - $w_N(\vec{r} | H_0)$ = plauzibilitatea vectorului $\vec{r}$ în ipoteza $H_0$
+    - $w_N(\vec{r} | H_1)$ = plauzibilitatea vectorului $\vec{r}$ în ipoteza $H_1$
+    - valoarea lui $K$ este dată de criteriul de decizie utilizat
+
+- Interpretare: se alege ipoteza cea mai plauzibilă de a fi generat datele observate
+
+    - identic ca la 1 eșantion, doar că acum datele = mai multe eșantioane
+
+### Descompunere
+
+- Presupunând că zgomotul este alb, eșantioanele $r_i$ sunt independente
+
+- În acest caz, distribuția totală $w_N(\vec{r} | H_j)$ se poate descompune ca un produs
+
+    $$w_N(\vec{r} | H_j) = w(r_1|H_j) \cdot w(r_2|H_j) \cdot ... \cdot w(r_N|H_j)$$
+
+    - de ex. plauzibilitatea obținerii vectorului $[5.1, 4.7, 4.9]$ = plauzibilitatea obținerii lui $5.1$ $\times$
+    plauzibilitatea obținerii lui $4.7$ $\times$ plauzibilitatea obținerii lui $4.9$
+
+- Funcțiile $w(r_i|H_i)$ sunt distribuțiile condiționate ale fiecărui eșantion
+
+    - de care am mai văzut deja
+
+### Descompunere
+
+- Prin urmare, criteriile bazate pe raportul de plauzibilitate devin
+    $$\frac{w_N(\vec{r} | H_1)}{w_N(\vec{r} | H_0)} = \frac{w(r_1|H_1)}{w(r_1|H_0)}  \cdot
+    \frac{w(r_2|H_1)}{w(r_2|H_0)} ... \frac{w(r_N|H_1)}{w(r_N|H_0)} \grtlessH K$$
+
+- Raportul de plauzibilitate al unui vector de eșantioane = produsul rapoartelor plauzibilitate ale fiecărui eșantion
+
+- **Se înmulțesc** rapoartele de plauzibilitate
+ale fiecărui eșantion în parte,
+și se aplică criteriile asupra rezultatului final
+
+### Criterii de decizie
+
+- Toate criteriile de decizie pot fi scrise astfel:
+    $$\frac{w_N(\vec{r} | H_1)}{w_N(\vec{r} | H_0)} = \frac{w(r_1|H_1)}{w(r_1|H_0)}  \cdot
+    \frac{w(r_2|H_1)}{w(r_2|H_0)} ... \frac{w(r_N|H_1)}{w(r_N|H_0)} \grtlessH K$$
+
+- Valoarea lui $K$ se alege ca pentru 1 eșantion:
+
+    - criteriul ML: $K=1$
+    - criteriul MPE: $K=\frac{P(H_0)}{P(H_1)}$
+    - criteriul MR: $K=\frac{(C_{10}-C_{00})p(H_0)}{(C_{01}-C_{11})p(H_1)}$
+
+
+### Caz particular: AWGN
+
+- AWGN = "Additive White Gaussian Noise" = Zgomot alb, gaussian, aditiv
+
+- În ipoteza $H_1$: $w(r_i|H_1) = \frac{1}{\sigma \sqrt{2 \pi}} e^{-\frac{(r_i - s_1(t_i))^2}{2 \sigma^2}}$
+- În ipoteza $H_0$: $w(r_i|H_0) = \frac{1}{\sigma \sqrt{2 \pi}} e^{-\frac{(r_i - s_1(t_i))^2}{2 \sigma^2}}$
+
+- Raportul de plauzibilitate al vectorului $\vec{r}$
+    $$\frac{w_N(\vec{r} | H_1)}{w_N(\vec{r} | H_0)} = \frac{e^{-\frac{\sum (r_i - s_1(t_i))^2}{2 \sigma^2}}}{e^{-\frac{\sum (r_i - s_0(t_i))^2}{2 \sigma^2}}} = e^{\frac{\sum (r_i - s_0(t_i))^2 - \sum (r_i - s_1(t_i))^2}{2 \sigma^2}}$$
+
+
+### Criterii de decizie pentru AWGN
+
+- Raportul de plauzibilitate global se compară cu $K$:
+    $$\frac{w_N(\vec{r} | H_1)}{w_N(\vec{r} | H_0)} = e^{\frac{\sum (r_i - s_0(t_i))^2 - \sum (r_i - s_1(t_i))^2}{2 \sigma^2}} \grtlessH K$$
+
+- Se aplică logaritmul natural, obținându-se:
+    $$\sum (r_i - s_0(t_i))^2 \grtlessH \sum (r_i - s_1(t_i))^2  + 2 \sigma^2 \ln(K)$$
+
+### Interpretarea 1: distanța geometrică
+
+- Sumele reprezintă **distanța geometrică** la pătrat:
+    $$\sum (r_i - s_1(t_i))^2 = \|\vec{r} - \vec{s_1(t)}\|^2 = d(\vec{r}, s_1(t))^2$$
+    $$\sum (r_i - s_0(t_i))^2 = \|\vec{r} - \vec{s_0(t)}\|^2 = d(\vec{r}, s_0(t))^2$$
+
+    - distanța între vectorul observat $\vec{r}$ și
+    semnalele originale $s_1(t)$, respectiv $s_0(t)$
+
+    - vectori cu N eșantioane => distanța între vectori de dimensiune $N$
+
+- Totul se reduce la a compara distanțele
+
+### Interpretarea 1: distanța geometrică
+
+- Criteriul Maximum Likelihood:
+
+    - $K = 1$, $\ln(K) = 0$
+    - se alege **distanța minimă** între $\vec{r}$
+    și vectorii $s_1(t)$, respectiv $s_0(t)$)
+    - de unde și numele "receptor de distanță minimă"
+
+- Criteriul Minimum Probability of Error:
+
+    - $K = \frac{P(H_0)}{P(H_1)}$
+    - Apare un termen suplimentar, în favoarea ipotezei mai probabile
+
+- Criteriul Minimum Risk:
+
+    - $K=\frac{(C_{10}-C_{00})p(H_0)}{(C_{01}-C_{11})p(H_1)}$
+    - Termenul suplimentar depinde și de probabilități, și de costuri
+
+
+### Exercițiu
+
+Exercițiu:
+
+- Un semnal poate avea două valori, $0$ (ipoteza $H_0$) sau $6$ (ipoteza $H_1$).
+Semnalul este afectat de AWGN $\mathcal{N}(0, \sigma^2=1)$.
+Receptorul ia 5 eșantioane cu valorile $\left\{ 1.1, 4.4, 3.7, 4.1, 3.8 \right\}$.
+
+    a. Ce decizie se ia conform criteriului plauzibilității maxime?
+    b. Ce decizie se ia conform criteriului probabilității minime de eroare. dacă
+    $P(H_0) = 2/3$ și $P(H_1) = 1/3$?
+    c. Ce decizie se ia conform criteriului roscului minim. dacă
+    $P(H_0) = 2/3$ și $P(H_1) = 1/3$, iar $C_{00} = 0$, $C_{10} = 10$, $C_{01} = 20$, $C_{11} = 5$?
+
+### Alt exercițiu
+
+Alt exercițiu:
+
+- Fie detecția unui semnal $s(t) = 3 \sin(2 \pi f t)$ care poate fi prezent (ipoteza $H_1$) sau absent ($s_0(t) = 0$, ipoteza $H_0$).
+Semnalul este afectat de zgomot alb Gaussian $\mathcal{N}(0, \sigma^2=1)$.
+Receptorul ia două eșantioane.
+    a. Care sunt cele mai bune momente de eșantionare $t_1$ și $t_2$ pentru a maximiza performanțele detecției?
+    b. Receptorul ia două eșantioane $\left\{ 1.1, 4.4 \right\}$, la momentele de timp $t_1 = \frac{0.125}{f}$ și $t_2 = \frac{0.625}{f}$.
+    Care este decizia, conform criteriului plauzibilității maxime?â
+    c. Dacă se folosește criteriul probabilității minime de eroare, cu
+    $P(H_0) = 2/3$ și $P(H_1) = 1/3$?
+    d. Dacă se folosește criteriul riscului minim, cu
+    $P(H_0) = 2/3$ și $P(H_1) = 1/3$, iar $C_{00} = 0$, $C_{10} = 10$, $C_{01} = 20$, $C_{11} = 5$?
+    e. Dar dacă receptorul ia un al treilea eșantion la momentul $t_3 = \frac{0.5}{f}$. Se poate îmbunătăți detecția?
+
+
+### Interpretarea 2: produs scalar
+
+- Dacă se descompun parantezele:
+$$\sum (r_i - s_0(t_i))^2 \grtlessH \sum (r_i - s_1(t_i))^2  + 2 \sigma^2 \ln(K)$$
+
+- Se obține:
+
+$$\begin{split}
+\sum (r_i )^2 + \sum s_0(t_i)^2& - 2 \sum r_i s_0(t_i) \grtlessH \sum (r_i )^2 + \\
+& + \sum s_1(t_i)^2 - 2 \sum r_i s_1(t_i)  + 2 \sigma^2 \ln(K)
+\end{split}$$
+
+- Echivalent cu:
+$$\sum r_i s_1(t_i) - \frac{ \sum (s_1(t_i))^2}{2} \grtlessH \sum r_i s_0(t_i) - \frac{\sum (s_0(t_i))^2 }{2}  + \sigma^2 \ln(K)$$
+
+
+### Interpretarea 2: produs scalar
+
+- Algebră: **produsului scalar** al vectorilor $\vec{a}$ și $\vec{b}$:
+$$\langle a,b \rangle = \sum_i a_i b_i$$
+
+- $\sum r_i s_1(t_i) = \langle \vec{r}, \vec{s_1(t)} \rangle$ este produsul scalar al vectorului $\vec{r} = [r_1, r_2, ... r_N]$
+cu $\vec{s_1(t_i)} = [s_1(t_1), s_1(t_2), ... s_1(t_N)]$
+
+- $\sum r_i s_0(t_i) = \langle \vec{r}, \vec{s_0(t)} \rangle$ este produsul scalar al vectorului $\vec{r} = [r_1, r_2, ... r_N]$
+cu $\vec{s_0(t_i)} = [s_0(t_1), s_0(t_2), ... s_0(t_N)]$
+
+- $\sum (s_1(t_i))^2 = \sum s_1(t_i) \cdot s_1(t_i) = \langle \vec{s_1(t)}, \vec{s_1(t)} \rangle = E_1$ este **energia** vectorului $s_1(t)$
+
+- $\sum (s_0(t_i))^2 = \sum s_0(t_i) \cdot s_0(t_i) = \langle \vec{s_0(t)}, \vec{s_0(t)} \rangle = E_0$ este **energia** vectorului $s_0(t)$
+
+
+### Interpretarea 2: produs scalar
+
+- Decizia se poate rescris sub forma:
+$$\langle \vec{r}, \vec{s_1} \rangle - \frac{E_1}{2} \grtlessH \langle \vec{r},\vec{s_0} \rangle - \frac{E_0}{2} + \sigma^2 \ln(K)$$
+
+- Interpretare: **comparăm produsele scalare**
+
+    - se scad energiile semnalelor, pentru o comparație corectă
+    - există de asemenea termenul care depinde de criteriul ales
+
+### Interpretarea 2: produs scalar
+
+
+- Caz particular:
+    - Dacă cele două semnale au energii egale: $E_1 = \sum s_1(t_i)^2 = E_0 = \sum s_0(t_i)^2$
+
+    - Exemple:
+
+        - modulație BPSK: $s_1 = A \cos(2 \pi f t)$, $s_0 = -A \cos(2 \pi f t)$
+        - modulație 4-PSK: $s_{n=0,1,2,3} = A \cos(2 \pi f t + n \frac{\pi}{4})$
+
+    - Atunci formula se simplifică:
+    $$\langle \vec{r}, \vec{s_1} \rangle \grtlessH \langle \vec{r},\vec{s_0} \rangle + \sigma^2 \ln(K)$$
+
+
+### Interpretarea 2: produs scalar
+
+- În domeniul prelucrărilor de semnale, produsul scalar măsoară **similitudinea** a două semnale
+
+- Interpretare: verificăm dacă vectorul eșantioanelor $\vec{r}$ este **mai asemănător**
+cu $s_1(t)$ sau cu  $s_0(t)$
+
+    - Se alege cel mai similar cu $\vec{r}$
+    - Se scad și energiile semnalelor (necesar d.p.d.v. matematic)
+
+- **Produsul scalar** a doi vectori $\vec{a}$ și $\vec{b}$:
+    $$\langle a,b \rangle = \sum_i a_i b_i$$
+
+
+### Implementare cu circuite de corelare
+
+![Decizie între două semnale](img/CorrelatorMultiple.png){#id .class width=80%}
+
+*[sursa: Fundamentals of Statistical Signal Processing, Steven Kay]*
+
+### Exemplu: BPSK
+
+- Demodulare BPSK:
+
+![Decizie BPSK: implementare directă](img/BPSK_Decision_1.png)
+
+### Exemplu: BPSK
+
+- Demodulare BPSK:
+
+![Decizie BPSK: implementare mai eficientă](img/BPSK_Decision_2.png)
+
+### Exemplu: QPSK
+
+![Decizie QPSK: implementare directă](img/QPSK_Decision_1.png){#id .class height=80%}
+
+### Example: QPSK
+
+![Decizie QKSP: implementare mai eficientă](img/QPSK_Decision_2.png)
+
+### Filtru adaptat
+
+- Cum se calculează produsul scalar a două semnale $r[n]$ și $s[n]$ de lungime $N$?
+$$\langle \vec{r},\vec{s} \rangle = \sum r_i s(t_i)$$
+
+- Fie $h[n]$ semnalul $h[n]$ **oglindit**
+    - începe la momentul 0, durează până la momentul $N-1$, dar este oglindit
+$$h[n] = s[N-1-n]$$
+
+- Exemplu:
+    - dacă $s[n] = [\underuparrow{1}, 2, 3, 4, 5, 6]$
+    - atunci $h[n] = s[N-1-n] = [\underuparrow{6}, 5, 4, 3, 2, 1]$
+
+### Filtru adaptat
+
+- Convoluția lui $r[n]$ cu $h[n]$ este
+$$y[n] = \sum_k r[k] h[n-k] = \sum_k r[k] h[N-1-n+k]$$
+
+- Rezultatul convoluției, la finalul semnalului de intrare, $y[N-1]$ ($n=N-1$), este chiar produsul scalar:
+$$y[N-1] = \sum_k r[k] s[k]$$
+
+### Filtru adaptat
+
+- Pentru detecția unui semnal $s[n]$ se poate folosi un  **filtru a cărui răspuns la impuls =
+oglindirea lui $s[n]$**, luându-se eșantionul de la finalul semnalului de intrare
+    $$h[n] = s[N-1-n]$$
+    - se obține valoarea produsului scalar
+
+- **Filtru adaptat** = un filtru proiectat să aibă răspunsul la impuls egal cu oglindirea
+semnalului care se dorește a fi detectat (eng. "matched filter")
+
+    - filtrul este *adaptat* semnalului dorit
+
+
+### Detecția semnalelor cu filtre adaptate
+
+- Se folosește un filtru adaptat la semnalul $s_1(t_i)$
+
+- Se folosește un filtru adaptat la semnalul $s_0(t_i)$
+
+- Se eșantionează ieșirile la momentul final $n = N-1$
+    - se obțin valorile produselor scalare
+
+- Se folosește regula de decizie cu produse scalare
+
+
+### Detecția semnalelor cu filtre adaptate
+
+- Dacă $s_0(t) = 0$, avem nevoie doar de un singur filtru adaptat pentru $s_1(t)$,
+și se compară rezultatul cu un prag
+
+![Detecție folosind un filtru adaptat](img/MatchedFilter.png){#id .class width=60%}
+
+*[sursa: Fundamentals of Statistical Signal Processing, Steven Kay]*
+
+
+
+## II.4 Detecția unui semnal oarecare cu observare continuă
+
+### Observarea continuă a unui semnal oarecare
+
+- Observare continuă = fără eșantionare, se folosește **întreg semnalul continuu**
+    - similar cazului cu $N$ eșantioane, dar cu $N \to \infty$
+
+- Semnalele originale sunt $s_0(t)$ si $s_1(t)$
+
+- Semnalele sunt afectate de zgomot
+    - Presupunem **doar zgomot Gaussian**, pentru simplitate
+
+- Semnalul recepționat este $r(t)$
+
+### Spațiu Euclidean
+
+- Se extinde cazul precedent cu $N$ eșantioane la cazul unui semnal continuu, $N \to \infty$
+
+- Fiecare semnal $r(t)$, $s_1(t)$ și $s_0(t)$ reprezintă un punct într-un spațiu Euclidian infinit dimensional
+
+- **Distanța** între două semnale este:
+$$d(\vec{r},\vec{s}) = \sqrt{\int \left( r(t) - s(t) \right)^2 dt}$$
+
+- **Produsul scalar** între două semnale:
+$$\langle \vec{r},\vec{s} \rangle = \int r(t) s(t) dt$$
+
+- Similar cu cazul N dimensional, dar cu integrală în loc de sumă
+
+### Decizie în cazul AWGN: distanțe
+
+- În cazul AWGN este aceeași regula de decizie:
+$$d(\vec{r}, \vec{s_0})^2 \grtlessH d(\vec{r}, \vec{s_1})^2  + 2 \sigma^2 \ln(K)$$
+
+- Distanța = se calculează cu formula precedentă, cu integrală
+
+- Aceleași criterii de decizie:
+
+    - Criteriul Maximum Likelihood: $K = 1$, $\ln(K) = 0$
+        - se alege **distanța minimă**
+    - Criteriul Minimum Probability of Error: $K = \frac{P(H_0)}{P(H_1)}$
+    - Criteriul Minimum Risk: $K=\frac{(C_{10}-C_{00})p(H_0)}{(C_{01}-C_{11})p(H_1)}$
+
+### Decizie în cazul AWGN: produse scalare
+
+- În cazul AWGN este aceeași regulă de decizie:
+$$\langle \vec{r}, \vec{s_1} \rangle - \frac{E_1}{2} \grtlessH \langle \vec{r},\vec{s_0} \rangle - \frac{E_0}{2} + \sigma^2 \ln(K)$$
+
+- Produsul scalar = formula precedentă, cu integrală
+
+- Toate interpretările rămân identice
+    - se schimbă doar **tipul de semnal** cu care lucrăm
+
+
+### Filtru adaptat
+
+- Produsul scalar a două semnale se poate calcula cu un **filtru adaptat**
+
+- **Filtru adaptat** = filtru proiectat să aibă răspunsul la impuls egal cu **oglindirea**
+semnalului căutat
+    - dacă semnalul original $s(t)$ are lungimea T
+    - atunci $h(t) = s(T - t)$
+    - filtrul este analogic, răspunsul la impuls este continuu
+
+- Ieșirea unui filtru adaptat la momentul $t = T$ este egală
+cu produsul scalar al intrării $r(t)$ cu $s(t)$
+
+### Detecția semnalelor cu filtre adaptate
+
+- Se folosește un filtru adaptat la semnalul $s_1(t)$
+
+- Se folosește un alt filtru adaptat la semnalul $s_0(t)$
+
+- Se eșantionează ieșirile filtrelor la sfârșitul semnalelor, $t = T$
+    - se obțin valorile produselor scalare
+
+- Se utilizează regula de decizie cu produse scalare
+
+
+### Spații vectoriale Euclidiene
+
+- Recapitulare: Spații vectoriale Euclidiene
+
+- Spațiu vectorial
+    - suma a două elemente = rămâne în același spațiu
+    - multiplicarea cu o constantă = rămâne în același spațiu
+    - există operații aritmetice de bază: sumă, multiplicare cu o constantă
+    - Exemple
+        - 1D = o dreaptă
+        - 2D = un plan
+        - 3D = spațiu tridimensional
+        - N-D = ...
+        - $\infty$-D = ..
+
+### Spații vectoriale Euclidiene
+
+- Operația fundamentală: **produsul scalar**
+    - pentru semnale discrete
+        $$\langle \vec{x},\vec{y} \rangle = \sum_i x_i y_i$$
+    - pentru semnale continue
+        $$\langle \vec{x},\vec{y} \rangle = \int x(t) y(t)$$
+
+- Norma (lungimea) unui vector = radical(produsul scalar cu sine însuși)
+$$\|\vec{x}\| = \sqrt{ \langle \vec{x},\vec{x} \rangle }$$
+
+- Distanța între doi vectori = norma diferenței dintre ei
+$$d(\vec{x}, \vec{y}) = \|\vec{x} - \vec{y}\|$$
+
+### Spații vectoriale Euclidiene
+
+- Energia unui semnal = norma la pătrat
+$$E_x = \|\vec{x}\|^2 = \langle \vec{x},\vec{x} \rangle$$
+
+- Unghiul dintre doi vectori
+$$cos(\alpha) = \frac{\langle x,y \rangle}{||x|| \cdot ||y||}$$
+    - are valoare între -1 și 1
+    - dacă $\langle x,y \rangle = 0$, vectorii sunt **ortogonali** (perpendiculari)
+
+### Spații vectoriale Euclidiene
+
+- Bonus: transformata Fourier = produs scalar cu $e^{j \omega t}$
+$$\mathcal{F} \{ x(t)\} = \langle x(t), e^{j \omega t}\rangle = \int x(t) e^{-j \omega t}$$
+    - pentru semnale complexe, al doilea termen se conjugă, de aceea este $-j$ în loc de $j$
+        $$\langle \vec{x},\vec{y} \rangle = \sum_i x_i y_i^*$$
+        $$\langle \vec{x},\vec{y} \rangle = \int x(t) y(t)^*$$
+
+- Identic pentru semnale discrete
+
+### Spații vectoriale Euclidiene
+
+- Concluzie: definirea algoritmilor în mod generic,
+pe bază de produse scalare / distanțe / norme, este extrem de folositoare!
+    - se aplică automat tuturor spațiilor vectoriale
+    - un singur algoritm, utilizări pentru multiple tipuri de semnale
+
+
+## II.5 Detecția semnalelor cu distribuții necunoscute
+
+### Distribuții necunoscute
+
+- Până acum, se cunoștea dpdv. matematic statistica
+tuturor datelor:
+
+  - Se cunoșteau semnalele:
+
+    - $s_0(t) = ...$
+    - $s_1(t) = ...$
+
+  - Se cunoștea zgomotul
+
+    - gaussian, uniform, etc.
+
+  - Se cunoșteau distribuțiile condiționate:
+
+    - $w(r|H_0) = ...$
+    - $w(r|H_1) = ...$
+
+- În aplicații reale, lucrurile pot fi mai complicate
+
+### Exemplu
+
+- Dacă semnalele $s_0(t)$ și $s_1(t)$
+nu există / nu se cunosc?
+
+- Exemplu: recunoașterea feței unei persoane
+
+    - Identificarea persoanei A sau B bazată pe o imagine a feței
+    - Avem:
+        - 100 imagini ale persoanei A, în condiții diverse
+        - 100 imagini ale persoanei B, în condiții diverse
+
+### Eșantioane vs distribuții
+
+- Să comparăm recunoașterea fețelor cu detecția semnalelor
+
+- Aspecte comune:
+
+    - două ipoteze $H_0$ (persoana A) și $H_1$ (persoana B)
+    - un vector de eșantioane $\vec{r}$ = imaginea pe baza căreia se face decizia
+    - se pot lua două decizii
+    - 4 scenarii: rejecție corectă, alarmă falsă, pierdere, detecție corectă
+
+- Ce diferă? Nu există formule matematice
+
+    - nu există semnalele "originale" $s_0(t) = ...$ și $s_1(t)...$
+    - (fețele persoanelor A și B nu pot fi exprimate matematic ca semnale)
+    - în schimb, avem multe exemple din fiecare distribuție
+
+        - 100 imagini ale lui A = exemple ale $\vec{r}$ în ipoteza $H_0$
+        - 100 imagini ale lui B = exemple ale $\vec{r}$ în ipoteza $H_1$
+
+### Terminologie
+
+- Terminologia folosită în domeniul **învățării automate** (*machine learning*):
+
+    - Acest tip de problemă = problemă de **clasificare** a semnalelor
+        - se dă un vector de date, găsiți-i clasa
+
+    - **Clase de semnal** = categoriile posibile ale semnalelor (ipotezele $H_i$, persoanele A/B etc)
+
+    - **Set de antrenare** = un set de semnale cunoscute inițial
+
+        - de ex. 100 de imagini ale fiecărei persoane
+        - setul de date va fi folosit în procesul de decizie
+
+
+### Eșantioane și distribuții
+
+- Setul de antrenare conține informațiile
+pe care le-ar conține distribuțiile condiționate $w(r|H_0)$ și $w(r|H_1)$
+
+    - $w(r|H_0)$ exprimă cum arată valorile lui $r$ în ipoteza $H_0$
+    - $w(r|H_1)$ exprimă cum arată valorile lui $r$ în ipoteza $H_1$
+    - setul de antrenare exprimă același lucru, nu prin formule, dar prin multe exemple
+
+- Cum se face clasificarea în aceste condiții?
+
+### Algoritmul k-NN
+
+Algoritmul *k-Nearest Neighbours* (k-NN)
+
+- Intrare:
+
+    - set de antrenare cu vectorii $\vec{x}_1 ... \vec{x}_N$,
+    din $L$ clase posibile de semnal $C_1$...$C_L$
+    - clasele vectorilor de antrenare sunt cunoscute
+    - vector de test $\vec{r}$ care trebuie clasificat
+    - parametrul $k$
+
+1. Se calculează distanța între $\vec{r}$ și fiecare vector de antrenare $\vec{x}_i$
+    - se poate utiliza distanța Euclidiană, aceeași utilizată
+    pentru detecția semnalelor din secțiunile precedente
+
+2. Se aleg cei mai apropiați $k$ vectori de $\vec{r}$ (cei *$k$ "nearest neighbours*")
+
+3. Se determină clasa lui $\vec{r}$ = clasa majoritară între cei $k$ cei mai apropiați vecini
+
+- Ieșire: clasa vectorului $\vec{r}$
+
+
+### Algoritmul k-NN
+
+![Algoritmul k-NN ilustrat [1]](img/kNN.png){#id .class width=58%}
+
+\maketiny{
+[1] sursa: "KNN Classification using Scikit-learn", Avinash Navlani, https://www.datacamp.com/community/tutorials/k-nearest-neighbor-classification-scikit-learn
+}
+
+
+### Algoritmul k-NN și decizia ML
+
+- Dacă setul de antrenare este foarte mare, algoritmul k-NN devine simular cu decizia pe baza criteriului ML
+
+- Numărul de vectori situați într-o vecinătate a unui punct $r$ este proporțional cu $w(r|H_i)$
+
+- Mai mulți vecini din clasa A decât din clasa B $\Leftrightarrow$ $w(r|H_A)$ > $w(r|H_B)$
+
+### Algoritmul k-NN și decizia ML
+
+- Exemplu: frunze și copaci :) de povestit
+
+### Exercițiu
+
+Exercițiu
+
+1. Fie următorul set de antrenare, compus din
+5 vectori din clasa A și alți 5 vectori din clasa B:
+    - Clasa A:
+    $$
+\vec{v}_1 = \begin{bmatrix}  1 \\ -2 \end{bmatrix}\;
+\vec{v}_2 = \begin{bmatrix} -1 \\  1 \end{bmatrix}\;
+\vec{v}_3 = \begin{bmatrix} -4 \\  2 \end{bmatrix}\;
+\vec{v}_4 = \begin{bmatrix}  2 \\  1 \end{bmatrix}\;
+\vec{v}_5 = \begin{bmatrix} -2 \\ -2 \end{bmatrix}$$
+
+    - Clasa B:
+    $$
+\vec{v}_6    = \begin{bmatrix}  7 \\ 0 \end{bmatrix}\;
+\vec{v}_7    = \begin{bmatrix}  2 \\ 3 \end{bmatrix}\;
+\vec{v}_8    = \begin{bmatrix}  3 \\ 2 \end{bmatrix}\;
+\vec{v}_9    = \begin{bmatrix} -3 \\ 8 \end{bmatrix}\;
+\vec{v}_{10} = \begin{bmatrix} -2 \\ 5 \end{bmatrix}$$
+
+    Determinați clasa vectorului $\vec{x} = \begin{bmatrix} -3 \\ 6 \end{bmatrix}$
+utilizând algoritmul k-NN, cu $k=1$, $k=3$, $k=5$, $k=7$ and $k=9$
+
+### Discuție
+
+- k-NN este un algoritm de învățare supervizată
+    - se cunosc clasele vectorilor din setul de antrenare
+
+\smallskip
+
+- Efectul lui $k$: netezirea frontierei de decizie:
+    - $k$ mic: frontieră foarte cotită / "șifonată" / cu multe coturi
+    - $k$ mare: frontieră mai netedă
+
+\smallskip
+
+- Cum se găsește o valoare optimă pentru  $k$?
+
+### *Cross-validation*
+
+- Cum se găsește o valoare optimă pentru  $k$?
+    - prin încercări ("băbește")
+
+\smallskip
+
+- "**Cross-validation**" = folosirea unui mic set de test pentru a verifica care valoare a parametrului e mai bună
+
+    - acest set de date se numește set de "**cross-validare**"
+    - se impune $k=1$, se testează cu setul de "*cross-validare*" câți vectori sunt clasificați corect
+    - se repetă pentru $k=2, 3, ... max$
+    - se alege valoarea lui $k$ cu care s-au obținut rezultatele cele mai bune
+
+### Evaluarea algoritmilor
+
+- Cum se evaluează performanța algoritmului k-NN?
+    - Se folosește un set de date de testare, și se calculează procentajul vectorilor clasificați corect
+
+\smallskip
+
+- Setul de date pentru evaluarea finală trebuie să fie diferit de setul de "*cross-validare*"
+    - pentru evaluarea finală se folosesc date pe care algoritmul nu le-a mai utilizat niciodată
+
+\smallskip
+
+- Cum se împarte setul de date disponibile?
+
+
+### Seturi de date
+
+- Presupunem că avem în total 200 imagini tip fețe, 100 imagini ale persoanei A și 100 ale lui B
+
+\smallskip
+
+- Setul de date total se împarte în:
+	\smallskip
+    - Set de antrenare
+        - vectorii care vor fi utilizați de algoritm
+        - cel mai numeros, aprox. 60% din datele totale
+        - de ex. 60 imagini ale persoanei A și 60 ale lui B
+    \smallskip
+    - Set de *cross-validare*
+        - utilizat pentru a testa algoritmul în vederea alegerii parametrilor optimi ($k$)
+        - mai mic, aprox. 20% din date (de ex. 20 imagini ale lui of A și 20 ale lui B)
+    \smallskip
+    - Set de testare
+        - utilizat pentru evaluarea finală a algoritmului, cu valorile parametrilor fixate
+        - mai mic, aprox. 20% din date (de ex. 20 imagini ale lui of A și 20 ale lui B)
+
+### Algoritmul *k-Means*
+
+- k-Means: un algoritm pentru ***clusterizarea*** datelor
+    - identificarea grupurilor de date apropiate între ele
+
+\smallskip
+
+- Un exemplu de algoritm de învățare nesupervizată
+    - "învățare nesupervizată" = nu se cunosc clasele semnalelor din setul de antrenare
+
+### Algoritmul *k-Means*
+
+Algoritmul *k-Means*
+
+- Intrare:
+    - set de antrenare cu vectorii $\vec{x}_1 ... \vec{x}_N$
+    - numărul de clase C
+
+- Inițializare: centroizii C iau valori aleatoare
+	$$\vec{c}_i \leftarrow \textrm{ valori aleatoare }$$
+- Repetă
+  1. Clasificare: se clasifică fiecare vector $\vec{x}$ pe baza celui mai apropiat centroid:
+	    $$class{x} = \arg\min_i d(\vec{x}, \vec{c}_i), \forall \vec{x}$$
+  2. Actualizare: se actualizează centroizii $\vec{c}_i$ = media vectorilor $\vec{x}$ din clasa $i$
+	    $$\vec{c}_i \leftarrow \textrm{ media vectorilor } \vec{x}, \forall \vec{x} \textrm{ din clasa } i$$
+
+- Ieșire: centroizii $\vec{c}_i$, clasele tuturor vectorilor  de intrare $\vec{x}_n$
+
+
+### Algoritmul *k-Means*
+
+Algoritmul *k-Means* explicat video:
+
+- Urmăriți video-ul următor, de la 6:28 to 7:08
+
+    [https: //www.youtube.com/watch?v=4b5d3muPQmA](https://www.youtube.com/watch?v=4b5d3muPQmA)
+
+\smallskip
+
+- Urmăriți video-ul următor, de la 3:05 la final
+
+    [https: //www.youtube.com/watch?v=IuRb3y8qKX4](https://www.youtube.com/watch?v=IuRb3y8qKX4)
+
+
+### Algoritmul *k-Means*
+
+- Algoritmul *k-Means* poate să nu conveargă spre niște grupuri adecvate de date
+    - rezultatele depind de inițializarea aleatoare a centroizilor
+    - se rulează de mai multe ori, se alege cel mai bun rezultat
+    - există metode de inițializare optimizate (*k-Means++*)
+
+
+### Exercițiu
+
+Exercițiu
+
+1. Fie datele următoare:
+    $$\left\lbrace \vec{v_n} \right\rbrace =
+[ 1.3, -0.1, 0.5, 4.7, 5.1, 5.8, 0.4, 4.8, -0.7, 4.9 ] $$
+
+    Utilizați algoritmul k-Means pentru a găsi doi centroizi $\vec{c}_1$ și $\vec{c}_2$,
+pornind de la valorile aleatoare $\vec{c}_1 = -0.5$ și $\vec{c}_2 = 0.9$.
+Realizați 5 iterații ale algoritmului.
+
