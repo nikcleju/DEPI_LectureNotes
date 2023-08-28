@@ -19,6 +19,8 @@ book:
     - part: "Decizie"
       chapters:
       - 02_01_Detectia1Esantion.qmd
+      - 02_02_DetectiaMaiMulteEsantioane.qmd
+      - 02_03_AlgoritmiPractici.qmd
     - part: "Applications"
       chapters:
       - 01_OutlierDetection.ipynb

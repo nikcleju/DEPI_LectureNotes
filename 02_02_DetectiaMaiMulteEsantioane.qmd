@@ -1,143 +1,130 @@
+# Decizie cu mai multe eșantioane
+::: {.hidden}
+$$
+\newcommand{\grtlessH}{\underset{{H_0}}{\overset{H_{1}}{\gtrless}}}
+\renewcommand{\vec}[1]{\mathbf{#1}}
+$$
+:::
 
-## II.3 Detecția semnalelor cu mai multe eșantioane
 
-### Eșantioane multiple dintr-un semnal
+## Definiția problemei
 
-- Contextul rămâne același:
+Se transmite un semnal necunoscut $s(t)$.
+Există **două ipoteze**:
 
-    - Se transmite un semnal $s(t)$
-    - Există **două ipoteze**:
+- $H_0$: semnalul original este $s(t) = s_0(t)$
+- $H_1$: semnalul original este $s(t) = s_1(t)$
 
-        - $H_0$: semnalul original este $s(t) = s_0(t)$
-        - $H_1$: semnalul original este $s(t) = s_1(t)$
+Receptorul poate lua **două decizii**:
 
-    - Receptorul poate lua **două decizii**:
+- $D_0$: se decide că semnalul a fost $s(t) = s_0(t)$
+- $D_1$: se decide că semnalul a fost $s(t) = s_1(t)$
 
-        - $D_0$: se decide că semnalul a fost $s(t) = s_0(t)$
-        - $D_1$: se decide că semnalul a fost $s(t) = s_1(t)$
+În total, vor fi 4 scenarii posibile.
 
-    - Există 4 scenarii posibile
+Semnalul e afectat de zgomot (necunoscut),
+așadar se recepționează un semnal afectat de zgomot:
 
-### Eșantioane multiple dintr-un semnal
+$r(t) = s(t) + n(t)$
 
-- Contextul rămâne același:
+Din $r(t)$ se iau **N eșantioane**, nu doar 1.
+Fiecare eșantion $r_i = r(t_i)$ se ia la momentul $t_i$.
+Eșantioanele formează **vectorul de eșantioanelor**
 
-  - Semnalele sunt afectate de zgomot (necunoscut)
-  - Se recepționează un semnal $r(t) = s(t) + n(t)$
+$$\vec{r} = [r_1, r_2, ... r_N]$$
 
-- Se iau N eșantioane din $r(t)$, nu doar 1
+Fiecare eșantion $r_i$ este o **variabilă aleatoare**, obținută
+ca suma dintre o constantă $s(t_i)$ și un eșantion  de zgomot $n(t_i)$:
 
-  - Fiecare eșantion $r_i = r(t_i)$ se ia la momentul $t_i$
+$r(t_i) = s(t_i) + n(t_i)$ = constantă + o v.a.
 
-- Eșantioanele formează **vectorul de eșantioanelor**
-  $$\vec{r} = [r_1, r_2, ... r_N]$$
-
-### Eșantioane multiple dintr-un semnal
-
-- Fiecare eșantion $r_i$ este o **variabilă aleatoare**
-    - $r(t_i) = s(t_i) + n(t_i)$ = constantă + o v.a.
-
-- Vectorul $\vec{r}$ reprezintă un set de $N$ v.a. dintr-un proces aleator
-
-- Considerând întreg vectorul $\vec{r}$,
-valorile vectorului $\vec{r}$ sunt descrise de **distribuții de ordin $N$**
+Întreg vectorul $\vec{r}$ reprezintă un set de $N$ v.a. dintr-un proces aleator,
+iar valorile vectoruluisunt descrise de **distribuții de ordin $N$**:
 
 - În ipoteza $H_0$:
-    $$w_N(\vec{r} | H_0) = w_N(r_1, r_2, ...r_N | H_0)$$
+$$w_N(\vec{r} | H_0) = w_N(r_1, r_2, ...r_N | H_0)$$
 
 - În ipoteza $H_1$:
     $$w_N(\vec{r} | H_1) = w_N(r_1, r_2, ...r_N | H_1)$$
 
 
-### Plauzibilitatea vectorului de eșantioane
+## Criterii de decizie
 
-- Se aplică **aceleași criterii** bazate pe raportul de plauzibilitate în cazul unui singur eșantion
-    $$\frac{w_N(\vec{r} | H_1)}{w_N(\vec{r} | H_0)} \grtlessH K$$
+Se vor aplica exact aceleași criterii de decizie, bazate pe raportul de plauzibilitate
+similar ca în cazul unui singur eșantion, cu diferența că acum
+$\vec{r}$ este un vector:
 
-- Observații
+$$\frac{w_N(\vec{r} | H_1)}{w_N(\vec{r} | H_0)} \grtlessH K$$
 
-    - $\vec{r}$ este un vector; prin el se consideră plauzibilitatea tuturor eșantioanelor
-    - $w_N(\vec{r} | H_0)$ = plauzibilitatea vectorului $\vec{r}$ în ipoteza $H_0$
-    - $w_N(\vec{r} | H_1)$ = plauzibilitatea vectorului $\vec{r}$ în ipoteza $H_1$
-    - valoarea lui $K$ este dată de criteriul de decizie utilizat
+Observații:
 
-- Interpretare: se alege ipoteza cea mai plauzibilă de a fi generat datele observate
+- $\vec{r}$ este un vector; prin el se consideră plauzibilitatea tuturor eșantioanelor
+- $w_N(\vec{r} | H_0)$ = plauzibilitatea vectorului $\vec{r}$ în ipoteza $H_0$
+- $w_N(\vec{r} | H_1)$ = plauzibilitatea vectorului $\vec{r}$ în ipoteza $H_1$
+- valoarea lui $K$ este dată de criteriul de decizie utilizat
 
-    - identic ca la 1 eșantion, doar că acum datele = mai multe eșantioane
+Dacă zgomotul este alb (cel mai întâlnit în practică),
+atunci eșantioanele $r_i$ sunt independente,
+și distribuția vectorului $\vec{r}$ poate fi descompusă ca un produs
 
-### Descompunere
+$$w_N(\vec{r} | H_j) = w(r_1|H_j) \cdot w(r_2|H_j) \cdot ... \cdot w(r_N|H_j)$$
 
-- Presupunând că zgomotul este alb, eșantioanele $r_i$ sunt independente
+De exemplu, plauzibilitatea obținerii vectorului $[5.1, 4.7, 4.9]$ = plauzibilitatea obținerii lui $5.1$ $\times$
+plauzibilitatea obținerii lui $4.7$ $\times$ plauzibilitatea obținerii lui $4.9$
 
-- În acest caz, distribuția totală $w_N(\vec{r} | H_j)$ se poate descompune ca un produs
+Prin urmare, criteriile bazate pe raportul de plauzibilitate devin
+$$\frac{w_N(\vec{r} | H_1)}{w_N(\vec{r} | H_0)} = \frac{w(r_1|H_1)}{w(r_1|H_0)}  \cdot
+\frac{w(r_2|H_1)}{w(r_2|H_0)} ... \frac{w(r_N|H_1)}{w(r_N|H_0)} \grtlessH K$$
 
-    $$w_N(\vec{r} | H_j) = w(r_1|H_j) \cdot w(r_2|H_j) \cdot ... \cdot w(r_N|H_j)$$
-
-    - de ex. plauzibilitatea obținerii vectorului $[5.1, 4.7, 4.9]$ = plauzibilitatea obținerii lui $5.1$ $\times$
-    plauzibilitatea obținerii lui $4.7$ $\times$ plauzibilitatea obținerii lui $4.9$
-
-- Funcțiile $w(r_i|H_i)$ sunt distribuțiile condiționate ale fiecărui eșantion
-
-    - de care am mai văzut deja
-
-### Descompunere
-
-- Prin urmare, criteriile bazate pe raportul de plauzibilitate devin
-    $$\frac{w_N(\vec{r} | H_1)}{w_N(\vec{r} | H_0)} = \frac{w(r_1|H_1)}{w(r_1|H_0)}  \cdot
-    \frac{w(r_2|H_1)}{w(r_2|H_0)} ... \frac{w(r_N|H_1)}{w(r_N|H_0)} \grtlessH K$$
-
-- Raportul de plauzibilitate al unui vector de eșantioane = produsul rapoartelor plauzibilitate ale fiecărui eșantion
-
-- **Se înmulțesc** rapoartele de plauzibilitate
+Așadar, raportul de plauzibilitate al unui vector de eșantioane
+se obține înmulțind rapoartele de plauzibilitate
 ale fiecărui eșantion în parte,
-și se aplică criteriile asupra rezultatului final
+și se aplică criteriile de decizie obișnuit asupra asupra rezultatului final.
 
-### Criterii de decizie
+Toate criteriile de decizie pot fi scrise astfel:
+$$\frac{w_N(\vec{r} | H_1)}{w_N(\vec{r} | H_0)} = \frac{w(r_1|H_1)}{w(r_1|H_0)}  \cdot
+\frac{w(r_2|H_1)}{w(r_2|H_0)} ... \frac{w(r_N|H_1)}{w(r_N|H_0)} \grtlessH K$$
 
-- Toate criteriile de decizie pot fi scrise astfel:
-    $$\frac{w_N(\vec{r} | H_1)}{w_N(\vec{r} | H_0)} = \frac{w(r_1|H_1)}{w(r_1|H_0)}  \cdot
-    \frac{w(r_2|H_1)}{w(r_2|H_0)} ... \frac{w(r_N|H_1)}{w(r_N|H_0)} \grtlessH K$$
+Valoarea lui $K$ se alege în funcție de criteriul anume care se dorește
+a fi folosit, la fel ca în cazul unui singur eșantion:
 
-- Valoarea lui $K$ se alege ca pentru 1 eșantion:
+- criteriul ML: $K=1$
+- criteriul MPE: $K=\frac{P(H_0)}{P(H_1)}$
+- criteriul MR: $K=\frac{(C_{10}-C_{00})p(H_0)}{(C_{01}-C_{11})p(H_1)}$
 
-    - criteriul ML: $K=1$
-    - criteriul MPE: $K=\frac{P(H_0)}{P(H_1)}$
-    - criteriul MR: $K=\frac{(C_{10}-C_{00})p(H_0)}{(C_{01}-C_{11})p(H_1)}$
+## Caz particular: zgomot AWGN
 
+În cazul zgomotul gaussian tip AWGN ("Additive White Gaussian Noise", zgomot alb, gaussian, aditiv),
+expresiile se simplifică semnificativ.
 
-### Caz particular: AWGN
+Pentru ipoteza $H_1$, avem:
+$$w(r_i|H_1) = \frac{1}{\sigma \sqrt{2 \pi}} e^{-\frac{(r_i - s_1(t_i))^2}{2 \sigma^2}}$$
 
-- AWGN = "Additive White Gaussian Noise" = Zgomot alb, gaussian, aditiv
+Pentru ipoteza $H_0$:
+$$w(r_i|H_0) = \frac{1}{\sigma \sqrt{2 \pi}} e^{-\frac{(r_i - s_1(t_i))^2}{2 \sigma^2}}$$
 
-- În ipoteza $H_1$: $w(r_i|H_1) = \frac{1}{\sigma \sqrt{2 \pi}} e^{-\frac{(r_i - s_1(t_i))^2}{2 \sigma^2}}$
-- În ipoteza $H_0$: $w(r_i|H_0) = \frac{1}{\sigma \sqrt{2 \pi}} e^{-\frac{(r_i - s_1(t_i))^2}{2 \sigma^2}}$
+Raportul de plauzibilitate al vectorului $\vec{r}$ va fi:
+$$\frac{w_N(\vec{r} | H_1)}{w_N(\vec{r} | H_0)} = \frac{e^{-\frac{\sum (r_i - s_1(t_i))^2}{2 \sigma^2}}}{e^{-\frac{\sum (r_i - s_0(t_i))^2}{2 \sigma^2}}} = e^{\frac{\sum (r_i - s_0(t_i))^2 - \sum (r_i - s_1(t_i))^2}{2 \sigma^2}}$$
+și se compară, așa cum am văzut, cu $K$:
+$$\frac{w_N(\vec{r} | H_1)}{w_N(\vec{r} | H_0)} = e^{\frac{\sum (r_i - s_0(t_i))^2 - \sum (r_i - s_1(t_i))^2}{2 \sigma^2}} \grtlessH K$$
 
-- Raportul de plauzibilitate al vectorului $\vec{r}$
-    $$\frac{w_N(\vec{r} | H_1)}{w_N(\vec{r} | H_0)} = \frac{e^{-\frac{\sum (r_i - s_1(t_i))^2}{2 \sigma^2}}}{e^{-\frac{\sum (r_i - s_0(t_i))^2}{2 \sigma^2}}} = e^{\frac{\sum (r_i - s_0(t_i))^2 - \sum (r_i - s_1(t_i))^2}{2 \sigma^2}}$$
-
-
-### Criterii de decizie pentru AWGN
-
-- Raportul de plauzibilitate global se compară cu $K$:
-    $$\frac{w_N(\vec{r} | H_1)}{w_N(\vec{r} | H_0)} = e^{\frac{\sum (r_i - s_0(t_i))^2 - \sum (r_i - s_1(t_i))^2}{2 \sigma^2}} \grtlessH K$$
-
-- Se aplică logaritmul natural, obținându-se:
-    $$\sum (r_i - s_0(t_i))^2 \grtlessH \sum (r_i - s_1(t_i))^2  + 2 \sigma^2 \ln(K)$$
+Aplicând logaritmul natural, obținem:
+$$\sum (r_i - s_0(t_i))^2 \grtlessH \sum (r_i - s_1(t_i))^2  + 2 \sigma^2 \ln(K)$$
 
 ### Interpretarea 1: distanța geometrică
 
-- Sumele reprezintă **distanța geometrică** la pătrat:
-    $$\sum (r_i - s_1(t_i))^2 = \|\vec{r} - \vec{s_1(t)}\|^2 = d(\vec{r}, s_1(t))^2$$
-    $$\sum (r_i - s_0(t_i))^2 = \|\vec{r} - \vec{s_0(t)}\|^2 = d(\vec{r}, s_0(t))^2$$
+Cele două sume reprezintă **distanța geometrică** la pătrat
+dintre vectorul observat $\vec{r}$ și
+semnalele originale $s_1(t)$, respectiv $s_0(t)$
 
-    - distanța între vectorul observat $\vec{r}$ și
-    semnalele originale $s_1(t)$, respectiv $s_0(t)$
+$$\sum (r_i - s_1(t_i))^2 = \|\vec{r} - \vec{s_1(t)}\|^2 = d(\vec{r}, s_1(t))^2$$
+$$\sum (r_i - s_0(t_i))^2 = \|\vec{r} - \vec{s_0(t)}\|^2 = d(\vec{r}, s_0(t))^2$$
 
-    - vectori cu N eșantioane => distanța între vectori de dimensiune $N$
+Întrucât avem de-a face cu vectori de N eșantioane,
+aplicăm relația de distanță Euclideanp între vectori de dimensiune $N$.
 
-- Totul se reduce la a compara distanțele
-
-### Interpretarea 1: distanța geometrică
+Pentru zgomot gaussian, toate criteriile de decizie se reduc
+așadar la a compara distanțele (la pătrat):
 
 - Criteriul Maximum Likelihood:
 
@@ -157,57 +144,59 @@ ale fiecărui eșantion în parte,
     - Termenul suplimentar depinde și de probabilități, și de costuri
 
 
-### Exercițiu
+::: {.callout-note icon=false}
+#### Exercițiu
 
-Exercițiu:
-
-- Un semnal poate avea două valori, $0$ (ipoteza $H_0$) sau $6$ (ipoteza $H_1$).
+Un semnal poate avea două valori, $0$ (ipoteza $H_0$) sau $6$ (ipoteza $H_1$).
 Semnalul este afectat de AWGN $\mathcal{N}(0, \sigma^2=1)$.
 Receptorul ia 5 eșantioane cu valorile $\left\{ 1.1, 4.4, 3.7, 4.1, 3.8 \right\}$.
 
-    a. Ce decizie se ia conform criteriului plauzibilității maxime?
-    b. Ce decizie se ia conform criteriului probabilității minime de eroare. dacă
-    $P(H_0) = 2/3$ și $P(H_1) = 1/3$?
-    c. Ce decizie se ia conform criteriului roscului minim. dacă
-    $P(H_0) = 2/3$ și $P(H_1) = 1/3$, iar $C_{00} = 0$, $C_{10} = 10$, $C_{01} = 20$, $C_{11} = 5$?
+a. Ce decizie se ia conform criteriului plauzibilității maxime?
+b. Ce decizie se ia conform criteriului probabilității minime de eroare. dacă
+$P(H_0) = 2/3$ și $P(H_1) = 1/3$?
+c. Ce decizie se ia conform criteriului roscului minim. dacă
+$P(H_0) = 2/3$ și $P(H_1) = 1/3$, iar $C_{00} = 0$, $C_{10} = 10$, $C_{01} = 20$, $C_{11} = 5$?
+:::
 
+::: {.callout-note icon=false}
 ### Alt exercițiu
 
-Alt exercițiu:
+Fie detecția unui semnal $s(t) = 3 \sin(2 \pi f t)$ care poate fi prezent (ipoteza $H_1$) sau absent ($s_0(t) = 0$, ipoteza $H_0$).
 
-- Fie detecția unui semnal $s(t) = 3 \sin(2 \pi f t)$ care poate fi prezent (ipoteza $H_1$) sau absent ($s_0(t) = 0$, ipoteza $H_0$).
 Semnalul este afectat de zgomot alb Gaussian $\mathcal{N}(0, \sigma^2=1)$.
-Receptorul ia două eșantioane.
-    a. Care sunt cele mai bune momente de eșantionare $t_1$ și $t_2$ pentru a maximiza performanțele detecției?
-    b. Receptorul ia două eșantioane $\left\{ 1.1, 4.4 \right\}$, la momentele de timp $t_1 = \frac{0.125}{f}$ și $t_2 = \frac{0.625}{f}$.
-    Care este decizia, conform criteriului plauzibilității maxime?â
-    c. Dacă se folosește criteriul probabilității minime de eroare, cu
-    $P(H_0) = 2/3$ și $P(H_1) = 1/3$?
-    d. Dacă se folosește criteriul riscului minim, cu
-    $P(H_0) = 2/3$ și $P(H_1) = 1/3$, iar $C_{00} = 0$, $C_{10} = 10$, $C_{01} = 20$, $C_{11} = 5$?
-    e. Dar dacă receptorul ia un al treilea eșantion la momentul $t_3 = \frac{0.5}{f}$. Se poate îmbunătăți detecția?
 
+Receptorul ia două eșantioane.
+
+a. Care sunt cele mai bune momente de eșantionare $t_1$ și $t_2$ pentru a maximiza performanțele detecției?
+b. Receptorul ia două eșantioane $\left\{ 1.1, 4.4 \right\}$, la momentele de timp $t_1 = \frac{0.125}{f}$ și $t_2 = \frac{0.625}{f}$.
+Care este decizia, conform criteriului plauzibilității maxime?â
+c. Dacă se folosește criteriul probabilității minime de eroare, cu
+$P(H_0) = 2/3$ și $P(H_1) = 1/3$?
+d. Dacă se folosește criteriul riscului minim, cu
+$P(H_0) = 2/3$ și $P(H_1) = 1/3$, iar $C_{00} = 0$, $C_{10} = 10$, $C_{01} = 20$, $C_{11} = 5$?
+e. Dar dacă receptorul ia un al treilea eșantion la momentul $t_3 = \frac{0.5}{f}$. Se poate îmbunătăți detecția?
+
+:::
 
 ### Interpretarea 2: produs scalar
 
-- Dacă se descompun parantezele:
-$$\sum (r_i - s_0(t_i))^2 \grtlessH \sum (r_i - s_1(t_i))^2  + 2 \sigma^2 \ln(K)$$
+Dacă se descompun în continuare parantezele în relația:
+$$\sum (r_i - s_0(t_i))^2 \grtlessH \sum (r_i - s_1(t_i))^2  + 2 \sigma^2 \ln(K),$$
 
-- Se obține:
+obținem:
 
 $$\begin{split}
 \sum (r_i )^2 + \sum s_0(t_i)^2& - 2 \sum r_i s_0(t_i) \grtlessH \sum (r_i )^2 + \\
 & + \sum s_1(t_i)^2 - 2 \sum r_i s_1(t_i)  + 2 \sigma^2 \ln(K)
 \end{split}$$
 
-- Echivalent cu:
+care este echivalent cu:
 $$\sum r_i s_1(t_i) - \frac{ \sum (s_1(t_i))^2}{2} \grtlessH \sum r_i s_0(t_i) - \frac{\sum (s_0(t_i))^2 }{2}  + \sigma^2 \ln(K)$$
 
-
-### Interpretarea 2: produs scalar
-
-- Algebră: **produsului scalar** al vectorilor $\vec{a}$ și $\vec{b}$:
+**Produsul scalar** al vectorilor $\vec{a}$ și $\vec{b}$ se definește astfel:
 $$\langle a,b \rangle = \sum_i a_i b_i$$
+
+În relația noastră, avem:
 
 - $\sum r_i s_1(t_i) = \langle \vec{r}, \vec{s_1(t)} \rangle$ este produsul scalar al vectorului $\vec{r} = [r_1, r_2, ... r_N]$
 cu $\vec{s_1(t_i)} = [s_1(t_1), s_1(t_2), ... s_1(t_N)]$
@@ -219,121 +208,79 @@ cu $\vec{s_0(t_i)} = [s_0(t_1), s_0(t_2), ... s_0(t_N)]$
 
 - $\sum (s_0(t_i))^2 = \sum s_0(t_i) \cdot s_0(t_i) = \langle \vec{s_0(t)}, \vec{s_0(t)} \rangle = E_0$ este **energia** vectorului $s_0(t)$
 
-
-### Interpretarea 2: produs scalar
-
-- Decizia se poate rescris sub forma:
+Decizia se poate rescris sub forma:
 $$\langle \vec{r}, \vec{s_1} \rangle - \frac{E_1}{2} \grtlessH \langle \vec{r},\vec{s_0} \rangle - \frac{E_0}{2} + \sigma^2 \ln(K)$$
 
-- Interpretare: **comparăm produsele scalare**
+Interpretarea pe care o dăm este următoarea.
+Pentru zgomot gaussian, decizia se ia **comparând produsele scalare**
+dintre semnalul recepționat și semnalele originale.
+În relație se scad energiile semnalelor, pentru o comparație corectă,
+și mai există de asemenea termenul suplimentar care depinde de criteriul de decizie ales.
 
-    - se scad energiile semnalelor, pentru o comparație corectă
-    - există de asemenea termenul care depinde de criteriul ales
-
-### Interpretarea 2: produs scalar
-
-
-- Caz particular:
-    - Dacă cele două semnale au energii egale: $E_1 = \sum s_1(t_i)^2 = E_0 = \sum s_0(t_i)^2$
-
-    - Exemple:
-
-        - modulație BPSK: $s_1 = A \cos(2 \pi f t)$, $s_0 = -A \cos(2 \pi f t)$
-        - modulație 4-PSK: $s_{n=0,1,2,3} = A \cos(2 \pi f t + n \frac{\pi}{4})$
-
-    - Atunci formula se simplifică:
-    $$\langle \vec{r}, \vec{s_1} \rangle \grtlessH \langle \vec{r},\vec{s_0} \rangle + \sigma^2 \ln(K)$$
-
-
-### Interpretarea 2: produs scalar
-
-- În domeniul prelucrărilor de semnale, produsul scalar măsoară **similitudinea** a două semnale
-
-- Interpretare: verificăm dacă vectorul eșantioanelor $\vec{r}$ este **mai asemănător**
+În matematică, produsul scalar măsoară **similitudinea** a două semnale,
+așadar putem spune că, pentru a lua o decizie,
+verificăm dacă vectorul eșantioanelor $\vec{r}$ este **mai asemănător**
 cu $s_1(t)$ sau cu  $s_0(t)$
-
-    - Se alege cel mai similar cu $\vec{r}$
-    - Se scad și energiile semnalelor (necesar d.p.d.v. matematic)
-
-- **Produsul scalar** a doi vectori $\vec{a}$ și $\vec{b}$:
-    $$\langle a,b \rangle = \sum_i a_i b_i$$
-
-
-### Implementare cu circuite de corelare
 
 ![Decizie între două semnale](img/CorrelatorMultiple.png){#id .class width=80%}
 
 *[sursa: Fundamentals of Statistical Signal Processing, Steven Kay]*
 
-### Exemplu: BPSK
+#### Exemplu: BPSK
 
-- Demodulare BPSK:
+Demodulare BPSK:
 
 ![Decizie BPSK: implementare directă](img/BPSK_Decision_1.png)
 
-### Exemplu: BPSK
-
-- Demodulare BPSK:
-
 ![Decizie BPSK: implementare mai eficientă](img/BPSK_Decision_2.png)
 
-### Exemplu: QPSK
-
 ![Decizie QPSK: implementare directă](img/QPSK_Decision_1.png){#id .class height=80%}
-
-### Example: QPSK
 
 ![Decizie QKSP: implementare mai eficientă](img/QPSK_Decision_2.png)
 
 ### Filtru adaptat
 
-- Cum se calculează produsul scalar a două semnale $r[n]$ și $s[n]$ de lungime $N$?
-$$\langle \vec{r},\vec{s} \rangle = \sum r_i s(t_i)$$
+Produsul scalar a doi vectori se poate calcula relativ mai simplu
+folosind un filtru liniar, numit filtru adaptat.
 
-- Fie $h[n]$ semnalul $h[n]$ **oglindit**
-    - începe la momentul 0, durează până la momentul $N-1$, dar este oglindit
-$$h[n] = s[N-1-n]$$
-
-- Exemplu:
-    - dacă $s[n] = [\underuparrow{1}, 2, 3, 4, 5, 6]$
-    - atunci $h[n] = s[N-1-n] = [\underuparrow{6}, 5, 4, 3, 2, 1]$
-
-### Filtru adaptat
-
-- Convoluția lui $r[n]$ cu $h[n]$ este
-$$y[n] = \sum_k r[k] h[n-k] = \sum_k r[k] h[N-1-n+k]$$
-
-- Rezultatul convoluției, la finalul semnalului de intrare, $y[N-1]$ ($n=N-1$), este chiar produsul scalar:
-$$y[N-1] = \sum_k r[k] s[k]$$
-
-### Filtru adaptat
-
-- Pentru detecția unui semnal $s[n]$ se poate folosi un  **filtru a cărui răspuns la impuls =
-oglindirea lui $s[n]$**, luându-se eșantionul de la finalul semnalului de intrare
-    $$h[n] = s[N-1-n]$$
-    - se obține valoarea produsului scalar
-
-- **Filtru adaptat** = un filtru proiectat să aibă răspunsul la impuls egal cu oglindirea
+Dat fiind un semnal $s[n]$ care se dorește a fi detectat,
+un **filtru adaptat** este un filtru proiectat să aibă răspunsul la impuls egal cu oglindirea
 semnalului care se dorește a fi detectat (eng. "matched filter")
 
-    - filtrul este *adaptat* semnalului dorit
+$$h[n] = s[N-1-n]$$
+Spunem că filtrul este *adaptat* semnalului dorit.
+
+Exemplu:
+
+- dacă $s[n] = [\underuparrow{1}, 2, 3, 4, 5, 6]$
+- atunci $h[n] = s[N-1-n] = [\underuparrow{6}, 5, 4, 3, 2, 1]$
 
 
-### Detecția semnalelor cu filtre adaptate
+Daca la intrarea unui filtru adaptat semnalului $s[n]$
+se pune un semnal $r[n]$, atunci eșantionul de la ieșirea filtrului
+la momentul $N-1$ este egal cu produsul scalar al vectorilor $r[n]$ și $s[n]$.
 
-- Se folosește un filtru adaptat la semnalul $s_1(t_i)$
+**Demonstrație**:
 
-- Se folosește un filtru adaptat la semnalul $s_0(t_i)$
+Semnalul de ieșire, $y[n]$, este convoluția dintre intrarea $r[n]$
+și răspunsul la impuls $h[n]$, adică:
+$$y[n] = \sum_k r[k] h[n-k] = \sum_k r[k] s[N-1-n+k]$$
 
-- Se eșantionează ieșirile la momentul final $n = N-1$
-    - se obțin valorile produselor scalare
+La momentul $n=N-1$, adică imediat după ultimul eșantion al semnalului de intrare,
+ieșirea este:
+$$y[N-1] = \sum_k r[k] s[k],$$
+adică chiar produsul scalar:
 
-- Se folosește regula de decizie cu produse scalare
+---
 
+Pentru decizia între două semnale, se folosește un filtru adaptat la semnalul $s_1(t_i)$
+și un alt filtru adaptat la semnalul $s_0(t_i)$,
+se eșantionează ieșirile la momentul final $n = N-1$
+obținându-se valorile produselor scalare, care apoi se compară
+conform relației de decizie.
 
-### Detecția semnalelor cu filtre adaptate
-
-- Dacă $s_0(t) = 0$, avem nevoie doar de un singur filtru adaptat pentru $s_1(t)$,
+Dacă unul din semnale este 0, de exemplu $s_0(t) = 0$,
+avem nevoie doar de un singur filtru adaptat pentru $s_1(t)$,
 și se compară rezultatul cu un prag
 
 ![Detecție folosind un filtru adaptat](img/MatchedFilter.png){#id .class width=60%}
@@ -341,8 +288,7 @@ semnalului care se dorește a fi detectat (eng. "matched filter")
 *[sursa: Fundamentals of Statistical Signal Processing, Steven Kay]*
 
 
-
-## II.4 Detecția unui semnal oarecare cu observare continuă
+# II.4 Detecția unui semnal oarecare cu observare continuă
 
 ### Observarea continuă a unui semnal oarecare
 

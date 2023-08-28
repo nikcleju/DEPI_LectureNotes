@@ -1,4 +1,4 @@
-# Decizie cu 1 eșantion
+# Decizie cu un singur eșantion
 
 ::: {.hidden}
 $$
@@ -8,16 +8,20 @@ $$
 
 ## Introducere
 
-O problemă de decizie înseamnă a decide între două alternative, în prezența zgomotului.
+O problemă de decizie înseamnă, pe scurt, a decide între două alternative.
 
 În contextul comunicațiilor, detecția semnalelor înseamnă a decide care semnal este prezent
-dintre două sau mai multe posibilități.
+dintre două sau mai multe posibilități, în condițiile în care semnalul este
+afectat de **zgomot** aditiv (se adună la semnalul original)
 
-Avem la dispoziție semnale **cu zgomot** aditiv (se adună la semnalul original)
+Dificultatea este cauzată de zgomot, care ne poate "păcăli" în a lua
+o decizie greșită. Se pune așadar problema cum putem decide în mod robust,
+minimizând efectul zgomotului.
 
-O schema bloc a unui sistem de comunicații este prezentată mai jos.
+Pentru fixarea ideilor,
+prezentăm mai jos o schemă de principiu a unui sistem de comunicații..
 
-![Schema bloc a unui sistem de comunicație](img/SignalDetectionModel.png){#id .class width=60%}
+![Schema bloc a unui sistem de comunicație](img/SignalDetectionModel.png){#fig-blockcomm}
 
 Elemente:
 
@@ -82,7 +86,6 @@ Problema se poate formula mai general astfel:
 - Peste semnal se suprapune zgomotul $n(t)$
 - La recepție se primește un semnal cu zgomot, $r(t) = s(t) + n(t)$
 - **Problema deciziei**: pe baza $r(t)$, care semnal a fost cel transmis?
-
 
 Vom introduce următoarea terminologie, cu notațiile aferente.
 
@@ -178,7 +181,6 @@ Să presupunem că distribuția unui eșantion de zgomot este $w(x)$.
    atunci eșantionul $r$ are distribuția:
    $$w(r|H_1) = s_1(t_0) + w(x) = w(x)\textrm{ translat cu } s_1(t_0)$$
 
-
 Cele două distribuții vor fi numite **distribuțiile condiționate** sau
 **funcțiile de plauzilibilate**
 
@@ -189,6 +191,7 @@ mai probabil să fi generat valoarea $r$ a eșantionului observat la recepție?"
 
 ::: {.callout-note icon=false}
 ### Exercițiu
+
 Un semnal constant $s(t)$ poate avea două valori posibile, 0 sau 4.
 Semnalul este afectat de zgomot $\mathcal{N}(\mu=0, \sigma^2 = 2)$.
 Care e distribuția unui eșantion $r$, în ambele ipoteze?
@@ -203,7 +206,6 @@ $$L(H_0 | r) = w(r | H_0)$$
 și a ipotezei $H_1$ este:
 $$L(H_1 | r) = w(r | H_1)$$
 
-
 ## Criteriul Plauzibilității Maxime (Maximum Likelihood)
 
 Dacă trebuie să decidem care dintre cele două ipoteze, $H_0$ sau $H_1$,
@@ -213,16 +215,24 @@ este ipoteza cu plauzibilitate mai mare.
 **Criteriul plauzibilității maxime ("Maximum Likelihood", ML)**:
 $$\frac{L(H_1 | r)}{L(H_0 | r)} = \frac{w(r|H_1)}{w(r|H_0)} \grtlessH 1$$
 
-Fracția $\frac{w(r|H_1)}{w(r|H_0)}$ poartă numele de **raportul de plauzibilitate**.
+Fracția $\frac{w(r|H_1)}{w(r|H_0)}$ poartă numele de **raport de plauzibilitate**.
 În criteriul ML, raportul de plauzibilitate se compară cu 1:
 
 - dacă este supraunitar, se ia decizia $D_1$ ($w(r|H_1)$ e mai mare)
 - dacă este subunitar, se ia decizia $D_0$ ($w(r|H_0)$ e mai mare)
-- dacă este egal cu 1, avem o **indecizie** (plauzibilitățile sunt egale)
+- dacă este egal cu 1, avem o indecizie (plauzibilitățile sunt egale)
 
-Practic, decizia se ia alegând ipoteza cu **cea mai mare plauzibilitate**
+Practic, decizia se ia alegând ipoteza cu cea mai mare plauzibilitate
 pentru valoarea $r$, adică se alege valoarea maximă
 dintre $w(r(t_0)|H_0)$ și $w(r(t_0) | H_1)$.
+
+::: {.callout-tip icon=false title="Exemplu"}
+#### Exemplu: Frunze
+
+Din care copac a căzut frunza?
+
+![Vizualizare criteriu ML](img/ML_Trees2.png){#fig-frunze}
+:::
 
 ::: {.callout-note icon=false}
 #### Exercițiu
@@ -234,23 +244,12 @@ Care e decizia luată cu criteriul ML, pentru un eșantion $r=1.6$?
 
 ---
 
-**Rezolvare:**
-
 1. Se schițează a celor două distribuții condiționate $w(r|H_0)$ și $w(r|H_1)$
 2. Care funcție e mai mare în dreptul lui $r = 1.6$?
 
 Discuție: ce decizie se ia pentru diferite valori ale lui $r$
 
 Discuție: care este pragul $T$ pentru decizii?
-:::
-
-
-::: {.callout-tip icon=false title="Exemplu"}
-#### Exemplu: Frunze
-
-Din care copac a căzut frunza?
-
-![](img/ML_Trees2.png)
 :::
 
 ### Praguri și regiuni de decizie
@@ -268,7 +267,6 @@ defapt, cu compararea lui $T$ cu aceste praguri.
 Regiunile de decizie acoperă întreg domeniul de valori ale lui $r$ (toată axa reală),
 exceptând punctele sau regiunile de indecizie, unde nu se poate lua nici decizie $D_0$ nici $D_1$.
 
-
 ### Probabilități condiționate
 
 **Probabilitățile condiționate** ale celor 4 rezultate posibile ale unei decizii binare
@@ -280,12 +278,12 @@ probabilitatea de a lua decizia $D_0$ când ipoteza este $H_0$,
 $$P(D_0 | H_0) = \int_{R_0} w(r|H_0) dx$$
 
 Probabilitatea condiționată a alarmei false reprezintă
-probabilitatea de a lua decizia $D_1$ când ipoteza este $H_0$,
+probabilitatea de a lua decizia $D_1$ când ipoteza corectă este $H_0$,
 și se calculează ca probabilitatea ca $r$ să fie în $R_1$, calculată pe distribuția $w(r|H_0)$
 $$P(D_1 | H_0) = \int_{R_1} w(r|H_0) dx$$
 
 Probabilitatea condiționată de pierdere reprezintă
-probabilitatea de a lua decizia $D_0$ când ipoteza este $H_1$,
+probabilitatea de a lua decizia $D_0$ când ipoteza corectă este $H_1$,
 și se calculează ca probabilitatea ca $r$ să fie în $R_0$, calculată pe distribuția $w(r|H_1)$
 $$P(D_0 | H_1) = \int_{R_0} w(r|H_1) dx$$
 
@@ -294,18 +292,25 @@ probabilitatea de a lua decizia $D_1$ când ipoteza este $H_1$,
 și se calculează ca probabilitatea ca $r$ să fie în $R_1$, calculată pe distribuția $w(r|H_1)$
 $$P(D_1 | H_1) = \int_{R_1} w(r|H_1) dx$$
 
+Cele patru probabilități condiționate corespund celor patru arii
+din fig.xxx, determinate ce cele două distribuții condiționate și
+cele două regiuni de decizie.
+
 ![Probabilități condiționate](img/SigDetWGN.png){#id .class width=60%}
 
 - Ignorați textul, contează zonele colorate
 - [sursa: hhttp://gru.stanford.edu/doku.php/tutorials/sdt]*
 
-Între ele există următoarele relații:
+Între cele patru probabilități există următoarele relații:
 
-- $P(D_0 | H_0) + P(D_1 | H_0) = 1$ (rejecție corectă + alarmă falsă)
-- $P(D_0 | H_1) + P(D_1 | H_1) = 1$ (pierdere + detecție corectă)
+$$P(D_0 | H_0) + P(D_1 | H_0) = 1$$ (rejecție corectă + alarmă falsă)
+$$P(D_0 | H_1) + P(D_1 | H_1) = 1$$ (pierdere + detecție corectă)
 
-- Exercițiu: De ce? Justificați.
+::: {.callout-note icon=false}
+#### Exercițiu
 
+Demonstrați cele două relații de mai sus.
+:::
 
 ::: {.callout-note icon=false}
 #### Exercițiu
@@ -319,49 +324,50 @@ a. Calculați probabilitatea condiționată a alarmei false
 a. Calculați probabilitatea condiționată de pierdere
 c. Dacă $P(H_0) = \frac{1}{3}$ și $P(H_1) = \frac{2}{3}$, calculați probabilitatea
 rejecției corecte și a detecției corecte (nu cele condiționate)
-
+:::
 
 ### Optimalitatea criteriului ML
 
-**Teoremă:**
+::: {.callout-note icon=false appearance=simple}
+#### Teoremă: optimalitatea criteriului ML
 
 Criteriul ML minimizează suma probabilităților condiționate de eroare, $P(D_1 | H_0) + P(D_0 | H_1)$.
 
 **Demonstrație:**
 
 Informal: de pe figura precedentă, dacă pragul $T$ se deplasează fie la dreapta fie la stânga,
-suma celor două arii hașurate (probabilități) pentru alarmă falsă + pierdere crește
+suma celor două arii hașurate (probabilități) pentru alarmă falsă + pierdere crește.
 
 TODO: demonstrație riguroasă
+:::
 
----
+Teorema ne spune că criteriul ML de decizie ne asigură
+cea mai mică probabilitate (condiționată) de a greși.
 
 
 ## Criteriul probabilității minime de eroare (Minimum Probability of Error, MPE)
 
-Criteriul ML compară distribuțiile **condiționate** ale eșantionului observat,
-ceea ce înseamnă că ignoră probabilitatea celor două ipoteze, $P(H_0)$ și $P(H_1)$.
-Un alt criteriu de decizie, intitulat criteriul probabiității minime de eroare,
-ia în calcul și pe acestea.
+Criteriul ML compară doar distribuțiile **condiționate** ale eșantionului observat,
+ceea ce înseamnă că nu ia în calcul și probabilitatea
+inițială celor două ipoteze, $P(H_0)$ și $P(H_1)$.
+Dacă se consideră si acestea, ajungem la un alt criteriu de decizie,
+intitulat criteriul probabiității minime de eroare.
 
 **Criteriul probabilității minime de eroare (Minimum Probabilityof Error, MPE)**:
 $$\frac{P(H_1) \cdot w(r | H_1)}{P(H_0) \cdot w(r | H_0)} \grtlessH 1$$
-
-Se observă că criteriul MPE este o generalizare a criteriului ML,
-plauzibilitățile $w(r|H_0)$ și $w(r|H_1)$ fiind înmulțite,
-suplimentar, cu probabilitățile $P(H_0)$ și $P(H_1)$.
 
 Criteriul poate fi rescris tot ca o comparație a raportului de plauzibilitate,
 de data aceasta comparat cu raportul celor
 două probabilități ale ipotezelor.
 $$\frac{w(r | H_1)}{w(r | H_0)} \grtlessH \frac{P(H_0)}{P(H_1)}$$
 
+Criteriul MPE este o generalizare a criteriului ML,
+care ia în calcul și probabilitățile $P(H_0)$ și $P(H_1)$.
 Criteriul ML poate fi considerat un caz particular al MPE pentru cazul
 uner probabilități egale ale ipotezelor, $P(H_0) = P(H_1) = \frac{1}{2}$.
 
-### Optimalitatea criteriului MPE
-
-**Teoremă:**
+::: {.callout-note icon=false appearance=simple}
+#### Teoremă: Optimalitatea criteriului MPE
 
 Criteriul MPE **minimizează probabilitatea totală de eroare**:
 $$P_e = P_{af} + P_p = P(D_1 \cap H_0) + P(D_0 \cap H_1)$$
@@ -398,6 +404,9 @@ $$w(r|H_1) \cdot P(H_1) - w(r|H_0) \cdot P(H_0) < 0,$$
 adică de fapt întreaga zonă în care integrala de mai sus este negativă.
 Acest lucru garantează valoarea minimă a integralei, deci valoarea
 minimă a $P_e$ (termenul $P(H_0)$ fiind constant).
+:::
+
+Exercitiu: 0/5, prag la 2.5, numar de erori.
 
 ## Criteriul riscului minim (Minimum Risk, MR)
 
@@ -407,12 +416,13 @@ Criteriul MPE tratează toate erorile la fel, ceea ce nu ajută în aceste cazur
 Pentru a descrie un astfel de scenariu, se atribuie **un cost** fiecărui scenariu,
 $C_{ij}$ fiind costul deciziei $D_i$ când ipoteza adevărată este $H_j$,
 ideaa fiind de a minimiza costul mediu.
+
 - $C_{00}$ = costul unei rejecții corecte
 - $C_{10}$ = costul unei alarme false
 - $C_{01}$ = costul unei pierderi
 - $C_{11}$ = costul unei detecții corecte
 
-Vrem să minimizăm **riscul**, care reprezintă **costul mediu**, calculat astfel:
+Vrem să minimizăm **costul mediu**, numit și **risc**, calculat astfel:
 $$R = C_{00} P(D_0 \cap H_0) + C_{10} P(D_1 \cap H_0) + C_{01} P(D_0 \cap H_1) + C_{11} P(D_1 \cap H_1)$$
 
 Ideea de "costuri" și minimizare a costului mediu este frecvent întâlnită
@@ -433,17 +443,15 @@ Atât **probabilitățile** cât și **costurile** pot influența decizia
 
 Ca și caz particular, dacă $C_{10}-C_{00} = C_{01}-C_{11}$, atunci MR se reduce la criteriul MPE.
 
-### Optimalitatea criteriului MR
-
-**Teoremă**
+::: {.callout-note icon=false appearance=simple}
+#### Teoremă: Optimalitatea criteriului MR
 
 Criteriul MR definit mai sus asigură valoarea minimă a riscului $R$.
 
 **Demonstrație**
 
 La tablă.
-
----
+:::
 
 ## Forma generală a criteriilor ML, MPE și MR
 
@@ -466,7 +474,7 @@ $$\frac{w(r|H_1)}{w(r|H_0)} = \frac{e^{-\frac{(r-s_1(t_0))^2}{2\sigma^2}}}{e^{-\
 
 Aplicăm logaritmul natural acestei relații.
 Întrucât orice logaritm este o funcție monoton crescătoare, el nu schimbă
-rezultatul unei comparației, adică dacă $A < B$, atunci $\log(A) < \log(B)$.
+rezultatul unei comparații (dacă $A < B$, atunci $\log(A) < \log(B)$).
 Prin urmare, deciziile nu vor fi afectate.
 Aplicarea logaritmului natural la ambii termeni ai relației conduce la:
 $$-(r-s_1(t_0))^2 + (r-s_0(t_0))^2 \grtlessH \ln(K)$$
@@ -474,22 +482,23 @@ care este echivalent cu:
 $$(r-s_0(t_0))^2 \grtlessH (r - s_1(t_0))^2 + \ln(K).$$
 
 Relația de mai sus se poate interpreta ca o comparația a **distanțelor geometrice**.
-Termenul $|r-s_0(t_0|$ este chiar **distanța** goemetrică,
+Termenul $(r-s_0(t_0)^2$ este pătratul **distanței** goemetrice,
 pe axa numerelor reale, dintre $r$ și $s_0(t_0)$,
-iar $|r-s_1(t_0)|$ distanța de la $r$ la $s_1(t_0)$.
+iar $(r-s_1(t_0))^2$ pătratul distanței de la $r$ la $s_1(t_0)$.
 Așadar, putem spune că se compară pătratul a două distanțe,
 cu un termen suplimentar $\ln(K)$ care influențează balanța
 în favoarea uneia sau alteia dintre decizii (în funcție de probabiități
 și/sau costuri).
 
-Pentru criteriul ML, $K=1$, și relația se reduce chiar la alegerea
+Pentru criteriul ML, $K=1$, $\ln(K) = 0$ și relația se reduce chiar la alegerea
 **distanței minime** dintre $r(t_0)$ și $s_1(t_0)$, respectiv $s_0(t_0)$.
 
 Din acest motiv, un sistem receptor care folosește criteriul de decizie ML
 se mai numește **receptor de distanță minimă** ("*minimum distance receiver*")
 
-Menționăm că luarea unei decizii pe baza **cel mai apropiat vecin** ("*nearest neighbor*"),
-este un principiu foarte general, foarte des întâlnit in literatura de specialitate, sub diverse alte forme.
+Luarea unei decizii pe baza distenței minime se mai numește
+și principiul **celui mai apropiat vecin** ("*nearest neighbor*"),
+și este un principiu foarte general, foarte des întâlnit in literatura de specialitate, sub diverse alte forme.
 
 Relația poate fi prelucrată în continuare.
 Prin desfacerea parantezelor se ajunge la:
@@ -527,21 +536,20 @@ care în limbajul comun sunt practic sinonimi.
 Problema de decizie analizată până acum se poate generaliza în mai multe moduri.
 
 1. Dacă zgomotul are altă distribuție?
-  - Se schițează distribuțiile condiționate
-  - Se evaluează pentru $r = r(t_0)$
-  - Criteriul ML = se alege cea mai mare funcție $w(r|H_i)$ în punctul $r$ dat
+
+   - Se schițează distribuțiile condiționate
+   - Se evaluează pentru $r = r(t_0)$
+   - Criteriul ML = se alege cea mai mare funcție $w(r|H_i)$ în punctul $r$ dat
 
    Regiunile de decizie sunt date de **punctele de intersecție** ale distribuțiilor condiționate
-    - Pot fi mai multe intersectări, în general, deci mai multe praguri
+   Pot fi mai multe intersectări, în general, deci mai multe praguri.
 
-
-2. Dacă zgomotul are distribuție diferită în ipoteza $H_0$ față de ipoteza $H_1$?
+1. Dacă zgomotul are distribuție diferită în ipoteza $H_0$ față de ipoteza $H_1$?
 
    În mod similar:
    - Se schițează distribuțiile condiționate
    - Se evaluează pentru $r = r(t_0)$
    - Criteriul ML = se alege **cea mai înaltă funcție** $w(r|H_i)$ în punctul $r$ dat
-
 
 3. Dacă cele două semnale $s_0(t)$ și $s_1(t)$ sunt constante / nu sunt constante?
 
@@ -620,19 +628,21 @@ b. Care este probabilitatea de detecție corectă?
 
 Cum se evaluează o problemă de decizie?
 
-De exemplu, fie o problemă de decize binară cu $s_0(t) = 0$, $s_1(t) = 10$,
-și zgomot $\mathcal{N}(\mu=0, \sigma^2 = 4)$.
-Fie o altă problemă de decizie cu $s_0(t) = 10$, $s_1(t) = 16$, and noise $\mathcal{U}[-8, 8]$
+De exemplu, fie două problemă de decize binară:
 
-Care dintre cele două probleme e mai ușoară?
-Va trebui să comparăm probabilitățile "bune" ($P_{cd}$, $P_{cr}$)
-și cele "rele" ($P_{fa}$, $P_m$).
+1. Una în care avem $s_0(t) = 0$, $s_1(t) = 10$,
+și zgomot gaussian $\mathcal{N}(\mu=0, \sigma^2 = 4)$.
+
+1. O altă în care $s_0(t) = 10$, $s_1(t) = 16$, și zgomot uniform $\mathcal{U}[-8, 8]$
+
+Care dintre cele două probleme e mai dificilă? Cu alte cuvinte,
+în care vom obține rezultate mai slabe?
 
 ### Caracteristica de operare a receptorului (ROC)
 
 Performanța unui receptor poate fi ilustrată cu un grafic numit
 **"Caracteristica de operare a receptorului"**
-(**"Receiver Operating Characteristic", ROC)**
+("Receiver Operating Characteristic", **ROC**)
 
 Acesta reprezintă graficul probabilității $P_{dc} = P(D_1 | H_1)$
 în funcție de probabilitatea $P_{af} = P(D_1 | H_0)$,
@@ -643,30 +653,37 @@ corespunde unei valori a lui $T$.
 
 *[sursa: http://www.statisticshowto.com/receiver-operating-characteristic-roc-curve/]*
 
-Există întotdeauna un **compromis** între $P_d$ (bun) și $P_{fa} (rău)$.
+Graficul ne arată că există întotdeauna un **compromis** între $P_d$ (bun) și $P_{fa}$ (rău).
 Creșterea $P_d$ implică și creșterea $P_{fa}$, și vice-versa.
 
 O măsură a performanței globale a unui astfel de sistem este **Area Under the Curve** (AUC)
-a curbei ROC. Aceasta duce la o valoare care caracterizează întregul sistem,
+a curbei ROC, care reprezintă, după cum îi spune și numele,
+aria totală de sub curba graficului.
+Aceasta valoare, cuprinsă între 0 și 1, este o valoare globală care
+caracterizează întregul sistem,
 indiferent de alegerea unui prag sau a altuia, deci indiferent de utilizarea
 unui criteriu sau al altuia.
+
+Un AUC=1 înseamnă un sistem perfect, în care este posibil să obținem
+$P_d = 1$ și simultan $P_{fa} = 0$. În practică, desigur, se obțin valori
+mai mici decât 1.
 
 Așadar, două situații diferite (două semnale diferite, algoritmi etc) se pot compara prin
 afișarea ROC si compararea AUC-urilor asociate
 
 ### Caracteristica Precision vs Recall
 
-Un grafic similar este cel de **Precision vs Recall**
+Un grafic echivalent este cel de tip **"Precision vs Recall"**,
+întâlnit îndeosebi în literatura de specialitate din domeniul învățării automate
+("machine learning").
 
-**Precision** = $\frac{P(D_1 \cap H_1)}{P(D_1 \cap H_1) + P(D_1 \cap H_0)}$
+Cei doi termeni se definesc astfel:
 
- = True Positives  / (True Positives + False Positives)
+**Precision** = $\frac{P(D_1 \cap H_1)}{P(D_1 \cap H_1) + P(D_1 \cap H_0)}
+= \frac{\textrm{True Positives}}{\textrm{True Positives + False Positives}}$
 
-**Recall** = $\frac{P(D_1 \cap H_1)}{P(D_1 \cap H_1) + P(D_0 \cap H_1)} = P(D_1 | H_1)$
-
- = True Positives  / (True Positives + False Negatives)
-
-Exemplu de grafic Precision vs Recall dintr-o aplicație practică
+**Recall** = $\frac{P(D_1 \cap H_1)}{P(D_1 \cap H_1) + P(D_0 \cap H_1)} = P(D_1 | H_1)
+= \frac{\textrm{True Positives}}{\textrm{True Positives + False Negatives}}$
 
 ![Curba Precision vs Recall dintr-o aplicație practică](img/PrecVsRecallExample.png){width=60%}
 
@@ -677,24 +694,25 @@ Aplicația pentru care este obținut graficul precedent:
 ### Raportul Semnal-Zgomot
 
 **Raportul semnal zgomot (SNR)** al unui sistem se definește
-ca $\frac{\text{puterea semnalului util}}{\text{puterea zgomotului}}$
+ca
+$$SNR = \frac{\text{puterea semnalului util}}{\text{puterea zgomotului}}$$
 
 Performanțele oricărei probleme de decizie depind în mod fundamental
 de raportul semnal-zgomot al sistemului.
 
-A îmbunătăți performanțele unei probleme de decizie binară
-înseamnă, practic, a crește $P_d$ menținând $P_{af}$ la fel.
+- SNR mare: performanță bună
+- SNR mic:  performanță slabă
+
+De exemplu, să analizăm cum se pot îmbunătăți performanțele deciziei
+în situația din Fig.xxx.
 Aceasta se poate obține în două moduri:
 
 1. Creșterea diferenței dintre $s_0(t)$ și $s_1(t)$, ceea
 ce înseamnă creșterea amplitudinilor, deci crește puterea semnalelor;
 
-1. Scăderea zgomotului, adicăscade puterea zgomotului.
+1. Scăderea zgomotului, adică scade puterea zgomotului.
 
-Ambele soluții înseamnă, de fapt, creșterea **raportul Semnal-Zgomot**:
-- SNR mare: performanță bună
-- SNR mic:  performanță slabă
-
+Ambele soluții înseamnă, de fapt, creșterea raportului semnal zgomot.
 
 ::: {.callout-tip icon=false title="Exemplu"}
 #### Exemplu: Performanțele detecției în zgomot alb gaussian
@@ -742,38 +760,35 @@ $$P_d = Q \left( \underbrace{Q^{-1} \left(P_{fa}\right)}_{constant} - \frac{A}{\
 ![Performanțele detecției depind de SNR](img/PD_SNR.png){#id .class width=47%}
 
 *[sursa: Fundamentals of Statistical Signal Processing, Steven Kay]*
-
+:::
 
 ## Alte aplicații ale teoriei deciziei
 
-Se pot utiliza aceste criterii de decizie în alte aplicații?
+Aceste criterii de decizie se pot utiliza și în alte aplicații, dintre
+cele mai generale, nu doar pentru a decide între semnale.
 
-- nu pentru a decide între semnale, ci în alte scopuri
-
-Matematic, problema se pune sub forma următoare:
+Esența matematică a problemei este întotdeauna sub forma următoare:
 
 - avem 2 (sau mai multe) distribuții posibile
 - avem 1 valoare observată
 - determinăm cea mai plauzibilă distribuție, pe baza valorii observate
 
-În acest caz particular, decidem între două semnale
+Cu toate acestea, decizia se poate lua într-o varietate de situații:
 
-Dar acest model matematic se poate aplica și în alte contexte:
 - medicină: un semnal ECG indică o boală sau nu?
 - business: va cumpăra clientul un produs, sau nu?
-- De obicei se folosesc mai multe eșantioane, dar principiul
-matematic este același
 
 
-Exemplu (pur imaginar):
+::: {.callout-tip icon=false title="Exemplu"}
+#### Exemplu (pur imaginar)
 
-O persoană sănătoasă cu greutatea = X kg are concentrația de trombocite pe ml de sânge distribuită aproximativ $\mathcal{N} \; (\mu=10 \cdot X, \sigma^2 = 20)$.
+O persoană sănătoasă are concentrația de trombocite pe ml de sânge
+distribuită aproximativ $\mathcal{N} \; (\mu=100, \sigma^2 = 20)$.
 
 O persoană suferind de boala B are o valoare mult mai scăzută,
-distribuită aproximativ $\mathcal{N} \; (100, \sigma^2=10)$.
+distribuită aproximativ $\mathcal{N} \; (30, \sigma^2=10)$.
 
-În urma analizelor de laborator, ai obținut valoarea $r = 255$. Greuatea ta este 70 kg.
-
+În urma analizelor de laborator, ai obținut valoarea $r = 79$.
 Decideți: sănătos sau nu?
 
-
+:::
