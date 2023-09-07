@@ -1,88 +1,63 @@
 
-## II.5 Detecția semnalelor cu distribuții necunoscute
+## II.5 Algoritmi practici 
+pentru decizie cu distribuții necunoscute
 
-### Distribuții necunoscute
+În analiza de până acum, am considerat că se cunosc
+întotdeauna parametrii matematici ai tuturor datelor:
 
-- Până acum, se cunoștea dpdv. matematic statistica
-tuturor datelor:
+- Se cunosc semnalele $s_0(t) = ...$, $s_1(t) = ...$
+- Se cunoaște zgomotul (gaussian, uniform etc.)
+- Se cunosc distribuțiile condiționate $w(r|H_0)$, $w(r|H_1)$
 
-  - Se cunoșteau semnalele:
+În aplicații reale, multe dintre acestea pot fi
+de fapt necunoscute, sau nedefinite.
 
-    - $s_0(t) = ...$
-    - $s_1(t) = ...$
+Exemplu: recunoașterea feței unei persoane
 
-  - Se cunoștea zgomotul
+- Identificarea persoanei A sau B bazată pe o imagine a feței
+- Avem:
+    - 100 imagini ale persoanei A, în condiții diverse
+    - 100 imagini ale persoanei B, în condiții diverse
 
-    - gaussian, uniform, etc.
-
-  - Se cunoșteau distribuțiile condiționate:
-
-    - $w(r|H_0) = ...$
-    - $w(r|H_1) = ...$
-
-- În aplicații reale, lucrurile pot fi mai complicate
-
-### Exemplu
-
-- Dacă semnalele $s_0(t)$ și $s_1(t)$
-nu există / nu se cunosc?
-
-- Exemplu: recunoașterea feței unei persoane
-
-    - Identificarea persoanei A sau B bazată pe o imagine a feței
-    - Avem:
-        - 100 imagini ale persoanei A, în condiții diverse
-        - 100 imagini ale persoanei B, în condiții diverse
-
-### Eșantioane vs distribuții
-
-- Să comparăm recunoașterea fețelor cu detecția semnalelor
+Să comparăm recunoașterea fețelor cu detecția semnalelor
 
 - Aspecte comune:
-
-    - două ipoteze $H_0$ (persoana A) și $H_1$ (persoana B)
-    - un vector de eșantioane $\vec{r}$ = imaginea pe baza căreia se face decizia
-    - se pot lua două decizii
-    - 4 scenarii: rejecție corectă, alarmă falsă, pierdere, detecție corectă
+  - două ipoteze $H_0$ (persoana A) și $H_1$ (persoana B)
+  - un vector de eșantioane $\vec{r}$ = imaginea pe baza căreia se face decizia
+  - se pot lua două decizii
+  - 4 scenarii: rejecție corectă, alarmă falsă, pierdere, detecție corectă
 
 - Ce diferă? Nu există formule matematice
+  - nu există semnalele "originale" $s_0(t) = ...$ și $s_1(t)...$
+  - (fețele persoanelor A și B nu pot fi exprimate matematic ca semnale)
+  - în schimb, avem multe exemple din fiecare distribuție
+    - 100 imagini ale lui A = exemple ale $\vec{r}$ în ipoteza $H_0$
+    - 100 imagini ale lui B = exemple ale $\vec{r}$ în ipoteza $H_1$
 
-    - nu există semnalele "originale" $s_0(t) = ...$ și $s_1(t)...$
-    - (fețele persoanelor A și B nu pot fi exprimate matematic ca semnale)
-    - în schimb, avem multe exemple din fiecare distribuție
+Terminologia folosită în domeniul **învățării automate** (*machine learning*):
 
-        - 100 imagini ale lui A = exemple ale $\vec{r}$ în ipoteza $H_0$
-        - 100 imagini ale lui B = exemple ale $\vec{r}$ în ipoteza $H_1$
+- Acest tip de problemă = problemă de **clasificare** a semnalelor
+    - se dă un vector de date, găsiți-i clasa
 
-### Terminologie
+- **Clase de semnal** = categoriile posibile ale semnalelor (ipotezele $H_i$, persoanele A/B etc)
 
-- Terminologia folosită în domeniul **învățării automate** (*machine learning*):
+- **Set de antrenare** = un set de semnale cunoscute inițial
 
-    - Acest tip de problemă = problemă de **clasificare** a semnalelor
-        - se dă un vector de date, găsiți-i clasa
+    - de ex. 100 de imagini ale fiecărei persoane
+    - setul de date va fi folosit în procesul de decizie
 
-    - **Clase de semnal** = categoriile posibile ale semnalelor (ipotezele $H_i$, persoanele A/B etc)
-
-    - **Set de antrenare** = un set de semnale cunoscute inițial
-
-        - de ex. 100 de imagini ale fiecărei persoane
-        - setul de date va fi folosit în procesul de decizie
-
-
-### Eșantioane și distribuții
-
-- Setul de antrenare conține informațiile
+Setul de antrenare conține informațiile
 pe care le-ar conține distribuțiile condiționate $w(r|H_0)$ și $w(r|H_1)$
 
-    - $w(r|H_0)$ exprimă cum arată valorile lui $r$ în ipoteza $H_0$
-    - $w(r|H_1)$ exprimă cum arată valorile lui $r$ în ipoteza $H_1$
-    - setul de antrenare exprimă același lucru, nu prin formule, dar prin multe exemple
+- $w(r|H_0)$ exprimă cum arată valorile lui $r$ în ipoteza $H_0$
+- $w(r|H_1)$ exprimă cum arată valorile lui $r$ în ipoteza $H_1$
+- setul de antrenare exprimă același lucru, nu prin formule, dar prin multe exemple
 
-- Cum se face clasificarea în aceste condiții?
+Cum se face clasificarea în aceste condiții?
 
 ### Algoritmul k-NN
 
-Algoritmul *k-Nearest Neighbours* (k-NN)
+Algoritmul *k-Nearest Neighbours* (k-NN) este descris mai jos.
 
 - Intrare:
 
@@ -103,8 +78,6 @@ Algoritmul *k-Nearest Neighbours* (k-NN)
 - Ieșire: clasa vectorului $\vec{r}$
 
 
-### Algoritmul k-NN
-
 ![Algoritmul k-NN ilustrat [1]](img/kNN.png){#id .class width=58%}
 
 \maketiny{
@@ -112,21 +85,23 @@ Algoritmul *k-Nearest Neighbours* (k-NN)
 }
 
 
-### Algoritmul k-NN și decizia ML
+### Relația între  k-NN și decizia ML
 
-- Dacă setul de antrenare este foarte mare, algoritmul k-NN devine simular cu decizia pe baza criteriului ML
+Dacă setul de antrenare este foarte mare, 
+algoritmul k-NN devine simular cu decizia pe baza criteriului ML,
+pentru că numărul de vectori situați într-o vecinătate 
+a unui punct $r$ este proporțional cu $w(r|H_i)$.
+Așadar, dacă sunt mai mulți vecini din clasa A decât din clasa B,
+caz în care k_NN ia decizia A, e totuna cu a spune că
+$$\Leftrightarrow$ $w(r|H_A)$ > $w(r|H_B)$$
+caz în care decizia ML este tot în favoarea clasei A.
 
-- Numărul de vectori situați într-o vecinătate a unui punct $r$ este proporțional cu $w(r|H_i)$
-
-- Mai mulți vecini din clasa A decât din clasa B $\Leftrightarrow$ $w(r|H_A)$ > $w(r|H_B)$
-
-### Algoritmul k-NN și decizia ML
 
 - Exemplu: frunze și copaci :) de povestit
 
-### Exercițiu
 
-Exercițiu
+::: {.callout-note icon=false}
+#### Exercițiu
 
 1. Fie următorul set de antrenare, compus din
 5 vectori din clasa A și alți 5 vectori din clasa B:
@@ -148,35 +123,32 @@ Exercițiu
 
     Determinați clasa vectorului $\vec{x} = \begin{bmatrix} -3 \\ 6 \end{bmatrix}$
 utilizând algoritmul k-NN, cu $k=1$, $k=3$, $k=5$, $k=7$ and $k=9$
+:::
 
-### Discuție
+### Discuții
 
-- k-NN este un algoritm de învățare supervizată
-    - se cunosc clasele vectorilor din setul de antrenare
+Algoritmul k-NN este un algoritm de învățare supervizată, 
+întrucât se cunosc clasele vectorilor din setul de antrenare.
 
-\smallskip
+Efectul lui $k$ se reflectă în gradul de "netezire" a frontierei de decizie:
+- $k$ mic: frontieră foarte cotită / "șifonată" / cu multe coturi
+- $k$ mare: frontieră mai netedă
 
-- Efectul lui $k$: netezirea frontierei de decizie:
-    - $k$ mic: frontieră foarte cotită / "șifonată" / cu multe coturi
-    - $k$ mare: frontieră mai netedă
+Cum se găsește o valoare optimă pentru $k$?.
+În general, doar prin încercări ("băbește"), 
+pe baza unui mic set de date de test. 
+Această metodă se numește "cross-validation".
 
-\smallskip
+"**Cross-validation**" = folosirea unui mic set de test 
+pentru a verifica care valoare a parametrului e mai bună
 
-- Cum se găsește o valoare optimă pentru  $k$?
+Acest set de date se numește set de "**cross-validare**".
 
-### *Cross-validation*
-
-- Cum se găsește o valoare optimă pentru  $k$?
-    - prin încercări ("băbește")
-
-\smallskip
-
-- "**Cross-validation**" = folosirea unui mic set de test pentru a verifica care valoare a parametrului e mai bună
-
-    - acest set de date se numește set de "**cross-validare**"
-    - se impune $k=1$, se testează cu setul de "*cross-validare*" câți vectori sunt clasificați corect
-    - se repetă pentru $k=2, 3, ... max$
-    - se alege valoarea lui $k$ cu care s-au obținut rezultatele cele mai bune
+Practic, se alege $k=1$, și se testează cu setul de "cross-validare" 
+câți vectori sunt clasificați corect.
+Apoi se repetă pentru $k=2, 3, ... max$.
+La final se alege valoarea lui $k$ 
+cu care s-au obținut rezultatele cele mai bune.
 
 ### Evaluarea algoritmilor
 
