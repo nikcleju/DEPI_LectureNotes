@@ -23,7 +23,7 @@ book:
       - 02_03_AlgoritmiPractici.qmd
     - part: "Applications"
       chapters:
-      - 01_OutlierDetection.ipynb
+      - App01_OutlierDetection.ipynb
     #- Shiny.qmd
     - references.qmd
 

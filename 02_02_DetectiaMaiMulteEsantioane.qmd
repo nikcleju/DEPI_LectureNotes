@@ -7,13 +7,13 @@ $$
 :::
 
 Problemele de decizie bazate pe un singur eșantion
-sunt mai degrabă de uz academic: ușor de înteles, 
+sunt mai degrabă de uz academic: ușor de înteles,
 dar rar întâlnite în practică, pentru că nu sunt foarte robuste.
 În practică, deciziile de acest tip se iau
 folosinf mai multe eșantioane, sau chiar semnale continue,
 ceea ce crește mult fiabilitatea.
 
-În continuare vom analiza problemele de decizie 
+În continuare vom analiza problemele de decizie
 pe baza a mai multor eșantioane.
 
 # Decizie cu mai multe eșantioane
@@ -306,9 +306,9 @@ Prin "observare continuă" înțelegem faptul se folosește
 Acest lucru poate fi tratat ca un caz limită al deciziei
 cu $N$ eșantioane, dar cu $N \to \infty$
 
-Problema se pune în același mod. 
+Problema se pune în același mod.
 
-Semnalele originale sunt $s_0(t)$ si $s_1(t)$, 
+Semnalele originale sunt $s_0(t)$ si $s_1(t)$,
 afectate de zgomot $n(t)$.
 Presupunem **doar zgomot Gaussian**, pentru simplitate.
 Semnalul recepționat este $r(t)$.
@@ -332,7 +332,7 @@ Toate criteriile de decizie sunt aceleași:
 - Criteriul Minimum Probability of Error: $K = \frac{P(H_0)}{P(H_1)}$
 - Criteriul Minimum Risk: $K=\frac{(C_{10}-C_{00})p(H_0)}{(C_{01}-C_{11})p(H_1)}$
 
-În cazul zgomotului tip AWGN, folosim exact aceleași reguli de decizie, 
+În cazul zgomotului tip AWGN, folosim exact aceleași reguli de decizie,
 cea bazată pe distanțe, fie cea bazată pe produse scalare.
 
 Decizia pe baza distanței Euclideene:
@@ -350,10 +350,10 @@ se schimbă doar tipul de semnal cu care lucrăm.
 
 ### Filtru adaptat
 
-Ca și în cazul eșantioanelor, produsul scalar a două semnale 
+Ca și în cazul eșantioanelor, produsul scalar a două semnale
 se poate calcula cu un filtru adaptat.
 
-Un **filtru adaptat** este un filtru proiectat 
+Un **filtru adaptat** este un filtru proiectat
 să aibă răspunsul la impuls egal cu oglindirea
 semnalului căutat. Dacă semnalul original $s(t)$ are lungimea T,
 răspunsul la impuls al filtrului adaptat este
@@ -376,52 +376,62 @@ Se eșantionează ieșirile filtrelor la sfârșitul semnalelor, $t = T$,
 regula de decizie cu produse scalare.
 
 
-### Review: Spații vectoriale Euclidiene
+# Review: spații vectoriale Euclidiene
 
-- Recapitulare: Spații vectoriale Euclidiene
+Un **spațiu vectorial** este o mulțime cu următoarele două proprietăți:
 
-- Spațiu vectorial
-    - suma a două elemente = rămâne în același spațiu
-    - multiplicarea cu o constantă = rămâne în același spațiu
-    - există operații aritmetice de bază: sumă, multiplicare cu o constantă
-    - Exemple
-        - 1D = o dreaptă
-        - 2D = un plan
-        - 3D = spațiu tridimensional
-        - N-D = ...
-        - $\infty$-D = ..
+- suma a două elemente = rămâne în același spațiu
+- multiplicarea cu o constantă = rămâne în același spațiu
 
-- Operația fundamentală: **produsul scalar**
-    - pentru semnale discrete
-        $$\langle \vec{x},\vec{y} \rangle = \sum_i x_i y_i$$
-    - pentru semnale continue
-        $$\langle \vec{x},\vec{y} \rangle = \int x(t) y(t)$$
+Se presupune că există operațiile aritmetice de bază (suma, multiplicare cu o constantă).
 
-- Norma (lungimea) unui vector = radical(produsul scalar cu sine însuși)
+Exemple:
+
+- 1D = o dreaptă
+- 2D = un plan
+- 3D = spațiu tridimensional
+- N-D = ...
+- $\infty$-D = ..
+
+Operația fundamentală într-un spațiu vectorial este **produsul scalar**,
+definit ca:
+
+- pentru semnale discrete:
+  $$\langle \vec{x},\vec{y} \rangle = \sum_i x_i y_i$$
+- pentru semnale continue:
+  $$\langle \vec{x},\vec{y} \rangle = \int x(t) y(t)$$
+
+**Norma** (lungimea) unui vector = radical din produsul scalar cu sine însuși:
+
 $$\|\vec{x}\| = \sqrt{ \langle \vec{x},\vec{x} \rangle }$$
 
-- Distanța între doi vectori = norma diferenței dintre ei
+**Distanța** între doi vectori = norma diferenței dintre ei:
+
 $$d(\vec{x}, \vec{y}) = \|\vec{x} - \vec{y}\|$$
 
-- Energia unui semnal = norma la pătrat
+**Energia** unui semnal = norma la pătrat:
+
 $$E_x = \|\vec{x}\|^2 = \langle \vec{x},\vec{x} \rangle$$
 
-- Unghiul dintre doi vectori
+**Unghiul** dintre doi vectori:
+
 $$cos(\alpha) = \frac{\langle x,y \rangle}{||x|| \cdot ||y||}$$
-    - are valoare între -1 și 1
-    - dacă $\langle x,y \rangle = 0$, vectorii sunt **ortogonali** (perpendiculari)
 
-- Bonus: transformata Fourier = produs scalar cu $e^{j \omega t}$
+Termenul $cos(\alpha)$ are are valoare între -1 și 1.
+În particular, dacă $\langle x,y \rangle = 0$, vectorii se numesc **ortogonali** (perpendiculari).
+
+**Bonus**: transformata Fourier = produs scalar al unui semnal $x(t)$ cu semnale de forma $e^{j \omega t}$:
+
 $$\mathcal{F} \{ x(t)\} = \langle x(t), e^{j \omega t}\rangle = \int x(t) e^{-j \omega t}$$
-    - pentru semnale complexe, al doilea termen se conjugă, de aceea este $-j$ în loc de $j$
-        $$\langle \vec{x},\vec{y} \rangle = \sum_i x_i y_i^*$$
-        $$\langle \vec{x},\vec{y} \rangle = \int x(t) y(t)^*$$
 
-- Identic pentru semnale discrete
+Pentru semnale complexe, în formula produsului scalar cel de-al doilea termen se conjugă,
+de aceea este $-j$ în loc de $j$:
 
-- Concluzie: definirea algoritmilor în mod generic,
-pe bază de produse scalare / distanțe / norme, este extrem de folositoare!
-    - se aplică automat tuturor spațiilor vectoriale
-    - un singur algoritm, utilizări pentru multiple tipuri de semnale
+$$\langle \vec{x},\vec{y} \rangle = \sum_i x_i y_i^*$$
+$$\langle \vec{x},\vec{y} \rangle = \int x(t) y(t)^*$$
 
+Trandformata Fourier pentru semnale discrete se definește similar, tot pe baza produsului scalar.
 
+**Concluzie**: definirea algoritmilor în mod generic, pe bază de produse scalare / distanțe / norme,
+ne permite să aplicăm aceeași definiție sau algoritm tuturor spațiilor vectoriale, în mod automat,
+indiferent ca e vorba de semnale discrete sau continue, mai scurte sau mai lungi etc.

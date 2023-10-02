@@ -211,7 +211,6 @@ Variabilele aleatoare continue sunt caracterizate prin două funcții:
 funcția densitate de probabilitate și funcția de repartiție.
 
 Fie o variabilă aleatoare **continuă** $A$.
-
 **Funcția densitate de probabilitate** (FDP) $w_A(x)$ se definește ca
 probabilitatea ca valoarea lui $A$ să fie într-o vecinătate $\epsilon$ mică în jurul lui $x$, împărțit la $\epsilon$
 $$w_A(x) = \lim_{\epsilon \to 0}{\frac{P(A \in [x, x+\epsilon])}{\epsilon}}$$
@@ -243,7 +242,7 @@ Densitatea are o definiție identică în fizică:
 
 $$\rho(x) = \frac{dM}{dV}$$
 
-Densitatea unui punct = masa unei mic volum V în jurul acelui punct
+Densitatea unui punct = derivata masei = masa unei mic volum V în jurul acelui punct
 împărțit la volumul V, pentru $V \to 0$.
 :::
 
@@ -274,18 +273,18 @@ Funcția de repartiție se poate folosi de asemenea pentru calculul unor probabi
 ### Interpretarea densității de probabilitate
 
 O variabilă aleatoare continuă poate lua o infinitate de valori posibile.
-
 Așadar, probabilitatea ca o variabilă aleatoare continuă $A$ să ia
 **exact** o anume valoare precisă $x$, dintr-o infinitate de alternative,
 este **întotdeauna zero**.
 
 Atunci ce ne spune densitatea de probabilitate $w_A(x)$?
 
-Densitatea de probabilitate $w_A(x)$ într-un punct $x = x_1$ ne spune probabilitatea ca $A$ să ia valori **în jurul** acelei valori $x_1$, comparativ cu a lua valori în jurul unei alte valori $x_2$,
-și nu reprezintă probabilitatea unei valori anume, care este mereu zero.
+Densitatea de probabilitate $w_A(x)$ într-un punct $x = x_1$ ne spune probabilitatea ca $A$ să ia valori
+**în jurul** acelei valori $x_1$, comparativ cu a lua valori în jurul unei alte valori $x_2$.
+Ea nu reprezintă probabilitatea unei valori anume, care este mereu zero.
 
 În consecință valorile lui $w_A(x)$ se pot folosi în mod direct pentru comparații
-("E mai probabil ca $A$ să ia valori în jurul lui 5, sau în jurul lui 7?"),
+("e mai probabil ca $A$ să ia valori în jurul lui 5, sau în jurul lui 7?"),
 dar pentru calculul unor probabiltăți trebuie să apelăm mereu la integrala sa.
 
 La variabile aleatoare discrete, funcția masă de probabilitate joacă același rol ca densitatea de probabilitate,
@@ -346,15 +345,16 @@ plt.close()
 ![](fig/01_RandomSignals_DistributionNormal.png){width=60% max-width=1000px}
 
 
-Constanta de la începutul expresiei asigură normalizarea,
-adică faptul că probabilitatea totală este 1:
+Termenul $\frac{1}{\sigma \sqrt{2 \pi}}$ de la începutul expresiei
+este o constantă care asigură normalizarea,
+adică faptul că probabilitatea totală (integrala totală) este 1:
 $$\int_{-\infty}^\infty w_A(x) \mathrm{d}x = 1$$
 
 Distribuția normală se notează cu $\mathcal{N}(\mu, \sigma^2)$.
 
-Când $\mu=0$ și $\sigma=1$ avem distribuția normală **standard**.
+Când $\mu=0$ și $\sigma=1$ avem **distribuția normală standard**.
 
-Cum "citim" distribuția normală?
+Cum interptetăm distribuția normală?
 Fie o variabilă aleatoare $A \sim \mathcal{N}(\mu, \sigma^2)$
 ($A$ ia valori conform distribuției normale cu media $\mu$ și deviația $\sigma$).
 Putem spune următoarele:
@@ -435,8 +435,8 @@ plt.close()
 
 Cum interpretăm distribuția uniformă?
 
-- Sunt posibile doar valori din intervalul $[a, b]$, restul sunt excluse.
-- Toate valorile din intervalul $[a, b]$ au aceeași șansă
+- Sunt posibile doar valori din intervalul $[a, b]$, restul sunt absolut excluse;
+- Toate valorile din intervalul $[a, b]$ au aceeași șansă.
 
 "Înălțimea" funcției este $\frac{1}{b-a}$ pentru a se asigura normalizarea (aria totală este 1)
 
@@ -444,11 +444,11 @@ Cum interpretăm distribuția uniformă?
 ## Calculul probabilității pentru distribuția normală
 
 Probabilitatea ca $A$ sa aibă valori între $a$ și $b$
-este $\int_a^b w_A(x) dx$, dar pentru expresia
-distribuției normale această integrală nu se poate calcula
+este $\int_a^b w_A(x) dx$, pentru o distribuție continuă.
+Însă, pentru distribuția normală această integrală nu se poate calcula
 prin formula algebrice (este funcție ne-elementară).
 
-Pentru calcul, se folosesc algoritmi numerici, pe baza
+În schimb, pentru calcul se folosesc algoritmi numerici, pe baza
 **funcției de eroare** $erf(z)$ ("the error function"):
 $$erf(z) = \frac{2}{\sqrt{\pi}} \int_0^z e^{-t^2} dt$$
 
@@ -563,7 +563,7 @@ Pentru două variabile aleatoare independente $A$ și $B$,
 și oricare două numere reale $c_1$ și $c_2$, avem:
 $$E\{c_1A + c_2B\} = c_1E\{A\} + c_2E\{B\}$$
 
-Sau:
+sau:
 $$E\{cA\} = c E\{A\}, \forall c \in \mathbb{R}$$
 $$E\{A + B\} = E\{A\} + E\{B\}$$
 
@@ -572,9 +572,10 @@ $$E\{A + B\} = E\{A\} + E\{B\}$$
 
 Aruncăm trei zaruri $A$, $B$, $C$ și
 definim $D$ ca suma celor trei valori obținute:
-$$D = A+B+C$$.
+$$D = A+B+C$$
 
 Cât este valoarea medie a lui $D$?
+:::
 
 ### Valoarea pătratică medie
 
@@ -704,7 +705,6 @@ Variabilele A, B, C, D nu sunt însă independente,
 ## Sisteme de mai multe variabile aleatoare
 
 Fie un sistem cu două variabile aleatoare continue, $A$ și $B$.
-
 Care este probabilitatea ca $A$ să ia valori în jurul lui $x$ **ȘI**
 B să ia valori în jurul lui $y$?
 
@@ -761,14 +761,34 @@ Funcția are doi parametri matriciali:
 
 - **media** $\boldsymbol{\mu} = [\mu_1, \mu_2, ... \mu_N]$ este un vector de
   dimensiune $N$ care definește "centrul" funcției;
-- **matricea de covarianță** $\Sigma$ care definește orientarea și forma eliptică a funcției.
+- **matricea de covarianță** $\Sigma$ este o matrice $ N \times N$ care definește orientarea și forma eliptică a funcției.
 
-Distribuția normală multivariată are forma de tipul unui "munte" elipsoid, pentru care media $\boldsymbol{\mu}$ reprezintă coordonatele vârfului central. Matricea de covarianță $\Sigma$ determina forma "muntelui", în felul următor:
+Distribuția normală multivariată are forma de tipul unui "munte" elipsoid,
+pentru care media $\boldsymbol{\mu}$ reprezintă coordonatele vârfului central.
+Matricea de covarianță $\Sigma$ determina forma "muntelui", în felul următor:
 
 - Matrice are $N$ **vectori proprii** $\mathbf{e_i}$ care dau direcțiile ortogonale ale axelor care definesc elipsa;
 - Cele $N$ **valori proprii** $\lambda_i$ controlează extinderea elipsei de-a lungul fiecărei axe.
 
-GRAFICE, GRAFICE, GRAFICE
+::: {.callout-tip icon=false title="Exemple"}
+### Exemple
+
+![Distribuția normală 2D (bivariată)](img/01_01_BivNorm1.png){.id width=75%}
+
+- sursa: https://www.statsref.com/HTML/multivariate_distributions.html
+
+![Distribuții normală 2D (bivariată)](img/01_01_BivNorm2.jpg){.id width=75%}
+
+- sursa: https://www.rhayden.us/covariance-matrix-2/the-multivariate-normal-distribution.html
+
+Vectorii proprii $\mathbf{e_i}$ ai matricei de covarianță $\Sigma$ ne dau direcțiile
+dupa care e aliniată forma eliptică a funcției, iar valorile proprii $\lambda_i$ ne dau
+alungirea funcției în aceste direcții (varianța în aceste direcții).
+
+![Distribuții normală 2D (bivariată)](img/01_01_BivNormEig1.png){.id width=75%}
+
+- sursa: https://www.rhayden.us/covariance-matrix-2/the-multivariate-normal-distribution.html
+:::
 
 ### Caz particular: componente independente
 
@@ -818,9 +838,10 @@ se referă la forma circulară a funcției.
 :::
 
 $$\begin{split}
-w_A(\mathbf{x})= &\frac{1}{\sigma^N \sqrt{(2\pi)^N}}
-e^{-\frac{1}{2}(\mathbf{x} - \boldsymbol{\mu})^T(\mathbf{x} - \boldsymbol{\mu})} \\
-&=
+w_A(\mathbf{x}) &= \frac{1}{\sigma^N \sqrt{(2\pi)^N}}
+e^{-\frac{1}{2}(\mathbf{x} - \boldsymbol{\mu})^T \Sigma^{-1} (\mathbf{x} - \boldsymbol{\mu})} \\
+&=\frac{1}{\sigma^N \sqrt{(2\pi)^N}}
+e^{-\frac{ \sum_i (x_i - \mu_i)^2 }{2 \sigma^{2N}}} \\
 \end{split}$$
 
 În acest caz, toata componentele $x_k$ sunt independente și respectă
@@ -853,17 +874,15 @@ de pătratul distanței Euclidiene față de media $\boldsymbol{\mu} = [\mu_1,..
 - Puncte mai depărtate de $\mu$ au probabilitate mai redusă
 - Două puncte la aceeași distanță de $\mu$ au aceeași probabilitate
 
-### Distribuția normală 2D
+Distribuția normală 2D, izotropă, este prezentată mai jos:
 
-- Distribuția a 2 v.a. normale (distribuția normală 2D)
 ![](img/2DNormal.png)
 
-### Distribuția normală 2D  - vedere de sus
-
-- Vedere de sus
-- Aici, $\mu = (0,0)$
-- Probabilitatea scade pe măsură ce crește distanța față de centru,
-în cercuri concentrice (simetric)
+Vedere de sus:
 
 ![](img/2DNormal-TopView.png){.id width=50%}
 
+În această figură, $\mu = (0,0)$. Se observă că probabilitatea scade
+pe măsură ce crește distanța față de centru, în cercuri concentrice (simetric),
+întrucât e vorba de o distribuție izotropă.
+În cazul general, în loc de cercuri concentrice am fi avut elipse concentrice.

@@ -1,6 +1,8 @@
 
-## II.5 Algoritmi practici 
-pentru decizie cu distribuții necunoscute
+# Algoritmi practici
+
+În continuare, vom studia o serie de algoritmi practici,
+foarte utilizați atunci când distribuțiile datelor sunt necunoscute.
 
 În analiza de până acum, am considerat că se cunosc
 întotdeauna parametrii matematici ai tuturor datelor:
@@ -55,7 +57,9 @@ pe care le-ar conține distribuțiile condiționate $w(r|H_0)$ și $w(r|H_1)$
 
 Cum se face clasificarea în aceste condiții?
 
-### Algoritmul k-NN
+## Algoritmul k-NN
+
+### Definiția algoritmului
 
 Algoritmul *k-Nearest Neighbours* (k-NN) este descris mai jos.
 
@@ -87,17 +91,17 @@ Algoritmul *k-Nearest Neighbours* (k-NN) este descris mai jos.
 
 ### Relația între  k-NN și decizia ML
 
-Dacă setul de antrenare este foarte mare, 
+Dacă setul de antrenare este foarte mare,
 algoritmul k-NN devine simular cu decizia pe baza criteriului ML,
-pentru că numărul de vectori situați într-o vecinătate 
+pentru că numărul de vectori situați într-o vecinătate
 a unui punct $r$ este proporțional cu $w(r|H_i)$.
 Așadar, dacă sunt mai mulți vecini din clasa A decât din clasa B,
 caz în care k_NN ia decizia A, e totuna cu a spune că
-$$\Leftrightarrow$ $w(r|H_A)$ > $w(r|H_B)$$
-caz în care decizia ML este tot în favoarea clasei A.
+$$w(r|H_A) > w(r|H_B)$$
+care este de fapt regula de decizie ML, tot în favoarea clasei A.
 
 
-- Exemplu: frunze și copaci :) de povestit
+Exemplu: frunze și copaci, de povestit.
 
 
 ::: {.callout-note icon=false}
@@ -127,7 +131,7 @@ utilizând algoritmul k-NN, cu $k=1$, $k=3$, $k=5$, $k=7$ and $k=9$
 
 ### Discuții
 
-Algoritmul k-NN este un algoritm de învățare supervizată, 
+Algoritmul k-NN este un algoritm de învățare supervizată,
 întrucât se cunosc clasele vectorilor din setul de antrenare.
 
 Efectul lui $k$ se reflectă în gradul de "netezire" a frontierei de decizie:
@@ -135,19 +139,19 @@ Efectul lui $k$ se reflectă în gradul de "netezire" a frontierei de decizie:
 - $k$ mare: frontieră mai netedă
 
 Cum se găsește o valoare optimă pentru $k$?.
-În general, doar prin încercări ("băbește"), 
-pe baza unui mic set de date de test. 
+În general, doar prin încercări ("băbește"),
+pe baza unui mic set de date de test.
 Această metodă se numește "cross-validation".
 
-"**Cross-validation**" = folosirea unui mic set de test 
+"**Cross-validation**" = folosirea unui mic set de test
 pentru a verifica care valoare a parametrului e mai bună
 
 Acest set de date se numește set de "**cross-validare**".
 
-Practic, se alege $k=1$, și se testează cu setul de "cross-validare" 
+Practic, se alege $k=1$, și se testează cu setul de "cross-validare"
 câți vectori sunt clasificați corect.
 Apoi se repetă pentru $k=2, 3, ... max$.
-La final se alege valoarea lui $k$ 
+La final se alege valoarea lui $k$
 cu care s-au obținut rezultatele cele mai bune.
 
 ### Evaluarea algoritmilor
@@ -186,19 +190,16 @@ cu care s-au obținut rezultatele cele mai bune.
         - utilizat pentru evaluarea finală a algoritmului, cu valorile parametrilor fixate
         - mai mic, aprox. 20% din date (de ex. 20 imagini ale lui of A și 20 ale lui B)
 
-### Algoritmul *k-Means*
+## Algoritmul *k-Means*
 
-- k-Means: un algoritm pentru ***clusterizarea*** datelor
-    - identificarea grupurilor de date apropiate între ele
+**k-Means** este un algoritm pentru ***clusterizarea*** datelor.
 
-\smallskip
+Prin **clusterizare** se înțelege operația de identificare a
+grupurilor de date apropiate între ele (*clustere*).
 
-- Un exemplu de algoritm de învățare nesupervizată
-    - "învățare nesupervizată" = nu se cunosc clasele semnalelor din setul de antrenare
+### Definiția algoritmului
 
-### Algoritmul *k-Means*
-
-Algoritmul *k-Means*
+Algoritmul *k-Means* funcționează astfel:
 
 - Intrare:
     - set de antrenare cu vectorii $\vec{x}_1 ... \vec{x}_N$
@@ -215,32 +216,34 @@ Algoritmul *k-Means*
 - Ieșire: centroizii $\vec{c}_i$, clasele tuturor vectorilor  de intrare $\vec{x}_n$
 
 
-### Algoritmul *k-Means*
-
-Algoritmul *k-Means* explicat video:
+Pentru explicații video pe Youtube:
 
 - Urmăriți video-ul următor, de la 6:28 to 7:08
 
     [https: //www.youtube.com/watch?v=4b5d3muPQmA](https://www.youtube.com/watch?v=4b5d3muPQmA)
-
-\smallskip
 
 - Urmăriți video-ul următor, de la 3:05 la final
 
     [https: //www.youtube.com/watch?v=IuRb3y8qKX4](https://www.youtube.com/watch?v=IuRb3y8qKX4)
 
 
-### Algoritmul *k-Means*
+### Discuții
 
-- Algoritmul *k-Means* poate să nu conveargă spre niște grupuri adecvate de date
-    - rezultatele depind de inițializarea aleatoare a centroizilor
-    - se rulează de mai multe ori, se alege cel mai bun rezultat
-    - există metode de inițializare optimizate (*k-Means++*)
+Algoritmul *k-Means* este un exemplu de algoritm de învățare nesupervizată.
+
+**Învățare nesupervizată** = când nu se cunosc clasele semnalelor din setul de antrenare
+
+Algoritmul *k-Means* poate să nu conveargă spre niște grupuri adecvate de date.
+Cu alte cuvinte, rezultate bune nu sunt garantate; rezultatele depind
+foarte mult de inițializarea aleatoare a centroizilor.
+
+O soluție frecventă, în practică, este să rulăm algoritmul de mai multe ori, pentru a alege apoi cel mai bun rezultat.
+De asemenea, există în literatură și unele metode de inițializare optimizate (*k-Means++*)
 
 
+::: {.callout-note icon=false}
 ### Exercițiu
 
-Exercițiu
 
 1. Fie datele următoare:
     $$\left\lbrace \vec{v_n} \right\rbrace =
@@ -249,4 +252,4 @@ Exercițiu
     Utilizați algoritmul k-Means pentru a găsi doi centroizi $\vec{c}_1$ și $\vec{c}_2$,
 pornind de la valorile aleatoare $\vec{c}_1 = -0.5$ și $\vec{c}_2 = 0.9$.
 Realizați 5 iterații ale algoritmului.
-
+:::
