@@ -11,6 +11,10 @@ O **realizare** a unei variabile aleatoare este o valoare particulară posibilă
 O variabilă aleatoare este **discretă** dacă $\Omega$ este o mulțime discretă,
 sau **continuă** dacă $\Omega$ este o mulțime compactă.
 
+Variabilele aleatoare modelează semnale afectate de **zgomot**,
+cum ar fi un semnal de tensiune într-un circuit electric (zgomot termic etc),
+sau imagini afectate de zgomot
+
 ::: {.callout-tip icon=false title="Exemple"}
 ### Exemple
 
@@ -32,11 +36,6 @@ sau **continuă** dacă $\Omega$ este o mulțime compactă.
   ![](img/RandomVariable_img.pdf){.id width=50%}
 
   (sursa imaginii: *https://www.mathsisfun.com/data/random-variables.html*)
-:::
-
-Variabilele aleatoare modelează semnale afectate de **zgomot**,
-cum ar fi un semnal de tensiune într-un circuit electric (zgomot termic etc),
-sau imagini afectate de zgomot
 
 Mai jos sunt ilustrate câteva o serie de semnale afectate de zgomot.
 
@@ -151,6 +150,7 @@ plt.close()
 ```
 ![](fig/01_RandomSignals_ImageRandUnif.png){width=70% max-width=1000px}
 
+:::
 
 ## Densitate de probabilitate
 
@@ -160,21 +160,13 @@ Variabilele aleatoare discrete sunt caracterizate prin două funcții:
 funcția masă de probabilitate (discretă) și funcția de repartiție (care e "în trepte").
 
 Fie o v.a. discretă $A$.
-
 Se definește funcția **masă de probabilitate** (FMP) ("probability mass function", lb.eng.) $w_A(x)$
 ca fiind probabilitatea ca $A$ să aibă valoarea egală cu $x$:
 $$w_A(x)= P \left\{A = x \right\}$$
 
-::: {.callout-tip icon=false title="Exemplu"}
-#### Exemplu
-
-Funcția masă de probabilitate pentru valoarile unui zar este următoarea:
-
-:::
-
-::: {.callout-tip appearance="simple"}
-FMP mai e numită, în limbaj uzual, "distribuția" variabilei aleatoare.
-:::
+**Funcția de repartiție** (FR) $F_A(x)$ a unei variabile aleatoare $A$
+reprezintă probabilitatea ca $A$ să aibă valoarea mai mică sau egală cu $x$:
+$$F_A(x) = P\left\{ A \leq x \right\}$$
 
 FMP se poate utiliza pentru a calcula probabilitatea unor valori:
 
@@ -183,20 +175,6 @@ FMP se poate utiliza pentru a calcula probabilitatea unor valori:
 
 - Probabilitatea ca A să fie între valorile $a$ și $b$ (inclusiv):
 $$P\left\{ a \leq A \leq b\right\} = \sum_{x=a}^b w_A(x)$$
-
-**Funcția de repartiție** (FR) $F_A(x)$ a unei variabile aleatoare $A$
-reprezintă probabilitatea ca $A$ să aibă valoarea mai mică sau egală cu $x$:
-$$F_A(x) = P\left\{ A \leq x \right\}$$
-
-::: {.callout-tip icon=false title="Exemplu"}
-### Exemplu
-
-Funcția de repartiție a valorilor unui zar este următoarea:
-:::
-
-::: {.callout-tip appearance="simple"}
-Pentru variabile aleatoare discrete, funcția de repartiție este întotdeauna "în trepte".
-:::
 
 Și funcția de repartiție poate fi folosită pentru a calcula diverse probabiități:
 
@@ -210,10 +188,21 @@ Pentru variabile aleatoare discrete, funcția de repartiție este întotdeauna "
 FR este suma cumulativă (un fel de "integrală discretă") a FMP:
 $$F_A(x) = \sum_{t = -\infty}^{t = x} w_A(t)$$
 
-::: {.callout-tip icon=false title="Exemplu"}
-### Exemplu
+FMP mai e numită, în limbaj uzual, "distribuția" variabilei aleatoare.
 
-Exemplu pentru zar: grafic, la tablă
+::: {.callout-tip icon=false title="Exemplu"}
+#### Exemplu
+
+Funcția masă de probabilitate pentru valoarile unui zar este următoarea:
+
+![](01_01_Zar_Distrib.png){width=50% max-width=1000px}
+
+Funcția de repartiție a valorilor unui zar este următoarea:
+
+![](01_01_Zar_Repart.png){width=50% max-width=1000px}
+
+Pentru variabile aleatoare discrete, funcția de repartiție este întotdeauna "în trepte".
+
 :::
 
 ### Pentru variabile aleatoare continue
