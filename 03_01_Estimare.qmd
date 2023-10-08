@@ -47,82 +47,83 @@ Exemple:
    - $A$ poate fi orice valoare din $\mathbb{R}$, în general
 
 
-### Estimare și Detecție/Decizie
+Există o strânsă legătură între
+problemele de decizie și cele de estimare.
+Practic, prin "decizie" înțelegem o problemă
+de estimare **restrânsă** doar la un set discret, redus, de opțiuni;
+se alege doar una dintre cele câteva ipoteze.
+La rândul său, o problemă de estimare
+poate fi văzută ca o problemă de detectție, dar
+cu un număr **infinit de opțiuni** posibile.
+În fundal, însă, metodele statistice folosite sunt foarte similare.
 
-- Detecție = Estimare **restrânsă** doar la un set discret de opțiuni
+## Definirea problemei
 
-- Estimare = Detecție cu un număr **infinit de opțiuni** posibile
+Considerăm un semnal recepționat $r(t)$, depinzând de parametrul cu valoare
+necunoscută $\Theta$, și afectat de zgomot aditiv:
 
-- Metodele statistice sunt similare
+$$r(t) = s_\Theta(t) + zgomot$$
 
-   - În practică, distincția între estimare și detecție nu este strictă
-   - (de ex. când trebuie să alegem între 1000 de ipoteze, este "detecție" sau "estimare"?)
+Din $r(t)$ se iau **N eșantioane**, la momentele de timp $t_i$,
 
+$$r_i = r(t_i) = s_\Theta(t_i) + n(t_i)$$
 
-### Semnalul recepționat
+obținându-se vectorul de eșantioane:
 
-- Semnalul recepționat este $r(t) = s_\Theta(t) + zgomot$
+$$\vec{r} = [r_1, r_2, ... r_N]$$
 
-   - este afectat de zgomot
-   - depinde de parametrul necunoscut $\Theta$
+Fiecare eșantion $r_i = s_\Theta(t_i) + n(t_i)$ este o variabilă aleatoare,
+având aceeași distribuție ca eșantionul de zgomot $n_(t_i)$,
+dar translată cu $s_\Theta(t_i)$.
+Distribuția eșantionului $r_i$, care depinde așadar de $\Theta$, este notată:
 
-- Considerăm **N eșantioane** din $r(t)$, luate la momentele de timp $t_i$
-	$$\vec{r} = [r_1, r_2, ... r_N]$$
+$$w_i(r_i | \Theta)$$
 
-- Eșantioanele depind de valoarea lui $\Theta$
+Întregul vector de eșantioane $\vec{r}$ este o variabilă aleatoare N-dimensională
+ce depinde de $\Theta$, și are o distribuție N-dimensională $w(\vec{r} | \Theta)$.
+Dacă zgomotul este alb, autnci eșantioane diferite de zgomot sunt independente,
+iar distribuția vectorului $\vec{r}$ devine egală cu produsul distribuțiilor
+fiecărui eșantion:
 
+$$w(\vec{r} | \Theta) = w_1(r_1 | \Theta) \cdot w_2(r_2 | \Theta) \cdot ... \cdot w_N(r_N | \Theta)$$
 
-### Semnalul recepționat
-
-- Fiecare eșantion $r_i$ este o variabilă aleatoare ce depinde de $\Theta$ (și de zgomot)
-
-	- Fiecare eșantion are o distribuție care depinde de $\Theta$
-	$$w_i(r_i | \Theta)$$
-
-- Întregul vector de eșantioane $\vec{r}$ este o variabilă aleatoare N-dimensională
-ce depinde de $\Theta$ (și de zgomot)
-
-	- Are o distribuție N-dimensională ce depinde de $\Theta$
-	- Egală cu produsul tuturor $w_i(r_i | \Theta)$
-	$$w(\vec{r} | \Theta) = w_1(r_1 | \Theta) \cdot w_2(r_2 | \Theta) \cdot ... \cdot w_N(r_N | \Theta)$$
-
+## Estimarea de plauzibilitate maximă (Maximum Likelihood)
 
 ### Tipuri de estimare
 
-- Considerăm două tipuri de estimare:
+Există două abordări ale problemelor de estimare:
 
-	1. **Estimare de plauzibilitate maximă** (Maximum Likelihood Estimation, MLE):
-	În afară de $\vec{r}$ nu se cunoaște nimic despre $\Theta$,
-	decât cel mult vreun domeniu de existență (de ex. $\Theta > 0$)
+1. **Estimare de plauzibilitate maximă** (Maximum Likelihood Estimation, MLE):
+   În afară de $\vec{r}$ nu se cunoaște nimic despre $\Theta$,
+   decât cel mult vreun domeniu de existență (de ex. $\Theta > 0$)
 
+	Estimarea ML este un caz particular al celei de-a doua abordări.
 
-	2. **Estimare Bayesiană**: În afară de $\vec{r}$ se mai cunoaște
-	o distribuție *a priori* $w(\Theta)$ a lui $\Theta$,
-	care indică ce valori ale lui $\Theta$ sunt mai probabile / mai puțin probabile
+2. **Estimare Bayesiană**: În afară de $\vec{r}$ se mai cunoaște
+   o distribuție *a priori* $w(\Theta)$ a lui $\Theta$,
+   care indică ce valori ale lui $\Theta$ sunt mai probabile sau mai puțin probabile.
 
-		- caz mai general decât primul
-
-
-## II.2 Estimarea de plauzibilitate maximă (Maximum Likelihood)
 
 ### Estimarea tip Maximum Likelihood
 
-- Dacă nu se cunoaște vreo distribuție *a priori* se folosește metoda
+Dacă nu se cunoaște vreo distribuție *a priori* se folosește metoda
 estimării de plauzibilitate maximă ("Maximum Likelihood", ML)
 
-- Se definește **plauzibilitatea** unui valori $\Theta$, dat fiind
-vectorul de observații $\vec{r}$:
-	$$L(\Theta | \vec{r}) = w(\Theta | \vec{r})$$
+Dat fiind vectorul de observații $\vec{r}$ cunoscut,
+se definește **plauzibilitatea** unui valori $\Theta$ astfel:
 
-- $L(\Theta | \vec{r})$ reprezintă funcția de plauzibilitate
+$$L(\Theta | \vec{r}) = w(\Theta | \vec{r})$$
 
-- A se compara cu formula din Cap. 2, slide 20
+Funcția $L(\Theta | \vec{r})$ reprezintă funcția de plauzibilitate,
+care asociază pentru fiecare valoare posibilă $\Theta$ a parametrului căutat
+o anumită plauzibilitate.
+Conform ecuației, plauzibilitatea unei valori oarecare $\Theta$
+reprezintă "probabilitatea" ca, dacă parametrul avea acea valoare,
+să se obțină vectorul $\vec{r} care s-a obținut.
 
-  - e aceeași
-  - aici "ghicim" pe $\Theta$, acolo "ghiceam" pe $H_i$
+Comparând cu formula din Cap. 2, slide 20, se observă ce e aceeași definiție,
+cu diferența că aici estimăm pe $\Theta$, iar în acel caz "estimam" ipoteza corectă $H_i$.
 
-
-### Estimarea tip Maximum Likelihood
 
 Estimarea de plauzibilitate maximă (Maximum Likelihood, ML):
 
