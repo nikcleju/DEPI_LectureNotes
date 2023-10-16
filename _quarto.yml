@@ -21,7 +21,10 @@ book:
       - 02_01_Detectia1Esantion.qmd
       - 02_02_DetectiaMaiMulteEsantioane.qmd
       - 02_03_AlgoritmiPractici.qmd
-    - part: "Applications"
+    - part: "Estimare"
+      chapters:
+      - 03_01_Estimare.qmd
+    - part: "Aplicații practice"
       chapters:
       - App01_OutlierDetection.ipynb
     #- Shiny.qmd
