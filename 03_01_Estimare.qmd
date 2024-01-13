@@ -12,25 +12,24 @@ $$
 Vom considera următoarea problemă de bază.
 
 Un emițător transmite un semnal $s_\Theta(t)$, care depinde de parametru **necunoscut** $\Theta$
-(de ex. amplitudinea e necunoscută).
-Semnalul fiind afectat de zgomot, la receptor ajunge semnalul recepționat
-următor:
+(de ex. amplitudinea e necunoscută). În afara acestui parametru, semnalul este cunoscut în totalitate.
 
-$$r(t) = s_\Theta(t) + zgomot$$
+Semnalul acesta ajunge la receptor afectat de zgomotul $n(t)$,
+astfel încât semnalul recepționat $r(t)$ este:
+$$r(t) = s_\Theta(t) + n(t) $$
 
-În teorie estimării, vrem să găsim valoarea parametrului $\Theta$,
+Teoria estimării se ocupă de problema estimării parametrului $\Theta$,
 cunoscând semnalul recepționat și parametrii statistici ai zgomotului.
 
-Întrucât nu cunoaștem valorile exacte ale zgomotului,
-nu putem găsi valiarea adevărată a parametrului necunoscut,
-tot ce putem face este să îl estimăm cât mai bine.
+Întrucât nu cunoaștem valorile exacte ale zgomotului $n(t)$,
+nu putem găsi valoarea adevărată a parametrului necunoscut $\Theta$,
+tot ceea ce putem face este să o **estimăm**.
 Valoarea găsită în urma estimării va fi notată
-$\hat{\Theta}$, și se numește **estimatul* lui $\Theta$
+$\hat{\Theta}$, și se numește **estimatul** lui $\Theta$
 
-Va există întotdeauna o eroare de estimare $\epsilon$ între
+Există întotdeauna o eroare de estimare $\epsilon$ între
 valoarea adevărată a lui $\Theta$ și
-estimatul de la recepție:
-
+estimatul său de la recepție:
 $$\epsilon = \hat{\Theta} - \Theta$$
 
 Exemple:
@@ -42,7 +41,7 @@ Exemple:
 
 - Fie următoarea problemă de estimare:
 
-	Se recepționează un semnal $r(t) = A + zgomot$, estimați-l pe $A$
+  Se recepționează un semnal $r(t) = A + zgomot$, estimați-l pe $A$
 
 
 - La detecție: se alege între **două valori cunoscute** ale $A$:
@@ -53,16 +52,14 @@ Exemple:
 
    - $A$ poate fi orice valoare din $\mathbb{R}$, în general
 
-
-Există o strânsă legătură între
-problemele de decizie și cele de estimare.
-Practic, prin "decizie" înțelegem o problemă
-de estimare **restrânsă** doar la un set discret, redus, de opțiuni;
+Există o strânsă legătură între problemele de decizie și cele de estimare.
+Practic, prin "decizie" înțelegem o problemă de estimare
+**restrânsă** doar la un set discret, redus, de opțiuni;
 se alege doar una dintre cele câteva ipoteze.
 La rândul său, o problemă de estimare
-poate fi văzută ca o problemă de detectție, dar
+poate fi văzută ca o problemă de detecție, dar
 cu un număr **infinit de opțiuni** posibile.
-În fundal, însă, metodele statistice folosite sunt foarte similare.
+Metodele statistice folosite sunt foarte similare în ambele situații
 
 ## Definirea problemei
 
