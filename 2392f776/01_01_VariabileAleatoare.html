@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.1.179">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Decizie și estimare în prelucrarea informației (DEPI) - 1&nbsp; Variabile aleatoare</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./01_02_ProceseAleatoare.html" rel="next">
+<link href="./01_Intro.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Variabile aleatoare</span></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Decizie și estimare în prelucrarea informației (DEPI)</a> 
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Prefață</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01_Intro.html" class="sidebar-item-text sidebar-link">Introducere</a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Semnale Aleatoare</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01_01_VariabileAleatoare.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Variabile aleatoare</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01_02_ProceseAleatoare.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Procese aleatoare</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01_03_Autocorelatia.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Proprietăți ale autocorelației</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">Decizie</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02_01_Detectia1Esantion.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Decizie cu un singur eșantion</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02_02_DetectiaMaiMulteEsantioane.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Decizie cu mai multe eșantioane</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02_03_AlgoritmiPractici.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Algoritmi practici</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">Estimare</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03_01_Estimare.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Elemente de teoria estimării</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">Exerciții rezolvate</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Ex_Seminar06.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Seminar 06: K-NN, K-Means, estimare ML</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">Aplicații practice</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./App01_OutlierDetection.html" class="sidebar-item-text sidebar-link">Outlier Detection with the 3-sigma Rule</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">References</a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#definiții" id="toc-definiții" class="nav-link active" data-scroll-target="#definiții"><span class="toc-section-number">1.1</span>  Definiții</a></li>
+  <li><a href="#densitate-de-probabilitate" id="toc-densitate-de-probabilitate" class="nav-link" data-scroll-target="#densitate-de-probabilitate"><span class="toc-section-number">1.2</span>  Densitate de probabilitate</a>
+  <ul class="collapse">
+  <li><a href="#pentru-variabile-aleatoare-discrete" id="toc-pentru-variabile-aleatoare-discrete" class="nav-link" data-scroll-target="#pentru-variabile-aleatoare-discrete"><span class="toc-section-number">1.2.1</span>  Pentru variabile aleatoare discrete</a></li>
+  <li><a href="#pentru-variabile-aleatoare-continue" id="toc-pentru-variabile-aleatoare-continue" class="nav-link" data-scroll-target="#pentru-variabile-aleatoare-continue"><span class="toc-section-number">1.2.2</span>  Pentru variabile aleatoare continue</a></li>
+  <li><a href="#interpretarea-densității-de-probabilitate" id="toc-interpretarea-densității-de-probabilitate" class="nav-link" data-scroll-target="#interpretarea-densității-de-probabilitate"><span class="toc-section-number">1.2.3</span>  Interpretarea densității de probabilitate</a></li>
+  <li><a href="#proprietăți-ale-funcțiilor-de-repartiție-și-de-densitate" id="toc-proprietăți-ale-funcțiilor-de-repartiție-și-de-densitate" class="nav-link" data-scroll-target="#proprietăți-ale-funcțiilor-de-repartiție-și-de-densitate"><span class="toc-section-number">1.2.4</span>  Proprietăți ale funcțiilor de repartiție și de densitate</a></li>
+  </ul></li>
+  <li><a href="#distribuția-normală" id="toc-distribuția-normală" class="nav-link" data-scroll-target="#distribuția-normală"><span class="toc-section-number">1.3</span>  Distribuția normală</a></li>
+  <li><a href="#distribuția-uniformă" id="toc-distribuția-uniformă" class="nav-link" data-scroll-target="#distribuția-uniformă"><span class="toc-section-number">1.4</span>  Distribuția uniformă</a></li>
+  <li><a href="#calculul-probabilității-pentru-distribuția-normală" id="toc-calculul-probabilității-pentru-distribuția-normală" class="nav-link" data-scroll-target="#calculul-probabilității-pentru-distribuția-normală"><span class="toc-section-number">1.5</span>  Calculul probabilității pentru distribuția normală</a></li>
+  <li><a href="#medii-statistice" id="toc-medii-statistice" class="nav-link" data-scroll-target="#medii-statistice"><span class="toc-section-number">1.6</span>  Medii statistice</a>
+  <ul class="collapse">
+  <li><a href="#valoarea-medie" id="toc-valoarea-medie" class="nav-link" data-scroll-target="#valoarea-medie"><span class="toc-section-number">1.6.1</span>  Valoarea medie</a></li>
+  <li><a href="#valoarea-pătratică-medie" id="toc-valoarea-pătratică-medie" class="nav-link" data-scroll-target="#valoarea-pătratică-medie"><span class="toc-section-number">1.6.2</span>  Valoarea pătratică medie</a></li>
+  <li><a href="#varianța" id="toc-varianța" class="nav-link" data-scroll-target="#varianța"><span class="toc-section-number">1.6.3</span>  Varianța</a></li>
+  <li><a href="#legătura-între-cele-trei-mărimi-statistice" id="toc-legătura-între-cele-trei-mărimi-statistice" class="nav-link" data-scroll-target="#legătura-între-cele-trei-mărimi-statistice"><span class="toc-section-number">1.6.4</span>  Legătura între cele trei mărimi statistice</a></li>
+  </ul></li>
+  <li><a href="#operații-cu-variabile-aleatoare" id="toc-operații-cu-variabile-aleatoare" class="nav-link" data-scroll-target="#operații-cu-variabile-aleatoare"><span class="toc-section-number">1.7</span>  Operații cu variabile aleatoare</a></li>
+  <li><a href="#sisteme-de-mai-multe-variabile-aleatoare" id="toc-sisteme-de-mai-multe-variabile-aleatoare" class="nav-link" data-scroll-target="#sisteme-de-mai-multe-variabile-aleatoare"><span class="toc-section-number">1.8</span>  Sisteme de mai multe variabile aleatoare</a>
+  <ul class="collapse">
+  <li><a href="#variabile-independente" id="toc-variabile-independente" class="nav-link" data-scroll-target="#variabile-independente"><span class="toc-section-number">1.8.1</span>  Variabile independente</a></li>
+  </ul></li>
+  <li><a href="#distribuția-normală-multivariată" id="toc-distribuția-normală-multivariată" class="nav-link" data-scroll-target="#distribuția-normală-multivariată"><span class="toc-section-number">1.9</span>  Distribuția normală multivariată</a>
+  <ul class="collapse">
+  <li><a href="#caz-particular-componente-independente" id="toc-caz-particular-componente-independente" class="nav-link" data-scroll-target="#caz-particular-componente-independente"><span class="toc-section-number">1.9.1</span>  Caz particular: componente independente</a></li>
+  <li><a href="#caz-particular-distribuție-izotropă" id="toc-caz-particular-distribuție-izotropă" class="nav-link" data-scroll-target="#caz-particular-distribuție-izotropă"><span class="toc-section-number">1.9.2</span>  Caz particular: distribuție izotropă</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Variabile aleatoare</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    
+  </div>
+  
+
+</header>
+
+<section id="definiții" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="definiții"><span class="header-section-number">1.1</span> Definiții</h2>
+<p>O <strong>variabilă aleatoare</strong> (v.a.) este o variabilă care denumește o valoare produsă printr-un fenomen aleator. Practic, reprezintă <em>un nume</em> <span class="math inline">\(X\)</span>, <span class="math inline">\(Y\)</span> etc. atașat unei valori arbitrare.</p>
+<p>O <strong>realizare</strong> a unei variabile aleatoare este o valoare particulară posibilă pe care o poate lua respectiva variabilă.</p>
+<p><strong>Spațiul realizărilor</strong> <span class="math inline">\(\Omega\)</span> este mulțimea tuturor realizărilor (mulțimea tuturor valorilor posibile ale unei variabile aleatoare).</p>
+<p>O variabilă aleatoare este <strong>discretă</strong> dacă <span class="math inline">\(\Omega\)</span> este o mulțime discretă, sau <strong>continuă</strong> dacă <span class="math inline">\(\Omega\)</span> este o mulțime compactă.</p>
+<p>Variabilele aleatoare modelează semnale afectate de <strong>zgomot</strong>, cum ar fi un semnal de tensiune într-un circuit electric (zgomot termic etc), sau imagini afectate de zgomot</p>
+<div class="callout-tip callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Exemple
+</div>
+</div>
+<div class="callout-body-container callout-body" title="Exemple">
+<ul>
+<li><p>Fie <span class="math inline">\(Z\)</span> = numărul obținut prin aruncarea unui zar. Spațiul realizărilor este <span class="math display">\[\Omega = \left\{1, 2, 3, 4, 5, 6\right\}\]</span> <span class="math inline">\(Z\)</span> este o variabilă aleatoare discretă.</p></li>
+<li><p>Fie <span class="math inline">\(V_{in}\)</span> = voltajul măsurat al unei baterii. Spațiul realizărilor este <span class="math display">\[\Omega = [1, 1.7] V\]</span> <span class="math inline">\(V_in\)</span> este o variabilă aleatoare continuă.</p></li>
+<li><p>Fie <span class="math inline">\(X\)</span> = rezultatul obținut la aruncarea unei monede, notat cu 0 sau 1. Spațiul realizărilor este <span class="math display">\[\Omega = \lbrace 0, 1 \rbrace V\]</span> <span class="math inline">\(X\)</span> este o variabilă aleatoare discretă.</p>
+<p><embed src="img/RandomVariable_img.pdf" class="id img-fluid" style="width:50.0%"></p>
+<p>(sursa imaginii: <em>https://www.mathsisfun.com/data/random-variables.html</em>)</p></li>
+</ul>
+<p>Mai jos sunt ilustrate câteva o serie de semnale afectate de zgomot.</p>
+<ul>
+<li>Semnal sinusoidal</li>
+</ul>
+<div class="sourceCode" id="cb1" data-session="plot"><pre class="sourceCode python cb.run code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt, numpy <span class="im">as</span> np, math<span class="op">;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">99</span>, <span class="dv">100</span>)<span class="op">;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> np.sin(<span class="dv">2</span><span class="op">*</span>math.pi<span class="op">*</span><span class="fl">0.02</span><span class="op">*</span>x)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">6</span>))<span class="op">;</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>plt.plot(x,s)<span class="op">;</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>plt.ylim(<span class="op">-</span><span class="dv">3</span>,<span class="dv">3</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'t'</span>)<span class="op">;</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'sin(x)'</span>)<span class="op">;</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Sinusiodal signal'</span>)<span class="op">;</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">'fig/01_RandomSignals_Sine.png'</span>, transparent<span class="op">=</span><span class="va">True</span>, bbox_inches<span class="op">=</span><span class="st">'tight'</span>, dpi<span class="op">=</span><span class="dv">300</span>)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>plt.close()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img src="fig/01_RandomSignals_Sine.png" class="img-fluid" style="width:70.0%" data-max-width="1000px"></p>
+<ul>
+<li>Semnal sinusoidal + zgomot (distribuție normală, <span class="math inline">\(\mu = 0, \sigma^2 = 1\)</span>)</li>
+</ul>
+<div class="sourceCode" id="cb2" data-session="plot"><pre class="sourceCode python cb.run code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt, numpy <span class="im">as</span> np, math<span class="op">;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">99</span>, <span class="dv">100</span>)<span class="op">;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> np.sin(<span class="dv">2</span><span class="op">*</span>math.pi<span class="op">*</span><span class="fl">0.02</span><span class="op">*</span>x)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>sn <span class="op">=</span> s <span class="op">+</span> np.random.randn(<span class="dv">100</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>plt.plot(x,s, x, sn)<span class="op">;</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>plt.ylim(<span class="op">-</span><span class="dv">3</span>,<span class="dv">3</span>)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'t'</span>)<span class="op">;</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'sin(x)'</span>)<span class="op">;</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Sinusiodal signal + random noise'</span>)<span class="op">;</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">'fig/01_RandomSignals_SinePlusRandn.png'</span>, transparent<span class="op">=</span><span class="va">True</span>, bbox_inches<span class="op">=</span><span class="st">'tight'</span>, dpi<span class="op">=</span><span class="dv">300</span>)</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>plt.close()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img src="fig/01_RandomSignals_SinePlusRandn.png" class="img-fluid" style="width:70.0%" data-max-width="1000px"></p>
+<ul>
+<li><p>Semnal sinusoidal + zgomot + zgomot (distribuție uniformă <span class="math inline">\(\mathcal{U} [-1,1]\)</span>)</p></li>
+<li><p>Ce diferă? Tipul distribuției</p></li>
+</ul>
+<div class="sourceCode" id="cb3" data-session="plot"><pre class="sourceCode python cb.run code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt, numpy <span class="im">as</span> np, math<span class="op">;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">99</span>, <span class="dv">100</span>)<span class="op">;</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> np.sin(<span class="dv">2</span><span class="op">*</span>math.pi<span class="op">*</span><span class="fl">0.02</span><span class="op">*</span>x)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>sn <span class="op">=</span> s <span class="op">+</span> np.random.uniform(<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">100</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>plt.plot(x,s,x,sn)<span class="op">;</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>plt.ylim(<span class="op">-</span><span class="dv">3</span>,<span class="dv">3</span>)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'t'</span>)<span class="op">;</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'sin(x)'</span>)<span class="op">;</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Sinusiodal signal  + random noise'</span>)<span class="op">;</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">'fig/01_RandomSignals_SinePlusRand.png'</span>, transparent<span class="op">=</span><span class="va">True</span>, bbox_inches<span class="op">=</span><span class="st">'tight'</span>, dpi<span class="op">=</span><span class="dv">300</span>)</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>plt.close()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img src="fig/01_RandomSignals_SinePlusRand.png" class="img-fluid" style="width:70.0%" data-max-width="1000px"></p>
+<ul>
+<li>Imagine originală</li>
+</ul>
+<div class="sourceCode" id="cb4" data-session="plot"><pre class="sourceCode python cb.run code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt, numpy <span class="im">as</span> np, math, PIL<span class="op">;</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> PIL <span class="im">import</span> Image</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>myImage <span class="op">=</span> Image.<span class="bu">open</span>(<span class="st">"img/TestImageGirl.gif"</span>).convert(<span class="st">"L"</span>)<span class="op">;</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>im <span class="op">=</span> np.array(myImage)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>plt.imshow(im, cmap<span class="op">=</span><span class="st">'gray'</span>, vmin<span class="op">=</span><span class="dv">0</span>, vmax<span class="op">=</span><span class="dv">255</span>)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">'fig/01_RandomSignals_ImageClean.png'</span>, transparent<span class="op">=</span><span class="va">True</span>, bbox_inches<span class="op">=</span><span class="st">'tight'</span>, dpi<span class="op">=</span><span class="dv">300</span>)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>plt.close()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img src="fig/01_RandomSignals_ImageClean.png" class="img-fluid" style="width:70.0%" data-max-width="1000px"></p>
+<ul>
+<li>Imagine + zgomot (normal, <span class="math inline">\(\mu = 0, \sigma^2 = 1\)</span>)</li>
+</ul>
+<div class="sourceCode" id="cb5" data-session="plot"><pre class="sourceCode python cb.run code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt, numpy <span class="im">as</span> np, math, PIL<span class="op">;</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> PIL <span class="im">import</span> Image</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>myImage <span class="op">=</span> Image.<span class="bu">open</span>(<span class="st">"img/TestImageGirl.gif"</span>).convert(<span class="st">"L"</span>)<span class="op">;</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>im <span class="op">=</span> np.array(myImage)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>sigma <span class="op">=</span> math.sqrt(<span class="dv">225</span>)<span class="op">;</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>imn <span class="op">=</span> im <span class="op">+</span> sigma<span class="op">*</span>np.random.randn(im.shape[<span class="dv">0</span>], im.shape[<span class="dv">1</span>])</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>plt.imshow(imn, cmap<span class="op">=</span><span class="st">'gray'</span>, vmin<span class="op">=</span><span class="dv">0</span>, vmax<span class="op">=</span><span class="dv">255</span>)</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">'fig/01_RandomSignals_ImageRandn1.png'</span>, transparent<span class="op">=</span><span class="va">True</span>, bbox_inches<span class="op">=</span><span class="st">'tight'</span>, dpi<span class="op">=</span><span class="dv">300</span>)</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>plt.close()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img src="fig/01_RandomSignals_ImageRandn1.png" class="img-fluid" style="width:70.0%" data-max-width="1000px"></p>
+<ul>
+<li>Imagine + zgomot mai mare (normal, <span class="math inline">\(\mu = 0, \sigma^2 = 10\)</span>)</li>
+</ul>
+<div class="sourceCode" id="cb6" data-session="plot"><pre class="sourceCode python cb.run code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt, numpy <span class="im">as</span> np, math, PIL<span class="op">;</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> PIL <span class="im">import</span> Image</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>myImage <span class="op">=</span> Image.<span class="bu">open</span>(<span class="st">"img/TestImageGirl.gif"</span>).convert(<span class="st">"L"</span>)<span class="op">;</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>im <span class="op">=</span> np.array(myImage)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>sigma <span class="op">=</span> math.sqrt(<span class="dv">1500</span>)<span class="op">;</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>imn <span class="op">=</span> im <span class="op">+</span> sigma<span class="op">*</span>np.random.randn(im.shape[<span class="dv">0</span>], im.shape[<span class="dv">1</span>])</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>plt.imshow(imn, cmap<span class="op">=</span><span class="st">'gray'</span>, vmin<span class="op">=</span><span class="dv">0</span>, vmax<span class="op">=</span><span class="dv">255</span>)</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">'fig/01_RandomSignals_ImageRandn2.png'</span>, transparent<span class="op">=</span><span class="va">True</span>, bbox_inches<span class="op">=</span><span class="st">'tight'</span>, dpi<span class="op">=</span><span class="dv">300</span>)</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>plt.close()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img src="fig/01_RandomSignals_ImageRandn2.png" class="img-fluid" style="width:70.0%" data-max-width="1000px"></p>
+<ul>
+<li>Imagine + zgomot (uniform, <span class="math inline">\(\mathcal{U} [-5, 5]\)</span>)</li>
+</ul>
+<div class="sourceCode" id="cb7" data-session="plot"><pre class="sourceCode python cb.run code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt, numpy <span class="im">as</span> np, math, PIL<span class="op">;</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> PIL <span class="im">import</span> Image</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>myImage <span class="op">=</span> Image.<span class="bu">open</span>(<span class="st">"img/TestImageGirl.gif"</span>).convert(<span class="st">"L"</span>)<span class="op">;</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>im <span class="op">=</span> np.array(myImage)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>imn <span class="op">=</span> im <span class="op">+</span> sigma<span class="op">*</span>np.random.uniform(<span class="op">-</span><span class="dv">5</span>, <span class="dv">5</span>, im.shape)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>plt.imshow(imn, cmap<span class="op">=</span><span class="st">'gray'</span>, vmin<span class="op">=</span><span class="dv">0</span>, vmax<span class="op">=</span><span class="dv">255</span>)</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">'fig/01_RandomSignals_ImageRandUnif.png'</span>, transparent<span class="op">=</span><span class="va">True</span>, bbox_inches<span class="op">=</span><span class="st">'tight'</span>, dpi<span class="op">=</span><span class="dv">300</span>)</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>plt.close()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img src="fig/01_RandomSignals_ImageRandUnif.png" class="img-fluid" style="width:70.0%" data-max-width="1000px"></p>
+</div>
+</div>
+</section>
+<section id="densitate-de-probabilitate" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="densitate-de-probabilitate"><span class="header-section-number">1.2</span> Densitate de probabilitate</h2>
+<section id="pentru-variabile-aleatoare-discrete" class="level3" data-number="1.2.1">
+<h3 data-number="1.2.1" class="anchored" data-anchor-id="pentru-variabile-aleatoare-discrete"><span class="header-section-number">1.2.1</span> Pentru variabile aleatoare discrete</h3>
+<p>Variabilele aleatoare discrete sunt caracterizate prin două funcții: funcția masă de probabilitate (discretă) și funcția de repartiție (care e “în trepte”).</p>
+<p>Fie o v.a. discretă <span class="math inline">\(A\)</span>. Se definește funcția <strong>masă de probabilitate</strong> (FMP) (“probability mass function”, lb.eng.) <span class="math inline">\(w_A(x)\)</span> ca fiind probabilitatea ca <span class="math inline">\(A\)</span> să aibă valoarea egală cu <span class="math inline">\(x\)</span>: <span class="math display">\[w_A(x)= P \left\{A = x \right\}\]</span></p>
+<p><strong>Funcția de repartiție</strong> (FR) <span class="math inline">\(F_A(x)\)</span> a unei variabile aleatoare <span class="math inline">\(A\)</span> reprezintă probabilitatea ca <span class="math inline">\(A\)</span> să aibă valoarea mai mică sau egală cu <span class="math inline">\(x\)</span>: <span class="math display">\[F_A(x) = P\left\{ A \leq x \right\}\]</span></p>
+<p>FMP se poate utiliza pentru a calcula probabilitatea unor valori:</p>
+<ul>
+<li><p>Probabilitatea ca <span class="math inline">\(A\)</span> să aibă valoarea <span class="math inline">\(v\)</span>: <span class="math display">\[P\left\{ A = v\right\} = w_A(v)\]</span></p></li>
+<li><p>Probabilitatea ca A să fie între valorile <span class="math inline">\(a\)</span> și <span class="math inline">\(b\)</span> (inclusiv): <span class="math display">\[P\left\{ a \leq A \leq b\right\} = \sum_{x=a}^b w_A(x)\]</span></p></li>
+</ul>
+<p>Și funcția de repartiție poate fi folosită pentru a calcula diverse probabiități:</p>
+<ul>
+<li><p>Probabilitatea ca <span class="math inline">\(A\)</span> să aibă valoarea <span class="math inline">\(v\)</span>: <span class="math display">\[P\left\{ A = v\right\} = F_A(v) - F_A(v-1)\]</span></p></li>
+<li><p>Probabilitatea ca A să fie între valorile <span class="math inline">\(a\)</span> și <span class="math inline">\(b\)</span> (inclusiv): <span class="math display">\[P\left\{ a \leq A \leq b\right\} = P\left\{ A \leq b\right\} - P\left\{ A \leq a\right\} = F_A(b) - F_A(a-1)\]</span></p></li>
+</ul>
+<p>Între funcția masă de probabilitate și funcția de repartiție există următoarea legătură. FR este suma cumulativă (un fel de “integrală discretă”) a FMP: <span class="math display">\[F_A(x) = \sum_{t = -\infty}^{t = x} w_A(t)\]</span></p>
+<p>FMP mai e numită, în limbaj uzual, “distribuția” variabilei aleatoare.</p>
+<div class="callout-tip callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Exemplu
+</div>
+</div>
+<div class="callout-body-container callout-body" title="Exemplu">
+<p>Funcția masă de probabilitate pentru valoarile unui zar este următoarea:</p>
+<p><img src="01_01_Zar_Distrib.png" class="img-fluid" style="width:50.0%" data-max-width="1000px"></p>
+<p>Funcția de repartiție a valorilor unui zar este următoarea:</p>
+<p><img src="01_01_Zar_Repart.png" class="img-fluid" style="width:50.0%" data-max-width="1000px"></p>
+<p>Pentru variabile aleatoare discrete, funcția de repartiție este întotdeauna “în trepte”.</p>
+</div>
+</div>
+</section>
+<section id="pentru-variabile-aleatoare-continue" class="level3" data-number="1.2.2">
+<h3 data-number="1.2.2" class="anchored" data-anchor-id="pentru-variabile-aleatoare-continue"><span class="header-section-number">1.2.2</span> Pentru variabile aleatoare continue</h3>
+<p>Variabilele aleatoare continue sunt caracterizate prin două funcții: funcția densitate de probabilitate și funcția de repartiție.</p>
+<p>Fie o variabilă aleatoare <strong>continuă</strong> <span class="math inline">\(A\)</span>. <strong>Funcția densitate de probabilitate</strong> (FDP) <span class="math inline">\(w_A(x)\)</span> se definește ca probabilitatea ca valoarea lui <span class="math inline">\(A\)</span> să fie într-o vecinătate <span class="math inline">\(\epsilon\)</span> mică în jurul lui <span class="math inline">\(x\)</span>, împărțit la <span class="math inline">\(\epsilon\)</span> <span class="math display">\[w_A(x) = \lim_{\epsilon \to 0}{\frac{P(A \in [x, x+\epsilon])}{\epsilon}}\]</span></p>
+<div class="callout-tip callout callout-style-simple">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>În limbaj informal, densitatea de probabilitate poate fi numită mai simplu <strong>“distribuția”</strong> variabilei A.</p>
+</div>
+</div>
+</div>
+<p><strong>Funcția de repartiție</strong> (FR) <span class="math inline">\(F_A(x)\)</span> se definește la fel ca la variabile discrete, adică reprezintă probabilitatea ca <span class="math inline">\(A\)</span> să aibă valoarea mai mică sau egală cu <span class="math inline">\(x\)</span>: <span class="math display">\[F_A(x) = P\left\{ A \leq x \right\}\]</span></p>
+<p>Între cele două funcții există următoarea legătură. Funcția de repartiție este <strong>integrala</strong> densității de probabilitate, sau, altfel spus, densitatea de probabilitate este <strong>derivata</strong> funcției de repartiție: <span class="math display">\[F_A(x) = \int_{-\infty}^x w_A(u) \mathrm{d}u\]</span></p>
+<p><span class="math display">\[\begin{split}
+w_A(x) &amp;= \lim_{\epsilon \to 0}{\frac{P(A \in [x, x+\epsilon])}{\epsilon}} \\
+&amp;= \lim_{\epsilon \to 0}{\frac{P(A \leq x+\epsilon) - P(A \leq x)}{\epsilon}} \\
+&amp;= \lim_{\epsilon \to 0}{\frac{F_A(x+\epsilon) - F_A(x)}{\epsilon}} \\
+&amp;= \frac{\mathrm{d}F_A(x)}{\mathrm{d}x} = F'_A(x)
+\end{split}\]</span></p>
+<div class="callout-tip callout callout-style-simple">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Densitatea are o definiție identică în fizică:</p>
+<p><span class="math display">\[\rho(x) = \frac{dM}{dV}\]</span></p>
+<p>Densitatea unui punct = derivata masei = masa unei mic volum V în jurul acelui punct împărțit la volumul V, pentru <span class="math inline">\(V \to 0\)</span>.</p>
+</div>
+</div>
+</div>
+<p>Densitatea de probabilitate se poate folosi pentru a calcula probabilități, dar numai <strong>prin integrare</strong>:</p>
+<ul>
+<li><p>Probabilitatea ca A să fie între valorile <span class="math inline">\(a\)</span> și <span class="math inline">\(b\)</span> = integrala FDP între <span class="math inline">\(a\)</span> și <span class="math inline">\(b\)</span>: <span class="math display">\[P\left\{ a \leq A \leq b\right\} = \int_a^b w_A(x) dx\]</span></p>
+<p><img src="img/RandomVariable_AreaPDFProb.png" class="id img-fluid" style="width:50.0%"></p>
+<p>(sursa: “https://intellipaat.com/blog/tutorial/statistics-and-probability-tutorial/probability-distributions-of-continuous-variables/*)</p></li>
+<li><p>Probabilitatea ca <span class="math inline">\(A\)</span> să aibă exact valoarea <span class="math inline">\(v\)</span> este întotdeauna 0 <span class="math display">\[P\left\{ A = v\right\} = \int_v^v w_A(x) dx = 0\]</span></p>
+<p>(în interpretarea grafică, aria de sub un punct este nulă)</p></li>
+</ul>
+<p>Funcția de repartiție se poate folosi de asemenea pentru calculul unor probabilități, în mod direct, la fel ca la variabile discrete:</p>
+<ul>
+<li><p>Probabilitatea ca valoarea lui A să fie între <span class="math inline">\(a\)</span> și <span class="math inline">\(b\)</span>: <span class="math display">\[P\left\{ a \leq A \leq b\right\} = F_A(b) - F_A(a)\]</span></p>
+<p>Nu contează dacă se consideră un interval deschis sau închis: <span class="math display">\[P\left\{ a \leq A \leq b\right\} = P\left\{ a &lt; A &lt; b\right\}\]</span></p></li>
+</ul>
+</section>
+<section id="interpretarea-densității-de-probabilitate" class="level3" data-number="1.2.3">
+<h3 data-number="1.2.3" class="anchored" data-anchor-id="interpretarea-densității-de-probabilitate"><span class="header-section-number">1.2.3</span> Interpretarea densității de probabilitate</h3>
+<p>O variabilă aleatoare continuă poate lua o infinitate de valori posibile. Așadar, probabilitatea ca o variabilă aleatoare continuă <span class="math inline">\(A\)</span> să ia <strong>exact</strong> o anume valoare precisă <span class="math inline">\(x\)</span>, dintr-o infinitate de alternative, este <strong>întotdeauna zero</strong>.</p>
+<p>Atunci ce ne spune densitatea de probabilitate <span class="math inline">\(w_A(x)\)</span>?</p>
+<p>Densitatea de probabilitate <span class="math inline">\(w_A(x)\)</span> într-un punct <span class="math inline">\(x = x_1\)</span> ne spune probabilitatea ca <span class="math inline">\(A\)</span> să ia valori <strong>în jurul</strong> acelei valori <span class="math inline">\(x_1\)</span>, comparativ cu a lua valori în jurul unei alte valori <span class="math inline">\(x_2\)</span>. Ea nu reprezintă probabilitatea unei valori anume, care este mereu zero.</p>
+<p>În consecință valorile lui <span class="math inline">\(w_A(x)\)</span> se pot folosi în mod direct pentru comparații (“e mai probabil ca <span class="math inline">\(A\)</span> să ia valori în jurul lui 5, sau în jurul lui 7?”), dar pentru calculul unor probabiltăți trebuie să apelăm mereu la integrala sa.</p>
+<p>La variabile aleatoare discrete, funcția masă de probabilitate joacă același rol ca densitatea de probabilitate, cu diferența că ea ne dă chiar probabilitatea unei valori <span class="math inline">\(x\)</span>, nu doar probabilitatea de a fi în jurul lui <span class="math inline">\(x\)</span>. De asemenea, fiind funcții discrete, operația de integrare se înlocuiește cu o sumă.</p>
+<p><img src="img/RandomVariable_Types.png" class="id img-fluid" style="width:80.0%"></p>
+<p>(sursa imaginii: “Probability Distributions: Discrete and Continuous”, Seema Singh, <em>https://towardsdatascience.com/probability-distributions-discrete-and-continuous-7a94ede66dc0</em>)</p>
+</section>
+<section id="proprietăți-ale-funcțiilor-de-repartiție-și-de-densitate" class="level3" data-number="1.2.4">
+<h3 data-number="1.2.4" class="anchored" data-anchor-id="proprietăți-ale-funcțiilor-de-repartiție-și-de-densitate"><span class="header-section-number">1.2.4</span> Proprietăți ale funcțiilor de repartiție și de densitate</h3>
+<p>Funcția de repartiție:</p>
+<ul>
+<li>FR este mereu pozitivă: <span class="math display">\[F_A(x) \geq 0\]</span></li>
+<li>FR este monoton crescătoare</li>
+<li>FR pornește din 0 și ajunge la valoarea 1: <span class="math display">\[F_A(-\infty) = 0 \;\;\;\; F_A(\infty) = 1\]</span></li>
+</ul>
+<p>Densitatea de probabilitate / funcția masă de probabilitate:</p>
+<ul>
+<li>Este pozitivă: <span class="math display">\[w_A(x) \geq 0\]</span></li>
+<li>Integrala/suma pe întreg domeniul este 1 <span class="math display">\[\int_{-\infty}^\infty w_A(x) \mathrm{d}x = 1 \;\;\;\; \sum_{x = -\infty}^\infty w_A(x) = 1\]</span></li>
+</ul>
+</section>
+</section>
+<section id="distribuția-normală" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="distribuția-normală"><span class="header-section-number">1.3</span> Distribuția normală</h2>
+<p>În cele ce urmează, vom considera numai variabile aleatoare discrete.</p>
+<p>Cea mai des întâlnită distribuție în practică este <strong>distribuția normală</strong>.</p>
+<p>Densitatea de probabilitate are expresia matematică: <span class="math display">\[w_A(x) = \frac{1}{\sigma \sqrt{2 \pi}} e^{-\frac{(x-\mu)^2}{2 \sigma^2}}\]</span> și depinde de doi parametri:</p>
+<ul>
+<li><strong>media</strong> <span class="math inline">\(\mu\)</span> definește “centrul” funcției</li>
+<li><strong>deviația standard</strong> <span class="math inline">\(\sigma\)</span> controlează “lățimea” funcției
+<ul>
+<li><span class="math inline">\(\sigma\)</span> mic = funcție îngustă și înaltă</li>
+<li><span class="math inline">\(\sigma\)</span> mare = funcție largă și joasă</li>
+</ul></li>
+</ul>
+<div class="sourceCode" id="cb8" data-session="plot"><pre class="sourceCode python cb.run code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt, numpy <span class="im">as</span> np, math<span class="op">;</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>mu <span class="op">=</span> <span class="dv">3</span><span class="op">;</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>sigma <span class="op">=</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(mu<span class="op">-</span><span class="dv">5</span><span class="op">*</span>sigma,mu<span class="op">+</span><span class="dv">5</span><span class="op">*</span>sigma,<span class="dv">200</span>)<span class="op">;</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>pdf <span class="op">=</span> <span class="dv">1</span><span class="op">/</span>(sigma<span class="op">*</span>math.sqrt(<span class="dv">2</span><span class="op">*</span>math.pi))<span class="op">*</span>np.exp(<span class="op">-</span>(x<span class="op">-</span>mu)<span class="op">**</span><span class="dv">2</span><span class="op">/</span>(<span class="dv">2</span><span class="op">*</span>sigma<span class="op">**</span><span class="dv">2</span>))<span class="op">;</span> <span class="co">#**</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>plt.plot(x,pdf)<span class="op">;</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'x'</span>)<span class="op">;</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'fdp(x)'</span>)<span class="op">;</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'The normal distribution $\mathcal</span><span class="sc">{N}</span><span class="st">(\mu=3,\sigma=1)$'</span>)<span class="op">;</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">'fig/01_RandomSignals_DistributionNormal.png'</span>, transparent<span class="op">=</span><span class="va">True</span>, bbox_inches<span class="op">=</span><span class="st">'tight'</span>, dpi<span class="op">=</span><span class="dv">300</span>)</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>plt.close()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img src="fig/01_RandomSignals_DistributionNormal.png" class="img-fluid" style="width:60.0%" data-max-width="1000px"></p>
+<p>Termenul <span class="math inline">\(\frac{1}{\sigma \sqrt{2 \pi}}\)</span> de la începutul expresiei este o constantă care asigură normalizarea, adică faptul că probabilitatea totală (integrala totală) este 1: <span class="math display">\[\int_{-\infty}^\infty w_A(x) \mathrm{d}x = 1\]</span></p>
+<p>Distribuția normală se notează cu <span class="math inline">\(\mathcal{N}(\mu, \sigma^2)\)</span>.</p>
+<p>Când <span class="math inline">\(\mu=0\)</span> și <span class="math inline">\(\sigma=1\)</span> avem <strong>distribuția normală standard</strong>.</p>
+<p>Cum interptetăm distribuția normală? Fie o variabilă aleatoare <span class="math inline">\(A \sim \mathcal{N}(\mu, \sigma^2)\)</span> (<span class="math inline">\(A\)</span> ia valori conform distribuției normale cu media <span class="math inline">\(\mu\)</span> și deviația <span class="math inline">\(\sigma\)</span>). Putem spune următoarele:</p>
+<ul>
+<li><span class="math inline">\(A\)</span> poate avea orice valoare <span class="math inline">\(x \in \mathbb{R}\)</span>, întrucât <span class="math inline">\(w_A(x) &gt; 0, \forall x \in \mathbb{R}\)</span> (nici o valoare nu este <em>a priori</em> exclusă);</li>
+<li>Valorile cele mai probabile ale lui <span class="math inline">\(A\)</span> sunt în jurul mediei <span class="math inline">\(\mu\)</span>;</li>
+<li>Probabilitatea unor valori <span class="math inline">\(x\)</span> e mai mică cu cât <span class="math inline">\(x\)</span> este mai îndepărtat de centrul <span class="math inline">\(\mu\)</span>, datorită termenului <span class="math inline">\(-(x - \mu)^2\)</span> de la exponent</li>
+</ul>
+<p>Distribuția exprimă așadar o preferință pentru valori apropiate de <span class="math inline">\(\mu\)</span>, cu probabilitate din ce în ce mai scăzută la valori mai depărtate de <span class="math inline">\(\mu\)</span>.</p>
+<div class="callout-tip callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Exemple
+</div>
+</div>
+<div class="callout-body-container callout-body" title="Exemple">
+<p>Exemple de valori generate cu distribuția normală standard <span class="math inline">\(\mathcal{N}(\mu=0, \sigma^2=1)\)</span>:</p>
+<div class="sourceCode" id="cb9" data-session="plot"><pre class="sourceCode python cb.run code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt, numpy <span class="im">as</span> np, math<span class="op">;</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>mu <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>sigma <span class="op">=</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="dv">1</span>, <span class="dv">200</span>, <span class="dv">200</span>)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>v <span class="op">=</span> mu <span class="op">+</span> np.sqrt(sigma)<span class="op">*</span>np.random.randn(<span class="dv">200</span>)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>plt.plot(x,v)</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>plt.ylim(<span class="op">-</span><span class="dv">5</span>,<span class="dv">5</span>)</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Sample values from the normal distribution'</span>)<span class="op">;</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">'fig/01_RandomSignals_DistributionNormalSampleValues1.png'</span>, transparent<span class="op">=</span><span class="va">True</span>, bbox_inches<span class="op">=</span><span class="st">'tight'</span>, dpi<span class="op">=</span><span class="dv">300</span>)</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>plt.close()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img src="fig/01_RandomSignals_DistributionNormalSampleValues1.png" class="img-fluid" style="width:70.0%" data-max-width="1000px"></p>
+<p>Exemple de valori generate cu distribuția normală <span class="math inline">\(\mathcal{N}(\mu=2, \sigma^2=4)\)</span>:</p>
+<div class="sourceCode" id="cb10" data-session="plot"><pre class="sourceCode python cb.run code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt, numpy <span class="im">as</span> np, math<span class="op">;</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>mu <span class="op">=</span> <span class="dv">2</span><span class="op">;</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>sigma <span class="op">=</span> <span class="dv">4</span><span class="op">;</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="dv">1</span>, <span class="dv">200</span>, <span class="dv">200</span>)</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>v <span class="op">=</span> mu <span class="op">+</span> np.sqrt(sigma)<span class="op">*</span>np.random.randn(<span class="dv">200</span>)</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>plt.plot(x,v)</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>plt.ylim(<span class="op">-</span><span class="dv">5</span>,<span class="dv">5</span>)</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Sample values from the normal distribution'</span>)<span class="op">;</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">'fig/01_RandomSignals_DistributionNormalSampleValues2.png'</span>, transparent<span class="op">=</span><span class="va">True</span>, bbox_inches<span class="op">=</span><span class="st">'tight'</span>, dpi<span class="op">=</span><span class="dv">300</span>)</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>plt.close()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img src="fig/01_RandomSignals_DistributionNormalSampleValues2.png" class="img-fluid" style="width:70.0%" data-max-width="1000px"></p>
+</div>
+</div>
+</section>
+<section id="distribuția-uniformă" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="distribuția-uniformă"><span class="header-section-number">1.4</span> Distribuția uniformă</h2>
+<p>Densitatea de probabilitate uniformă este o funcție constantă între două limite <span class="math inline">\(a\)</span> și <span class="math inline">\(b\)</span>:</p>
+<p><span class="math display">\[w_A(x) =
+\begin{cases}
+\frac{1}{b-a}, &amp; x \in [a, b] \\
+0, &amp;\textrm{elsewhere}
+\end{cases}\]</span></p>
+<p>Se notează cu <span class="math inline">\(\mathcal{U} \;[a, b]\)</span>.</p>
+<div class="sourceCode" id="cb11" data-session="plot"><pre class="sourceCode python cb.run code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt, numpy <span class="im">as</span> np, math</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="op">-</span><span class="dv">1</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> <span class="dv">3</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">60</span>)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>pdf <span class="op">=</span> np.hstack( (np.zeros((<span class="dv">10</span>)), <span class="dv">1</span><span class="op">/</span>(b<span class="op">-</span>a)<span class="op">*</span>np.ones((<span class="dv">40</span>)),  np.zeros((<span class="dv">10</span>))))  <span class="co">#*</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>plt.plot(x,pdf)</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'x'</span>)</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'fdp(x)'</span>)</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'The uniform distribution $\mathcal</span><span class="sc">{U}</span><span class="st">\;[-1,3]$'</span>)</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">'fig/01_RandomSignals_DistributionUniform.png'</span>, transparent<span class="op">=</span><span class="va">True</span>, bbox_inches<span class="op">=</span><span class="st">'tight'</span>, dpi<span class="op">=</span><span class="dv">300</span>)</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>plt.close()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img src="fig/01_RandomSignals_DistributionUniform.png" class="img-fluid" style="width:60.0%" data-max-width="1000px"></p>
+<p>Cum interpretăm distribuția uniformă?</p>
+<ul>
+<li>Sunt posibile doar valori din intervalul <span class="math inline">\([a, b]\)</span>, restul sunt absolut excluse;</li>
+<li>Toate valorile din intervalul <span class="math inline">\([a, b]\)</span> au aceeași șansă.</li>
+</ul>
+<p>“Înălțimea” funcției este <span class="math inline">\(\frac{1}{b-a}\)</span> pentru a se asigura normalizarea (aria totală este 1)</p>
+</section>
+<section id="calculul-probabilității-pentru-distribuția-normală" class="level2" data-number="1.5">
+<h2 data-number="1.5" class="anchored" data-anchor-id="calculul-probabilității-pentru-distribuția-normală"><span class="header-section-number">1.5</span> Calculul probabilității pentru distribuția normală</h2>
+<p>Probabilitatea ca <span class="math inline">\(A\)</span> sa aibă valori între <span class="math inline">\(a\)</span> și <span class="math inline">\(b\)</span> este <span class="math inline">\(\int_a^b w_A(x) dx\)</span>, pentru o distribuție continuă. Însă, pentru distribuția normală această integrală nu se poate calcula prin formula algebrice (este funcție ne-elementară).</p>
+<p>În schimb, pentru calcul se folosesc algoritmi numerici, pe baza <strong>funcției de eroare</strong> <span class="math inline">\(erf(z)\)</span> (“the error function”): <span class="math display">\[erf(z) = \frac{2}{\sqrt{\pi}} \int_0^z e^{-t^2} dt\]</span></p>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Valorile funcției <em>erf()</em> sunt tabelate sau se calculează numeric cu algoritmi specializati. De ex., pe Google, căutați <span class="math inline">\(erf(0.5)\)</span></p>
+</div>
+</div>
+<p>Funcția de repartiție a unei distribuții normale oarecare <span class="math inline">\(\mathcal{N}(\mu, \sigma^2)\)</span> se poate calcula ca: <span class="math display">\[F_A(X) = \frac{1}{2}(1 + erf(\frac{x - \mu}{\sigma \sqrt{2}}))\]</span></p>
+<p>Alte valori folositoare:</p>
+<ul>
+<li><span class="math inline">\(erf(-\infty) = -1\)</span></li>
+<li><span class="math inline">\(erf(\infty) = 1\)</span></li>
+</ul>
+<div class="callout-note callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Exercițiu
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Fie <span class="math inline">\(A\)</span> o variabilă aleatoare cu distribuția <span class="math inline">\(\mathcal{N}(3, 2)\)</span>.</p>
+<p>Calculați probabilitatea ca <span class="math inline">\(A \in [2, 4]\)</span></p>
+</div>
+</div>
+<div class="callout-note callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Exercițiu
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Fie <span class="math inline">\(A\)</span> o v.a. cu distribuția <span class="math inline">\(\mathcal{N}(\mu, \sigma)\)</span>.</p>
+<ol type="a">
+<li>Calculați probabilitatea ca <span class="math inline">\(A\)</span> să fie la cel mult <span class="math inline">\(\pm\sigma\)</span> distanță de valoare medie</li>
+<li>Calculați probabilitatea ca <span class="math inline">\(A\)</span> să fie la cel mult <span class="math inline">\(\pm 2\sigma\)</span> distanță de valoare medie</li>
+<li>Calculați probabilitatea ca <span class="math inline">\(A\)</span> să fie la cel mult <span class="math inline">\(\pm 3\sigma\)</span> distanță de valoare medie</li>
+</ol>
+</div>
+</div>
+<div class="callout-tip callout callout-style-simple">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>În multe aplicații, <em>anomaliile</em> într-un set de valori se definesc ca fiind valorile aflate la peste <span class="math inline">\(3 \sigma\)</span> distanță față de medie. De ce oare?</p>
+</div>
+</div>
+</div>
+</section>
+<section id="medii-statistice" class="level2" data-number="1.6">
+<h2 data-number="1.6" class="anchored" data-anchor-id="medii-statistice"><span class="header-section-number">1.6</span> Medii statistice</h2>
+<p>Variabilele aleatoare sunt caracterizate prin medii statistice (“<em>momente</em>”), care caracterizează densitatea de probabilitate.</p>
+<section id="valoarea-medie" class="level3" data-number="1.6.1">
+<h3 data-number="1.6.1" class="anchored" data-anchor-id="valoarea-medie"><span class="header-section-number">1.6.1</span> Valoarea medie</h3>
+<p><strong>Valoarea medie</strong> (momentul de ordin 1) a unei variabila aleatoare <span class="math inline">\(A\)</span>, notată în mod uzual cu <span class="math inline">\(\mu\)</span>, <span class="math inline">\(E\lbrace A \rbrace\)</span> sau <span class="math inline">\(\overline{A}\)</span>, se definește astfel:</p>
+<ul>
+<li><p>Pentru v.a. continue: <span class="math display">\[\overline{A} = E\{A\} = \int_{-\infty}^{\infty} x \cdot w_A(x) dx\]</span></p></li>
+<li><p>Pentru v.a. discrete: <span class="math display">\[\overline{A} = E\{A\} = \sum_{x=-\infty}^{\infty} x \cdot w_A(x)\]</span></p></li>
+</ul>
+<div class="callout-tip callout callout-style-simple">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Termenul în limba engleză este “expected value”.</p>
+</div>
+</div>
+</div>
+<p>In termeni informali, valoarea medie este o sumă în care apar toate valorile posibile <span class="math inline">\(x\)</span> înmulțite cu probabilitatea fiecăreia (pentru cazul continuu, folosim integrala și densitatea de probabilitate, cu aceeași semnificație).</p>
+<div class="callout-tip callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Exemplu
+</div>
+</div>
+<div class="callout-body-container callout-body" title="Exemplu">
+<p>Entropia este valoarea medie a informației <span class="math inline">\(i(s_n) = -\log_2{p(s_n)}\)</span> asociată unui eveniment cu probabilitatea <span class="math inline">\(p(s_n)\)</span>: <span class="math display">\[H(X) = \sum p(s_n) i(s_n)) = - \sum p(s_n) log_2(p(s_n))\]</span></p>
+</div>
+</div>
+<p>Ce semnificație are, practic, valoarea medie a unei variabile aleatoare? Informal, ea ne dă valoarea numerică centrală în jurul căreia “se învârt” toate valorile pe care le poate lua <span class="math inline">\(A\)</span>. Ca interpretare grafică, de multe ori ea este situată “pe la mijlocul” distribuției.</p>
+<ul>
+<li><p>Valorile care au probabilitate / densitate de probabilitate ridicată “trag” valoarea medie înspre ele.</p></li>
+<li><p>Pentru distribuții cu formă simetrică (de ex. distribuția normală, distribuția uniformă), valoarea medie este valoarea centrală a funcției. Ambele laturi ale funcției “trag” valoare medie înspre ele în mod egal, valoarea medie rămâne la mijloc.</p></li>
+<li><p>Dacă avem de-a face cu un semnal <span class="math inline">\(x(t)\)</span> sau <span class="math inline">\(x[n]\)</span> a cărui valori respectă o distribuție <span class="math inline">\(w_A(x)\)</span>, valoarea medie a distribuției va fi <strong>componenta continuă</strong> a semnalului respectiv.</p></li>
+</ul>
+<p>Alte câteva interpretări:</p>
+<ul>
+<li><p>Dacă am avea <span class="math inline">\(N \to \infty\)</span> valori aleatoare conform distribuției respective, valoarea medie ar fi media aritmentică a tuturor acestor valori;</p></li>
+<li><p>Dacă trebuie să prezicem valoarea unei variabile aleatoare <span class="math inline">\(X\)</span>, și plătim un cost proporțional cu pătratul erorii pe care o facem, <span class="math inline">\((u - X)^2\)</span>, valoarea medie <span class="math inline">\(\mu\)</span> este cea mai bună alegere, întrucât minimizează costul global: <span class="math display">\[\mu = \arg\min_u \int_{-\infty}^{\infty} (u - x)^2\cdot w(x) dx\]</span></p>
+<ul>
+<li>Demonstrație: la tablă: derivare, derivata = 0</li>
+</ul></li>
+</ul>
+<p>Pentru distribuția normală <span class="math inline">\(\mathcal{N}(\mu, \sigma)\)</span>, valoarea medie este chiar parametrul <span class="math inline">\(\mu\)</span>: <span class="math display">\[\overline{X} = \mu\]</span></p>
+<p>Pentru o distribuție uniformă <span class="math inline">\(\mathcal{U} [a, b]\)</span>, valoarea medie este valoarea de la mijlocul intervalului: <span class="math display">\[\overline{X} = \frac{a + b}{2}\]</span></p>
+<p>Calculul valorii medii este o operație <strong>liniară</strong>. Pentru două variabile aleatoare independente <span class="math inline">\(A\)</span> și <span class="math inline">\(B\)</span>, și oricare două numere reale <span class="math inline">\(c_1\)</span> și <span class="math inline">\(c_2\)</span>, avem: <span class="math display">\[E\{c_1A + c_2B\} = c_1E\{A\} + c_2E\{B\}\]</span></p>
+<p>sau: <span class="math display">\[E\{cA\} = c E\{A\}, \forall c \in \mathbb{R}\]</span> <span class="math display">\[E\{A + B\} = E\{A\} + E\{B\}\]</span></p>
+<div class="callout-note callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Exercițiu
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Aruncăm trei zaruri <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span>, <span class="math inline">\(C\)</span> și definim <span class="math inline">\(D\)</span> ca suma celor trei valori obținute: <span class="math display">\[D = A+B+C\]</span></p>
+<p>Cât este valoarea medie a lui <span class="math inline">\(D\)</span>?</p>
+</div>
+</div>
+</section>
+<section id="valoarea-pătratică-medie" class="level3" data-number="1.6.2">
+<h3 data-number="1.6.2" class="anchored" data-anchor-id="valoarea-pătratică-medie"><span class="header-section-number">1.6.2</span> Valoarea pătratică medie</h3>
+<p><strong>Valoarea pătratică medie</strong> (momentul de ordin 2) reprezintă valoarea medie a pătratelor valorilor unei variabile <span class="math inline">\(A\)</span>.</p>
+<p>Pentru variabile aleatoare continue: <span class="math display">\[\overline{A^2} = E\{A^2\} = \int_{-\infty}^{\infty} x^2 \cdot w_A(x) dx\]</span></p>
+<p>Și pentru cele discrete: <span class="math display">\[\overline{A^2} = E\{A^2\} = \sum_{-\infty}^{\infty} x^2 \cdot w_A(x)\]</span></p>
+<p>Valoarea pătratică medie are o interpretare legată de magnitudinea valorilor posibile. Dacă avem de-a face cu un semnal <span class="math inline">\(x(t)\)</span> sau <span class="math inline">\(x[n]\)</span> a cărui valori sunt generate de o distribuție <span class="math inline">\(w_A(x)\)</span>, valoarea pătratică medie a distribuției va fi <strong>puterea medie</strong> a semnalului respectiv.</p>
+</section>
+<section id="varianța" class="level3" data-number="1.6.3">
+<h3 data-number="1.6.3" class="anchored" data-anchor-id="varianța"><span class="header-section-number">1.6.3</span> Varianța</h3>
+<p><strong>Varianța</strong> (momentul centrat de ordin 2) reprezintă valoarea pătratică medie a abaterilor față de valoarea medie.</p>
+<p>Pentru variabile aleatoare continue: <span class="math display">\[\sigma^2 = \overline{\left\{ A - \mu \right\}^2} = \int_{-\infty}^{\infty} (x-\mu)^2 \cdot w_A(x) dx\]</span></p>
+<p>Pentru variabile aleatoare discrete: <span class="math display">\[\sigma^2 = \overline{\left\{ A - \mu \right\}^2} = \sum_{-\infty}^{\infty} (x-\mu)^2 \cdot w_A(x)\]</span></p>
+<p>Cu alte cuvinte, din valorile variabilei aleatoare <span class="math inline">\(A\)</span> scădem mereu valoarea medie, obținând astfel valori centrate pe <span class="math inline">\(0\)</span> (media lor devine <span class="math inline">\(0\)</span>), și calculăm apoi varianța a ceea ce obținem.</p>
+<p>Rădăcina pătrată <span class="math inline">\(\sigma\)</span> a varianței unei distribuții se numește <strong>deviație standard</strong>.</p>
+<p>Varianța, sau deviația standard, ne spun cat de mult pot fluctua valorile în jurul valorii medii.</p>
+<ul>
+<li>varianță mică: valorile deviază puțin în jurul mediei, sunt concentrate în jur;</li>
+<li>varianță mare: valorile deviază mult de la medie.</li>
+<li>Dacă avem de-a face cu un semnal <span class="math inline">\(x(t)\)</span> sau <span class="math inline">\(x[n]\)</span> a cărui valori sunt generate de o distribuție <span class="math inline">\(w_A(x)\)</span>, varianța va fi <strong>puterea medie a componentei alternative</strong> a semnalului respectiv (adică puterea medie a semnalului din care am scăzut componenta continuă).</li>
+</ul>
+</section>
+<section id="legătura-între-cele-trei-mărimi-statistice" class="level3" data-number="1.6.4">
+<h3 data-number="1.6.4" class="anchored" data-anchor-id="legătura-între-cele-trei-mărimi-statistice"><span class="header-section-number">1.6.4</span> Legătura între cele trei mărimi statistice</h3>
+<p>Pentru orice distribuție, cele trei mărimi statistice satisfac relația următoare: <span class="math display">\[\begin{split}
+\sigma^2 &amp;= \overline{\left\{ A - \mu \right\}^2} \\
+&amp;= \overline{A^2 - 2 \cdot A \cdot \mu + \mu^2} \\
+&amp;= \overline{A^2} - 2 \mu \overline{A} + \mu^2 \\
+&amp;= \overline{A^2} - \mu^2
+\end{split}\]</span></p>
+<p>Dacă avem de-a face cu un semnal <span class="math inline">\(x(t)\)</span> sau <span class="math inline">\(x[n]\)</span> a cărui valori urmează o distribuție <span class="math inline">\(w_A(x)\)</span>, relația poate fi interpretată în sens energetic:</p>
+<ul>
+<li><span class="math inline">\(\overline{A^2}\)</span> este puterea totală a semnalului</li>
+<li><span class="math inline">\(\mu^2\)</span> este puterea componentei continue</li>
+<li><span class="math inline">\(\sigma^2\)</span> este puterea componentei alternative</li>
+<li>puterea totată a semnalului = puterea componentei continue + puterea componentei alternative</li>
+</ul>
+</section>
+</section>
+<section id="operații-cu-variabile-aleatoare" class="level2" data-number="1.7">
+<h2 data-number="1.7" class="anchored" data-anchor-id="operații-cu-variabile-aleatoare"><span class="header-section-number">1.7</span> Operații cu variabile aleatoare</h2>
+<p>Fie o variabilă aleatoare <span class="math inline">\(A\)</span>, și fie <span class="math inline">\(D = c + A\)</span>, unde <span class="math inline">\(c\)</span> este un număr real.</p>
+<p><span class="math inline">\(D\)</span> este tot o variabilă aleatoare, a cărui distribuție <span class="math inline">\(w_D(x)\)</span> este distribuția lui <span class="math inline">\(A\)</span> “translată” cu <span class="math inline">\(c\)</span> la dreapta:</p>
+<p><span class="math display">\[w_D(x) = w_A(x - c)\]</span></p>
+<div class="callout-tip callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Exemplu
+</div>
+</div>
+<div class="callout-body-container callout-body" title="Exemplu">
+<p>Fie A o variabilă aleatoare cu distribuție normală <span class="math inline">\(w_A(x) = \mathcal{N}(\mu=3, \sigma^2=2)\)</span>.</p>
+<p>Distribuția variabilei <span class="math inline">\(D\)</span> definită ca: <span class="math display">\[D = 5 + A\]</span> este: <span class="math display">\[w_D(x) = \mathcal{N}(\mu=8, \sigma^2=2)\]</span></p>
+</div>
+</div>
+<p>Suma a două sau mai multe variabile aleatoare <strong>independente</strong> este tot o variabilă aleatoare, a cărei densitate de probabilitate este <strong>convoluția</strong> densităților termenilor.</p>
+<p>Fie două variabile aleatoare <span class="math inline">\(A\)</span> și <span class="math inline">\(B\)</span>, independente. Dacă <span class="math inline">\(C = A + B\)</span>, atunci:</p>
+<p><span class="math display">\[w_C(x) = w_A(x) \star w_B(x)\]</span></p>
+<p>Pentru cazul particular cand <span class="math inline">\(A\)</span> și <span class="math inline">\(B\)</span> sunt variabile normale cu <span class="math inline">\(\mathcal{N}(\mu_A, \sigma_A^2)\)</span> și <span class="math inline">\(\mathcal{N}(\mu_B, \sigma_B^2)\)</span>, atunci suma lor <span class="math inline">\(C\)</span> are tot o distribuție normală <span class="math inline">\(\mathcal{N}(\mu_C, \sigma_C^2)\)</span>, având media lui <span class="math inline">\(C\)</span> egală cu suma mediilor lui <span class="math inline">\(A\)</span> și <span class="math inline">\(B\)</span>:</p>
+<p><span class="math display">\[\mu_C = \mu_A + \mu_B\]</span></p>
+<p>iar varianța egală cu suma varianțelor:</p>
+<p><span class="math display">\[\sigma_C^2 = \sigma_A^2 + \sigma_B^2\]</span></p>
+<p>În general, o funcție aplicată unei variabile aleatoare produce o altă variabilă aleatoare, cu altă distribuție, posibil cu totul diferită de cea inițială.</p>
+<div class="callout-tip callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Exemple
+</div>
+</div>
+<div class="callout-body-container callout-body" title="Exemple">
+<p>Dacă <span class="math inline">\(A\)</span> este o v.a. distribuită <span class="math inline">\(\mathcal{U}\;[0,10]\)</span>, atunci</p>
+<ul>
+<li><span class="math inline">\(B = 5 + A\)</span> este o altă v.a., distribuită <span class="math inline">\(\mathcal{U}\;[5,15]\)</span></li>
+<li><span class="math inline">\(C = A^2\)</span> este de asemenea o v.a.</li>
+<li><span class="math inline">\(D = cos(A)\)</span> este de asemenea o v.a.</li>
+</ul>
+</div>
+</div>
+<p>Variabilele A, B, C, D nu sunt însă independente, întrucât o anumită valoare a uneia implică automat și valoarea celorlalte.</p>
+</section>
+<section id="sisteme-de-mai-multe-variabile-aleatoare" class="level2" data-number="1.8">
+<h2 data-number="1.8" class="anchored" data-anchor-id="sisteme-de-mai-multe-variabile-aleatoare"><span class="header-section-number">1.8</span> Sisteme de mai multe variabile aleatoare</h2>
+<p>Fie un sistem cu două variabile aleatoare continue, <span class="math inline">\(A\)</span> și <span class="math inline">\(B\)</span>. Care este probabilitatea ca <span class="math inline">\(A\)</span> să ia valori în jurul lui <span class="math inline">\(x\)</span> <strong>ȘI</strong> B să ia valori în jurul lui <span class="math inline">\(y\)</span>?</p>
+<p>Distribuția valorilor perechii <span class="math inline">\((A,B)\)</span> este descrisă de o densitatea de probabilitate comună <span class="math inline">\(w_{AB}(x,y)\)</span>, și de o funcția de repartiție comună <span class="math inline">\(F_{AB}(x,y)\)</span>.</p>
+<p>Funcția de repartiție comună se definește ca: <span class="math display">\[F_{AB}(x,y) = P_{AB}\left\{ A \leq x \cap B \leq y \right\}\]</span></p>
+<p>Densitatea de probabilitate comună: <span class="math display">\[w_{AB}(x,y) = \frac{\partial^2 F_{AB}(x,y)}{\partial x \partial y}\]</span></p>
+<p>Densitatea de probabiliate comună ne dă probabilitatea ca perechea <span class="math inline">\((A,B)\)</span> să aibă valoarea într-o vecinătate a <span class="math inline">\((x,y)\)</span></p>
+<p>Cele două funcții se definesc similar și pentru variabile discrete, înlocuind integralele cu sume: <span class="math display">\[w_{AB}(x,y) = P\left\{ A = x \cap B = y \right\}\]</span></p>
+<section id="variabile-independente" class="level3" data-number="1.8.1">
+<h3 data-number="1.8.1" class="anchored" data-anchor-id="variabile-independente"><span class="header-section-number">1.8.1</span> Variabile independente</h3>
+<p>Două variabile <span class="math inline">\(A\)</span> și <span class="math inline">\(B\)</span> sunt <strong>independente</strong> dacă se respectă relația: <span class="math display">\[w_{AB}(x,y) = w_A(x) \cdot w_B(y)\]</span></p>
+<p>Ca interpretare, acest lucru înseamnă că valoarea uneia nu influențează în nici un fel valoarea celeilalte.</p>
+<p>Relația este valabilă și pentru funcția de repartiție, atât pentru variabile continue cât și pentru discrete, și se extinde similar pentru cazul în care sunt mai mult de două variabile.</p>
+<div class="callout-note callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Exercițiu
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Calculați probabilitatea ca trei v.a. <span class="math inline">\(X\)</span>, <span class="math inline">\(Y\)</span> și <span class="math inline">\(Z\)</span> i.i.d. <span class="math inline">\(\mathcal{N}(-1,1)\)</span> să fie toate pozitive (prescuratea <strong>i.i.d</strong>* = “independente și identic distribuite”).</p>
+</div>
+</div>
+</section>
+</section>
+<section id="distribuția-normală-multivariată" class="level2" data-number="1.9">
+<h2 data-number="1.9" class="anchored" data-anchor-id="distribuția-normală-multivariată"><span class="header-section-number">1.9</span> Distribuția normală multivariată</h2>
+<p>Distribuția normală se poate extinde în mod natural la vectori cu dimensiune <span class="math inline">\(N\)</span>.</p>
+<p>Pentru un vector <span class="math inline">\(\mathbf{x}\)</span> de dimensiune N <span class="math display">\[\mathbf{x} = [x_1, x_2, ... x_N]\]</span> distribuția se definește ca: <span class="math display">\[w_A(\mathbf{x})= \frac{1}{\sqrt{(2\pi)^N |\Sigma|}}
+e^{-\frac{1}{2}(\mathbf{x} - \boldsymbol{\mu})^T\Sigma^{-1}(\mathbf{x} - \boldsymbol{\mu})}\]</span></p>
+<p>Funcția are doi parametri matriciali:</p>
+<ul>
+<li><strong>media</strong> <span class="math inline">\(\boldsymbol{\mu} = [\mu_1, \mu_2, ... \mu_N]\)</span> este un vector de dimensiune <span class="math inline">\(N\)</span> care definește “centrul” funcției;</li>
+<li><strong>matricea de covarianță</strong> <span class="math inline">\(\Sigma\)</span> este o matrice $ N N$ care definește orientarea și forma eliptică a funcției.</li>
+</ul>
+<p>Distribuția normală multivariată are forma de tipul unui “munte” elipsoid, pentru care media <span class="math inline">\(\boldsymbol{\mu}\)</span> reprezintă coordonatele vârfului central. Matricea de covarianță <span class="math inline">\(\Sigma\)</span> determina forma “muntelui”, în felul următor:</p>
+<ul>
+<li>Matrice are <span class="math inline">\(N\)</span> <strong>vectori proprii</strong> <span class="math inline">\(\mathbf{e_i}\)</span> care dau direcțiile ortogonale ale axelor care definesc elipsa;</li>
+<li>Cele <span class="math inline">\(N\)</span> <strong>valori proprii</strong> <span class="math inline">\(\lambda_i\)</span> controlează extinderea elipsei de-a lungul fiecărei axe.</li>
+</ul>
+<div class="callout-tip callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Exemple
+</div>
+</div>
+<div class="callout-body-container callout-body" title="Exemple">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/01_01_BivNorm1.png" class="id img-fluid figure-img" style="width:75.0%"></p>
+<p></p><figcaption class="figure-caption">Distribuția normală 2D (bivariată)</figcaption><p></p>
+</figure>
+</div>
+<ul>
+<li>sursa: https://www.statsref.com/HTML/multivariate_distributions.html</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/01_01_BivNorm2.jpg" class="id img-fluid figure-img" style="width:75.0%"></p>
+<p></p><figcaption class="figure-caption">Distribuții normală 2D (bivariată)</figcaption><p></p>
+</figure>
+</div>
+<ul>
+<li>sursa: https://www.rhayden.us/covariance-matrix-2/the-multivariate-normal-distribution.html</li>
+</ul>
+<p>Vectorii proprii <span class="math inline">\(\mathbf{e_i}\)</span> ai matricei de covarianță <span class="math inline">\(\Sigma\)</span> ne dau direcțiile dupa care e aliniată forma eliptică a funcției, iar valorile proprii <span class="math inline">\(\lambda_i\)</span> ne dau alungirea funcției în aceste direcții (varianța în aceste direcții).</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/01_01_BivNormEig1.png" class="id img-fluid figure-img" style="width:75.0%"></p>
+<p></p><figcaption class="figure-caption">Distribuții normală 2D (bivariată)</figcaption><p></p>
+</figure>
+</div>
+<ul>
+<li>sursa: https://www.rhayden.us/covariance-matrix-2/the-multivariate-normal-distribution.html</li>
+</ul>
+</div>
+</div>
+<section id="caz-particular-componente-independente" class="level3" data-number="1.9.1">
+<h3 data-number="1.9.1" class="anchored" data-anchor-id="caz-particular-componente-independente"><span class="header-section-number">1.9.1</span> Caz particular: componente independente</h3>
+<p>În cazul în care matricea de covarianță este o matrice diagonală:</p>
+<p><span class="math display">\[\Sigma =
+\begin{bmatrix}
+\sigma^2_1 &amp; 0 &amp; 0 &amp; \cdots &amp; 0 \\
+0 &amp; \sigma^2_2 &amp; 0 &amp; \cdots &amp; 0 \\
+0 &amp; 0 &amp; \sigma^2_3 &amp; \cdots &amp; 0 \\
+\vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+0 &amp; 0 &amp; 0 &amp; \cdots &amp; \sigma^2_N \\
+\end{bmatrix}\]</span></p>
+<p>distribuția multiavariată se descompune ca un produs de distribuții individuale, ceea ce reflectă faptul că componentele vectorului <span class="math inline">\(\mathbf{x}\)</span> sunt independente:</p>
+<p><span class="math display">\[\begin{split}
+w_A(\mathbf{x}) &amp;=
+\frac{1}{\sigma_1 \cdot ... \cdot \sigma_N \sqrt{(2\pi)^N}}
+e^{(-\frac{(\mathbf{x_1} - \boldsymbol{\mu_1})^2}{2\sigma^2_1}) \cdot (-\frac{(\mathbf{x_2} - \boldsymbol{\mu_2})^2}{2\sigma^2_2}) \cdot \dots (-\frac{(\mathbf{x_N} - \boldsymbol{\mu_N})^2}{2\sigma^2_N})}  \\
+&amp;=\frac{1}{\sigma_1 \sqrt{(2\pi)}} e^{-\frac{(\mathbf{x_1} - \boldsymbol{\mu_1})^2}{2\sigma^2_1}}
+\cdot
+\frac{1}{\sigma_2 \sqrt{(2\pi)}} e^{-\frac{(\mathbf{x_2} - \boldsymbol{\mu_2})^2}{2\sigma^2_2}}
+\cdot \dots \cdot
+\frac{1}{\sigma_N \sqrt{(2\pi)}} e^{-\frac{(\mathbf{x_N} - \boldsymbol{\mu_N})^2}{2\sigma^2_N}} \\
+&amp;=w_1(x_1) \cdot w_2(x_2) \cdot \dots \cdot w_N(x_N)
+\end{split}\]</span></p>
+<p>Acest lucru înseamnă, practic, că fiecare componentă <span class="math inline">\(x_k\)</span> din vectorul <span class="math inline">\(\mathbf{x}\)</span> este independentă de toate celelalte și respectă o distribuție normală cu media <span class="math inline">\(\mu_k\)</span> și varianța <span class="math inline">\(\sigma^2_k\)</span>. Cu alte cuvinte:</p>
+<p><span class="math display">\[\mathcal{N}(\boldsymbol{\mu}, \Sigma) = \mathcal{N}(\mu_1, \sigma_1) \cdot \mathcal{N}(\mu_2, \sigma_2) \cdot \dots \cdot \mathcal{N}(\mu_N, \sigma_N)\]</span></p>
+</section>
+<section id="caz-particular-distribuție-izotropă" class="level3" data-number="1.9.2">
+<h3 data-number="1.9.2" class="anchored" data-anchor-id="caz-particular-distribuție-izotropă"><span class="header-section-number">1.9.2</span> Caz particular: distribuție izotropă</h3>
+<p>În cazul în care matricea de covarianță este de forma unei matrici matricea unitate, având aceeași valoare <span class="math inline">\(\sigma\)</span> pe toate liniile: <span class="math display">\[\Sigma = \sigma^2 \mathbf{I}_N\]</span></p>
+<p>avem o distribuție normală multivariată <strong>izotropă</strong>:</p>
+<div class="callout-tip callout callout-style-simple">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Termenul “izotrop” înseamnă “cu aceleași proprietăți în orice direcție” și se referă la forma circulară a funcției.</p>
+</div>
+</div>
+</div>
+<p><span class="math display">\[\begin{split}
+w_A(\mathbf{x}) &amp;= \frac{1}{\sigma^N \sqrt{(2\pi)^N}}
+e^{-\frac{1}{2}(\mathbf{x} - \boldsymbol{\mu})^T \Sigma^{-1} (\mathbf{x} - \boldsymbol{\mu})} \\
+&amp;=\frac{1}{\sigma^N \sqrt{(2\pi)^N}}
+e^{-\frac{ \sum_i (x_i - \mu_i)^2 }{2 \sigma^{2N}}} \\
+\end{split}\]</span></p>
+<p>În acest caz, toata componentele <span class="math inline">\(x_k\)</span> sunt independente și respectă fiecare o distribuție normală cu medie <span class="math inline">\(\mu_k\)</span>, dar cu aceeași varianță <span class="math inline">\(\sigma^2\)</span>.</p>
+<p>Se observă că în acest caz valoarea densității de probabilitate într-un punct <span class="math inline">\(\mathbf{x}=[x_1,...x_N]\)</span> depinde de <strong>distanța</strong> de la punctul respectiv la punctul central <span class="math inline">\(\boldsymbol{\mu} = [\mu_1,...\mu_N]\)</span>.</p>
+<p><strong>Distanța Euclideană (geometrică)</strong> între 2 vectori N-dimensionali se definește astfel:</p>
+<p><span class="math display">\[d(\mathbf{u},\mathbf{v}) = \| \mathbf{u}-\mathbf{v} \| = \sqrt{(u_1-v_1)^2+...+(u_N - v_N)^2}\]</span></p>
+<p>Cazuri particulare în funcție de dimensiunea <span class="math inline">\(N\)</span>:</p>
+<ul>
+<li>Unidimensional: <span class="math inline">\(\|\mathbf{u}-\mathbf{v}\| = |u-v|\)</span></li>
+<li>2D: <span class="math inline">\(\|\mathbf{u}-\mathbf{v}\| = \sqrt{(u_1 - v_1)^2 + (u_2 - v_2)^2}\)</span></li>
+<li>3D: <span class="math inline">\(\|\mathbf{u}-\mathbf{v}\| = \sqrt{(u_1 - v_1)^2 + (u_2 - v_2)^2 + (u_3 - v_3)^2}\)</span></li>
+<li>…</li>
+<li>N-dimensional: <span class="math inline">\(\|\mathbf{u}-\mathbf{v}\| = \sqrt{\sum_{i=1}^N(u_i - v_i)^2}\)</span></li>
+</ul>
+<p>Aceeași relație se poate extinde și pentru semnale continue, văzute ca vectori cu o infinitate de puncte unul lângă altul:</p>
+<p>În cazul unei distribuții normale multivariate izotrope, densitatea de probabilitate într-un punct depinde de pătratul distanței Euclidiene față de media <span class="math inline">\(\boldsymbol{\mu} = [\mu_1,...\mu_N]\)</span></p>
+<ul>
+<li>Valoarea maximă este chiar in punctul <span class="math inline">\(\boldsymbol{\mu}\)</span></li>
+<li>Puncte aproapiate de <span class="math inline">\(\mu\)</span> au probabilitate mai mare</li>
+<li>Puncte mai depărtate de <span class="math inline">\(\mu\)</span> au probabilitate mai redusă</li>
+<li>Două puncte la aceeași distanță de <span class="math inline">\(\mu\)</span> au aceeași probabilitate</li>
+</ul>
+<p>Distribuția normală 2D, izotropă, este prezentată mai jos:</p>
+<p><img src="img/2DNormal.png" class="img-fluid"></p>
+<p>Vedere de sus:</p>
+<p><img src="img/2DNormal-TopView.png" class="id img-fluid" style="width:50.0%"></p>
+<p>În această figură, <span class="math inline">\(\mu = (0,0)\)</span>. Se observă că probabilitatea scade pe măsură ce crește distanța față de centru, în cercuri concentrice (simetric), întrucât e vorba de o distribuție izotropă. În cazul general, în loc de cercuri concentrice am fi avut elipse concentrice.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./01_Intro.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Introducere</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./01_02_ProceseAleatoare.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Procese aleatoare</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>
