@@ -24,6 +24,9 @@ book:
     - part: "Estimare"
       chapters:
       - 03_01_Estimare.qmd
+    - part: "Exerciții rezolvate"
+      chapters:
+      - Ex_Seminar06.qmd
     - part: "Aplicații practice"
       chapters:
       - App01_OutlierDetection.ipynb
