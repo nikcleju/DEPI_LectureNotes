@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Decizie și estimare în prelucrarea informației (DEPI) - 9&nbsp; Seminar 06: K-NN, K-Means, estimare ML</title>
+<title>Decizie și estimare în prelucrarea informației (DEPI) - 10&nbsp; Seminar 06: K-NN, K-Means, estimare ML</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -71,7 +71,7 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Seminar 06: K-NN, K-Means, estimare ML</span></h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Seminar 06: K-NN, K-Means, estimare ML</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -179,12 +179,17 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Ex_Seminar05.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Seminar 05: Decizii cu mai multe eșantioane</span></a>
+  <a href="./Ex_Seminar04.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Seminar 04: Decizii, decizii</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Ex_Seminar06.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Seminar 06: K-NN, K-Means, estimare ML</span></a>
+  <a href="./Ex_Seminar05.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Seminar 05: Decizii cu mai multe eșantioane</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Ex_Seminar06.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Seminar 06: K-NN, K-Means, estimare ML</span></a>
   </div>
 </li>
       </ul>
@@ -218,27 +223,27 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#exercițiul-1-k-nn" id="toc-exercițiul-1-k-nn" class="nav-link active" data-scroll-target="#exercițiul-1-k-nn"><span class="toc-section-number">9.1</span>  Exercițiul 1: k-NN</a>
+  <li><a href="#exercițiul-1-k-nn" id="toc-exercițiul-1-k-nn" class="nav-link active" data-scroll-target="#exercițiul-1-k-nn"><span class="toc-section-number">10.1</span>  Exercițiul 1: k-NN</a>
   <ul class="collapse">
   <li><a href="#rezolvare" id="toc-rezolvare" class="nav-link" data-scroll-target="#rezolvare">Rezolvare</a></li>
   </ul></li>
-  <li><a href="#exercițiul-2-k-means" id="toc-exercițiul-2-k-means" class="nav-link" data-scroll-target="#exercițiul-2-k-means"><span class="toc-section-number">9.2</span>  Exercițiul 2: k-Means</a>
+  <li><a href="#exercițiul-2-k-means" id="toc-exercițiul-2-k-means" class="nav-link" data-scroll-target="#exercițiul-2-k-means"><span class="toc-section-number">10.2</span>  Exercițiul 2: k-Means</a>
   <ul class="collapse">
   <li><a href="#rezolvare-1" id="toc-rezolvare-1" class="nav-link" data-scroll-target="#rezolvare-1">Rezolvare</a></li>
   </ul></li>
-  <li><a href="#exercițiul-3-estimare-ml" id="toc-exercițiul-3-estimare-ml" class="nav-link" data-scroll-target="#exercițiul-3-estimare-ml"><span class="toc-section-number">9.3</span>  Exercițiul 3: estimare ML</a>
+  <li><a href="#exercițiul-3-estimare-ml" id="toc-exercițiul-3-estimare-ml" class="nav-link" data-scroll-target="#exercițiul-3-estimare-ml"><span class="toc-section-number">10.3</span>  Exercițiul 3: estimare ML</a>
   <ul class="collapse">
   <li><a href="#rezolvare-2" id="toc-rezolvare-2" class="nav-link" data-scroll-target="#rezolvare-2">Rezolvare</a></li>
   </ul></li>
-  <li><a href="#exercițiul-4-estimare-ml" id="toc-exercițiul-4-estimare-ml" class="nav-link" data-scroll-target="#exercițiul-4-estimare-ml"><span class="toc-section-number">9.4</span>  Exercițiul 4: estimare ML</a>
+  <li><a href="#exercițiul-4-estimare-ml" id="toc-exercițiul-4-estimare-ml" class="nav-link" data-scroll-target="#exercițiul-4-estimare-ml"><span class="toc-section-number">10.4</span>  Exercițiul 4: estimare ML</a>
   <ul class="collapse">
   <li><a href="#rezolvare-3" id="toc-rezolvare-3" class="nav-link" data-scroll-target="#rezolvare-3">Rezolvare</a></li>
   </ul></li>
-  <li><a href="#exercițiul-5-estimare-ml" id="toc-exercițiul-5-estimare-ml" class="nav-link" data-scroll-target="#exercițiul-5-estimare-ml"><span class="toc-section-number">9.5</span>  Exercițiul 5: estimare ML</a>
+  <li><a href="#exercițiul-5-estimare-ml" id="toc-exercițiul-5-estimare-ml" class="nav-link" data-scroll-target="#exercițiul-5-estimare-ml"><span class="toc-section-number">10.5</span>  Exercițiul 5: estimare ML</a>
   <ul class="collapse">
   <li><a href="#rezolvare-4" id="toc-rezolvare-4" class="nav-link" data-scroll-target="#rezolvare-4">Rezolvare</a></li>
   </ul></li>
-  <li><a href="#exercițiul-6-estimare-ml-cu-mai-mulți-parametri" id="toc-exercițiul-6-estimare-ml-cu-mai-mulți-parametri" class="nav-link" data-scroll-target="#exercițiul-6-estimare-ml-cu-mai-mulți-parametri"><span class="toc-section-number">9.6</span>  Exercițiul 6: estimare ML cu mai mulți parametri</a>
+  <li><a href="#exercițiul-6-estimare-ml-cu-mai-mulți-parametri" id="toc-exercițiul-6-estimare-ml-cu-mai-mulți-parametri" class="nav-link" data-scroll-target="#exercițiul-6-estimare-ml-cu-mai-mulți-parametri"><span class="toc-section-number">10.6</span>  Exercițiul 6: estimare ML cu mai mulți parametri</a>
   <ul class="collapse">
   <li><a href="#rezolvare-5" id="toc-rezolvare-5" class="nav-link" data-scroll-target="#rezolvare-5">Rezolvare</a></li>
   </ul></li>
@@ -250,7 +255,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Seminar 06: K-NN, K-Means, estimare ML</span></h1>
+<h1 class="title d-none d-lg-block"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Seminar 06: K-NN, K-Means, estimare ML</span></h1>
 </div>
 
 
@@ -265,8 +270,8 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="exercițiul-1-k-nn" class="level2" data-number="9.1">
-<h2 data-number="9.1" class="anchored" data-anchor-id="exercițiul-1-k-nn"><span class="header-section-number">9.1</span> Exercițiul 1: k-NN</h2>
+<section id="exercițiul-1-k-nn" class="level2" data-number="10.1">
+<h2 data-number="10.1" class="anchored" data-anchor-id="exercițiul-1-k-nn"><span class="header-section-number">10.1</span> Exercițiul 1: k-NN</h2>
 <ol type="1">
 <li>Fie următorul set de 10 vectori, compus din 5 vectori din clasa A și 5 vectori din clasa B:
 <ul>
@@ -297,8 +302,8 @@ ul.task-list li input[type="checkbox"] {
 <p>Penru <span class="math inline">\(k=9\)</span>: vecinii sunt <span class="math inline">\(\mathbf{v}_3\)</span>, <span class="math inline">\(\mathbf{v}_4\)</span>, <span class="math inline">\(\mathbf{v}_{10}\)</span>, <span class="math inline">\(\mathbf{v}_7\)</span>, <span class="math inline">\(\mathbf{v}_9\)</span>, <span class="math inline">\(\mathbf{v}_6\)</span>, <span class="math inline">\(\mathbf{v}_8\)</span>, <span class="math inline">\(\mathbf{v}_1\)</span> și <span class="math inline">\(\mathbf{v}_2\)</span>, dintre care patru sunt din clasa A și cinci din B, deci clasa lui <span class="math inline">\(\mathbf{x}\)</span> este B.</p>
 </section>
 </section>
-<section id="exercițiul-2-k-means" class="level2" data-number="9.2">
-<h2 data-number="9.2" class="anchored" data-anchor-id="exercițiul-2-k-means"><span class="header-section-number">9.2</span> Exercițiul 2: k-Means</h2>
+<section id="exercițiul-2-k-means" class="level2" data-number="10.2">
+<h2 data-number="10.2" class="anchored" data-anchor-id="exercițiul-2-k-means"><span class="header-section-number">10.2</span> Exercițiul 2: k-Means</h2>
 <p>Fie următoarele zece valori numerice: <span class="math display">\[\mathbf{v} = \left\lbrace v_i \right\rbrace = [ 1.1, 0.9,
 5.5, 0.6, 5, 6, 1.3, 4.8, 6, 0.8 ] \]</span></p>
 <p>Efectuați cinci iterații ale algoritmul k-Means pentru a găsi doi centroizi <span class="math inline">\(\mathbf{c}_1\)</span> și <span class="math inline">\(\mathbf{c}_2\)</span>, pornind de la două valori aleatoare <span class="math inline">\(\mathbf{c}_1 = 0.95\)</span> și <span class="math inline">\(\mathbf{c}_2 = 0.96\)</span>.</p>
@@ -336,8 +341,8 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 </section>
 </section>
-<section id="exercițiul-3-estimare-ml" class="level2" data-number="9.3">
-<h2 data-number="9.3" class="anchored" data-anchor-id="exercițiul-3-estimare-ml"><span class="header-section-number">9.3</span> Exercițiul 3: estimare ML</h2>
+<section id="exercițiul-3-estimare-ml" class="level2" data-number="10.3">
+<h2 data-number="10.3" class="anchored" data-anchor-id="exercițiul-3-estimare-ml"><span class="header-section-number">10.3</span> Exercițiul 3: estimare ML</h2>
 <p>Se recepționează un semnal constant de amplitudine necunoscută A, afectat de zgomot gaussian, <span class="math inline">\(r(t) = \underbrace{A}_{s_\Theta(t)} + zgomot\)</span>, unde zgomotul este de tip gaussian <span class="math inline">\(\mathcal{N}(\mu = 0, \sigma^2 = 2)\)</span>.</p>
 <p>Semnalul este eșantionat la momentele <span class="math inline">\(t_i = [0,1.5,3,4]\)</span> și se observă valorile <span class="math inline">\(r_i = [4.6, 5.2, 5.35, 4.8]\)</span>.</p>
 <p>Estimați valoarea lui A folosind estimarea Maximum Likelihood</p>
@@ -352,8 +357,8 @@ ul.task-list li input[type="checkbox"] {
 <p>Rezolvând aceasta ecuație, obținem estimarea ML a lui A: <span class="math display">\[\hat{A}_{ML} = \frac{4.6 + 5.2 + 5.35 + 4.8}{4} = 4.9875\]</span></p>
 </section>
 </section>
-<section id="exercițiul-4-estimare-ml" class="level2" data-number="9.4">
-<h2 data-number="9.4" class="anchored" data-anchor-id="exercițiul-4-estimare-ml"><span class="header-section-number">9.4</span> Exercițiul 4: estimare ML</h2>
+<section id="exercițiul-4-estimare-ml" class="level2" data-number="10.4">
+<h2 data-number="10.4" class="anchored" data-anchor-id="exercițiul-4-estimare-ml"><span class="header-section-number">10.4</span> Exercițiul 4: estimare ML</h2>
 <p>Un semnal de forma <span class="math inline">\(r(t) = A \cdot t^2 + 2 + zgomot\)</span> este eșantionat la momentele <span class="math inline">\(t_i = [1,2,3,4,5]\)</span>, și valorile obținute sunt <span class="math inline">\(r_i = [1.2, 3.7, 8.5, 18, 25.8]\)</span>. Distribuția zgomotului este <span class="math inline">\(\mathcal{N}(0,\sigma^2=1)\)</span>.</p>
 <p>Estimați parametrul <span class="math inline">\(A\)</span> folosind estimarea ML.</p>
 <section id="rezolvare-3" class="level3 unnumbered">
@@ -370,8 +375,8 @@ d(\mathbf{r}, \mathbf{s}) &amp;= (A + 2 - 1.2)^2 + (4A + 2 - 3.7)^2 + (9A + 2 - 
 <p>Rezolvând aceasta ecuație, obținem estimarea ML a lui A: <span class="math display">\[\hat{A}_{ML} = \frac{-0.8 + 1.7 \cdot 4 + 6.5 \cdot 9 + 16 \cdot 16 + 23.8 \cdot 25}{1 + 4^2 + 9^2 + 16^2 + 25^2} = 0.93\]</span></p>
 </section>
 </section>
-<section id="exercițiul-5-estimare-ml" class="level2" data-number="9.5">
-<h2 data-number="9.5" class="anchored" data-anchor-id="exercițiul-5-estimare-ml"><span class="header-section-number">9.5</span> Exercițiul 5: estimare ML</h2>
+<section id="exercițiul-5-estimare-ml" class="level2" data-number="10.5">
+<h2 data-number="10.5" class="anchored" data-anchor-id="exercițiul-5-estimare-ml"><span class="header-section-number">10.5</span> Exercițiul 5: estimare ML</h2>
 <p>Valorile măsurate ale unei funcții liniare <span class="math inline">\(y = ax\)</span>, unde <span class="math inline">\(a\)</span> este necunoscut, sunt următoarele: <span class="math inline">\((x_i, y_i) = {(1,1.8),(2,4.1),(2.5, 5.1),(4,7.9),(4.3, 8.5)}\)</span>. Presupunând că zgomotul are distribuția <span class="math inline">\(\mathcal{N}(0,\sigma^2=1)\)</span>, estimați valoarea lui <span class="math inline">\(a\)</span> folosind estimarea ML</p>
 <section id="rezolvare-4" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="rezolvare-4">Rezolvare</h3>
@@ -384,8 +389,8 @@ d(\mathbf{r}, \mathbf{s}) &amp;= (A + 2 - 1.2)^2 + (4A + 2 - 3.7)^2 + (9A + 2 - 
 <p>Rezolvând aceasta ecuație, obținem estimarea ML a lui A: <span class="math display">\[\hat{a}_{ML} = \frac{1.8 + 4.1 \cdot 2 + 5.1 \cdot 2.5 + 7.9 \cdot 4 + 8.5 \cdot 4.3}{1 + 4 + 2.5^2 + 16 + 4.3^2} = 2.29\]</span></p>
 </section>
 </section>
-<section id="exercițiul-6-estimare-ml-cu-mai-mulți-parametri" class="level2" data-number="9.6">
-<h2 data-number="9.6" class="anchored" data-anchor-id="exercițiul-6-estimare-ml-cu-mai-mulți-parametri"><span class="header-section-number">9.6</span> Exercițiul 6: estimare ML cu mai mulți parametri</h2>
+<section id="exercițiul-6-estimare-ml-cu-mai-mulți-parametri" class="level2" data-number="10.6">
+<h2 data-number="10.6" class="anchored" data-anchor-id="exercițiul-6-estimare-ml-cu-mai-mulți-parametri"><span class="header-section-number">10.6</span> Exercițiul 6: estimare ML cu mai mulți parametri</h2>
 <p>Un robot se deplasează pe o traiectorie liniară cu o viteză necunoscută <span class="math inline">\(V\)</span> centimetri/secundă, pornind de la poziția <span class="math inline">\(x = 0\)</span> la momentul inițial.</p>
 <p>La intervale de o secundă, robotul măsoară distanța parcursă folosind un senzor, afectat de zgomot gaussian <span class="math inline">\(\mathcal{N}(0,\sigma^2=0.1)\)</span>.</p>
 <p>Valorile măsurate la momentele <span class="math inline">\(t_i = [1,2,3,4,5]\)</span> sunt <span class="math inline">\(r_i = [4.9, 9.8, 14.3, 21.2, 25.7]\)</span></p>
@@ -574,7 +579,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./Ex_Seminar05.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Seminar 05: Decizii cu mai multe eșantioane</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Seminar 05: Decizii cu mai multe eșantioane</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

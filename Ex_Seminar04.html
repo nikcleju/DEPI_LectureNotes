@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Decizie și estimare în prelucrarea informației (DEPI) - 9&nbsp; Seminar 05: Decizii cu mai multe eșantioane</title>
+<title>Decizie și estimare în prelucrarea informației (DEPI) - 8&nbsp; Seminar 04: Decizii, decizii</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./Ex_Seminar06.html" rel="next">
-<link href="./Ex_Seminar04.html" rel="prev">
+<link href="./Ex_Seminar05.html" rel="next">
+<link href="./03_01_Estimare.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -71,7 +71,7 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Seminar 05: Decizii cu mai multe eșantioane</span></h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Seminar 04: Decizii, decizii</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -179,12 +179,12 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Ex_Seminar04.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Seminar 04: Decizii, decizii</span></a>
+  <a href="./Ex_Seminar04.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Seminar 04: Decizii, decizii</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Ex_Seminar05.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Seminar 05: Decizii cu mai multe eșantioane</span></a>
+  <a href="./Ex_Seminar05.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Seminar 05: Decizii cu mai multe eșantioane</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -223,17 +223,13 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#exercițiul-1" id="toc-exercițiul-1" class="nav-link active" data-scroll-target="#exercițiul-1"><span class="toc-section-number">9.1</span>  Exercițiul 1</a>
+  <li><a href="#exercițiul-1" id="toc-exercițiul-1" class="nav-link active" data-scroll-target="#exercițiul-1"><span class="toc-section-number">8.1</span>  Exercițiul 1</a>
   <ul class="collapse">
   <li><a href="#rezolvare" id="toc-rezolvare" class="nav-link" data-scroll-target="#rezolvare">Rezolvare</a></li>
   </ul></li>
-  <li><a href="#exercițiul-2" id="toc-exercițiul-2" class="nav-link" data-scroll-target="#exercițiul-2"><span class="toc-section-number">9.2</span>  Exercițiul 2</a>
+  <li><a href="#exercițiul-2" id="toc-exercițiul-2" class="nav-link" data-scroll-target="#exercițiul-2"><span class="toc-section-number">8.2</span>  Exercițiul 2</a>
   <ul class="collapse">
   <li><a href="#rezolvare-1" id="toc-rezolvare-1" class="nav-link" data-scroll-target="#rezolvare-1">Rezolvare</a></li>
-  </ul></li>
-  <li><a href="#exercițiul-3" id="toc-exercițiul-3" class="nav-link" data-scroll-target="#exercițiul-3"><span class="toc-section-number">9.3</span>  Exercițiul 3</a>
-  <ul class="collapse">
-  <li><a href="#rezolvare-2" id="toc-rezolvare-2" class="nav-link" data-scroll-target="#rezolvare-2">Rezolvare</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -243,7 +239,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Seminar 05: Decizii cu mai multe eșantioane</span></h1>
+<h1 class="title d-none d-lg-block"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Seminar 04: Decizii, decizii</span></h1>
 </div>
 
 
@@ -264,87 +260,121 @@ ul.task-list li input[type="checkbox"] {
 \renewcommand{\vec}[1]{\mathbf{#1}}
 \]</span></p>
 </div>
-<section id="exercițiul-1" class="level2" data-number="9.1">
-<h2 data-number="9.1" class="anchored" data-anchor-id="exercițiul-1"><span class="header-section-number">9.1</span> Exercițiul 1</h2>
-<p>Un semnal poate avea două valori, <span class="math inline">\(s_0(t) = 0\)</span> (ipoteza <span class="math inline">\(H_0\)</span>) sau <span class="math inline">\(s_1(t) = 6\)</span> (ipoteza <span class="math inline">\(H_1\)</span>).</p>
-<p>Semnalul este afectat de zgomot gaussian <span class="math inline">\(\mathcal{N}(0, \sigma^2=1)\)</span>.</p>
-<p>La recepție se iau 5 eșantioane, cu valorile <span class="math inline">\(\left\{ 1.1, 4.4, 3.7, 4.1, 3.8 \right\}\)</span>.</p>
+<section id="exercițiul-1" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="exercițiul-1"><span class="header-section-number">8.1</span> Exercițiul 1</h2>
+<p>Un sistem <em>airbag</em> detectează un accident prin eșantionarea semnalului de la un senzor cu 2 valori posibile: <span class="math inline">\(s_0(t) = 0\)</span> (OK) sau <span class="math inline">\(s_1(t) = A\)</span> (accident), unde <span class="math inline">\(A = 5\)</span>.</p>
+<p>Semnalul este afectat de zgomot gaussian <span class="math inline">\(\mathcal{N}\;(\mu=0, \sigma^2=2)\)</span>.</p>
+<p>Costurile scenariilor sunt: <span class="math inline">\(C_{00} = 0\)</span>, <span class="math inline">\(C_{01} = 100\)</span>, <span class="math inline">\(C_{10} = 10\)</span>, <span class="math inline">\(C_{11} = 0\)</span>.</p>
+<p>Probabilitățile celor două ipoteze sunt <span class="math inline">\(P(H_0) = 2/3\)</span>, <span class="math inline">\(P(H_1) = 1/3\)</span>.</p>
+<p>La recepție se ia un singur eșantion <span class="math inline">\(r\)</span> din semnal.</p>
+<p>Cerințe:</p>
 <ul>
-<li>a). Ce decizie se ia cu criteriul ML?</li>
-<li>b). Ce decizie se ia cu criteriul MPE, dacă <span class="math inline">\(P(H_0) = 2/3\)</span> and <span class="math inline">\(P(H_1) = 1/3\)</span>?</li>
-<li>c). Care e intervalul de valori posibile ale lui <span class="math inline">\(P(H_0)\)</span> pentru ca decizia cu criteriul MPE să fie <span class="math inline">\(D_0\)</span>?</li>
+<li><ol type="a">
+<li>Găsiți regiunile de decizie <span class="math inline">\(R_0\)</span> și <span class="math inline">\(R_1\)</span> pentru toate criteriile de mai jos:</li>
+</ol>
+<ul>
+<li>ML</li>
+<li>MPE</li>
+<li>MR</li>
+<li>Neyman-Pearson cu probabilitatea (condiționată) de alarmă falsă <span class="math inline">\(P_{af} \leq 0.01\)</span></li>
+<li>Un prag <span class="math inline">\(T\)</span> ales arbitrar la valoarea <span class="math inline">\(T=3\)</span></li>
+</ul></li>
+<li><ol start="2" type="a">
+<li>Calculați probabilitatea de pierdere, pentru toate criteriile de mai sus</li>
+</ol></li>
+<li><ol start="3" type="a">
+<li>Care este decizia luată cu fiecare criteriu de mai sus, dacă <span class="math inline">\(r = 3.1\)</span>?</li>
+</ol></li>
+<li><ol start="4" type="a">
+<li>Considerând criteriul MR, care este valoarea minimă a lui <span class="math inline">\(A\)</span> pentru ca probabilitatea (necondiționată) de pierdere sa fie maxim <span class="math inline">\(P_{p} \leq 10^{-6}\)</span>?</li>
+</ol></li>
 </ul>
 <section id="rezolvare" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="rezolvare">Rezolvare</h3>
-<p>Întrucât zgomotul este de tip gaussian, problema de decizie se reduce la compararea distanțelor euclidiene între semnalul recepționat și cele două semnale posibile. <span class="math display">\[d(\mathbf{r}, \mathbf{s_0})^2 \grtlessH  d(\mathbf{r}, \mathbf{s_1})^2 + 2 \sigma^2 \ln(K)\]</span></p>
-<p>Întrucât decizia se ia pe baza a 5 eșantioane, <span class="math inline">\(\mathbf{r}\)</span>, <span class="math inline">\(\mathbf{s_0}\)</span> și <span class="math inline">\(\mathbf{s_1}\)</span> sunt vectori cu 5 elemente.</p>
-<div class="callout-warning callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<p>a). Zgomotul fiind de tip gaussian, pentru criteriile ML, MPE și MR pragul <span class="math inline">\(T\)</span> care separă regiunile de decizie este dat de: <span class="math display">\[T = \frac{s_0(t_0) + s_1(t_0)}{2} + \frac{\sigma^2}{s_1(t_0) - s_0(t_0)} \cdot\ln K\]</span> Conform figurilor de mai jos, regiunile de decizie vor fi intervalele <span class="math inline">\((-\infty, T)\)</span> și <span class="math inline">\((T, \infty)\)</span>.</p>
+<p>Așadar, pentru criteriul ML, <span class="math inline">\(K=1\)</span> și: <span class="math display">\[T_{ML} = \frac{0 + 5}{2} + \frac{2}{5 - 0} \cdot\ln 1 = 2.5\]</span> <span class="math display">\[R_0 = (-\infty, 2.5),\quad R_1 = (2.5, \infty)\]</span></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/Sem4_Airbag_Normal_ML.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<p></p><figcaption class="figure-caption">Maximum Likelihood</figcaption><p></p>
+</figure>
 </div>
-<div class="callout-caption-container flex-fill">
-Atenție, eroare frecventă
+<p>Pentru criteriul MPE, <span class="math inline">\(K=\frac{P(H_0)}{P(H_1)} = 2\)</span> și: <span class="math display">\[T_{MPE} = \frac{0 + 5}{2} + \frac{2}{5 - 0} \cdot\ln 2 = 2.77\]</span> <span class="math display">\[R_0 = (-\infty, 2.77),\quad R_1 = (2.77, \infty)\]</span></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/Sem4_Airbag_Normal_MPE.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<p></p><figcaption class="figure-caption">Minimum Probability of Error</figcaption><p></p>
+</figure>
 </div>
+<p>Pentru criteriul MR, <span class="math inline">\(K=\frac{(C_{10} - C_{00})P(H_0)}{(C_{01} - C_{11})P(H_1)} = \frac{1}{5}\)</span> și: <span class="math display">\[T_{MR} = \frac{0 + 5}{2} + \frac{2}{5 - 0} \cdot\ln(\frac{1}{5}) = 1.85\]</span> <span class="math display">\[R_0 = (-\infty, 1.85),\quad R_1 = (1.85, \infty)\]</span></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/Sem4_Airbag_Normal_MR.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<p></p><figcaption class="figure-caption">Maximum Risk</figcaption><p></p>
+</figure>
 </div>
-<div class="callout-body-container callout-body">
-<p>Când avem mai multe eșantioane, se lucrează cu vectori și se ia o singură decizie. Nu se iau <span class="math inline">\(N\)</span> decizii pe baza fiecărui eșantion în parte.</p>
+<p>Criteriul Neyman-Pearson se formulează astfel:</p>
+<p>“Se alege pragul <span class="math inline">\(T\)</span> astfel încât să se maximizeze probabilitatea de detecție corectă <span class="math inline">\(P_{dc} = P(D_1|H_1)\)</span>, păstrând probabilitatea de alarmă falsă <span class="math inline">\(P_{af} = P(D_1|H_0)\)</span> mai mică sau egală cu o valoare dată <span class="math inline">\(\lambda\)</span>”. În cazul nostru, <span class="math inline">\(\lambda = 0.01\)</span>.</p>
+<p>Valoarea pragului <span class="math inline">\(T_{NP}\)</span> rezultă din cele două condiții enunțate mai sus, ilustrare în figura de mai jos:</p>
+<ul>
+<li>pentru a maximiza <span class="math inline">\(P(D_1|H_1)\)</span>, adică verde din figură, pragul ar trebui să fie cât mai la stânga</li>
+<li>probabilitatea de alarmă falsă <span class="math inline">\(P(D_1|H_0)\)</span>, adică aria colorată portocaliu în figură, nu trebuie să depășească 0.01</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/Sem4_Airbag_Normal_NP.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<p></p><figcaption class="figure-caption">Neyman-Pearson</figcaption><p></p>
+</figure>
 </div>
+<p>Acest lucru înseamnă că pragul <span class="math inline">\(T_{NP}\)</span> trebuie să fie ales în așa fel încât aria colorată portocaliu să fie exact egală cu 0.01. Dacă este mai la stânga, probabilitatea de alarmă falsă depășește 0.01, iar dacă este mai la dreapta, probabilitatea de detecție corectă nu e cea maximă posibilă.</p>
+<p>Probabilitatea de alarmă falsă <span class="math inline">\(P_{af}\)</span> este dată de: <span class="math display">\[P_{af} = P(D_1|H_0) = \int_{T_{NP}}^{\infty} w(r|H_0) dr = 1 - F_{H_0}(T_{NP})\]</span> unde funcția <span class="math inline">\(F_{H_0}\)</span> este funcția de repartiție a lui <span class="math inline">\(w(r|H_0)\)</span>. <span class="math display">\[P_{af} = P(D_1|H_0) = \int_{T_{NP}}^{\infty} w(r|H_0) dr = 1 - F_{H_0}(T_{NP})\]</span></p>
+<p>Așadar, condiția <span class="math inline">\(P_{af} = 0.01\)</span> devine: <span class="math display">\[1 - F_{H_0}(T_{NP}) = 0.01\]</span> <span class="math display">\[1 - \frac{1}{2}(1 + erf(\frac{T_{NP} - 0}{2})) = 0.01\]</span> <span class="math display">\[erf(\frac{T_{NP} - 0}{2}) = 0.98\]</span> <span class="math display">\[\frac{T_{NP} - 0}{2} = erf^{-1}(0.98) = 1.64\]</span> <span class="math display">\[T_{NP} = 3.28\]</span></p>
+<p>Așadar, pentru criteriul Neyman-Pearson, rezultatul este: <span class="math display">\[T_{NP} = 3.28\]</span> <span class="math display">\[R_0 = (-\infty, 3.28),\quad R_1 = (3.28, \infty)\]</span></p>
+<p>În fine, pentru situația unui prag arbitrar <span class="math inline">\(T=3\)</span>, regiunile de decizie sunt: <span class="math display">\[R_0 = (-\infty, 3),\quad R_1 = (3, \infty)\]</span></p>
+<p>b). Probabilitatea necondiționată de pierdere este dată de: <span class="math display">\[P_p = P(H_1) \cdot P(D_0|H_1) = P(H_1) \cdot \int_{R_0} w(r|H_1) dr\]</span> unde probabilitatea condiționață de pierdere <span class="math inline">\(P(D_0|H_1)\)</span> corespunde cu zona colorată în roșu din figura de mai jos.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/Sem4_Airbag_Normal_Pp.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<p></p><figcaption class="figure-caption">Probabilitatea de pierdere</figcaption><p></p>
+</figure>
 </div>
-<p>Vectorul <span class="math inline">\(\mathbf{r}\)</span> cu eșantioanele observate este: <span class="math display">\[\mathbf{r} = \left[ 1.1, 4.4, 3.7, 4.1, 3.8 \right]\]</span></p>
-<p>Vectorii <span class="math inline">\(\mathbf{s_0}\)</span> și <span class="math inline">\(\mathbf{s_1}\)</span> reprezintă valorile semnalelor originale <span class="math inline">\(s_0(t)\)</span> și <span class="math inline">\(s_1(t)\)</span>, fără zgomot, la momentele de timp de eșantionare <span class="math inline">\(t_1, t_2, \ldots, t_N\)</span>. Întrucât <span class="math inline">\(s_0(t) = 0\)</span>, cele 5 eșantioane ar trebui să fie toate 0, indiferent de momentul de timp: <span class="math display">\[\mathbf{s_0} = \left[ 0, 0, 0, 0, 0 \right]\]</span> Iar pentru <span class="math inline">\(s_1(t) = 6\)</span>, avem: <span class="math display">\[\mathbf{s_1} = \left[ 6, 6, 6, 6, 6 \right]\]</span></p>
-<p>Decizia se ia comparând distanțele euclidiene. Avem: <span class="math display">\[d(\mathbf{r}, \mathbf{s_0})^2 = (1.1 - 0)^2 + (4.4 - 0)^2 + (3.7 - 0)^2 + (4.1 - 0)^2 + (3.8 - 0)^2 = 65.51\]</span> <span class="math display">\[d(\mathbf{r}, \mathbf{s_1})^2 = (1.1 - 6)^2 + (4.4 - 6)^2 + (3.7 - 6)^2 + (4.1 - 6)^2 + (3.8 - 6)^2 = 40.31\]</span></p>
-<p>a). Pentru criteriul ML, <span class="math inline">\(K=1\)</span>, <span class="math inline">\(\ln(K)=0\)</span> și decizia este dată de distanța cea mai mică: <span class="math display">\[d(\mathbf{r}, \mathbf{s_0})^2 &gt; d(\mathbf{r}, \mathbf{s_1})^2 \rightarrow D_1\]</span></p>
-<p>b). Pentru criteriul MPE, <span class="math inline">\(K\)</span> este: <span class="math display">\[K = \frac{P(H_0)}{P(H_1)} = 2\]</span> <span class="math display">\[2 \sigma^2 \ln(K) = 2 \cdot 1 \cdot 0.69 = 1.38\]</span></p>
-<p>Decizia este de asemenea <span class="math inline">\(D_1\)</span>: <span class="math display">\[65.51 &gt; 40.31  + 1.38\rightarrow D_1\]</span></p>
-<p>c). Aici, trebuie să găsim valorile lui <span class="math inline">\(P(H_0)\)</span> care conduc la decizia <span class="math inline">\(D_0\)</span> cu criteriul MPE.</p>
-<p>Probabilitatea <span class="math inline">\(P(H_0)\)</span> influențează doar termenul <span class="math inline">\(K\)</span>. Pentru ca decizia să fie <span class="math inline">\(D_0\)</span>, trebuie ca termenul din dreapta să depășească termenul din stânga în relația: <span class="math display">\[65.51 &lt; 40.31  + 2 \cdot 1 \cdot \ln(K) \rightarrow D_0\]</span> <span class="math display">\[\Leftrightarrow 2 \ln(K) &gt; 65.51-40.31\]</span> <span class="math display">\[\Leftrightarrow \ln(K) &gt; 12.7\]</span> Aplicând <span class="math inline">\(e^x\)</span> ambilor termeni, avem mai departe: <span class="math display">\[\Leftrightarrow K &gt; e^{12.7}\]</span> La rândul lui, <span class="math inline">\(K = \frac{P(H_0)}{P(H_1)}\)</span>, iar <span class="math inline">\(P(H_1)\)</span> nu este o variabilă independentă, ci depinde de <span class="math inline">\(P(H_0)\)</span>, fiind <span class="math inline">\(P(H_1) = 1 - P(H_0)\)</span> (suma celor două probabilități este 1). Așadar, avem: <span class="math display">\[\Leftrightarrow \frac{P(H_0)}{1-P(H_0)} &gt; e^{12.7}\]</span> <span class="math display">\[\Leftrightarrow P(H_0) &gt; e^{12.7} - P(H_0) \cdot e^{12.7}\]</span> <span class="math display">\[\Leftrightarrow P(H_0)(1 + e^{12.7}) &gt; e^{12.7}\]</span> <span class="math display">\[\Leftrightarrow P(H_0) &gt; \frac{e^{12.7}}{1 + e^{12.7}} = 0.99999694888\]</span></p>
-<p>Așadar, pentru ca decizia să fie <span class="math inline">\(D_0\)</span>, probabilitatea <span class="math inline">\(P(H_0)\)</span> trebuie să fie mai mare decât 0.99999694888.</p>
+<p>În funcție de pragul <span class="math inline">\(T\)</span>, <span class="math inline">\(P(D_0|H_1)\)</span> este integrala dintre <span class="math inline">\(-\infty\)</span> și <span class="math inline">\(T\)</span> din distribuția lui <span class="math inline">\(w(r|H_1)\)</span>, adică: <span class="math display">\[
+\begin{align}
+P(D_0|H_1) &amp;= \int_{-\infty}^{T} w(r|H_1) dr \\
+&amp;= F_{H_1}(T) \\
+&amp;= \frac{1}{2}(1 + erf(\frac{T - 5}{2})) \\
+\end{align}\]</span></p>
+<p>Așadar: <span class="math display">\[T_{ML} = 2.5, \quad Pp = \frac{1}{3} \cdot \frac{1}{2}(1 + erf(\frac{2.5 - 5}{2})) = ...\]</span> <span class="math display">\[T_{MPE} = 2.77, \quad Pp = \frac{1}{3} \cdot \frac{1}{2}(1 + erf(\frac{2.77 - 5}{2})) = ...\]</span> <span class="math display">\[T_{MR} = 1.85, \quad Pp = \frac{1}{3} \cdot \frac{1}{2}(1 + erf(\frac{1.85 - 5}{2})) = ...\]</span> <span class="math display">\[T_{NP} = 3.28, \quad Pp = \frac{1}{3} \cdot \frac{1}{2}(1 + erf(\frac{3.28 - 5}{2})) = ...\]</span> <span class="math display">\[T = 3, \quad Pp = \frac{1}{3} \cdot \frac{1}{2}(1 + erf(\frac{3 - 5}{2})) = ...\]</span></p>
+<p>c). Pentru un eșantion <span class="math inline">\(r=3.1\)</span>, tot ce avem de făcut este să verificăm în ce regiune de decizie se află acesta. Dacă <span class="math inline">\(r \in R_0\)</span>, atunci decizia este <span class="math inline">\(D_0\)</span>, iar dacă <span class="math inline">\(r \in R_1\)</span>, decizia este <span class="math inline">\(D_1\)</span>.</p>
+<p>Așadar, pentru criteriul ML, <span class="math inline">\(r=3.1 \in R_1\)</span>, decizia este <span class="math inline">\(D_1\)</span>.</p>
+<p>Pentru criteriul MPE, <span class="math inline">\(r=3.1 \in R_1\)</span>, decizia este <span class="math inline">\(D_1\)</span>.</p>
+<p>Pentru criteriul MR, <span class="math inline">\(r=3.1 \in R_1\)</span>, decizia este <span class="math inline">\(D_1\)</span>.</p>
+<p>Pentru criteriul NP, <span class="math inline">\(r=3.1 \in R_0\)</span>, decizia este <span class="math inline">\(D_0\)</span>.</p>
+<p>Pentru pragul <span class="math inline">\(T=3\)</span>, <span class="math inline">\(r=3.1 \in R_1\)</span>, decizia este <span class="math inline">\(D_1\)</span>.</p>
+<p>d). Pentru criteriul MR, probabilitate de pierdere este <span class="math inline">\(Pp \leq 10^{-6}\)</span> implică <span class="math inline">\(P(D_0|H_1) \leq 3 \cdot 10^{-6}\)</span>. Pe de altă parte, avem <span class="math display">\[P(D_0|H_1) = F_{H_1}(T_{MR}) = \frac{1}{2}(1 + erf(\frac{T_{MR} - 5}{2}))\]</span></p>
+<p>Valoarea lui <span class="math inline">\(A\)</span> reprezintă valoarea lui <span class="math inline">\(s_1(t)\)</span>, și afectează valoarea lui <span class="math inline">\(T_{MR}\)</span>.</p>
+<p>Așadar, va trebui ca din condiția <span class="math inline">\(P(D_0|H_1) \leq 3 \cdot 10^{-6}\)</span> să gasim condiția asupra lui <span class="math inline">\(T_{MR}\)</span>, din care apoi vom găsi condiția asupra lui <span class="math inline">\(A\)</span>.</p>
+<p>Procedăm astfel: <span class="math display">\[
+\begin{align}
+P(D_0|H_1) &amp;\leq 3 \cdot 10^{-6} \\
+\frac{1}{2}(1 + erf(\frac{T_{MR} - 5}{2})) &amp;\leq 3 \cdot 10^{-6} \\
+erf(\frac{T_{MR} - 5}{2}) &amp;\leq 6 \cdot 10^{-6} - 1 \\
+\frac{T_{MR} - 5}{2} &amp;\leq erf^{-1}(6 \cdot 10^{-6} - 1) \\
+\frac{T_{MR} - 5}{2} &amp;\leq -3.45 \\
+T_{MR} &amp;\leq -1.9 \\
+\end{align}\]</span></p>
+<p>La rândul său, <span class="math inline">\(T_{MR} = \frac{s_0(t_0) + s_1(t_0)}{2} + \frac{\sigma^2}{s_1(t_0) - s_0(t_0)} \cdot\ln(K)\)</span>, adică în cazul nostru: <span class="math display">\[T_{MR} = \frac{0 + A}{2} + \frac{2}{A - 0} \cdot\ln(\frac{1}{5})\]</span></p>
+<p>Așadar, condiția <span class="math inline">\(T_{MR} \leq -1.9\)</span> devine: <span class="math display">\[\frac{A}{2} + \frac{2}{A} \cdot\ln(\frac{1}{5}) \leq -1.9\]</span> <span class="math display">\[A^2 + 4 \ln(\frac{1}{5}) \geq -3.8 A\]</span> <span class="math display">\[A^2 -3.8 A + 4 \ln(\frac{1}{5}) \geq 0\]</span></p>
+<p>Soluțiile ecuației de gradul doi sunt: <span class="math display">\[A_{1,2} = \frac{3.8 \pm \sqrt{3.8^2 - 4 \cdot 4 \ln(\frac{1}{5})}}{2} = 10.13 ; -2.5\]</span></p>
+<p>Parabola <span class="math inline">\(A^2 -3.8 A + 4 \ln(\frac{1}{5})\)</span> este pozitivă în afara intervalului dintre cele două soluții, adică a intervalului <span class="math inline">\((-2.5, 10.13)\)</span>.</p>
+<p>Presupunând că <span class="math inline">\(A\)</span> este pozitiv, rezultatul este <span class="math inline">\(A \geq 10.13\)</span>.</p>
 </section>
 </section>
-<section id="exercițiul-2" class="level2" data-number="9.2">
-<h2 data-number="9.2" class="anchored" data-anchor-id="exercițiul-2"><span class="header-section-number">9.2</span> Exercițiul 2</h2>
-<p>Fie detecția unui semnal <span class="math inline">\(s_1(t) = 3 \sin(2 \pi f_1 t)\)</span> care poate fi prezent (ipoteza <span class="math inline">\(H_1\)</span>) sau absent (<span class="math inline">\(s_0(t)=0\)</span>, ipoteza <span class="math inline">\(H_0\)</span>). Semnalul este afectat de zgomot gaussian <span class="math inline">\(\mathcal{ N}(0, \sigma^2=1)\)</span>. Valoarea lui <span class="math inline">\(f_1 = 1\)</span>. La recepție se iau două eșantioane la momentele de timp <span class="math inline">\(t_1\)</span> și <span class="math inline">\(t_2\)</span>.</p>
-<p>La recepție se iau citesc două eșantioane cu valorile <span class="math inline">\(\left\{ 1.1, 4.4 \right\}\)</span>, la momentele de timp <span class="math inline">\(t_1 = 0.125\)</span> și <span class="math inline">\(t_2 = 0.625\)</span>.</p>
-<p>Probabilitățile a priori sunt <span class="math inline">\(P(H_0) = 1/3\)</span> și <span class="math inline">\(P(H_1) = 2/3\)</span>.</p>
-<p>Ce decizie se ia cu criteriul Minimum Probability of Error?</p>
+<section id="exercițiul-2" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="exercițiul-2"><span class="header-section-number">8.2</span> Exercițiul 2</h2>
+<p>Repetați exercițiul 1 considerând zgomot uniform <span class="math inline">\(U[-3, 3]\)</span> în loc de zgomot gaussian.</p>
 <section id="rezolvare-1" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="rezolvare-1">Rezolvare</h3>
-<p>Diferența față de exercițiul anterior este că semnalul <span class="math inline">\(s_1(t)\)</span> nu mai este constant. În rest, zgomotul fiind tot de natură gaussiană, se procedează la fel ca în exercițiul anterior, lucrând cu vectori de două elemente.</p>
-<p>Vectorul observațiilor este: <span class="math display">\[\mathbf{r} = \left[ 1.1, 4.4 \right]\]</span> La momentele de timp <span class="math inline">\(t_1 = 0.125\)</span> și <span class="math inline">\(t_2 = 0.625\)</span>, semnalul <span class="math inline">\(s_0(t) = 0\)</span> are valorile: <span class="math display">\[\mathbf{s_0} = \left[ 0, 0 \right]\]</span> iar semnalul <span class="math inline">\(s_1(t) = 3 \sin(2 \pi f_1 t)\)</span> are valorile: <span class="math display">\[
-\begin{align}
-\mathbf{s_1} &amp;= \left[ 3 \sin(2 \pi f_1 t_1), 3 \sin(2 \pi f_1 t_2) \right] \\
-&amp;= \left[ 3 \sin(2 \pi \cdot 1 \cdot 0.125), 3 \sin(2 \pi \cdot 1 \cdot 0.625) \right] \\
-&amp;= \left[ 3 \sin(\frac{\pi}{4}), 3 \sin(\frac{5\pi}{4})\right] \\
-&amp;= \left[ 2.12, -2.12 \right]
-\end{align}
-\]</span></p>
-<p>Aplicăm criteriul MPE, folosind relația <span class="math inline">\(d(\mathbf{r}, \mathbf{s_0})^2 \grtlessH d(\mathbf{r}, \mathbf{s_1})^2 + 2 \sigma^2 \ln(K)\)</span>. <span class="math display">\[d(\mathbf{r}, \mathbf{s_0})^2 = (1.1 - 0)^2 + (4.4 - 0)^2 = 20.57\]</span> <span class="math display">\[d(\mathbf{r}, \mathbf{s_1})^2 = (1.1 - 2.12)^2 + (4.4 + 2.12)^2 = 43.55\]</span> <span class="math display">\[2\sigma^2 \ln(K) = 2 \cdot 1 \cdot \ln(\frac{1}{2}) = -1.38\]</span></p>
-<p>Decizia este <span class="math inline">\(D_0\)</span>: <span class="math display">\[20.57 &lt; 43.55 - 1.38 \rightarrow D_0\]</span></p>
-</section>
-</section>
-<section id="exercițiul-3" class="level2" data-number="9.3">
-<h2 data-number="9.3" class="anchored" data-anchor-id="exercițiul-3"><span class="header-section-number">9.3</span> Exercițiul 3</h2>
-<p>Un semnal transmis poate avea forma <span class="math inline">\(s_0(t)\)</span> sau <span class="math inline">\(s_1(t)\)</span>, conform figurilor. La recepție se primește semnalul <span class="math inline">\(r(t)\)</span> reprezentat în figură. Semnalul este afectat de zgomot gaussian <span class="math inline">\(\mathcal{N}(0, \sigma^2=2)\)</span>. Se consideră <span class="math inline">\(P(H_0) = \frac{1}{4}\)</span> și <span class="math inline">\(P(H_1) = \frac{3}{4}\)</span>.</p>
-<p>Găsiți decizia conform criteriului MPE, în două cazuri distincte:</p>
-<ol type="a">
-<li>folosind trei eșantioane luate la momentele de timp <span class="math inline">\(t_1 = 0.5\)</span>, <span class="math inline">\(t_2 = 1.5\)</span> și <span class="math inline">\(t_2 = 3.5\)</span></li>
-<li>folosind metoda observației continue (fără eșantionare)</li>
-</ol>
-<p>&nbsp;<img src="img/SIG_Haar1.png" class="id img-fluid" style="width:25.0%"> &nbsp; <img src="img/SIG_Haar2.png" class="id img-fluid" style="width:25.0%"> &nbsp; <img src="img/SIG_Rec.png" class="id img-fluid" style="width:25.0%"></p>
-<section id="rezolvare-2" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="rezolvare-2">Rezolvare</h3>
-<ol type="a">
-<li>Zgomotul fiind cu distribuție normală, procedăm ca în exercițiile anterioare, lucrând cu vectori de 3 elemente.</li>
-</ol>
-<p>Întrucât nu avem expresiile semnalelor, ci doar reprezentări grafice, vom lua valorile semnalelor din figuri.</p>
-<p>La momentele de timp <span class="math inline">\(t_1 = 0.5\)</span>, <span class="math inline">\(t_2 = 1.5\)</span> și <span class="math inline">\(t_2 = 3.5\)</span>, semnalul <span class="math inline">\(s_0(t)\)</span> are valorile: <span class="math display">\[\mathbf{s_0} = \left[ 2, 2, -2 \right]\]</span> semnalul <span class="math inline">\(s_1(t)\)</span> are valorile: <span class="math display">\[\mathbf{s_1} = \left[ -2, -2, 2 \right]\]</span> iar semnalul recepționat <span class="math inline">\(r(t)\)</span> are valorile: <span class="math display">\[\mathbf{r} = \left[ -1, -1, 1 \right]\]</span></p>
-<p>Avem: <span class="math display">\[d(\mathbf{r}, \mathbf{s_0})^2 = (-1 - 2)^2 + (-1 - 2)^2 + (1 + 2)^2 = 27\]</span> <span class="math display">\[d(\mathbf{r}, \mathbf{s_1})^2 = (-1 + 2)^2 + (-1 + 2)^2 + (1 - 2)^2 = 3\]</span> <span class="math display">\[2\sigma^2 \ln(K) = 2 \cdot 2 \cdot \ln(\frac{1}{3}) = -4.39\]</span> <span class="math display">\[d(\mathbf{r}, \mathbf{s_0})^2 &gt;  d(\mathbf{r}, \mathbf{s_1})^2 + 2\sigma^2 \ln(K) \Rightarrow D_1\]</span> Decizia este <span class="math inline">\(D_1\)</span>.</p>
-<p>b). În cazul observației continue, nu mai lucrăm cu vectori, ci direct cu funcțiile continue ale semnalelor <span class="math inline">\(s_0(t)\)</span>, <span class="math inline">\(s_1(t)\)</span> și <span class="math inline">\(r(t)\)</span>.</p>
-<p>Se folosește aceeași comparație: <span class="math display">\[d(r(t), s_0(t))^2 \grtlessH  d(r(t), s_1(t))^2 + 2 \sigma^2 \ln(K)\]</span> doar că acum distanțele sunt calculate ca integrale. Distanța (la pătrat) între două semnale continue <span class="math inline">\(a(t)\)</span> și <span class="math inline">\(b(t)\)</span> este: <span class="math display">\[d(\; a(t), b(t) \;)^2 = \int_{-\infty}^{\infty} \left( a(t) - b(t) \right) ^2 dt\]</span></p>
-<p>În cazul nostru, distanțele între semnale pot fi calculate în mod grafic. Pornind de la reprezentarea grafică a semnalelor <span class="math inline">\(r(t)\)</span> și <span class="math inline">\(s_0(t)\)</span>, reprezentăm mai jos semnalul diferență <span class="math inline">\(r(t) - s_0(t)\)</span>, apoi acest semnal ridicat la pătrat, iar apoi îi calculăm integrala ca aria de sub grafic. <img src="img/Sem5_ObsCont.png" class="id img-fluid" style="width:100.0%" alt="Distanța între r(t) și s_0(t)"></p>
-<p>În mod similar calculăm distanța între <span class="math inline">\(r(t)\)</span> și <span class="math inline">\(s_1(t)\)</span>: <img src="img/Sem5_ObsCont2.png" class="id img-fluid" style="width:100.0%" alt="Distanța între r(t) și s_1(t)"></p>
-<p>Cu aceste distanțe calculate, putem calcula decizia luată cu criteriul MPE: <span class="math display">\[d(r(t), s_0(t))^2 = 28\]</span> <span class="math display">\[d(r(t), s_1(t))^2 = 12\]</span> <span class="math display">\[d(\mathbf{r}, \mathbf{s_0})^2 &gt;  d(\mathbf{r}, \mathbf{s_1})^2 + 2\sigma^2 \ln(K) \Rightarrow D_1\]</span> Decizia este <span class="math inline">\(D_1\)</span>.</p>
 
 
 </section>
@@ -486,13 +516,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./Ex_Seminar04.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Seminar 04: Decizii, decizii</span></span>
+      <a href="./03_01_Estimare.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Elemente de teoria estimării</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./Ex_Seminar06.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Seminar 06: K-NN, K-Means, estimare ML</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./Ex_Seminar05.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Seminar 05: Decizii cu mai multe eșantioane</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
