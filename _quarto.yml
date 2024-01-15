@@ -24,8 +24,10 @@ book:
     - part: "Estimare"
       chapters:
       - 03_01_Estimare.qmd
-    - part: "Exerciții rezolvate"
+    - part: "Exerciții seminar"
       chapters:
+      - Ex_Seminar01.qmd
+      - Ex_Seminar02.qmd
       - Ex_Seminar03.qmd
       - Ex_Seminar04.qmd
       - Ex_Seminar05.qmd

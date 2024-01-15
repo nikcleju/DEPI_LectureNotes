@@ -68,9 +68,9 @@ La momentul $t_0 = 0.75$, semnalele originale au valoarea sunt $s_0(t_0) = \cos(
 Prin urmare, în cazul $H_0$ eșantionul va urma o distribuție normală
 în jurul lui $0$, iar în cazul $H_1$ o distribuție normală în jurul lui $-1$:
 $$H_0: \mathcal{N}(\mu=0, \sigma^2=2)$$
-$$H_1: \mathcal{N}(\mu=-1, \sigma^2=2)$$.
+$$H_1: \mathcal{N}(\mu=-1, \sigma^2=2)$$
 
-Expresiile și reprezentarea grafică a acestor distribuții sunt:
+Expresiile și reprezentarea grafică a acestor distribuții sunt prezentate mai jos:
 $$w(r|H_0) = \frac{1}{\sqrt{4 \pi}} e^{-\frac{r^2}{4}}$$
 $$w(r|H_1) = \frac{1}{\sqrt{4 \pi}} e^{-\frac{(r+1)^2}{4}}$$
 
@@ -88,4 +88,54 @@ Regiunea de decizie $R_1$ cuprinde valorile $r$ pentru care se ia decizia $D_1$,
 adică intervalul în care funcția $w(r|H_1)$ este mai înaltă:
 $$R_1 = (-\infty, 0.5-)$$
 
-d).
+d). Cele patru probabilități corespund celor patru zone
+reprezentate în figura de mai jos.
+
+Cele patru arii reprezintă integrale din niște funcții de distribuție
+normale, care se pot calcula cu funcția de repartiție $F(x)$. Așadar:
+$$\begin{aligned}
+P_{rc} &= P(D_0|H_0) = \int_{R_0} w(r|H_0) dr \\
+&= F_{H_0}(\infty) - F_{H_0}(-0.5) \\
+&= 1 - \frac{1}{2}\left(1 + erf  \left(\frac{-0.5 - 0}{\sqrt{2}\sqrt{2}}\right)\right) = 0.638
+\end{aligned}$$
+$$\begin{aligned}
+P_{af} &= P(D_1|H_0) = \int_{R_1} w(r|H_0) dr \\
+&= F_{H_0}(-0.5) - F_{H_0}(-\infty) \\
+&= \frac{1}{2}\left(1 + erf  \left(\frac{-0.5 - 0}{\sqrt{2}\sqrt{2}}\right)\right) = 0.362
+\end{aligned}$$
+$$\begin{aligned}
+P_{p} &= P(D_0|H_1) = \int_{R_0} w(r|H_1) dr \\
+&= F_{H_1}(\infty) - F_{H_1}(-0.5) \\
+&= 1 - \frac{1}{2}\left(1 + erf  \left(\frac{-0.5 + 1}{\sqrt{2}\sqrt{2}}\right)\right) = 0.362
+\end{aligned}$$
+$$\begin{aligned}
+P_{dc} &= P(D_1|H_1) = \int_{R_1} w(r|H_1) dr \\
+&= F_{H_1}(-0.5) - F_{H_1}(-\infty) \\
+&= \frac{1}{2}\left(1 + erf  \left(\frac{-0.5 + 1}{\sqrt{2}\sqrt{2}}\right)\right) = 0.638
+\end{aligned}$$
+
+e). Cel mai bun moment de eșantionare, în vederea deciziei, este acela în care semnalele originale sunt cît mai diferite între ele. În cazul nostru, semnalele sinus și cosinus sunt reprezentate în figura următoare.
+
+Diferența maximă între semnale se obține pentru $t= ...$
+
+f). Cel mai rău moment de eșantionare în vederea deciziei este acela în care semnalele originale sunt cît mai apropiate între ele. În cazul nostru, semnalele au aceeași valoare la momentele de timp $t=...$, prin urmare acestea sunt cele mai nepotrivite moment de eșantionare.
+
+g). Dacă zgomotul are distribuție uniformă $\mathcal{U}[-4,4]$, atunci distribuțiile condiționate sunt cele de mai jos.
+
+Se observă suprapunerea lor pe intervalul $[-4,3]$, ceea ce înseamnă că pentru toate valorile din acest interval nu se poate lua o decizie cu criteriul Maximum Likelihood (indecizie)
+
+h). În condițiile de la punctul g), pentru $r = 3.5$ decizia luată cu
+criteriul ML este $D_0$. Întrebarea este: dacă creștem varianța zgomotului
+(distribuțiile devin mai late), la ce moment nu mai putem lua o decizie?
+
+Ajungem la indecizie atunci când ambele distribuții devin egale în punctul $r = 3.5$, adică atunci când distribuția $w(r|H_1$ se va întinde până la $r = 3.5$, așadar va fi o disribuție uniformă $\mathcal{U}[-5.5,3.5]$, centrată pe
+pucntul $-1$ și de lățime totala egală cu $9$.
+
+Trebuie să calculăm varianța acestei distribuții
+(care este egală cu varianța zgomotului) pentru acest caz limită.
+Pentru varianță contează doar lățimea distribuției, nu și centrul ei,
+așadar putem considera distribuția centrată pe $0$ și de lățime $9$,
+$\mathcal{U}[-4.5,4.5]$. Avem:
+$$\sigma^2 = \int_{-4.5}^{4.5} (x - 0)^2 \frac{1}{9} dx =
+\frac{1}{9} \cdot \frac{x^3}{3} \Biggr|_{-4.5}^{4.5} =
+\frac{1}{9} \cdot \frac{4.5^2 \cdot 2}{3} = 1.5$$
