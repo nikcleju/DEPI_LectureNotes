@@ -26,6 +26,7 @@ book:
       - 03_01_Estimare.qmd
     - part: "Exerciții rezolvate"
       chapters:
+      - Ex_Seminar03.qmd
       - Ex_Seminar04.qmd
       - Ex_Seminar05.qmd
       - Ex_Seminar06.qmd

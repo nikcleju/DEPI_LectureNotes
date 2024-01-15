@@ -1,0 +1,91 @@
+
+# Seminar 03: Criteriul de decizie Maximum Likelihood
+
+::: {.hidden}
+$$
+\newcommand{\grtlessH}{\underset{{H_0}}{\overset{H_{1}}{\gtrless}}}
+\renewcommand{\vec}[1]{\mathbf{#1}}
+$$
+:::
+
+## Exercițiul 1
+
+Fie detecția între două semnale constante, $s_0(t) = -1$ și $s_1(t) = 4$.
+Semnalele sunt afectate de zgomot alb cu distribuția $\mathcal{N}\;(\mu=0, \sigma^2=4)$.
+Receptorul ia un singur eșantion la momentul $t_0 = 0.75$, și valoarea obținută este $r = 1.8$.
+
+- a). Scrieți expresiile celor două distribuții condiționate și reprezentați-le
+- b). Ce decizie se ia cu criteriul Maximum Likelihood?
+
+### Rezolvare {.unnumbered}
+
+a). Dacă suntem în situația $H_0$, atunci eșantionul va fi $r = -1 + zgomot$,
+ceea ce înseamnă ce distribuția lui $r$ în cazul $H_0$ este distribuția
+zgomotului dar centrată în $-1$, adică $\mathcal{N}(\mu=-1, \sigma^2=4)$.
+
+În ipoteza $H_1$, eșantionul va fi $r = 4 + zgomot$,, așadar distribuția sa
+va fi $\mathcal{N}(\mu=4, \sigma^2=4)$.
+
+![Distribuții condiționate](./Seminar03_01.png){width=100%}
+
+Cunoscând expresia generală a unei distribuții normale:
+$$w(x) = \frac{1}{\sigma \sqrt{2 \pi}} e^{-\frac{(x-\mu)^2}{2 \sigma^2}}$$
+putem scrie așadar expresiile celor două distribuții condiționate:
+$$w(r|H_0) = \frac{1}{2 \sqrt{2 \pi}} e^{-\frac{(r+1)^2}{8}}$$
+$$w(r|H_1) = \frac{1}{2 \sqrt{2 \pi}} e^{-\frac{(r-4)^2}{8}}$$
+
+b). Confirm criteriului Maximum Likelihood, decizia luată
+pentru un eșantion de valoare $r = 1.8$ este dată de distribuția care
+are valoarea mai mare în dreptul acestui punct $r = 1.8$.
+
+Din figură, se observă că $r=1.8$ se află la dreapta punctului de intersecție
+dintre cele două distribuții, situat la mijlocul distanței dintre $-1$ și $4$, adică $1.5$. Așadar pentru $r = 1.8$ mai înaltă este distribuția $w(r|H_1)$, deci decizia este $D_1$:
+$$w(r|H_1) > w(r|H_0)\Biggr|_{\substack{r=1.8}}  \Rightarrow D_1$$
+
+## Exercițiul 2
+
+Fie detecția între două semnale, $s_0(t) = \cos(2 \pi t)$ și $s_1(t) = \sin(2 \pi t)$.
+
+Semnalele sunt afectate de zgomot alb cu distribuția $\mathcal{N}(\mu=0, \sigma^2=2)$.
+
+Receptorul ia un singur eșantion la momentul $t_0 = 0.75$,
+ și valoarea obținută este $r(t_0) = 3.5$.
+
+ Cerințe:
+
+ - a). Reprezentați grafic cele două distribuții condiționate și scrieți-le expresia matematică
+- b). Ce decizie se ia conform criteriului Maximum Likelihood?
+- c). Găsiți regiunile de decizie
+- d). Calculați probabilitățile condiționate ale celor 4 scenarii (rejecție corectă, alarmă falsă, pierdere, detecție corectă)
+- e). Care ar fi cel mai bun moment $t_0$ de eșantionare, pentru a decide între semnale? Justificați
+- f). Care ar fi cel mai rău moment $t_0$ de eșantionare, pentru a decide între semnale? Justificați
+- g). Repetați a) și b) dacă zgomotul are distribuție uniformă $\mathcal{U}[-4,4]$. Există valori pentru care nu se poate lua o decizie?
+- h). Care este varianța maximă a unui zgomot uniform, cu media 0, pentru care se poate lua o decizie cu criteriul ML pentru $r = 3.5$?
+
+### Rezolvare {.unnumbered}
+
+La momentul $t_0 = 0.75$, semnalele originale au valoarea sunt $s_0(t_0) = \cos(2 \pi 0.75) = 0$ și $s_1(t_0) = \sin(2 \pi 0.75) = -1$.
+Prin urmare, în cazul $H_0$ eșantionul va urma o distribuție normală
+în jurul lui $0$, iar în cazul $H_1$ o distribuție normală în jurul lui $-1$:
+$$H_0: \mathcal{N}(\mu=0, \sigma^2=2)$$
+$$H_1: \mathcal{N}(\mu=-1, \sigma^2=2)$$.
+
+Expresiile și reprezentarea grafică a acestor distribuții sunt:
+$$w(r|H_0) = \frac{1}{\sqrt{4 \pi}} e^{-\frac{r^2}{4}}$$
+$$w(r|H_1) = \frac{1}{\sqrt{4 \pi}} e^{-\frac{(r+1)^2}{4}}$$
+
+![Distribuții condiționate](./Seminar03_02.png){width=100%}
+
+Se observă că distribuția din stânga este acum $w(r|H_1)$, iar cea din dreapta $w(r|H_0)$.
+
+b). Conform criteriului Maximum Likelihood, pentru $r = 3.5$ decizia este corespunzătoare distribuției mai înalte în acel punct, adică $D_0$.
+
+c). Regiunea de decizie $R_0$ cuprinde valorile $r$ pentru care se ia decizia
+$D_0$, adică intervalul în care funcția $w(r|H_0)$ este mai înaltă decât $w(r|H_1)$:
+$$R_0 = (-0.5, \infty)$$
+
+Regiunea de decizie $R_1$ cuprinde valorile $r$ pentru care se ia decizia $D_1$,
+adică intervalul în care funcția $w(r|H_1)$ este mai înaltă:
+$$R_1 = (-\infty, 0.5-)$$
+
+d).

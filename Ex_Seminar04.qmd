@@ -152,26 +152,24 @@ P(D_0|H_1) &\leq 3 \cdot 10^{-6} \\
 erf(\frac{T_{MR} - A}{2}) &\leq 6 \cdot 10^{-6} - 1 \\
 \frac{T_{MR} - A}{2} &\leq erf^{-1}(6 \cdot 10^{-6} - 1) \\
 \frac{T_{MR} - A}{2} &\leq -3.45 \\
-T_{MR} &\leq A -16.9 \\
+T_{MR} &\leq A - 6.9 \\
 \end{align}$$
-
-**TODO:** Update in continuare, acum continuarea e gresita.
 
 La rândul său, $T_{MR} = \frac{s_0(t_0) + s_1(t_0)}{2} + \frac{\sigma^2}{s_1(t_0) - s_0(t_0)} \cdot\ln(K)$, adică în cazul nostru:
 $$T_{MR} = \frac{0 + A}{2} + \frac{2}{A - 0} \cdot\ln(\frac{1}{5})$$
 
-Așadar, condiția $T_{MR} \leq -1.9$ devine:
-$$\frac{A}{2} + \frac{2}{A} \cdot\ln(\frac{1}{5}) \leq -1.9$$
-$$A^2 + 4 \ln(\frac{1}{5}) \geq -3.8 A$$
-$$A^2 -3.8 A + 4 \ln(\frac{1}{5}) \geq 0$$
+Așadar, condiția $T_{MR} \leq A - 5.9$ devine:
+$$\frac{A}{2} + \frac{2}{A} \cdot\ln(\frac{1}{5}) \leq A - 6.9$$
+$$\frac{A}{2} - \frac{2}{A} \cdot\ln(\frac{1}{5}) - 6.9 \geq 0$$
+$$A^2 - 13.8 A + 4 \ln(\frac{1}{5}) \geq 0$$
 
 Soluțiile ecuației de gradul doi sunt:
-$$A_{1,2} = \frac{3.8 \pm \sqrt{3.8^2 - 4 \cdot 4 \ln(\frac{1}{5})}}{2} = 10.13 ; -2.5$$
+$$A_{1,2} = \frac{13.8 \pm \sqrt{13.8^2 - 4 \cdot 4 \ln(\frac{1}{5})}}{2} = 28.5 ; -0.9$$
 
-Parabola $A^2 -3.8 A + 4 \ln(\frac{1}{5})$ este pozitivă în afara intervalului dintre
-cele două soluții, adică a intervalului $(-2.5, 10.13)$.
+Parabola $A^2 - 13.8 A + 4 \ln(\frac{1}{5})$ este pozitivă în afara intervalului dintre
+cele două soluții, adică a intervalului $(-0.9, 28.5)$.
 
-Presupunând că $A$ este pozitiv, rezultatul este $A \geq 10.13$.
+Presupunând că $A$ este pozitiv, rezultatul este $A \geq 28.5$.
 
 
 ## Exercițiul 2
@@ -179,3 +177,90 @@ Presupunând că $A$ este pozitiv, rezultatul este $A \geq 10.13$.
 Repetați exercițiul 1 considerând zgomot uniform $U[-3, 3]$ în loc de zgomot gaussian.
 
 ### Rezolvare {.unnumbered}
+
+a). Zgomotul fiind de tip uniform, pentru criteriile ML, MPE și MR nu mai putem
+folosi formulele rapide care ne furnizau pragul $T$ în cazul zgomotului gaussian.
+
+Pentru zgomot diferit de cel gaussian, va trebui să utilizăm formula generală:
+$$\frac{w(r|H_1)}{w(r|H_0)} \grtlessH K$$
+
+Cele două distribuții condiționate $w(r|H_0)$ și $w(r|H_1)$ sunt reprezentate mai jos.
+
+![Zgomot uniform](img/Sem4_Airbag_Uniform.png){width=75%}
+
+Putem calcula ușor valorile raportului $\frac{w(r|H_1)}{w(r|H_0)}$ pe intervale:
+
+- pentru $r \in (-3, 2)$: $\frac{w(r|H_1)}{w(r|H_0)} = \frac{0}{1/6} = 0$
+- pentru $r \in (2, 3)$: $\frac{w(r|H_1)}{w(r|H_0)} = \frac{1/6}{1/6} = 1$
+- pentru $r \in (3, 8)$: $\frac{w(r|H_1)}{w(r|H_0)} = \frac{1/6}{0} = \infty$
+- în afara intervalului $(-3, 8)$, ambele distribuții sunt nule, deci această situație nu ne interesează (nu se întâmplă niciodată).
+
+Acum putem decide cărei regiuni aparține fiecare interval, comparând aceste valori cu $K$.
+
+Pentru criteriul ML, $K=1$ și:
+$$R_0 = (-3, 2),\quad R_1 = (3, 8), \quad (2,3) = indecizie$$
+
+Pentru criteriul MPE, $K=\frac{P(H_0)}{P(H_1)} = 2$ și:
+$$R_0 = (-3, 3),\quad R_1 = (3, 8)$$
+
+Pentru criteriul MR, $K = \frac{1}{5}$ și:
+$$R_0 = (-3, 2),\quad R_1 = (2, 8)$$
+
+Pentru criteriul Neyman-Pearson, probabilitățile sunt cele
+din figura de mai jos. Pragul $T_{NP}$ trebuie ales astfel încât
+să avem condiția $P_{af} = 0.01$, unde $P_{af}$ este aria colorată cu portocaliu,
+adică un dreptunghi cu latura $3 - T_{NP}$ și înălțimea $1/6$.
+
+![Zgomot uniform, Neyman-Pearson](img/Sem4_Airbag_Uniform_NP.png){width=75%}
+
+Avem așadar:
+$$(3 - T_{NP}) \cdot \frac{1}{6} = 0.01$$
+de unde rezultă
+$$T_{NP} = 2.94$$
+și deci regiunile de decizie sunt:
+$$R_0 = (-3, 2.94),\quad R_1 = (2.94, 8)$$
+
+În fine, pentru $T=3$, regiunile de decizie sunt, în mod evident:
+$$R_0 = (-3, 3),\quad R_1 = (3, 8)$$
+
+b). Probabilitatea necondiționată de pierdere este dată de:
+$$P_p = P(H_1) \cdot P(D_0|H_1) = P(H_1) \cdot \int_{R_0} w(r|H_1) dr$$
+Va trebui integrată funcția $w(r|H_1)$ pe intervalul $R_0$, după
+cum se vede în figura de mai jos.
+
+![Probabilitatea de pierdere](img/Sem4_Airbag_Uniform_Pp.png){width=75%}
+
+Penru criteriul ML, $P_p = \frac{1}{3} \cdot \int_{-3}^{2} 0 dr = 0$.
+
+Penru criteriul MPE, $P_p = \frac{1}{3} \cdot 1 \cdot \frac{1}{6} = \frac{1}{18}$.
+
+Penru criteriul MR, $P_p = \frac{1}{3} \cdot 0 = 0$.
+
+Pentru criteriul NP, $P_p = \frac{1}{3} \cdot (2.94 - 2)\frac{1}{6} = \frac{0.94}{18}$.
+
+În fine, pentru $T=3$, $P_p = \frac{1}{3} \cdot 1 \cdot \frac{1}{6} = \frac{1}{18}$.
+
+c). Pentru un eșantion $r=3.1$, tot ce avem de făcut este să verificăm în ce regiune de decizie se află acesta.
+
+Pentru criteriul ML, $r=3.1 \in R_1$, decizia este $D_1$.
+
+Pentru criteriul MPE, $r=3.1 \in R_1$, decizia este $D_1$.
+
+Pentru criteriul MR, $r=3.1 \in R_1$, decizia este $D_1$.
+
+Pentru criteriul NP, $r=3.1 \in R_1$, decizia este $D_1$.
+
+Pentru pragul $T=3$, $r=3.1 \in R_1$, decizia este $D_1$.
+
+d). Pentru un $A$ diferit de 5, distribuția lui $w(r|H_1)$ se
+va întinde între $A-3$ și $A+3$. Dacă $A \geq 6$, atunci
+funcțiile nu se suprapun, iar $P_p = 0$.
+
+Dacă $A < 6$, atunci funcțiile se suprapun, iar intervalul
+se suprapunere este $[A-3, 3]$. Acest interval face parte din regiunea
+de decizie $R_1$, ceea ce înseamnă că probabilitatea $P(D_0|H_1)$,
+care presupune integrarea funcției $w(r|H_1)$ pe $R_0$,
+este 0 întotdeauna.
+
+Așadar, $P_p = 0$ indiferent de valoarea lui $A$.
+
