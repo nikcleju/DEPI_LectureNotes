@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Decizie și estimare în prelucrarea informației (DEPI) - 10&nbsp; Seminar 03: Criteriul de decizie Maximum Likelihood</title>
+<title>Decizie și estimare în prelucrarea informației (DEPI) - 8&nbsp; Seminar 01: Variabile aleatoare și probabilități</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./Ex_Seminar04.html" rel="next">
-<link href="./Ex_Seminar02.html" rel="prev">
+<link href="./Ex_Seminar02.html" rel="next">
+<link href="./03_01_Estimare.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -71,7 +71,7 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Seminar 03: Criteriul de decizie Maximum Likelihood</span></h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Seminar 01: Variabile aleatoare și probabilități</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -179,7 +179,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Ex_Seminar01.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Seminar 01: Variabile aleatoare și probabilități</span></a>
+  <a href="./Ex_Seminar01.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Seminar 01: Variabile aleatoare și probabilități</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -189,7 +189,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Ex_Seminar03.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Seminar 03: Criteriul de decizie Maximum Likelihood</span></a>
+  <a href="./Ex_Seminar03.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Seminar 03: Criteriul de decizie Maximum Likelihood</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -238,13 +238,29 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#exercițiul-1" id="toc-exercițiul-1" class="nav-link active" data-scroll-target="#exercițiul-1"><span class="toc-section-number">10.1</span>  Exercițiul 1</a>
+  <li><a href="#exercițiul-1" id="toc-exercițiul-1" class="nav-link active" data-scroll-target="#exercițiul-1"><span class="toc-section-number">8.1</span>  Exercițiul 1</a>
   <ul class="collapse">
   <li><a href="#rezolvare" id="toc-rezolvare" class="nav-link" data-scroll-target="#rezolvare">Rezolvare</a></li>
   </ul></li>
-  <li><a href="#exercițiul-2" id="toc-exercițiul-2" class="nav-link" data-scroll-target="#exercițiul-2"><span class="toc-section-number">10.2</span>  Exercițiul 2</a>
+  <li><a href="#exercițiul-2" id="toc-exercițiul-2" class="nav-link" data-scroll-target="#exercițiul-2"><span class="toc-section-number">8.2</span>  Exercițiul 2</a>
   <ul class="collapse">
   <li><a href="#rezolvare-1" id="toc-rezolvare-1" class="nav-link" data-scroll-target="#rezolvare-1">Rezolvare</a></li>
+  </ul></li>
+  <li><a href="#exercițiul-3" id="toc-exercițiul-3" class="nav-link" data-scroll-target="#exercițiul-3"><span class="toc-section-number">8.3</span>  Exercițiul 3</a>
+  <ul class="collapse">
+  <li><a href="#rezolvare-2" id="toc-rezolvare-2" class="nav-link" data-scroll-target="#rezolvare-2">Rezolvare</a></li>
+  </ul></li>
+  <li><a href="#exercițiul-4" id="toc-exercițiul-4" class="nav-link" data-scroll-target="#exercițiul-4"><span class="toc-section-number">8.4</span>  Exercițiul 4</a>
+  <ul class="collapse">
+  <li><a href="#rezolvare-3" id="toc-rezolvare-3" class="nav-link" data-scroll-target="#rezolvare-3">Rezolvare</a></li>
+  </ul></li>
+  <li><a href="#exercițiul-5" id="toc-exercițiul-5" class="nav-link" data-scroll-target="#exercițiul-5"><span class="toc-section-number">8.5</span>  Exercițiul 5</a>
+  <ul class="collapse">
+  <li><a href="#rezolvare-4" id="toc-rezolvare-4" class="nav-link" data-scroll-target="#rezolvare-4">Rezolvare</a></li>
+  </ul></li>
+  <li><a href="#exercițiul-6" id="toc-exercițiul-6" class="nav-link" data-scroll-target="#exercițiul-6"><span class="toc-section-number">8.6</span>  Exercițiul 6</a>
+  <ul class="collapse">
+  <li><a href="#rezolvare-5" id="toc-rezolvare-5" class="nav-link" data-scroll-target="#rezolvare-5">Rezolvare</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -254,7 +270,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Seminar 03: Criteriul de decizie Maximum Likelihood</span></h1>
+<h1 class="title d-none d-lg-block"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Seminar 01: Variabile aleatoare și probabilități</span></h1>
 </div>
 
 
@@ -268,92 +284,137 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<div class="hidden">
-<p><span class="math display">\[
-\newcommand{\grtlessH}{\underset{{H_0}}{\overset{H_{1}}{\gtrless}}}
-\renewcommand{\vec}[1]{\mathbf{#1}}
-\]</span></p>
-</div>
-<section id="exercițiul-1" class="level2" data-number="10.1">
-<h2 data-number="10.1" class="anchored" data-anchor-id="exercițiul-1"><span class="header-section-number">10.1</span> Exercițiul 1</h2>
-<p>Fie detecția între două semnale constante, <span class="math inline">\(s_0(t) = -1\)</span> și <span class="math inline">\(s_1(t) = 4\)</span>. Semnalele sunt afectate de zgomot alb cu distribuția <span class="math inline">\(\mathcal{N}\;(\mu=0, \sigma^2=4)\)</span>. Receptorul ia un singur eșantion la momentul <span class="math inline">\(t_0 = 0.75\)</span>, și valoarea obținută este <span class="math inline">\(r = 1.8\)</span>.</p>
+<section id="exercițiul-1" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="exercițiul-1"><span class="header-section-number">8.1</span> Exercițiul 1</h2>
+<p>Fie A o variabilă aleatoare continuă cu distribuția <span class="math inline">\(\mathcal{U}[0, \; 6]\)</span> (distribuție uniformă între 0 și 6).</p>
 <ul>
-<li>a). Scrieți expresiile celor două distribuții condiționate și reprezentați-le</li>
-<li>b). Ce decizie se ia cu criteriul Maximum Likelihood?</li>
+<li>a). Reprezentați grafic funcția densitate de probabilitate a lui A (distribuția lui A)</li>
+<li>b). Calculați probabilitatea <span class="math inline">\(P(A &gt; 1)\)</span></li>
+<li>c). Calculați probabilitatea <span class="math inline">\(P(A \in (0, \; 2))\)</span></li>
+<li>d). Reprezentați funcția de repartiție <span class="math inline">\(F_A(x)\)</span> și scrieți-i expresia matematică</li>
+<li>e). Care e distribuția variabilei aleatoare <span class="math inline">\(B\)</span> definită ca <span class="math inline">\(B = A - 2\)</span>?</li>
+<li>f). Care e distribuția variabilei aleatoare <span class="math inline">\(C\)</span> definită ca <span class="math inline">\(C = 3*A\)</span>?</li>
 </ul>
 <section id="rezolvare" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="rezolvare">Rezolvare</h3>
-<p>a). Dacă suntem în situația <span class="math inline">\(H_0\)</span>, atunci eșantionul va fi <span class="math inline">\(r = -1 + zgomot\)</span>, ceea ce înseamnă ce distribuția lui <span class="math inline">\(r\)</span> în cazul <span class="math inline">\(H_0\)</span> este distribuția zgomotului dar centrată în <span class="math inline">\(-1\)</span>, adică <span class="math inline">\(\mathcal{N}(\mu=-1, \sigma^2=4)\)</span>.</p>
-<p>În ipoteza <span class="math inline">\(H_1\)</span>, eșantionul va fi <span class="math inline">\(r = 4 + zgomot\)</span>,, așadar distribuția sa va fi <span class="math inline">\(\mathcal{N}(\mu=4, \sigma^2=4)\)</span>.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="./Seminar03_01.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<p></p><figcaption class="figure-caption">Distribuții condiționate</figcaption><p></p>
-</figure>
-</div>
-<p>Cunoscând expresia generală a unei distribuții normale: <span class="math display">\[w(x) = \frac{1}{\sigma \sqrt{2 \pi}} e^{-\frac{(x-\mu)^2}{2 \sigma^2}}\]</span> putem scrie așadar expresiile celor două distribuții condiționate: <span class="math display">\[w(r|H_0) = \frac{1}{2 \sqrt{2 \pi}} e^{-\frac{(r+1)^2}{8}}\]</span> <span class="math display">\[w(r|H_1) = \frac{1}{2 \sqrt{2 \pi}} e^{-\frac{(r-4)^2}{8}}\]</span></p>
-<p>b). Confirm criteriului Maximum Likelihood, decizia luată pentru un eșantion de valoare <span class="math inline">\(r = 1.8\)</span> este dată de distribuția care are valoarea mai mare în dreptul acestui punct <span class="math inline">\(r = 1.8\)</span>.</p>
-<p>Din figură, se observă că <span class="math inline">\(r=1.8\)</span> se află la dreapta punctului de intersecție dintre cele două distribuții, situat la mijlocul distanței dintre <span class="math inline">\(-1\)</span> și <span class="math inline">\(4\)</span>, adică <span class="math inline">\(1.5\)</span>. Așadar pentru <span class="math inline">\(r = 1.8\)</span> mai înaltă este distribuția <span class="math inline">\(w(r|H_1)\)</span>, deci decizia este <span class="math inline">\(D_1\)</span>: <span class="math display">\[w(r|H_1) &gt; w(r|H_0)\Biggr|_{\substack{r=1.8}}  \Rightarrow D_1\]</span></p>
+<p>a).</p>
+<p>b). Probabilitatea <span class="math inline">\(P(A &gt; 1)\)</span> reprezintă aria de sub densitatea de probabilitate <span class="math inline">\(w_A(x)\)</span>, de la 1 la infinit (aici, până la 6). <span class="math display">\[\begin{aligned}
+P(A &gt; 1) = \int_{1}^{\infty} w_A(x) dx = \int_{1}^{6} \frac{1}{6} dx = \frac{5}{6}
+\end{aligned}\]</span></p>
+<p>c). Probabilitatea <span class="math inline">\(P(A \in (0, \; 2))\)</span> reprezintă aria de sub densitatea de probabilitate <span class="math inline">\(w_A(x)\)</span>, de la 0 la 2. <span class="math display">\[\begin{aligned}
+P(A \in (0, \; 2)) = \int_{0}^{2} w_A(x) dx = \int_{0}^{2} \frac{1}{6} dx = \frac{1}{3}
+\end{aligned}\]</span></p>
+<p>d). Funcția de repartiție <span class="math inline">\(F_A(x)\)</span> este integrala de la <span class="math inline">\(-\infty\)</span> la <span class="math inline">\(x\)</span> a densității de probabilitate <span class="math inline">\(w_A(x)\)</span>. Întrucât <span class="math inline">\(w_A(x)\)</span> este constantă între 0 și 6, <span class="math inline">\(F_A(x)\)</span> este o funcție liniară între 0 și 6, și constantă în afara acestui interval.</p>
+<p>Așadar, graficul funcției de repartiție este cel de mai jos.</p>
+<p>iar expresia matematică este: <span class="math display">\[F_A(x) = \begin{cases}
+0, &amp;x \leq 0 \\
+\frac{1}{6}x, &amp;x \in (0, \; 6) \\
+1, &amp;x \geq 6
+\end{cases}\]</span></p>
+<p>e). Distribuția variabilei aleatoare <span class="math inline">\(B\)</span> este distribuția variabilei <span class="math inline">\(A\)</span> translatată cu 2 unități la stânga, așadar o distribuție uniformă între -2 și 4, <span class="math inline">\(\mathcal{U}[-2, \; 4]\)</span>.</p>
+<p>f). Distribuția variabilei aleatoare <span class="math inline">\(C\)</span> este distribuția variabilei <span class="math inline">\(A\)</span> scalată cu 3, așadar o distribuție uniformă între 0 și 18, <span class="math inline">\(\mathcal{U}[0, \; 18]\)</span>.</p>
 </section>
 </section>
-<section id="exercițiul-2" class="level2" data-number="10.2">
-<h2 data-number="10.2" class="anchored" data-anchor-id="exercițiul-2"><span class="header-section-number">10.2</span> Exercițiul 2</h2>
-<p>Fie detecția între două semnale, <span class="math inline">\(s_0(t) = \cos(2 \pi t)\)</span> și <span class="math inline">\(s_1(t) = \sin(2 \pi t)\)</span>.</p>
-<p>Semnalele sunt afectate de zgomot alb cu distribuția <span class="math inline">\(\mathcal{N}(\mu=0, \sigma^2=2)\)</span>.</p>
-<p>Receptorul ia un singur eșantion la momentul <span class="math inline">\(t_0 = 0.75\)</span>, și valoarea obținută este <span class="math inline">\(r(t_0) = 3.5\)</span>.</p>
-<p>Cerințe:</p>
+<section id="exercițiul-2" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="exercițiul-2"><span class="header-section-number">8.2</span> Exercițiul 2</h2>
+<p>Fie A o variabilă aleatoare continuă cu distribuția normală <span class="math inline">\(\mathcal{N}(\mu = 1, \sigma^2 = 20)\)</span>.</p>
 <ul>
-<li>a). Reprezentați grafic cele două distribuții condiționate și scrieți-le expresia matematică</li>
-<li>b). Ce decizie se ia conform criteriului Maximum Likelihood?</li>
-<li>c). Găsiți regiunile de decizie</li>
-<li>d). Calculați probabilitățile condiționate ale celor 4 scenarii (rejecție corectă, alarmă falsă, pierdere, detecție corectă)</li>
-<li>e). Care ar fi cel mai bun moment <span class="math inline">\(t_0\)</span> de eșantionare, pentru a decide între semnale? Justificați</li>
-<li>f). Care ar fi cel mai rău moment <span class="math inline">\(t_0\)</span> de eșantionare, pentru a decide între semnale? Justificați</li>
-<li>g). Repetați a) și b) dacă zgomotul are distribuție uniformă <span class="math inline">\(\mathcal{U}[-4,4]\)</span>. Există valori pentru care nu se poate lua o decizie?</li>
-<li>h). Care este varianța maximă a unui zgomot uniform, cu media 0, pentru care se poate lua o decizie cu criteriul ML pentru <span class="math inline">\(r = 3.5\)</span>?</li>
+<li>a). Calculați probabilitatea <span class="math inline">\(P(A \in [2, \; 4])\)</span></li>
+<li>b). Care e distribuția variabilei aleatoare <span class="math inline">\(B\)</span> definită ca <span class="math inline">\(B = A - 2\)</span>?</li>
+<li>c). Care este valoarea maximă a distribuției <span class="math inline">\(w_A(x)\)</span>, și pentru ce valoare <span class="math inline">\(x\)</span> se atinge?</li>
+<li>d). (**) Care e distribuția variabilei aleatoare <span class="math inline">\(C\)</span> definită ca <span class="math inline">\(C = 3*A\)</span>?</li>
 </ul>
 <section id="rezolvare-1" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="rezolvare-1">Rezolvare</h3>
-<p>La momentul <span class="math inline">\(t_0 = 0.75\)</span>, semnalele originale au valoarea sunt <span class="math inline">\(s_0(t_0) = \cos(2 \pi 0.75) = 0\)</span> și <span class="math inline">\(s_1(t_0) = \sin(2 \pi 0.75) = -1\)</span>. Prin urmare, în cazul <span class="math inline">\(H_0\)</span> eșantionul va urma o distribuție normală în jurul lui <span class="math inline">\(0\)</span>, iar în cazul <span class="math inline">\(H_1\)</span> o distribuție normală în jurul lui <span class="math inline">\(-1\)</span>: <span class="math display">\[H_0: \mathcal{N}(\mu=0, \sigma^2=2)\]</span> <span class="math display">\[H_1: \mathcal{N}(\mu=-1, \sigma^2=2)\]</span></p>
-<p>Expresiile și reprezentarea grafică a acestor distribuții sunt prezentate mai jos: <span class="math display">\[w(r|H_0) = \frac{1}{\sqrt{4 \pi}} e^{-\frac{r^2}{4}}\]</span> <span class="math display">\[w(r|H_1) = \frac{1}{\sqrt{4 \pi}} e^{-\frac{(r+1)^2}{4}}\]</span></p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="./Seminar03_02.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<p></p><figcaption class="figure-caption">Distribuții condiționate</figcaption><p></p>
-</figure>
-</div>
-<p>Se observă că distribuția din stânga este acum <span class="math inline">\(w(r|H_1)\)</span>, iar cea din dreapta <span class="math inline">\(w(r|H_0)\)</span>.</p>
-<p>b). Conform criteriului Maximum Likelihood, pentru <span class="math inline">\(r = 3.5\)</span> decizia este corespunzătoare distribuției mai înalte în acel punct, adică <span class="math inline">\(D_0\)</span>.</p>
-<p>c). Regiunea de decizie <span class="math inline">\(R_0\)</span> cuprinde valorile <span class="math inline">\(r\)</span> pentru care se ia decizia <span class="math inline">\(D_0\)</span>, adică intervalul în care funcția <span class="math inline">\(w(r|H_0)\)</span> este mai înaltă decât <span class="math inline">\(w(r|H_1)\)</span>: <span class="math display">\[R_0 = (-0.5, \infty)\]</span></p>
-<p>Regiunea de decizie <span class="math inline">\(R_1\)</span> cuprinde valorile <span class="math inline">\(r\)</span> pentru care se ia decizia <span class="math inline">\(D_1\)</span>, adică intervalul în care funcția <span class="math inline">\(w(r|H_1)\)</span> este mai înaltă: <span class="math display">\[R_1 = (-\infty, 0.5-)\]</span></p>
-<p>d). Cele patru probabilități corespund celor patru zone reprezentate în figura de mai jos.</p>
-<p>Cele patru arii reprezintă integrale din niște funcții de distribuție normale, care se pot calcula cu funcția de repartiție <span class="math inline">\(F(x)\)</span>. Așadar: <span class="math display">\[\begin{aligned}
-P_{rc} &amp;= P(D_0|H_0) = \int_{R_0} w(r|H_0) dr \\
-&amp;= F_{H_0}(\infty) - F_{H_0}(-0.5) \\
-&amp;= 1 - \frac{1}{2}\left(1 + erf  \left(\frac{-0.5 - 0}{\sqrt{2}\sqrt{2}}\right)\right) = 0.638
-\end{aligned}\]</span> <span class="math display">\[\begin{aligned}
-P_{af} &amp;= P(D_1|H_0) = \int_{R_1} w(r|H_0) dr \\
-&amp;= F_{H_0}(-0.5) - F_{H_0}(-\infty) \\
-&amp;= \frac{1}{2}\left(1 + erf  \left(\frac{-0.5 - 0}{\sqrt{2}\sqrt{2}}\right)\right) = 0.362
-\end{aligned}\]</span> <span class="math display">\[\begin{aligned}
-P_{p} &amp;= P(D_0|H_1) = \int_{R_0} w(r|H_1) dr \\
-&amp;= F_{H_1}(\infty) - F_{H_1}(-0.5) \\
-&amp;= 1 - \frac{1}{2}\left(1 + erf  \left(\frac{-0.5 + 1}{\sqrt{2}\sqrt{2}}\right)\right) = 0.362
-\end{aligned}\]</span> <span class="math display">\[\begin{aligned}
-P_{dc} &amp;= P(D_1|H_1) = \int_{R_1} w(r|H_1) dr \\
-&amp;= F_{H_1}(-0.5) - F_{H_1}(-\infty) \\
-&amp;= \frac{1}{2}\left(1 + erf  \left(\frac{-0.5 + 1}{\sqrt{2}\sqrt{2}}\right)\right) = 0.638
+<p>a). Probabilitatea <span class="math inline">\(P(A \in [2, \; 4])\)</span> reprezintă aria de sub densitatea de probabilitate <span class="math inline">\(w_A(x)\)</span>, de la 2 la 4. <span class="math display">\[P(A \in [2, \; 4]) = \int_{2}^{4} w_A(x) dx = F(4) - F(2)\]</span> unde <span class="math inline">\(F(x)\)</span> este funcția de repartiție a lui <span class="math inline">\(A\)</span>, care se poate calcula cu formula: <span class="math display">\[F(x) = \frac{1}{2} \left(1 + erf \left(\frac{x - \mu}{\sqrt{2}\sigma}\right)\right)\]</span> Așadar: <span class="math display">\[\begin{aligned}
+P(A \in [2, \; 4]) &amp;= F(4) - F(2) \\
+&amp;= \frac{1}{2} \left(1 + erf \left(\frac{4 - 1}{\sqrt{2}\sqrt{20}}\right)\right) - \frac{1}{2} \left(1 + erf \left(\frac{2 - 1}{\sqrt{2}\sqrt{20}}\right)\right) \\
+&amp;= ...
 \end{aligned}\]</span></p>
-<p>e). Cel mai bun moment de eșantionare, în vederea deciziei, este acela în care semnalele originale sunt cît mai diferite între ele. În cazul nostru, semnalele sinus și cosinus sunt reprezentate în figura următoare.</p>
-<p>Diferența maximă între semnale se obține pentru <span class="math inline">\(t= ...\)</span></p>
-<p>f). Cel mai rău moment de eșantionare în vederea deciziei este acela în care semnalele originale sunt cît mai apropiate între ele. În cazul nostru, semnalele au aceeași valoare la momentele de timp <span class="math inline">\(t=...\)</span>, prin urmare acestea sunt cele mai nepotrivite moment de eșantionare.</p>
-<p>g). Dacă zgomotul are distribuție uniformă <span class="math inline">\(\mathcal{U}[-4,4]\)</span>, atunci distribuțiile condiționate sunt cele de mai jos.</p>
-<p>Se observă suprapunerea lor pe intervalul <span class="math inline">\([-4,3]\)</span>, ceea ce înseamnă că pentru toate valorile din acest interval nu se poate lua o decizie cu criteriul Maximum Likelihood (indecizie)</p>
-<p>h). În condițiile de la punctul g), pentru <span class="math inline">\(r = 3.5\)</span> decizia luată cu criteriul ML este <span class="math inline">\(D_0\)</span>. Întrebarea este: dacă creștem varianța zgomotului (distribuțiile devin mai late), la ce moment nu mai putem lua o decizie?</p>
-<p>Ajungem la indecizie atunci când ambele distribuții devin egale în punctul <span class="math inline">\(r = 3.5\)</span>, adică atunci când distribuția <span class="math inline">\(w(r|H_1\)</span> se va întinde până la <span class="math inline">\(r = 3.5\)</span>, așadar va fi o disribuție uniformă <span class="math inline">\(\mathcal{U}[-5.5,3.5]\)</span>, centrată pe pucntul <span class="math inline">\(-1\)</span> și de lățime totala egală cu <span class="math inline">\(9\)</span>.</p>
-<p>Trebuie să calculăm varianța acestei distribuții (care este egală cu varianța zgomotului) pentru acest caz limită. Pentru varianță contează doar lățimea distribuției, nu și centrul ei, așadar putem considera distribuția centrată pe <span class="math inline">\(0\)</span> și de lățime <span class="math inline">\(9\)</span>, <span class="math inline">\(\mathcal{U}[-4.5,4.5]\)</span>. Avem: <span class="math display">\[\sigma^2 = \int_{-4.5}^{4.5} (x - 0)^2 \frac{1}{9} dx =
-\frac{1}{9} \cdot \frac{x^3}{3} \Biggr|_{-4.5}^{4.5} =
-\frac{1}{9} \cdot \frac{4.5^2 \cdot 2}{3} = 1.5\]</span></p>
+<ol start="2" type="a">
+<li><p>Distribuția variabilei aleatoare <span class="math inline">\(B\)</span> este distribuția variabilei <span class="math inline">\(A\)</span> translatată cu 2 unități la stânga, așadar o distribuție normală cu media -1 și cu aceeași varianță, <span class="math inline">\(\mathcal{N}(\mu = -1, \sigma^2 = 20)\)</span>.</p></li>
+<li><p>Inspectând graficul funcției de densitate normală, se observă că maximul este atins întotdeauna în dreptul mediei. Aici, media are valoarea 1, deci maximul este: <span class="math display">\[w_A(1) = \frac{1}{\sqrt{40 \pi}} e^{-\frac{(1 - 1)^2}{40}} = \frac{1}{\sqrt{40 \pi}} e^{-0} = \frac{1}{\sqrt{40 \pi}}\]</span></p></li>
+</ol>
+<p>d). Dacă valorile lui <span class="math inline">\(C\)</span> sunt triplul valorilor <span class="math inline">\(A\)</span>, atunci putem spune că probabilitatea ca <span class="math inline">\(C\)</span> să fie în jurul unei valori <span class="math inline">\(x\)</span> este egală cu probabilitatea ca <span class="math inline">\(A\)</span> să ia valori în jurul lui <span class="math inline">\(\frac{x}{3}\)</span>. Acest lucru se traduce prin relația: <span class="math display">\[w_C(x) = w_A\left(\frac{x}{3}\right)\]</span> Întrucăt <span class="math inline">\(A\)</span> urmează o distribuție normală, avem: <span class="math display">\[\begin{aligned}
+w_C(x) &amp;= w_A\left(\frac{x}{3}\right) = \frac{1}{\sqrt{40 \pi}} e^{-\frac{\left(\frac{x}{3} - 1\right)^2}{40}} \\
+&amp;= \frac{1}{\sqrt{40 \pi}} e^{-\frac{\left(x - 3\right)^2}{9 \cdot 40}} \\
+&amp;= TODO...
+\end{aligned}\]</span></p>
+</section>
+</section>
+<section id="exercițiul-3" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="exercițiul-3"><span class="header-section-number">8.3</span> Exercițiul 3</h2>
+<p>Considerând că scorul IQ urmează o distribuție <span class="math inline">\(\mathcal{N} \; \left(\mu=100, \sigma=15\right)\)</span>, calculați:</p>
+<ul>
+<li>a). Probabilitatea ca o persoană oarecare să aibă IQ &gt; 130</li>
+<li>b). Dacă populația globului este 8 miliarde, câți oameni au IQ mai mic decât 75</li>
+<li>c). (**)Ce IQ minim trebuie să ai pentru a fi între primii 2%?</li>
+</ul>
+<section id="rezolvare-2" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="rezolvare-2">Rezolvare</h3>
+<p>a). Probabilitatea ca o persoană oarecare să aibă IQ &gt; 130 este: <span class="math display">\[\begin{aligned}
+P(IQ &gt; 130) &amp;= \int_{130}^{\infty} w_{IQ}(x) dx \\
+&amp;= F_{IQ}(\infty) - F_{IQ}(130) \\
+&amp;= 1 - \frac{1}{2} \left(1 + erf \left(\frac{130 - 100}{\sqrt{2}\cdot 15}\right)\right) \\
+&amp;= 0.0227 = 2.27\%
+\end{aligned}\]</span></p>
+<p>b). Trebuie să calculăm probabilitatea ca o persoană oarecare să aibă IQ &lt; 75, și să înmulțim cu populația globului: <span class="math display">\[\begin{aligned}
+P(IQ &lt; 75) &amp;= \int_{-\infty}^{75} w_{IQ}(x) dx \\
+&amp;= F_{IQ}(75) - F_{IQ}(-\infty) \\
+&amp;= \frac{1}{2} \left(1 + erf \left(\frac{75 - 100}{\sqrt{2}\cdot 15}\right)\right) \\
+&amp;= 0.0478
+\end{aligned}\]</span> Așadar, numărul de oameni cu IQ &lt; 75 este: <span class="math display">\[8 \cdot 10^9 \cdot 0.0478 = 382.4 \cdot 10^6 = 382.4 \; milioane\]</span></p>
+</section>
+</section>
+<section id="exercițiul-4" class="level2" data-number="8.4">
+<h2 data-number="8.4" class="anchored" data-anchor-id="exercițiul-4"><span class="header-section-number">8.4</span> Exercițiul 4</h2>
+<p>Fie A o variabilă aleatoare discretă, cu valorile posibile <span class="math inline">\(\left\lbrace 0, 1, 2, \dots 10 \right\rbrace\)</span>, toate având aceeași probabilitate.</p>
+<ul>
+<li>a). Reprezentați grafic distribuția lui A</li>
+<li>b). Calculați probabilitatea <span class="math inline">\(P(A \in [3, \; 7]\)</span></li>
+<li>b). Care e probabilitatea ca A să fie număr impar?</li>
+</ul>
+<section id="rezolvare-3" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="rezolvare-3">Rezolvare</h3>
+<ol type="a">
+<li></li>
+</ol>
+<p>b). Fiind o variabilă discretă, putem calcula probabilitățile ca număr de cazuri favorabile supra numărul total de cazuri posibile.</p>
+<p>Probabilitatea ca <span class="math inline">\(A\)</span> să ia valori între 3 și 7 este: <span class="math display">\[P(A \in [3, \; 7]) = \frac{5}{11}\]</span></p>
+<p>c). Probabilitatea ca <span class="math inline">\(A\)</span> să fie impar este: <span class="math display">\[P(A \; \text{impar}) = \frac{5}{11}\]</span></p>
+</section>
+</section>
+<section id="exercițiul-5" class="level2" data-number="8.5">
+<h2 data-number="8.5" class="anchored" data-anchor-id="exercițiul-5"><span class="header-section-number">8.5</span> Exercițiul 5</h2>
+<p>Calculați probabilitatea ca 3 variabile aleatoare X, Y, Z, independente și identic distribuite (i.i.d) cu distribuția normală <span class="math inline">\(\mathcal{N}(\mu = 1, \sigma^2 = 1)\)</span> să fie pozitive simultan.</p>
+<section id="rezolvare-4" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="rezolvare-4">Rezolvare</h3>
+<p>Fiind variabile independente, probabilitatea că toate să fie pozitive este egală cu produsul probabilităților că fiecare să fie pozitivă: <span class="math display">\[P(X &gt; 0 \cap Y &gt; 0 \cap Z &gt; 0) = P(X &gt; 0) \cdot P(Y &gt; 0) \cdot P(Z &gt; 0)\]</span></p>
+<p>Întrucât toate urmează aceeași distribuție, probabilitatea ca <span class="math inline">\(X\)</span> să fie pozitivă este egală cu probabilitatea ca <span class="math inline">\(Y\)</span> sau ca Z să fie pozitivă, așadar trebuie de fapt să calculăm o singură probabilitate, și apoi să o ridicăm la puterea 3.</p>
+<p>Avem: <span class="math display">\[\begin{aligned}
+P(X &gt; 0) &amp;= (Y &gt; 0) = P(Z &gt; 0) = \int_{0}^{\infty} w_X(x) dx = F(\infty) - F(0) \\
+&amp;= 1 - \frac{1}{2} \left(1 + erf \left(\frac{0 - 1}{\sqrt{2}\cdot 1}\right)\right) \\
+&amp;= 1 - \frac{1}{2} \left(1 + erf \left(-\frac{1}{\sqrt{2}}\right)\right) \\
+&amp;= 0.841
+\end{aligned}\]</span></p>
+<p>Așadar, probabilitatea că toate să fie pozitive este: <span class="math display">\[P(X &gt; 0, Y &gt; 0, Z &gt; 0) = 0.841^3 = 0.595\]</span></p>
+</section>
+</section>
+<section id="exercițiul-6" class="level2" data-number="8.6">
+<h2 data-number="8.6" class="anchored" data-anchor-id="exercițiul-6"><span class="header-section-number">8.6</span> Exercițiul 6</h2>
+<p>Fie 3 variabile aleatoare cu distribuțiile: <span class="math display">\[
+\begin{aligned}
+A &amp;\sim \mathcal{N}\; \left(\mu=1, \sigma^2=3\right) \\
+B &amp;\sim \mathcal{N}\; \left(\mu=-4, \sigma^2=3\right) \\
+C &amp;\sim \mathcal{N}\; \left(\mu=5, \sigma^2=3\right)
+\end{aligned}\]</span></p>
+<ul>
+<li>a). Este mai probabil ca tripleta de valori (A, B, C) să ia valori în jurul lui (2, -6, 3) sau în jurul lui (-2, -3, 2)?</li>
+<li>b). Găsiți 3 valori pozitive <span class="math inline">\((x, y, z)\)</span> pentru care probabilitatea ca (A, B, C) să aibă valori în jurul lui <span class="math inline">\((x,y,z)\)</span> să fie egală cu probabilitatea de a avea valori în jurul lui (2, -6, 3)</li>
+</ul>
+<section id="rezolvare-5" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="rezolvare-5">Rezolvare</h3>
+<p>TODO</p>
 
 
 </section>
@@ -460,13 +521,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./Ex_Seminar02.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Seminar 02: Medii statistice și temporale</span></span>
+      <a href="./03_01_Estimare.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Elemente de teoria estimării</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./Ex_Seminar04.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Seminar 04: Decizii, decizii</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./Ex_Seminar02.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Seminar 02: Medii statistice și temporale</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Decizie și estimare în prelucrarea informației (DEPI) - 10&nbsp; Seminar 03: Criteriul de decizie Maximum Likelihood</title>
+<title>Decizie și estimare în prelucrarea informației (DEPI) - 9&nbsp; Seminar 02: Medii statistice și temporale</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./Ex_Seminar04.html" rel="next">
-<link href="./Ex_Seminar02.html" rel="prev">
+<link href="./Ex_Seminar03.html" rel="next">
+<link href="./Ex_Seminar01.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -71,7 +71,7 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Seminar 03: Criteriul de decizie Maximum Likelihood</span></h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Seminar 02: Medii statistice și temporale</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -184,12 +184,12 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Ex_Seminar02.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Seminar 02: Medii statistice și temporale</span></a>
+  <a href="./Ex_Seminar02.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Seminar 02: Medii statistice și temporale</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Ex_Seminar03.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Seminar 03: Criteriul de decizie Maximum Likelihood</span></a>
+  <a href="./Ex_Seminar03.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Seminar 03: Criteriul de decizie Maximum Likelihood</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -238,13 +238,17 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#exercițiul-1" id="toc-exercițiul-1" class="nav-link active" data-scroll-target="#exercițiul-1"><span class="toc-section-number">10.1</span>  Exercițiul 1</a>
+  <li><a href="#exercițiul-1" id="toc-exercițiul-1" class="nav-link active" data-scroll-target="#exercițiul-1"><span class="toc-section-number">9.1</span>  Exercițiul 1</a>
   <ul class="collapse">
   <li><a href="#rezolvare" id="toc-rezolvare" class="nav-link" data-scroll-target="#rezolvare">Rezolvare</a></li>
   </ul></li>
-  <li><a href="#exercițiul-2" id="toc-exercițiul-2" class="nav-link" data-scroll-target="#exercițiul-2"><span class="toc-section-number">10.2</span>  Exercițiul 2</a>
+  <li><a href="#exercițiul-2" id="toc-exercițiul-2" class="nav-link" data-scroll-target="#exercițiul-2"><span class="toc-section-number">9.2</span>  Exercițiul 2</a>
   <ul class="collapse">
   <li><a href="#rezolvare-1" id="toc-rezolvare-1" class="nav-link" data-scroll-target="#rezolvare-1">Rezolvare</a></li>
+  </ul></li>
+  <li><a href="#exercițiul-3" id="toc-exercițiul-3" class="nav-link" data-scroll-target="#exercițiul-3"><span class="toc-section-number">9.3</span>  Exercițiul 3</a>
+  <ul class="collapse">
+  <li><a href="#rezolvare-2" id="toc-rezolvare-2" class="nav-link" data-scroll-target="#rezolvare-2">Rezolvare</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -254,7 +258,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Seminar 03: Criteriul de decizie Maximum Likelihood</span></h1>
+<h1 class="title d-none d-lg-block"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Seminar 02: Medii statistice și temporale</span></h1>
 </div>
 
 
@@ -268,92 +272,97 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<div class="hidden">
-<p><span class="math display">\[
-\newcommand{\grtlessH}{\underset{{H_0}}{\overset{H_{1}}{\gtrless}}}
-\renewcommand{\vec}[1]{\mathbf{#1}}
-\]</span></p>
-</div>
-<section id="exercițiul-1" class="level2" data-number="10.1">
-<h2 data-number="10.1" class="anchored" data-anchor-id="exercițiul-1"><span class="header-section-number">10.1</span> Exercițiul 1</h2>
-<p>Fie detecția între două semnale constante, <span class="math inline">\(s_0(t) = -1\)</span> și <span class="math inline">\(s_1(t) = 4\)</span>. Semnalele sunt afectate de zgomot alb cu distribuția <span class="math inline">\(\mathcal{N}\;(\mu=0, \sigma^2=4)\)</span>. Receptorul ia un singur eșantion la momentul <span class="math inline">\(t_0 = 0.75\)</span>, și valoarea obținută este <span class="math inline">\(r = 1.8\)</span>.</p>
+<section id="exercițiul-1" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="exercițiul-1"><span class="header-section-number">9.1</span> Exercițiul 1</h2>
+<p>Calculați valoarea medie, valoarea pătratică medie și varianța unui proces aleator staționar având distribuția unui eșantion egală cu:</p>
 <ul>
-<li>a). Scrieți expresiile celor două distribuții condiționate și reprezentați-le</li>
-<li>b). Ce decizie se ia cu criteriul Maximum Likelihood?</li>
+<li><p>a). <span class="math inline">\(w_1(x) = \mathcal{U}[a,b]\)</span> pentru niște valori <span class="math inline">\(a, b \in \mathbb{R}\)</span>;</p></li>
+<li><p>b). <span class="math inline">\(w_1(x) = \begin{cases}  \frac{1}{2} - \frac{1}{8} x, &amp;x \in [0,4] \\  0, &amp;în \;\; rest  \end{cases}\)</span></p>
+<p>În acest caz, reprezentați și distribuția și verificați faptul că integrala sa este egală cu 1.</p></li>
 </ul>
 <section id="rezolvare" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="rezolvare">Rezolvare</h3>
-<p>a). Dacă suntem în situația <span class="math inline">\(H_0\)</span>, atunci eșantionul va fi <span class="math inline">\(r = -1 + zgomot\)</span>, ceea ce înseamnă ce distribuția lui <span class="math inline">\(r\)</span> în cazul <span class="math inline">\(H_0\)</span> este distribuția zgomotului dar centrată în <span class="math inline">\(-1\)</span>, adică <span class="math inline">\(\mathcal{N}(\mu=-1, \sigma^2=4)\)</span>.</p>
-<p>În ipoteza <span class="math inline">\(H_1\)</span>, eșantionul va fi <span class="math inline">\(r = 4 + zgomot\)</span>,, așadar distribuția sa va fi <span class="math inline">\(\mathcal{N}(\mu=4, \sigma^2=4)\)</span>.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="./Seminar03_01.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<p></p><figcaption class="figure-caption">Distribuții condiționate</figcaption><p></p>
-</figure>
-</div>
-<p>Cunoscând expresia generală a unei distribuții normale: <span class="math display">\[w(x) = \frac{1}{\sigma \sqrt{2 \pi}} e^{-\frac{(x-\mu)^2}{2 \sigma^2}}\]</span> putem scrie așadar expresiile celor două distribuții condiționate: <span class="math display">\[w(r|H_0) = \frac{1}{2 \sqrt{2 \pi}} e^{-\frac{(r+1)^2}{8}}\]</span> <span class="math display">\[w(r|H_1) = \frac{1}{2 \sqrt{2 \pi}} e^{-\frac{(r-4)^2}{8}}\]</span></p>
-<p>b). Confirm criteriului Maximum Likelihood, decizia luată pentru un eșantion de valoare <span class="math inline">\(r = 1.8\)</span> este dată de distribuția care are valoarea mai mare în dreptul acestui punct <span class="math inline">\(r = 1.8\)</span>.</p>
-<p>Din figură, se observă că <span class="math inline">\(r=1.8\)</span> se află la dreapta punctului de intersecție dintre cele două distribuții, situat la mijlocul distanței dintre <span class="math inline">\(-1\)</span> și <span class="math inline">\(4\)</span>, adică <span class="math inline">\(1.5\)</span>. Așadar pentru <span class="math inline">\(r = 1.8\)</span> mai înaltă este distribuția <span class="math inline">\(w(r|H_1)\)</span>, deci decizia este <span class="math inline">\(D_1\)</span>: <span class="math display">\[w(r|H_1) &gt; w(r|H_0)\Biggr|_{\substack{r=1.8}}  \Rightarrow D_1\]</span></p>
+<p>Vom folosi definițiile: <span class="math display">\[\overline{X} = \mu = \int_{-\infty}^{\infty} x w(x) dx\]</span> <span class="math display">\[\overline{X^2} = \int_{-\infty}^{\infty} x^2 w(x) dx\]</span> <span class="math display">\[\begin{aligned}
+\sigma_X^2 &amp;= \int_{-\infty}^{\infty} (x - \mu)^2 w(x) dx\\
+&amp;= \overline{X^2} - \mu^2
+\end{aligned}\]</span></p>
+<p>a). Pentru <span class="math inline">\(w_1(x) = \mathcal{U}[a,b]\)</span> avem:</p>
+<p>Media: <span class="math display">\[\begin{aligned}
+\overline{X} &amp;= \int_{-\infty}^{\infty} x \cdot w(x) dx \\
+&amp;= \int_{a}^{b} x \frac{1}{b-a} dx \\
+&amp;= \frac{1}{b-a} \cdot \frac{x^2}{2} \Biggr|_{a}^{b} \\
+&amp;= \frac{1}{b-a} \cdot \frac{b^2 - a^2}{2} \\
+&amp;= \frac{b + a}{2}
+\end{aligned}\]</span></p>
+<p>Valoarea pătratică medie: <span class="math display">\[\begin{aligned}
+\overline{X^2} &amp;= \int_{-\infty}^{\infty} x^2 \cdot w(x) dx \\
+&amp;= \int_{a}^{b} x^2 \frac{1}{b-a} dx \\
+&amp;= \frac{1}{b-a} \cdot \frac{x^3}{3} \Biggr|_{a}^{b} \\
+&amp;= \frac{1}{b-a} \cdot \frac{b^3 - a^3}{3} \\
+&amp;= \frac{b^2 + ab + a^2}{3}
+\end{aligned}\]</span></p>
+<p>Varianța: <span class="math display">\[\begin{aligned}
+\sigma_X^2 &amp;= \int_{-\infty}^{\infty} (x - \mu)^2 \cdot w(x) dx \\
+&amp;= \int_{a}^{b} (x - \frac{a+b}{2})^2 \frac{1}{b-a} dx \\
+&amp;= \frac{1}{b-a} \cdot \frac{(x - \frac{a+b}{2})^3}{3} \Biggr|_{a}^{b} \\
+&amp;= \frac{1}{b-a} \cdot \frac{(b - \frac{a+b}{2})^3 - (a - \frac{a+b}{2})^3}{3} \\
+&amp;= \frac{1}{b-a} \cdot \frac{(b - a)^3}{12} \\
+&amp;= \frac{(b - a)^2}{12}
+\end{aligned}\]</span></p>
+<p>Varianța poate fi calculată și ca diferența dintre valoarea pătratică medie și pătratul mediei: <span class="math display">\[\begin{aligned}
+\sigma_X^2 &amp;= \overline{X^2} - \mu^2 \\
+&amp;= \frac{b^2 + ab + a^2}{3} - \frac{(b + a)^2}{4} \\
+&amp;= \frac{4b^2 + 4ab + 4a^2 - 3b^2 - 6ab - 3a^2}{12} \\
+&amp;= \frac{b^2 - 2ab + a^2}{12} \\
+&amp;= \frac{(b - a)^2}{12}
+\end{aligned}\]</span></p>
+<p>b). Graficul funcției <span class="math inline">\(w_2(x)\)</span> este reprezentat mai jos.</p>
+<p>Integrala sa reprezintă aria unui triunghi dreptunghic cu catetele <span class="math inline">\(4\)</span> și <span class="math inline">\(\frac{1}{2}\)</span>, deci: <span class="math display">\[\int_{-\infty}^{\infty} w_2(x) dx = \frac{4 \cdot \frac{1}{2}}{2} = 1\]</span></p>
+<p>Media: <span class="math display">\[\begin{aligned}
+\overline{X} &amp;= \int_{-\infty}^{\infty} x \cdot w(x) dx \\
+&amp;= \int_{0}^{4} x \cdot \left(\frac{1}{2} - \frac{1}{8} x\right) dx \\
+&amp;= \frac{1}{2} \cdot \frac{x^2}{2} \Biggr|_{0}^{4} - \frac{1}{8} \cdot \frac{x^3}{3} \Biggr|_{0}^{4} \\
+&amp;= \frac{1}{2} \cdot \frac{4^2}{2} - \frac{1}{8} \cdot \frac{4^3}{3} \\
+&amp;= 4 - \frac{8}{3} \\
+&amp;= 1.333
+\end{aligned}\]</span></p>
+<p>Valoarea pătratică medie: <span class="math display">\[\begin{aligned}
+\overline{X^2} &amp;= \int_{-\infty}^{\infty} x^2 \cdot w(x) dx \\
+&amp;= \int_{0}^{4} x^2 \cdot \left(\frac{1}{2} - \frac{1}{8} x\right) dx \\
+&amp;= \frac{1}{2} \cdot \frac{x^3}{3} \Biggr|_{0}^{4} - \frac{1}{8} \cdot \frac{x^4}{4} \Biggr|_{0}^{4} \\
+&amp;= \frac{1}{2} \cdot \frac{4^3}{3} - \frac{1}{8} \cdot \frac{4^4}{4} \\
+&amp;= \frac{32}{3} - 8 \\
+&amp;= \frac{8}{3}
+\end{aligned}\]</span></p>
+<p>Varianța: <span class="math display">\[\begin{aligned}
+\sigma_X^2 &amp;= \overline{X^2} - \mu^2 \\
+&amp;= \frac{8}{3} - \left(\frac{4}{3}\right)^2 \\
+&amp;= \frac{8}{3} - \frac{16}{9} \\
+&amp;= \frac{8}{9}
+\end{aligned}\]</span></p>
 </section>
 </section>
-<section id="exercițiul-2" class="level2" data-number="10.2">
-<h2 data-number="10.2" class="anchored" data-anchor-id="exercițiul-2"><span class="header-section-number">10.2</span> Exercițiul 2</h2>
-<p>Fie detecția între două semnale, <span class="math inline">\(s_0(t) = \cos(2 \pi t)\)</span> și <span class="math inline">\(s_1(t) = \sin(2 \pi t)\)</span>.</p>
-<p>Semnalele sunt afectate de zgomot alb cu distribuția <span class="math inline">\(\mathcal{N}(\mu=0, \sigma^2=2)\)</span>.</p>
-<p>Receptorul ia un singur eșantion la momentul <span class="math inline">\(t_0 = 0.75\)</span>, și valoarea obținută este <span class="math inline">\(r(t_0) = 3.5\)</span>.</p>
-<p>Cerințe:</p>
-<ul>
-<li>a). Reprezentați grafic cele două distribuții condiționate și scrieți-le expresia matematică</li>
-<li>b). Ce decizie se ia conform criteriului Maximum Likelihood?</li>
-<li>c). Găsiți regiunile de decizie</li>
-<li>d). Calculați probabilitățile condiționate ale celor 4 scenarii (rejecție corectă, alarmă falsă, pierdere, detecție corectă)</li>
-<li>e). Care ar fi cel mai bun moment <span class="math inline">\(t_0\)</span> de eșantionare, pentru a decide între semnale? Justificați</li>
-<li>f). Care ar fi cel mai rău moment <span class="math inline">\(t_0\)</span> de eșantionare, pentru a decide între semnale? Justificați</li>
-<li>g). Repetați a) și b) dacă zgomotul are distribuție uniformă <span class="math inline">\(\mathcal{U}[-4,4]\)</span>. Există valori pentru care nu se poate lua o decizie?</li>
-<li>h). Care este varianța maximă a unui zgomot uniform, cu media 0, pentru care se poate lua o decizie cu criteriul ML pentru <span class="math inline">\(r = 3.5\)</span>?</li>
-</ul>
+<section id="exercițiul-2" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="exercițiul-2"><span class="header-section-number">9.2</span> Exercițiul 2</h2>
+<p>Calculați valoarea medie temporală, valoarea pătratică medie temporală, varianța temporală și funcția de autocorelație temporală pentru următoarea realizare a unui proces aleator de lungime finită:</p>
+<p><span class="math display">\[f = [-1, 2, -1, 2, -1, 2, -1, 2, -1, 2]\]</span></p>
 <section id="rezolvare-1" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="rezolvare-1">Rezolvare</h3>
-<p>La momentul <span class="math inline">\(t_0 = 0.75\)</span>, semnalele originale au valoarea sunt <span class="math inline">\(s_0(t_0) = \cos(2 \pi 0.75) = 0\)</span> și <span class="math inline">\(s_1(t_0) = \sin(2 \pi 0.75) = -1\)</span>. Prin urmare, în cazul <span class="math inline">\(H_0\)</span> eșantionul va urma o distribuție normală în jurul lui <span class="math inline">\(0\)</span>, iar în cazul <span class="math inline">\(H_1\)</span> o distribuție normală în jurul lui <span class="math inline">\(-1\)</span>: <span class="math display">\[H_0: \mathcal{N}(\mu=0, \sigma^2=2)\]</span> <span class="math display">\[H_1: \mathcal{N}(\mu=-1, \sigma^2=2)\]</span></p>
-<p>Expresiile și reprezentarea grafică a acestor distribuții sunt prezentate mai jos: <span class="math display">\[w(r|H_0) = \frac{1}{\sqrt{4 \pi}} e^{-\frac{r^2}{4}}\]</span> <span class="math display">\[w(r|H_1) = \frac{1}{\sqrt{4 \pi}} e^{-\frac{(r+1)^2}{4}}\]</span></p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="./Seminar03_02.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<p></p><figcaption class="figure-caption">Distribuții condiționate</figcaption><p></p>
-</figure>
-</div>
-<p>Se observă că distribuția din stânga este acum <span class="math inline">\(w(r|H_1)\)</span>, iar cea din dreapta <span class="math inline">\(w(r|H_0)\)</span>.</p>
-<p>b). Conform criteriului Maximum Likelihood, pentru <span class="math inline">\(r = 3.5\)</span> decizia este corespunzătoare distribuției mai înalte în acel punct, adică <span class="math inline">\(D_0\)</span>.</p>
-<p>c). Regiunea de decizie <span class="math inline">\(R_0\)</span> cuprinde valorile <span class="math inline">\(r\)</span> pentru care se ia decizia <span class="math inline">\(D_0\)</span>, adică intervalul în care funcția <span class="math inline">\(w(r|H_0)\)</span> este mai înaltă decât <span class="math inline">\(w(r|H_1)\)</span>: <span class="math display">\[R_0 = (-0.5, \infty)\]</span></p>
-<p>Regiunea de decizie <span class="math inline">\(R_1\)</span> cuprinde valorile <span class="math inline">\(r\)</span> pentru care se ia decizia <span class="math inline">\(D_1\)</span>, adică intervalul în care funcția <span class="math inline">\(w(r|H_1)\)</span> este mai înaltă: <span class="math display">\[R_1 = (-\infty, 0.5-)\]</span></p>
-<p>d). Cele patru probabilități corespund celor patru zone reprezentate în figura de mai jos.</p>
-<p>Cele patru arii reprezintă integrale din niște funcții de distribuție normale, care se pot calcula cu funcția de repartiție <span class="math inline">\(F(x)\)</span>. Așadar: <span class="math display">\[\begin{aligned}
-P_{rc} &amp;= P(D_0|H_0) = \int_{R_0} w(r|H_0) dr \\
-&amp;= F_{H_0}(\infty) - F_{H_0}(-0.5) \\
-&amp;= 1 - \frac{1}{2}\left(1 + erf  \left(\frac{-0.5 - 0}{\sqrt{2}\sqrt{2}}\right)\right) = 0.638
-\end{aligned}\]</span> <span class="math display">\[\begin{aligned}
-P_{af} &amp;= P(D_1|H_0) = \int_{R_1} w(r|H_0) dr \\
-&amp;= F_{H_0}(-0.5) - F_{H_0}(-\infty) \\
-&amp;= \frac{1}{2}\left(1 + erf  \left(\frac{-0.5 - 0}{\sqrt{2}\sqrt{2}}\right)\right) = 0.362
-\end{aligned}\]</span> <span class="math display">\[\begin{aligned}
-P_{p} &amp;= P(D_0|H_1) = \int_{R_0} w(r|H_1) dr \\
-&amp;= F_{H_1}(\infty) - F_{H_1}(-0.5) \\
-&amp;= 1 - \frac{1}{2}\left(1 + erf  \left(\frac{-0.5 + 1}{\sqrt{2}\sqrt{2}}\right)\right) = 0.362
-\end{aligned}\]</span> <span class="math display">\[\begin{aligned}
-P_{dc} &amp;= P(D_1|H_1) = \int_{R_1} w(r|H_1) dr \\
-&amp;= F_{H_1}(-0.5) - F_{H_1}(-\infty) \\
-&amp;= \frac{1}{2}\left(1 + erf  \left(\frac{-0.5 + 1}{\sqrt{2}\sqrt{2}}\right)\right) = 0.638
-\end{aligned}\]</span></p>
-<p>e). Cel mai bun moment de eșantionare, în vederea deciziei, este acela în care semnalele originale sunt cît mai diferite între ele. În cazul nostru, semnalele sinus și cosinus sunt reprezentate în figura următoare.</p>
-<p>Diferența maximă între semnale se obține pentru <span class="math inline">\(t= ...\)</span></p>
-<p>f). Cel mai rău moment de eșantionare în vederea deciziei este acela în care semnalele originale sunt cît mai apropiate între ele. În cazul nostru, semnalele au aceeași valoare la momentele de timp <span class="math inline">\(t=...\)</span>, prin urmare acestea sunt cele mai nepotrivite moment de eșantionare.</p>
-<p>g). Dacă zgomotul are distribuție uniformă <span class="math inline">\(\mathcal{U}[-4,4]\)</span>, atunci distribuțiile condiționate sunt cele de mai jos.</p>
-<p>Se observă suprapunerea lor pe intervalul <span class="math inline">\([-4,3]\)</span>, ceea ce înseamnă că pentru toate valorile din acest interval nu se poate lua o decizie cu criteriul Maximum Likelihood (indecizie)</p>
-<p>h). În condițiile de la punctul g), pentru <span class="math inline">\(r = 3.5\)</span> decizia luată cu criteriul ML este <span class="math inline">\(D_0\)</span>. Întrebarea este: dacă creștem varianța zgomotului (distribuțiile devin mai late), la ce moment nu mai putem lua o decizie?</p>
-<p>Ajungem la indecizie atunci când ambele distribuții devin egale în punctul <span class="math inline">\(r = 3.5\)</span>, adică atunci când distribuția <span class="math inline">\(w(r|H_1\)</span> se va întinde până la <span class="math inline">\(r = 3.5\)</span>, așadar va fi o disribuție uniformă <span class="math inline">\(\mathcal{U}[-5.5,3.5]\)</span>, centrată pe pucntul <span class="math inline">\(-1\)</span> și de lățime totala egală cu <span class="math inline">\(9\)</span>.</p>
-<p>Trebuie să calculăm varianța acestei distribuții (care este egală cu varianța zgomotului) pentru acest caz limită. Pentru varianță contează doar lățimea distribuției, nu și centrul ei, așadar putem considera distribuția centrată pe <span class="math inline">\(0\)</span> și de lățime <span class="math inline">\(9\)</span>, <span class="math inline">\(\mathcal{U}[-4.5,4.5]\)</span>. Avem: <span class="math display">\[\sigma^2 = \int_{-4.5}^{4.5} (x - 0)^2 \frac{1}{9} dx =
-\frac{1}{9} \cdot \frac{x^3}{3} \Biggr|_{-4.5}^{4.5} =
-\frac{1}{9} \cdot \frac{4.5^2 \cdot 2}{3} = 1.5\]</span></p>
+<p>Pentru această secvență de zece numere, aplicăm definiițile mediilor temporale.</p>
+<p>Valoarea medie temporală este media aritmetică a numerelor: <span class="math display">\[\overline{f_t} = \frac{-1 + 2 - 1 + 2 - 1 + 2 - 1 + 2 - 1 + 2}{10} = \frac{5}{10} = 0.5\]</span></p>
+<p>Valoarea pătratică medie temporală este media aritmetică a pătratelor numerelor: <span class="math display">\[\overline{f_t^2} = \frac{(-1)^2 + 2^2 + (-1)^2 + 2^2 + (-1)^2 + 2^2 + (-1)^2 + 2^2 + (-1)^2 + 2^2}{10} = \frac{25}{10} = 2.5\]</span></p>
+<p>Varianța temporală este diferența dintre valoarea pătratică medie și pătratul mediei: <span class="math display">\[\sigma_f^2 = \overline{f_t^2} - \overline{f_t}^2 = 2.5 - 0.5^2 = 2.25\]</span> De asemenea, se poate calcula si conform definiției.</p>
+<p>Funcția de autocorelație temporală de definește ca media produselor eșantioanelor separate de un interval de timp <span class="math inline">\(k\)</span>: <span class="math display">\[r_{ff}(k) = \overline{f[t] \cdot f[t+k]}\]</span> Așadar: <span class="math display">\[r_{ff}[0] = \overline{f[t] \cdot f[t]} = \overline{f_t^2} = 2.5\]</span> <span class="math display">\[r_{ff}[1] = \overline{f[t] \cdot f[t+1]} = \frac{(-1)2 + 2(-1) + (-1)2 + 2(-1) + (-1)2 + 2(-1) + (-1)2 + 2(-1)}{9} = -2\]</span> <span class="math display">\[r_{ff}[2] = \overline{f[t] \cdot f[t+2]} = \frac{(-1)(-1) + 2\cdot 2 + (-1)(-1) + 2\cdot 2 + (-1)(-1) + 2\cdot 2 + (-1)(-1) + 2\cdot 2}{8} = 2.5\]</span> Se continuă în acest mod până la ultima valoare: <span class="math display">\[r_{ff}[9] = \overline{f[t] \cdot f[t+9]} = \frac{(-1)(2)}{1} = -2\]</span> Valorile funcției de autocorelație pentru <span class="math inline">\(k\)</span> negativ se obțin prin simetrie: <span class="math display">\[r_{ff}[-k] = r_{ff}[k]\]</span> Așadar: <span class="math display">\[r_{ff}[-1] = r_{ff}[1] = -2\]</span> <span class="math display">\[r_{ff}[-2] = r_{ff}[2] = 2.5\]</span> și așa mai departe până la: <span class="math display">\[r_{ff}[-9] = r_{ff}[9] = -2\]</span></p>
+</section>
+</section>
+<section id="exercițiul-3" class="level2" data-number="9.3">
+<h2 data-number="9.3" class="anchored" data-anchor-id="exercițiul-3"><span class="header-section-number">9.3</span> Exercițiul 3</h2>
+<p>Calculați valoarea medie temporală, valoarea pătratică medie temporală, varianța temporală și funcția de autocorelație temporală pentru următorul semnal deterministic:</p>
+<p><span class="math display">\[ s(t) = cos(2 \pi f t)\]</span></p>
+<p>(Sugestie: Considerați <span class="math inline">\(s(t)\)</span> ca fiind o realizare a unui proces aleator oarecare, și rezolvați ca la problema 2).</p>
+<section id="rezolvare-2" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="rezolvare-2">Rezolvare</h3>
+<p>TODO</p>
 
 
 </section>
@@ -460,13 +469,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./Ex_Seminar02.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Seminar 02: Medii statistice și temporale</span></span>
+      <a href="./Ex_Seminar01.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Seminar 01: Variabile aleatoare și probabilități</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./Ex_Seminar04.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Seminar 04: Decizii, decizii</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./Ex_Seminar03.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Seminar 03: Criteriul de decizie Maximum Likelihood</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
