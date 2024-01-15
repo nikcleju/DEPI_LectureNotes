@@ -137,7 +137,7 @@ Pentru pragul $T=3$, $r=3.1 \in R_1$, decizia este $D_1$.
 
 d). Pentru criteriul MR, probabilitate de pierdere este $Pp \leq 10^{-6}$
 implică $P(D_0|H_1) \leq 3 \cdot 10^{-6}$. Pe de altă parte, avem
-$$P(D_0|H_1) = F_{H_1}(T_{MR}) = \frac{1}{2}(1 + erf(\frac{T_{MR} - 5}{2}))$$
+$$P(D_0|H_1) = F_{H_1}(T_{MR}) = \frac{1}{2}(1 + erf(\frac{T_{MR} - A}{2}))$$
 
 Valoarea lui $A$ reprezintă valoarea lui $s_1(t)$, și afectează valoarea lui $T_{MR}$.
 
@@ -148,12 +148,14 @@ Procedăm astfel:
 $$
 \begin{align}
 P(D_0|H_1) &\leq 3 \cdot 10^{-6} \\
-\frac{1}{2}(1 + erf(\frac{T_{MR} - 5}{2})) &\leq 3 \cdot 10^{-6} \\
-erf(\frac{T_{MR} - 5}{2}) &\leq 6 \cdot 10^{-6} - 1 \\
-\frac{T_{MR} - 5}{2} &\leq erf^{-1}(6 \cdot 10^{-6} - 1) \\
-\frac{T_{MR} - 5}{2} &\leq -3.45 \\
-T_{MR} &\leq -1.9 \\
+\frac{1}{2}(1 + erf(\frac{T_{MR} - A}{2})) &\leq 3 \cdot 10^{-6} \\
+erf(\frac{T_{MR} - A}{2}) &\leq 6 \cdot 10^{-6} - 1 \\
+\frac{T_{MR} - A}{2} &\leq erf^{-1}(6 \cdot 10^{-6} - 1) \\
+\frac{T_{MR} - A}{2} &\leq -3.45 \\
+T_{MR} &\leq A -16.9 \\
 \end{align}$$
+
+**TODO:** Update in continuare, acum continuarea e gresita.
 
 La rândul său, $T_{MR} = \frac{s_0(t_0) + s_1(t_0)}{2} + \frac{\sigma^2}{s_1(t_0) - s_0(t_0)} \cdot\ln(K)$, adică în cazul nostru:
 $$T_{MR} = \frac{0 + A}{2} + \frac{2}{A - 0} \cdot\ln(\frac{1}{5})$$
