@@ -1,0 +1,10 @@
+// See here: https://github.com/quarto-dev/quarto-cli/discussions/2392
+
+/*-- scss:defaults --*/
+.math.inline .MathJax  {
+  font-size: 100% !important;
+}
+
+.math.display .MathJax  {
+  font-size: 100% !important;
+}
