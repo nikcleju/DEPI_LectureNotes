@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Decizie și estimare în prelucrarea informației (DEPI) - Introducere</title>
+<title>Decizie și estimare în prelucrarea informației (DEPI) - 8&nbsp; Seminar 03: Criteriul de decizie Maximum Likelihood</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,25 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-}
-.hanging div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}
 </style>
 
 
@@ -49,8 +30,8 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./01_01_VariabileAleatoare.html" rel="next">
-<link href="./index.html" rel="prev">
+<link href="./Ex_Seminar04.html" rel="next">
+<link href="./03_01_Estimare.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -80,6 +61,7 @@ div.csl-indent {
   }
 }</script>
 
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
@@ -89,7 +71,7 @@ div.csl-indent {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Introducere</h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Seminar 03: Criteriul de decizie Maximum Likelihood</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -119,7 +101,7 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01_Intro.html" class="sidebar-item-text sidebar-link active">Introducere</a>
+  <a href="./01_Intro.html" class="sidebar-item-text sidebar-link">Introducere</a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -197,7 +179,7 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Ex_Seminar03.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Seminar 03: Criteriul de decizie Maximum Likelihood</span></a>
+  <a href="./Ex_Seminar03.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Seminar 03: Criteriul de decizie Maximum Likelihood</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -242,14 +224,27 @@ div.csl-indent {
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#exercițiul-1" id="toc-exercițiul-1" class="nav-link active" data-scroll-target="#exercițiul-1"><span class="toc-section-number">8.1</span>  Exercițiul 1</a>
+  <ul class="collapse">
+  <li><a href="#rezolvare" id="toc-rezolvare" class="nav-link" data-scroll-target="#rezolvare">Rezolvare</a></li>
+  </ul></li>
+  <li><a href="#exercițiul-2" id="toc-exercițiul-2" class="nav-link" data-scroll-target="#exercițiul-2"><span class="toc-section-number">8.2</span>  Exercițiul 2</a>
+  <ul class="collapse">
+  <li><a href="#rezolvare-1" id="toc-rezolvare-1" class="nav-link" data-scroll-target="#rezolvare-1">Rezolvare</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Introducere</h1>
+<h1 class="title d-none d-lg-block"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Seminar 03: Criteriul de decizie Maximum Likelihood</span></h1>
 </div>
 
 
@@ -263,15 +258,69 @@ div.csl-indent {
 
 </header>
 
-<p>This is a book created from markdown and executable code.</p>
-<p>See <span class="citation" data-cites="knuth84">Knuth (<a href="references.html#ref-knuth84" role="doc-biblioref">1984</a>)</span> for additional discussion of literate programming.</p>
+<div class="hidden">
+<p><span class="math display">\[
+\newcommand{\grtlessH}{\underset{{H_0}}{\overset{H_{1}}{\gtrless}}}
+\renewcommand{\vec}[1]{\mathbf{#1}}
+\]</span></p>
+</div>
+<section id="exercițiul-1" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="exercițiul-1"><span class="header-section-number">8.1</span> Exercițiul 1</h2>
+<p>Fie detecția între două semnale constante, <span class="math inline">\(s_0(t) = -1\)</span> și <span class="math inline">\(s_1(t) = 4\)</span>. Semnalele sunt afectate de zgomot alb cu distribuția <span class="math inline">\(\mathcal{N}\;(\mu=0, \sigma^2=4)\)</span>. Receptorul ia un singur eșantion la momentul <span class="math inline">\(t_0 = 0.75\)</span>, și valoarea obținută este <span class="math inline">\(r = 1.8\)</span>.</p>
+<ul>
+<li>a). Scrieți expresiile celor două distribuții condiționate și reprezentați-le</li>
+<li>b). Ce decizie se ia cu criteriul Maximum Likelihood?</li>
+</ul>
+<section id="rezolvare" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="rezolvare">Rezolvare</h3>
+<p>a). Dacă suntem în situația <span class="math inline">\(H_0\)</span>, atunci eșantionul va fi <span class="math inline">\(r = -1 + zgomot\)</span>, ceea ce înseamnă ce distribuția lui <span class="math inline">\(r\)</span> în cazul <span class="math inline">\(H_0\)</span> este distribuția zgomotului dar centrată în <span class="math inline">\(-1\)</span>, adică <span class="math inline">\(\mathcal{N}(\mu=-1, \sigma^2=4)\)</span>.</p>
+<p>În ipoteza <span class="math inline">\(H_1\)</span>, eșantionul va fi <span class="math inline">\(r = 4 + zgomot\)</span>,, așadar distribuția sa va fi <span class="math inline">\(\mathcal{N}(\mu=4, \sigma^2=4)\)</span>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./Seminar03_01.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p></p><figcaption class="figure-caption">Distribuții condiționate</figcaption><p></p>
+</figure>
+</div>
+<p>Cunoscând expresia generală a unei distribuții normale: <span class="math display">\[w(x) = \frac{1}{\sigma \sqrt{2 \pi}} e^{-\frac{(x-\mu)^2}{2 \sigma^2}}\]</span> putem scrie așadar expresiile celor două distribuții condiționate: <span class="math display">\[w(r|H_0) = \frac{1}{2 \sqrt{2 \pi}} e^{-\frac{(r+1)^2}{8}}\]</span> <span class="math display">\[w(r|H_1) = \frac{1}{2 \sqrt{2 \pi}} e^{-\frac{(r-4)^2}{8}}\]</span></p>
+<p>b). Confirm criteriului Maximum Likelihood, decizia luată pentru un eșantion de valoare <span class="math inline">\(r = 1.8\)</span> este dată de distribuția care are valoarea mai mare în dreptul acestui punct <span class="math inline">\(r = 1.8\)</span>.</p>
+<p>Din figură, se observă că <span class="math inline">\(r=1.8\)</span> se află la dreapta punctului de intersecție dintre cele două distribuții, situat la mijlocul distanței dintre <span class="math inline">\(-1\)</span> și <span class="math inline">\(4\)</span>, adică <span class="math inline">\(1.5\)</span>. Așadar pentru <span class="math inline">\(r = 1.8\)</span> mai înaltă este distribuția <span class="math inline">\(w(r|H_1)\)</span>, deci decizia este <span class="math inline">\(D_1\)</span>: <span class="math display">\[w(r|H_1) &gt; w(r|H_0)\Biggr|_{\substack{r=1.8}}  \Rightarrow D_1\]</span></p>
+</section>
+</section>
+<section id="exercițiul-2" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="exercițiul-2"><span class="header-section-number">8.2</span> Exercițiul 2</h2>
+<p>Fie detecția între două semnale, <span class="math inline">\(s_0(t) = \cos(2 \pi t)\)</span> și <span class="math inline">\(s_1(t) = \sin(2 \pi t)\)</span>.</p>
+<p>Semnalele sunt afectate de zgomot alb cu distribuția <span class="math inline">\(\mathcal{N}(\mu=0, \sigma^2=2)\)</span>.</p>
+<p>Receptorul ia un singur eșantion la momentul <span class="math inline">\(t_0 = 0.75\)</span>, și valoarea obținută este <span class="math inline">\(r(t_0) = 3.5\)</span>.</p>
+<p>Cerințe:</p>
+<ul>
+<li>a). Reprezentați grafic cele două distribuții condiționate și scrieți-le expresia matematică</li>
+<li>b). Ce decizie se ia conform criteriului Maximum Likelihood?</li>
+<li>c). Găsiți regiunile de decizie</li>
+<li>d). Calculați probabilitățile condiționate ale celor 4 scenarii (rejecție corectă, alarmă falsă, pierdere, detecție corectă)</li>
+<li>e). Care ar fi cel mai bun moment <span class="math inline">\(t_0\)</span> de eșantionare, pentru a decide între semnale? Justificați</li>
+<li>f). Care ar fi cel mai rău moment <span class="math inline">\(t_0\)</span> de eșantionare, pentru a decide între semnale? Justificați</li>
+<li>g). Repetați a) și b) dacă zgomotul are distribuție uniformă <span class="math inline">\(\mathcal{U}[-4,4]\)</span>. Există valori pentru care nu se poate lua o decizie?</li>
+<li>h). Care este varianța maximă a unui zgomot uniform, cu media 0, pentru care se poate lua o decizie cu criteriul ML pentru <span class="math inline">\(r = 3.5\)</span>?</li>
+</ul>
+<section id="rezolvare-1" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="rezolvare-1">Rezolvare</h3>
+<p>La momentul <span class="math inline">\(t_0 = 0.75\)</span>, semnalele originale au valoarea sunt <span class="math inline">\(s_0(t_0) = \cos(2 \pi 0.75) = 0\)</span> și <span class="math inline">\(s_1(t_0) = \sin(2 \pi 0.75) = -1\)</span>. Prin urmare, în cazul <span class="math inline">\(H_0\)</span> eșantionul va urma o distribuție normală în jurul lui <span class="math inline">\(0\)</span>, iar în cazul <span class="math inline">\(H_1\)</span> o distribuție normală în jurul lui <span class="math inline">\(-1\)</span>: <span class="math display">\[H_0: \mathcal{N}(\mu=0, \sigma^2=2)\]</span> <span class="math display">\[H_1: \mathcal{N}(\mu=-1, \sigma^2=2)\]</span>.</p>
+<p>Expresiile și reprezentarea grafică a acestor distribuții sunt: <span class="math display">\[w(r|H_0) = \frac{1}{\sqrt{4 \pi}} e^{-\frac{r^2}{4}}\]</span> <span class="math display">\[w(r|H_1) = \frac{1}{\sqrt{4 \pi}} e^{-\frac{(r+1)^2}{4}}\]</span></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./Seminar03_02.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p></p><figcaption class="figure-caption">Distribuții condiționate</figcaption><p></p>
+</figure>
+</div>
+<p>Se observă că distribuția din stânga este acum <span class="math inline">\(w(r|H_1)\)</span>, iar cea din dreapta <span class="math inline">\(w(r|H_0)\)</span>.</p>
+<p>b). Conform criteriului Maximum Likelihood, pentru <span class="math inline">\(r = 3.5\)</span> decizia este corespunzătoare distribuției mai înalte în acel punct, adică <span class="math inline">\(D_0\)</span>.</p>
+<p>c). Regiunea de decizie <span class="math inline">\(R_0\)</span> cuprinde valorile <span class="math inline">\(r\)</span> pentru care se ia decizia <span class="math inline">\(D_0\)</span>, adică intervalul în care funcția <span class="math inline">\(w(r|H_0)\)</span> este mai înaltă decât <span class="math inline">\(w(r|H_1)\)</span>: <span class="math display">\[R_0 = (-0.5, \infty)\]</span></p>
+<p>Regiunea de decizie <span class="math inline">\(R_1\)</span> cuprinde valorile <span class="math inline">\(r\)</span> pentru care se ia decizia <span class="math inline">\(D_1\)</span>, adică intervalul în care funcția <span class="math inline">\(w(r|H_1)\)</span> este mai înaltă: <span class="math display">\[R_1 = (-\infty, 0.5-)\]</span></p>
+<p>d).</p>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography" style="display: none">
-<div id="ref-knuth84" class="csl-entry" role="doc-biblioentry">
-Knuth, Donald E. 1984. <span>“Literate Programming.”</span> <em>Comput. J.</em> 27 (2): 97–111. <a href="https://doi.org/10.1093/comjnl/27.2.97">https://doi.org/10.1093/comjnl/27.2.97</a>.
-</div>
-</div>
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -374,13 +423,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./index.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Prefață</span>
+      <a href="./03_01_Estimare.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Elemente de teoria estimării</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./01_01_VariabileAleatoare.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Variabile aleatoare</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./Ex_Seminar04.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Seminar 04: Decizii, decizii</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
