@@ -225,10 +225,12 @@ $$R_0 = (-3, 3),\quad R_1 = (3, 8)$$
 
 b). Probabilitatea necondiționată de pierdere este dată de:
 $$P_p = P(H_1) \cdot P(D_0|H_1) = P(H_1) \cdot \int_{R_0} w(r|H_1) dr$$
-Va trebui integrată funcția $w(r|H_1)$ pe intervalul $R_0$, după
+Integrala se calculează asupra funcției $w(r|H_1)$ pe intervalul $R_0$, după
 cum se vede în figura de mai jos.
 
-![Probabilitatea de pierdere](img/Sem4_Airbag_Uniform_Pp.png){width=75%}
+![Probabilitatea (condiționată) de pierdere](img/Sem4_Airbag_Uniform_Pp.png){width=75%}
+
+În funcție de regiunea de decizie $R_0$ obținută anterior pentru fiecare criteriu, avem:
 
 Penru criteriul ML, $P_p = \frac{1}{3} \cdot \int_{-3}^{2} 0 dr = 0$.
 
