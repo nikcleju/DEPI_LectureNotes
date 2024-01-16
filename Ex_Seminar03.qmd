@@ -26,7 +26,7 @@ zgomotului dar centrată în $-1$, adică $\mathcal{N}(\mu=-1, \sigma^2=4)$.
 În ipoteza $H_1$, eșantionul va fi $r = 4 + zgomot$,, așadar distribuția sa
 va fi $\mathcal{N}(\mu=4, \sigma^2=4)$.
 
-![Distribuții condiționate](./Seminar03_01.png){width=100%}
+![Distribuții condiționate](./img/Sem3_01.png){width=75%}
 
 Cunoscând expresia generală a unei distribuții normale:
 $$w(x) = \frac{1}{\sigma \sqrt{2 \pi}} e^{-\frac{(x-\mu)^2}{2 \sigma^2}}$$
@@ -74,7 +74,7 @@ Expresiile și reprezentarea grafică a acestor distribuții sunt prezentate mai
 $$w(r|H_0) = \frac{1}{\sqrt{4 \pi}} e^{-\frac{r^2}{4}}$$
 $$w(r|H_1) = \frac{1}{\sqrt{4 \pi}} e^{-\frac{(r+1)^2}{4}}$$
 
-![Distribuții condiționate](./Seminar03_02.png){width=100%}
+![Distribuții condiționate](img/Sem3_02_1.png){width=75%}
 
 Se observă că distribuția din stânga este acum $w(r|H_1)$, iar cea din dreapta $w(r|H_0)$.
 
@@ -89,7 +89,10 @@ adică intervalul în care funcția $w(r|H_1)$ este mai înaltă:
 $$R_1 = (-\infty, 0.5-)$$
 
 d). Cele patru probabilități corespund celor patru zone
-reprezentate în figura de mai jos.
+reprezentate în figura de mai jos. Fiecare distribuție dă naștere
+la două probabilități, integrând pe cele două regiuni de decizie.
+
+![Probabilități condiționate](img/Sem3_02_2.png){width=100%}
 
 Cele patru arii reprezintă integrale din niște funcții de distribuție
 normale, care se pot calcula cu funcția de repartiție $F(x)$. Așadar:
@@ -114,15 +117,28 @@ P_{dc} &= P(D_1|H_1) = \int_{R_1} w(r|H_1) dr \\
 &= \frac{1}{2}\left(1 + erf  \left(\frac{-0.5 + 1}{\sqrt{2}\sqrt{2}}\right)\right) = 0.638
 \end{aligned}$$
 
-e). Cel mai bun moment de eșantionare, în vederea deciziei, este acela în care semnalele originale sunt cît mai diferite între ele. În cazul nostru, semnalele sinus și cosinus sunt reprezentate în figura următoare.
+e). Cel mai bun moment de eșantionare, în vederea deciziei, este acela în care semnalele originale sunt cît mai diferite între ele. În cazul nostru, semnalele
+$s_0(t)$ și $s_1(t)$, sinus și cosinus, sunt reprezentate în figura următoare.
 
-Diferența maximă între semnale se obține pentru $t= ...$
+![Semnalele $s_0(t)$ și $s_1(t)$](img/Sem3_02_3.png){width=50%}
 
-f). Cel mai rău moment de eșantionare în vederea deciziei este acela în care semnalele originale sunt cît mai apropiate între ele. În cazul nostru, semnalele au aceeași valoare la momentele de timp $t=...$, prin urmare acestea sunt cele mai nepotrivite moment de eșantionare.
+Frecvența semnalelor este $f=1$, deci perioada acestora este $T = 1/f = 1$.
+
+Diferența maximă între semnale se obține în dreptul valorilor $t = 0.375$
+și $t = 0.875$, deci acestea sunt cele mai bune momente de eșantionare.
+
+f). Cel mai rău moment de eșantionare în vederea deciziei este acela în care semnalele originale sunt cît mai apropiate între ele. În cazul nostru, semnalele au aceeași valoare la momentele de timp $t = 0.125$ și $t = 0.625$, prin urmare acestea sunt cele mai nepotrivite moment de eșantionare.
 
 g). Dacă zgomotul are distribuție uniformă $\mathcal{U}[-4,4]$, atunci distribuțiile condiționate sunt cele de mai jos.
 
-Se observă suprapunerea lor pe intervalul $[-4,3]$, ceea ce înseamnă că pentru toate valorile din acest interval nu se poate lua o decizie cu criteriul Maximum Likelihood (indecizie)
+![Distribuții condiționate](img/Sem3_02_4.png){width=75%}
+
+$$w(r|H_0) = \mathcal{U}[-4,4]$$
+$$w(r|H_1) = \mathcal{U}[-5,3]$$
+
+Se observă suprapunerea lor pe intervalul $[-4,3]$, ceea ce înseamnă că pentru toate valorile din acest interval nu se poate lua o decizie cu criteriul Maximum Likelihood (indecizie).
+
+Pentru valoarea $r = 3.5$, decizia este $D_0$, deoarece distribuția $w(r|H_0)$ este mai înaltă în acel punct.
 
 h). În condițiile de la punctul g), pentru $r = 3.5$ decizia luată cu
 criteriul ML este $D_0$. Întrebarea este: dacă creștem varianța zgomotului
