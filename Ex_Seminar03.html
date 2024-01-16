@@ -288,7 +288,7 @@ ul.task-list li input[type="checkbox"] {
 <p>În ipoteza <span class="math inline">\(H_1\)</span>, eșantionul va fi <span class="math inline">\(r = 4 + zgomot\)</span>,, așadar distribuția sa va fi <span class="math inline">\(\mathcal{N}(\mu=4, \sigma^2=4)\)</span>.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="./Seminar03_01.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p><img src="./img/Sem3_01.png" class="img-fluid figure-img" style="width:75.0%"></p>
 <p></p><figcaption class="figure-caption">Distribuții condiționate</figcaption><p></p>
 </figure>
 </div>
@@ -319,7 +319,7 @@ ul.task-list li input[type="checkbox"] {
 <p>Expresiile și reprezentarea grafică a acestor distribuții sunt prezentate mai jos: <span class="math display">\[w(r|H_0) = \frac{1}{\sqrt{4 \pi}} e^{-\frac{r^2}{4}}\]</span> <span class="math display">\[w(r|H_1) = \frac{1}{\sqrt{4 \pi}} e^{-\frac{(r+1)^2}{4}}\]</span></p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="./Seminar03_02.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p><img src="img/Sem3_02_1.png" class="img-fluid figure-img" style="width:75.0%"></p>
 <p></p><figcaption class="figure-caption">Distribuții condiționate</figcaption><p></p>
 </figure>
 </div>
@@ -327,7 +327,13 @@ ul.task-list li input[type="checkbox"] {
 <p>b). Conform criteriului Maximum Likelihood, pentru <span class="math inline">\(r = 3.5\)</span> decizia este corespunzătoare distribuției mai înalte în acel punct, adică <span class="math inline">\(D_0\)</span>.</p>
 <p>c). Regiunea de decizie <span class="math inline">\(R_0\)</span> cuprinde valorile <span class="math inline">\(r\)</span> pentru care se ia decizia <span class="math inline">\(D_0\)</span>, adică intervalul în care funcția <span class="math inline">\(w(r|H_0)\)</span> este mai înaltă decât <span class="math inline">\(w(r|H_1)\)</span>: <span class="math display">\[R_0 = (-0.5, \infty)\]</span></p>
 <p>Regiunea de decizie <span class="math inline">\(R_1\)</span> cuprinde valorile <span class="math inline">\(r\)</span> pentru care se ia decizia <span class="math inline">\(D_1\)</span>, adică intervalul în care funcția <span class="math inline">\(w(r|H_1)\)</span> este mai înaltă: <span class="math display">\[R_1 = (-\infty, 0.5-)\]</span></p>
-<p>d). Cele patru probabilități corespund celor patru zone reprezentate în figura de mai jos.</p>
+<p>d). Cele patru probabilități corespund celor patru zone reprezentate în figura de mai jos. Fiecare distribuție dă naștere la două probabilități, integrând pe cele două regiuni de decizie.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/Sem3_02_2.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p></p><figcaption class="figure-caption">Probabilități condiționate</figcaption><p></p>
+</figure>
+</div>
 <p>Cele patru arii reprezintă integrale din niște funcții de distribuție normale, care se pot calcula cu funcția de repartiție <span class="math inline">\(F(x)\)</span>. Așadar: <span class="math display">\[\begin{aligned}
 P_{rc} &amp;= P(D_0|H_0) = \int_{R_0} w(r|H_0) dr \\
 &amp;= F_{H_0}(\infty) - F_{H_0}(-0.5) \\
@@ -345,11 +351,26 @@ P_{dc} &amp;= P(D_1|H_1) = \int_{R_1} w(r|H_1) dr \\
 &amp;= F_{H_1}(-0.5) - F_{H_1}(-\infty) \\
 &amp;= \frac{1}{2}\left(1 + erf  \left(\frac{-0.5 + 1}{\sqrt{2}\sqrt{2}}\right)\right) = 0.638
 \end{aligned}\]</span></p>
-<p>e). Cel mai bun moment de eșantionare, în vederea deciziei, este acela în care semnalele originale sunt cît mai diferite între ele. În cazul nostru, semnalele sinus și cosinus sunt reprezentate în figura următoare.</p>
-<p>Diferența maximă între semnale se obține pentru <span class="math inline">\(t= ...\)</span></p>
-<p>f). Cel mai rău moment de eșantionare în vederea deciziei este acela în care semnalele originale sunt cît mai apropiate între ele. În cazul nostru, semnalele au aceeași valoare la momentele de timp <span class="math inline">\(t=...\)</span>, prin urmare acestea sunt cele mai nepotrivite moment de eșantionare.</p>
+<p>e). Cel mai bun moment de eșantionare, în vederea deciziei, este acela în care semnalele originale sunt cît mai diferite între ele. În cazul nostru, semnalele <span class="math inline">\(s_0(t)\)</span> și <span class="math inline">\(s_1(t)\)</span>, sinus și cosinus, sunt reprezentate în figura următoare.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/Sem3_02_3.png" class="img-fluid figure-img" style="width:50.0%"></p>
+<p></p><figcaption class="figure-caption">Semnalele <span class="math inline">\(s_0(t)\)</span> și <span class="math inline">\(s_1(t)\)</span></figcaption><p></p>
+</figure>
+</div>
+<p>Frecvența semnalelor este <span class="math inline">\(f=1\)</span>, deci perioada acestora este <span class="math inline">\(T = 1/f = 1\)</span>.</p>
+<p>Diferența maximă între semnale se obține în dreptul valorilor <span class="math inline">\(t = 0.375\)</span> și <span class="math inline">\(t = 0.875\)</span>, deci acestea sunt cele mai bune momente de eșantionare.</p>
+<p>f). Cel mai rău moment de eșantionare în vederea deciziei este acela în care semnalele originale sunt cît mai apropiate între ele. În cazul nostru, semnalele au aceeași valoare la momentele de timp <span class="math inline">\(t = 0.125\)</span> și <span class="math inline">\(t = 0.625\)</span>, prin urmare acestea sunt cele mai nepotrivite moment de eșantionare.</p>
 <p>g). Dacă zgomotul are distribuție uniformă <span class="math inline">\(\mathcal{U}[-4,4]\)</span>, atunci distribuțiile condiționate sunt cele de mai jos.</p>
-<p>Se observă suprapunerea lor pe intervalul <span class="math inline">\([-4,3]\)</span>, ceea ce înseamnă că pentru toate valorile din acest interval nu se poate lua o decizie cu criteriul Maximum Likelihood (indecizie)</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/Sem3_02_4.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<p></p><figcaption class="figure-caption">Distribuții condiționate</figcaption><p></p>
+</figure>
+</div>
+<p><span class="math display">\[w(r|H_0) = \mathcal{U}[-4,4]\]</span> <span class="math display">\[w(r|H_1) = \mathcal{U}[-5,3]\]</span></p>
+<p>Se observă suprapunerea lor pe intervalul <span class="math inline">\([-4,3]\)</span>, ceea ce înseamnă că pentru toate valorile din acest interval nu se poate lua o decizie cu criteriul Maximum Likelihood (indecizie).</p>
+<p>Pentru valoarea <span class="math inline">\(r = 3.5\)</span>, decizia este <span class="math inline">\(D_0\)</span>, deoarece distribuția <span class="math inline">\(w(r|H_0)\)</span> este mai înaltă în acel punct.</p>
 <p>h). În condițiile de la punctul g), pentru <span class="math inline">\(r = 3.5\)</span> decizia luată cu criteriul ML este <span class="math inline">\(D_0\)</span>. Întrebarea este: dacă creștem varianța zgomotului (distribuțiile devin mai late), la ce moment nu mai putem lua o decizie?</p>
 <p>Ajungem la indecizie atunci când ambele distribuții devin egale în punctul <span class="math inline">\(r = 3.5\)</span>, adică atunci când distribuția <span class="math inline">\(w(r|H_1\)</span> se va întinde până la <span class="math inline">\(r = 3.5\)</span>, așadar va fi o disribuție uniformă <span class="math inline">\(\mathcal{U}[-5.5,3.5]\)</span>, centrată pe pucntul <span class="math inline">\(-1\)</span> și de lățime totala egală cu <span class="math inline">\(9\)</span>.</p>
 <p>Trebuie să calculăm varianța acestei distribuții (care este egală cu varianța zgomotului) pentru acest caz limită. Pentru varianță contează doar lățimea distribuției, nu și centrul ei, așadar putem considera distribuția centrată pe <span class="math inline">\(0\)</span> și de lățime <span class="math inline">\(9\)</span>, <span class="math inline">\(\mathcal{U}[-4.5,4.5]\)</span>. Avem: <span class="math display">\[\sigma^2 = \int_{-4.5}^{4.5} (x - 0)^2 \frac{1}{9} dx =
