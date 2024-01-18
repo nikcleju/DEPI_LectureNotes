@@ -9,7 +9,7 @@ având distribuția unui eșantion egală cu:
 
 - a). $w_1(x) = \mathcal{U}[a,b]$ pentru niște valori $a, b \in \mathbb{R}$;
 
-- b). $w_1(x) = \begin{cases}
+- b). $w_2(x) = \begin{cases}
 		\frac{1}{2} - \frac{1}{8} x, &x \in [0,4] \\
 		0, &în  \;\; rest
 		\end{cases}$
@@ -26,11 +26,13 @@ $$\begin{aligned}
 &= \overline{X^2} - \mu^2
 \end{aligned}$$
 
-a). Pentru $w_1(x) = \mathcal{U}[a,b]$ avem:
+a). Pentru $w_1(x) = \mathcal{U}[a,b]$ , reprezentată mai jos, vem:
+
+![Distribuția uniformă U[a,b]](img/Sem2_01_1.png){width=75%}
 
 Media:
 $$\begin{aligned}
-\overline{X} &= \int_{-\infty}^{\infty} x \cdot w(x) dx \\
+\mu = \overline{X} &= \int_{-\infty}^{\infty} x \cdot w(x) dx \\
 &= \int_{a}^{b} x \frac{1}{b-a} dx \\
 &= \frac{1}{b-a} \cdot \frac{x^2}{2} \Biggr|_{a}^{b} \\
 &= \frac{1}{b-a} \cdot \frac{b^2 - a^2}{2} \\
@@ -66,6 +68,12 @@ $$\begin{aligned}
 \end{aligned}$$
 
 b). Graficul funcției $w_2(x)$ este reprezentat mai jos.
+$$w_2(x) = \begin{cases}
+		\frac{1}{2} - \frac{1}{8} x, &x \in [0,4] \\
+		0, &în  \;\; rest
+		\end{cases}$$
+
+![Distribuția $w_2(x)$](img/Sem2_01_2.png){width=75%}
 
 Integrala sa reprezintă aria unui triunghi dreptunghic cu catetele $4$ și $\frac{1}{2}$, deci:
 $$\int_{-\infty}^{\infty} w_2(x) dx = \frac{4 \cdot \frac{1}{2}}{2} = 1$$
@@ -141,7 +149,7 @@ $$r_{ff}[-9] = r_{ff}[9] = -2$$
 ## Exercițiul 3
 
 Calculați valoarea medie temporală, valoarea pătratică medie temporală, varianța temporală și funcția de autocorelație temporală pentru
-următorul semnal deterministic:
+următorul semnal deterministic, considerat pe durata unei singure perioade $T=\frac{1}{f}$:
 
 $$ s(t) = cos(2 \pi f t)$$
 
@@ -150,4 +158,31 @@ $$ s(t) = cos(2 \pi f t)$$
 
 ### Rezolvare {.unnumbered}
 
-TODO
+Semnalul $s(t)$ este reprezentat mai jos.
+
+Pentru semnale continue, valoarea medie temporală reprezintă componenta
+de curent continuu a semnalului.
+Din figură se poate deduce că aceasta este $0$, prin urmare:
+$$\overline{s(t)} = 0$$
+
+Valoarea medie pătratică temporală (media semnalului ridicat la pătrat)
+reprezintă "tensiunea efectivă" a semnalului (la pătrat), și se definește astfel:
+$$\overline{s^2(t)} = \frac{1}{T} \int_{0}^{T} s^2(t) dt$$
+
+Folosind formula trigonometrică
+$$cos^2(x) = \frac{1 + cos(2x)}{2}$$
+avem:
+$$\begin{aligned}
+\overline{s^2(t)} &= \frac{1}{T} \int_{0}^{T} s^2(t) \\
+&= \frac{1}{T} \int_{0}^{T} \cos^2(2 \pi f t) dt \\
+&= \frac{1}{T} \int_{0}^{T} \frac{1 + \cos(4 \pi f t)}{2} dt \\
+&= \frac{1}{T} \int_{0}^{T} \frac{1}{2} dt + \frac{1}{T} \int_{0}^{T} \frac{\cos(4 \pi f t)}{2} dt \\
+&= \frac{1}{2} + \frac{1}{2T} \cdot \frac{\sin(4 \pi f t)}{4 \pi f} \Biggr|_{0}^{T} \\
+&= \frac{1}{2}\\
+\end{aligned}$$
+
+Această valoare se putea obține și folosindu-ne de faptul cunoscut că tensiunea efectivă
+a unui semnal sinusoidal de amplitudine $A$ este egală
+cu $\frac{A}{\sqrt{2}}$. Pentru $A=1$, pătratul valorii efective este $\frac{1}{2}$.
+
+TODO restul
