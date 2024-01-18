@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.269">
+<meta name="generator" content="quarto-1.3.450">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -17,7 +17,7 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
 </style>
@@ -57,10 +57,12 @@ ul.task-list li input[type="checkbox"] {
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
@@ -69,11 +71,16 @@ ul.task-list li input[type="checkbox"] {
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-    <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Seminar 02: Medii statistice și temporale</span></h1>
-      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
-        <i class="bi bi-chevron-right"></i>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Ex_Seminar01.html">Exerciții seminar</a></li><li class="breadcrumb-item"><a href="./Ex_Seminar02.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Seminar 02: Medii statistice și temporale</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
       </button>
     </div>
   </nav>
@@ -81,172 +88,195 @@ ul.task-list li input[type="checkbox"] {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Decizie și estimare în prelucrarea informației (DEPI)</a> 
     </div>
       </div>
-      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
         </div>
-      </div>
+        </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">Prefață</a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Prefață</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01_Intro.html" class="sidebar-item-text sidebar-link">Introducere</a>
+  <a href="./01_Intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introducere</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Semnale Aleatoare</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Semnale Aleatoare</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01_01_VariabileAleatoare.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Variabile aleatoare</span></a>
+  <a href="./01_01_VariabileAleatoare.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Variabile aleatoare</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01_02_ProceseAleatoare.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Procese aleatoare</span></a>
+  <a href="./01_02_ProceseAleatoare.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Procese aleatoare</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01_03_Autocorelatia.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Proprietăți ale autocorelației</span></a>
+  <a href="./01_03_Autocorelatia.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Proprietăți ale autocorelației</span></span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">Decizie</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">Decizie</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./02_01_Detectia1Esantion.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Decizie cu un singur eșantion</span></a>
+  <a href="./02_01_Detectia1Esantion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Decizie cu un singur eșantion</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./02_02_DetectiaMaiMulteEsantioane.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Decizie cu mai multe eșantioane</span></a>
+  <a href="./02_02_DetectiaMaiMulteEsantioane.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Decizie cu mai multe eșantioane</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./02_03_AlgoritmiPractici.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Algoritmi practici</span></a>
+  <a href="./02_03_AlgoritmiPractici.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Algoritmi practici</span></span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">Estimare</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">Estimare</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./03_01_Estimare.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Elemente de teoria estimării</span></a>
+  <a href="./03_01_Estimare.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Elemente de teoria estimării</span></span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">Exerciții seminar</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+ <span class="menu-text">Exerciții seminar</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Ex_Seminar01.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Seminar 01: Variabile aleatoare și probabilități</span></a>
+  <a href="./Ex_Seminar01.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Seminar 01: Variabile aleatoare și probabilități</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Ex_Seminar02.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Seminar 02: Medii statistice și temporale</span></a>
+  <a href="./Ex_Seminar02.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Seminar 02: Medii statistice și temporale</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Ex_Seminar03.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Seminar 03: Criteriul de decizie Maximum Likelihood</span></a>
+  <a href="./Ex_Seminar03.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Seminar 03: Criteriul de decizie Maximum Likelihood</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Ex_Seminar04.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Seminar 04: Decizii, decizii</span></a>
+  <a href="./Ex_Seminar04.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Seminar 04: Decizii, decizii</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Ex_Seminar05.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Seminar 05: Decizii cu mai multe eșantioane</span></a>
+  <a href="./Ex_Seminar05.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Seminar 05: Decizii cu mai multe eșantioane</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Ex_Seminar06.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Seminar 06: K-NN, K-Means, estimare ML</span></a>
+  <a href="./Ex_Seminar06.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Seminar 06: K-NN, K-Means, estimare ML</span></span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">Aplicații practice</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+ <span class="menu-text">Aplicații practice</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./App01_OutlierDetection.html" class="sidebar-item-text sidebar-link">Outlier Detection with the 3-sigma Rule</a>
+  <a href="./App01_OutlierDetection.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Outlier Detection with the 3-sigma Rule</span></span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link">References</a>
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
   </div>
 </li>
     </ul>
     </div>
 </nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#exercițiul-1" id="toc-exercițiul-1" class="nav-link active" data-scroll-target="#exercițiul-1"><span class="toc-section-number">9.1</span>  Exercițiul 1</a>
+  <li><a href="#exercițiul-1" id="toc-exercițiul-1" class="nav-link active" data-scroll-target="#exercițiul-1"><span class="header-section-number">9.1</span> Exercițiul 1</a>
   <ul class="collapse">
   <li><a href="#rezolvare" id="toc-rezolvare" class="nav-link" data-scroll-target="#rezolvare">Rezolvare</a></li>
   </ul></li>
-  <li><a href="#exercițiul-2" id="toc-exercițiul-2" class="nav-link" data-scroll-target="#exercițiul-2"><span class="toc-section-number">9.2</span>  Exercițiul 2</a>
+  <li><a href="#exercițiul-2" id="toc-exercițiul-2" class="nav-link" data-scroll-target="#exercițiul-2"><span class="header-section-number">9.2</span> Exercițiul 2</a>
   <ul class="collapse">
   <li><a href="#rezolvare-1" id="toc-rezolvare-1" class="nav-link" data-scroll-target="#rezolvare-1">Rezolvare</a></li>
   </ul></li>
-  <li><a href="#exercițiul-3" id="toc-exercițiul-3" class="nav-link" data-scroll-target="#exercițiul-3"><span class="toc-section-number">9.3</span>  Exercițiul 3</a>
+  <li><a href="#exercițiul-3" id="toc-exercițiul-3" class="nav-link" data-scroll-target="#exercițiul-3"><span class="header-section-number">9.3</span> Exercițiul 3</a>
   <ul class="collapse">
   <li><a href="#rezolvare-2" id="toc-rezolvare-2" class="nav-link" data-scroll-target="#rezolvare-2">Rezolvare</a></li>
   </ul></li>
@@ -258,7 +288,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Seminar 02: Medii statistice și temporale</span></h1>
+<h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Seminar 02: Medii statistice și temporale</span></h1>
 </div>
 
 
@@ -278,7 +308,7 @@ ul.task-list li input[type="checkbox"] {
 <p>Calculați valoarea medie, valoarea pătratică medie și varianța unui proces aleator staționar având distribuția unui eșantion egală cu:</p>
 <ul>
 <li><p>a). <span class="math inline">\(w_1(x) = \mathcal{U}[a,b]\)</span> pentru niște valori <span class="math inline">\(a, b \in \mathbb{R}\)</span>;</p></li>
-<li><p>b). <span class="math inline">\(w_1(x) = \begin{cases}  \frac{1}{2} - \frac{1}{8} x, &amp;x \in [0,4] \\  0, &amp;în \;\; rest  \end{cases}\)</span></p>
+<li><p>b). <span class="math inline">\(w_2(x) = \begin{cases}  \frac{1}{2} - \frac{1}{8} x, &amp;x \in [0,4] \\  0, &amp;în \;\; rest  \end{cases}\)</span></p>
 <p>În acest caz, reprezentați și distribuția și verificați faptul că integrala sa este egală cu 1.</p></li>
 </ul>
 <section id="rezolvare" class="level3 unnumbered">
@@ -287,9 +317,15 @@ ul.task-list li input[type="checkbox"] {
 \sigma_X^2 &amp;= \int_{-\infty}^{\infty} (x - \mu)^2 w(x) dx\\
 &amp;= \overline{X^2} - \mu^2
 \end{aligned}\]</span></p>
-<p>a). Pentru <span class="math inline">\(w_1(x) = \mathcal{U}[a,b]\)</span> avem:</p>
+<p>a). Pentru <span class="math inline">\(w_1(x) = \mathcal{U}[a,b]\)</span> , reprezentată mai jos, vem:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/Sem2_01_1.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<figcaption class="figure-caption">Distribuția uniformă U[a,b]</figcaption>
+</figure>
+</div>
 <p>Media: <span class="math display">\[\begin{aligned}
-\overline{X} &amp;= \int_{-\infty}^{\infty} x \cdot w(x) dx \\
+\mu = \overline{X} &amp;= \int_{-\infty}^{\infty} x \cdot w(x) dx \\
 &amp;= \int_{a}^{b} x \frac{1}{b-a} dx \\
 &amp;= \frac{1}{b-a} \cdot \frac{x^2}{2} \Biggr|_{a}^{b} \\
 &amp;= \frac{1}{b-a} \cdot \frac{b^2 - a^2}{2} \\
@@ -317,7 +353,16 @@ ul.task-list li input[type="checkbox"] {
 &amp;= \frac{b^2 - 2ab + a^2}{12} \\
 &amp;= \frac{(b - a)^2}{12}
 \end{aligned}\]</span></p>
-<p>b). Graficul funcției <span class="math inline">\(w_2(x)\)</span> este reprezentat mai jos.</p>
+<p>b). Graficul funcției <span class="math inline">\(w_2(x)\)</span> este reprezentat mai jos. <span class="math display">\[w_2(x) = \begin{cases}
+        \frac{1}{2} - \frac{1}{8} x, &amp;x \in [0,4] \\
+        0, &amp;în  \;\; rest
+        \end{cases}\]</span></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/Sem2_01_2.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<figcaption class="figure-caption">Distribuția <span class="math inline">\(w_2(x)\)</span></figcaption>
+</figure>
+</div>
 <p>Integrala sa reprezintă aria unui triunghi dreptunghic cu catetele <span class="math inline">\(4\)</span> și <span class="math inline">\(\frac{1}{2}\)</span>, deci: <span class="math display">\[\int_{-\infty}^{\infty} w_2(x) dx = \frac{4 \cdot \frac{1}{2}}{2} = 1\]</span></p>
 <p>Media: <span class="math display">\[\begin{aligned}
 \overline{X} &amp;= \int_{-\infty}^{\infty} x \cdot w(x) dx \\
@@ -358,12 +403,24 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="exercițiul-3" class="level2" data-number="9.3">
 <h2 data-number="9.3" class="anchored" data-anchor-id="exercițiul-3"><span class="header-section-number">9.3</span> Exercițiul 3</h2>
-<p>Calculați valoarea medie temporală, valoarea pătratică medie temporală, varianța temporală și funcția de autocorelație temporală pentru următorul semnal deterministic:</p>
+<p>Calculați valoarea medie temporală, valoarea pătratică medie temporală, varianța temporală și funcția de autocorelație temporală pentru următorul semnal deterministic, considerat pe durata unei singure perioade <span class="math inline">\(T=\frac{1}{f}\)</span>:</p>
 <p><span class="math display">\[ s(t) = cos(2 \pi f t)\]</span></p>
 <p>(Sugestie: Considerați <span class="math inline">\(s(t)\)</span> ca fiind o realizare a unui proces aleator oarecare, și rezolvați ca la problema 2).</p>
 <section id="rezolvare-2" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="rezolvare-2">Rezolvare</h3>
-<p>TODO</p>
+<p>Semnalul <span class="math inline">\(s(t)\)</span> este reprezentat mai jos.</p>
+<p>Pentru semnale continue, valoarea medie temporală reprezintă componenta de curent continuu a semnalului. Din figură se poate deduce că aceasta este <span class="math inline">\(0\)</span>, prin urmare: <span class="math display">\[\overline{s(t)} = 0\]</span></p>
+<p>Valoarea medie pătratică temporală (media semnalului ridicat la pătrat) reprezintă “tensiunea efectivă” a semnalului (la pătrat), și se definește astfel: <span class="math display">\[\overline{s^2(t)} = \frac{1}{T} \int_{0}^{T} s^2(t) dt\]</span></p>
+<p>Folosind formula trigonometrică <span class="math display">\[cos^2(x) = \frac{1 + cos(2x)}{2}\]</span> avem: <span class="math display">\[\begin{aligned}
+\overline{s^2(t)} &amp;= \frac{1}{T} \int_{0}^{T} s^2(t) \\
+&amp;= \frac{1}{T} \int_{0}^{T} \cos^2(2 \pi f t) dt \\
+&amp;= \frac{1}{T} \int_{0}^{T} \frac{1 + \cos(4 \pi f t)}{2} dt \\
+&amp;= \frac{1}{T} \int_{0}^{T} \frac{1}{2} dt + \frac{1}{T} \int_{0}^{T} \frac{\cos(4 \pi f t)}{2} dt \\
+&amp;= \frac{1}{2} + \frac{1}{2T} \cdot \frac{\sin(4 \pi f t)}{4 \pi f} \Biggr|_{0}^{T} \\
+&amp;= \frac{1}{2}\\
+\end{aligned}\]</span></p>
+<p>Această valoare se putea obține și folosindu-ne de faptul cunoscut că tensiunea efectivă a unui semnal sinusoidal de amplitudine <span class="math inline">\(A\)</span> este egală cu <span class="math inline">\(\frac{A}{\sqrt{2}}\)</span>. Pentru <span class="math inline">\(A=1\)</span>, pătratul valorii efective este <span class="math inline">\(\frac{1}{2}\)</span>.</p>
+<p>TODO restul</p>
 
 
 </section>
@@ -397,9 +454,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -464,6 +535,92 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {

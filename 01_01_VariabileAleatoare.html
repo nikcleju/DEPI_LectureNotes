@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.269">
+<meta name="generator" content="quarto-1.3.450">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -17,9 +17,10 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -46,43 +47,13 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
-    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -120,10 +91,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
@@ -132,11 +105,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-    <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Variabile aleatoare</span></h1>
-      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
-        <i class="bi bi-chevron-right"></i>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01_01_VariabileAleatoare.html">Semnale Aleatoare</a></li><li class="breadcrumb-item"><a href="./01_01_VariabileAleatoare.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Variabile aleatoare</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
       </button>
     </div>
   </nav>
@@ -144,190 +122,213 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Decizie și estimare în prelucrarea informației (DEPI)</a> 
     </div>
       </div>
-      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
         </div>
-      </div>
+        </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">Prefață</a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Prefață</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01_Intro.html" class="sidebar-item-text sidebar-link">Introducere</a>
+  <a href="./01_Intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introducere</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Semnale Aleatoare</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Semnale Aleatoare</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01_01_VariabileAleatoare.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Variabile aleatoare</span></a>
+  <a href="./01_01_VariabileAleatoare.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Variabile aleatoare</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01_02_ProceseAleatoare.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Procese aleatoare</span></a>
+  <a href="./01_02_ProceseAleatoare.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Procese aleatoare</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01_03_Autocorelatia.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Proprietăți ale autocorelației</span></a>
+  <a href="./01_03_Autocorelatia.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Proprietăți ale autocorelației</span></span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">Decizie</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">Decizie</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./02_01_Detectia1Esantion.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Decizie cu un singur eșantion</span></a>
+  <a href="./02_01_Detectia1Esantion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Decizie cu un singur eșantion</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./02_02_DetectiaMaiMulteEsantioane.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Decizie cu mai multe eșantioane</span></a>
+  <a href="./02_02_DetectiaMaiMulteEsantioane.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Decizie cu mai multe eșantioane</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./02_03_AlgoritmiPractici.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Algoritmi practici</span></a>
+  <a href="./02_03_AlgoritmiPractici.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Algoritmi practici</span></span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">Estimare</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">Estimare</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./03_01_Estimare.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Elemente de teoria estimării</span></a>
+  <a href="./03_01_Estimare.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Elemente de teoria estimării</span></span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">Exerciții seminar</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+ <span class="menu-text">Exerciții seminar</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Ex_Seminar01.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Seminar 01: Variabile aleatoare și probabilități</span></a>
+  <a href="./Ex_Seminar01.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Seminar 01: Variabile aleatoare și probabilități</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Ex_Seminar02.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Seminar 02: Medii statistice și temporale</span></a>
+  <a href="./Ex_Seminar02.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Seminar 02: Medii statistice și temporale</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Ex_Seminar03.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Seminar 03: Criteriul de decizie Maximum Likelihood</span></a>
+  <a href="./Ex_Seminar03.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Seminar 03: Criteriul de decizie Maximum Likelihood</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Ex_Seminar04.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Seminar 04: Decizii, decizii</span></a>
+  <a href="./Ex_Seminar04.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Seminar 04: Decizii, decizii</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Ex_Seminar05.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Seminar 05: Decizii cu mai multe eșantioane</span></a>
+  <a href="./Ex_Seminar05.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Seminar 05: Decizii cu mai multe eșantioane</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Ex_Seminar06.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Seminar 06: K-NN, K-Means, estimare ML</span></a>
+  <a href="./Ex_Seminar06.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Seminar 06: K-NN, K-Means, estimare ML</span></span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">Aplicații practice</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+ <span class="menu-text">Aplicații practice</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./App01_OutlierDetection.html" class="sidebar-item-text sidebar-link">Outlier Detection with the 3-sigma Rule</a>
+  <a href="./App01_OutlierDetection.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Outlier Detection with the 3-sigma Rule</span></span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link">References</a>
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
   </div>
 </li>
     </ul>
     </div>
 </nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#definiții" id="toc-definiții" class="nav-link active" data-scroll-target="#definiții"><span class="toc-section-number">1.1</span>  Definiții</a></li>
-  <li><a href="#densitate-de-probabilitate" id="toc-densitate-de-probabilitate" class="nav-link" data-scroll-target="#densitate-de-probabilitate"><span class="toc-section-number">1.2</span>  Densitate de probabilitate</a>
+  <li><a href="#definiții" id="toc-definiții" class="nav-link active" data-scroll-target="#definiții"><span class="header-section-number">1.1</span> Definiții</a></li>
+  <li><a href="#densitate-de-probabilitate" id="toc-densitate-de-probabilitate" class="nav-link" data-scroll-target="#densitate-de-probabilitate"><span class="header-section-number">1.2</span> Densitate de probabilitate</a>
   <ul class="collapse">
-  <li><a href="#pentru-variabile-aleatoare-discrete" id="toc-pentru-variabile-aleatoare-discrete" class="nav-link" data-scroll-target="#pentru-variabile-aleatoare-discrete"><span class="toc-section-number">1.2.1</span>  Pentru variabile aleatoare discrete</a></li>
-  <li><a href="#pentru-variabile-aleatoare-continue" id="toc-pentru-variabile-aleatoare-continue" class="nav-link" data-scroll-target="#pentru-variabile-aleatoare-continue"><span class="toc-section-number">1.2.2</span>  Pentru variabile aleatoare continue</a></li>
-  <li><a href="#interpretarea-densității-de-probabilitate" id="toc-interpretarea-densității-de-probabilitate" class="nav-link" data-scroll-target="#interpretarea-densității-de-probabilitate"><span class="toc-section-number">1.2.3</span>  Interpretarea densității de probabilitate</a></li>
-  <li><a href="#proprietăți-ale-funcțiilor-de-repartiție-și-de-densitate" id="toc-proprietăți-ale-funcțiilor-de-repartiție-și-de-densitate" class="nav-link" data-scroll-target="#proprietăți-ale-funcțiilor-de-repartiție-și-de-densitate"><span class="toc-section-number">1.2.4</span>  Proprietăți ale funcțiilor de repartiție și de densitate</a></li>
+  <li><a href="#pentru-variabile-aleatoare-discrete" id="toc-pentru-variabile-aleatoare-discrete" class="nav-link" data-scroll-target="#pentru-variabile-aleatoare-discrete"><span class="header-section-number">1.2.1</span> Pentru variabile aleatoare discrete</a></li>
+  <li><a href="#pentru-variabile-aleatoare-continue" id="toc-pentru-variabile-aleatoare-continue" class="nav-link" data-scroll-target="#pentru-variabile-aleatoare-continue"><span class="header-section-number">1.2.2</span> Pentru variabile aleatoare continue</a></li>
+  <li><a href="#interpretarea-densității-de-probabilitate" id="toc-interpretarea-densității-de-probabilitate" class="nav-link" data-scroll-target="#interpretarea-densității-de-probabilitate"><span class="header-section-number">1.2.3</span> Interpretarea densității de probabilitate</a></li>
+  <li><a href="#proprietăți-ale-funcțiilor-de-repartiție-și-de-densitate" id="toc-proprietăți-ale-funcțiilor-de-repartiție-și-de-densitate" class="nav-link" data-scroll-target="#proprietăți-ale-funcțiilor-de-repartiție-și-de-densitate"><span class="header-section-number">1.2.4</span> Proprietăți ale funcțiilor de repartiție și de densitate</a></li>
   </ul></li>
-  <li><a href="#distribuția-normală" id="toc-distribuția-normală" class="nav-link" data-scroll-target="#distribuția-normală"><span class="toc-section-number">1.3</span>  Distribuția normală</a></li>
-  <li><a href="#distribuția-uniformă" id="toc-distribuția-uniformă" class="nav-link" data-scroll-target="#distribuția-uniformă"><span class="toc-section-number">1.4</span>  Distribuția uniformă</a></li>
-  <li><a href="#calculul-probabilității-pentru-distribuția-normală" id="toc-calculul-probabilității-pentru-distribuția-normală" class="nav-link" data-scroll-target="#calculul-probabilității-pentru-distribuția-normală"><span class="toc-section-number">1.5</span>  Calculul probabilității pentru distribuția normală</a></li>
-  <li><a href="#medii-statistice" id="toc-medii-statistice" class="nav-link" data-scroll-target="#medii-statistice"><span class="toc-section-number">1.6</span>  Medii statistice</a>
+  <li><a href="#distribuția-normală" id="toc-distribuția-normală" class="nav-link" data-scroll-target="#distribuția-normală"><span class="header-section-number">1.3</span> Distribuția normală</a></li>
+  <li><a href="#distribuția-uniformă" id="toc-distribuția-uniformă" class="nav-link" data-scroll-target="#distribuția-uniformă"><span class="header-section-number">1.4</span> Distribuția uniformă</a></li>
+  <li><a href="#calculul-probabilității-pentru-distribuția-normală" id="toc-calculul-probabilității-pentru-distribuția-normală" class="nav-link" data-scroll-target="#calculul-probabilității-pentru-distribuția-normală"><span class="header-section-number">1.5</span> Calculul probabilității pentru distribuția normală</a></li>
+  <li><a href="#medii-statistice" id="toc-medii-statistice" class="nav-link" data-scroll-target="#medii-statistice"><span class="header-section-number">1.6</span> Medii statistice</a>
   <ul class="collapse">
-  <li><a href="#valoarea-medie" id="toc-valoarea-medie" class="nav-link" data-scroll-target="#valoarea-medie"><span class="toc-section-number">1.6.1</span>  Valoarea medie</a></li>
-  <li><a href="#valoarea-pătratică-medie" id="toc-valoarea-pătratică-medie" class="nav-link" data-scroll-target="#valoarea-pătratică-medie"><span class="toc-section-number">1.6.2</span>  Valoarea pătratică medie</a></li>
-  <li><a href="#varianța" id="toc-varianța" class="nav-link" data-scroll-target="#varianța"><span class="toc-section-number">1.6.3</span>  Varianța</a></li>
-  <li><a href="#legătura-între-cele-trei-mărimi-statistice" id="toc-legătura-între-cele-trei-mărimi-statistice" class="nav-link" data-scroll-target="#legătura-între-cele-trei-mărimi-statistice"><span class="toc-section-number">1.6.4</span>  Legătura între cele trei mărimi statistice</a></li>
+  <li><a href="#valoarea-medie" id="toc-valoarea-medie" class="nav-link" data-scroll-target="#valoarea-medie"><span class="header-section-number">1.6.1</span> Valoarea medie</a></li>
+  <li><a href="#valoarea-pătratică-medie" id="toc-valoarea-pătratică-medie" class="nav-link" data-scroll-target="#valoarea-pătratică-medie"><span class="header-section-number">1.6.3</span> Valoarea pătratică medie</a></li>
+  <li><a href="#varianța" id="toc-varianța" class="nav-link" data-scroll-target="#varianța"><span class="header-section-number">1.6.4</span> Varianța</a></li>
+  <li><a href="#legătura-între-cele-trei-mărimi-statistice" id="toc-legătura-între-cele-trei-mărimi-statistice" class="nav-link" data-scroll-target="#legătura-între-cele-trei-mărimi-statistice"><span class="header-section-number">1.6.5</span> Legătura între cele trei mărimi statistice</a></li>
   </ul></li>
-  <li><a href="#operații-cu-variabile-aleatoare" id="toc-operații-cu-variabile-aleatoare" class="nav-link" data-scroll-target="#operații-cu-variabile-aleatoare"><span class="toc-section-number">1.7</span>  Operații cu variabile aleatoare</a></li>
-  <li><a href="#sisteme-de-mai-multe-variabile-aleatoare" id="toc-sisteme-de-mai-multe-variabile-aleatoare" class="nav-link" data-scroll-target="#sisteme-de-mai-multe-variabile-aleatoare"><span class="toc-section-number">1.8</span>  Sisteme de mai multe variabile aleatoare</a>
+  <li><a href="#operații-cu-variabile-aleatoare" id="toc-operații-cu-variabile-aleatoare" class="nav-link" data-scroll-target="#operații-cu-variabile-aleatoare"><span class="header-section-number">1.7</span> Operații cu variabile aleatoare</a></li>
+  <li><a href="#sisteme-de-mai-multe-variabile-aleatoare" id="toc-sisteme-de-mai-multe-variabile-aleatoare" class="nav-link" data-scroll-target="#sisteme-de-mai-multe-variabile-aleatoare"><span class="header-section-number">1.8</span> Sisteme de mai multe variabile aleatoare</a>
   <ul class="collapse">
-  <li><a href="#variabile-independente" id="toc-variabile-independente" class="nav-link" data-scroll-target="#variabile-independente"><span class="toc-section-number">1.8.1</span>  Variabile independente</a></li>
+  <li><a href="#variabile-independente" id="toc-variabile-independente" class="nav-link" data-scroll-target="#variabile-independente"><span class="header-section-number">1.8.1</span> Variabile independente</a></li>
   </ul></li>
-  <li><a href="#distribuția-normală-multivariată" id="toc-distribuția-normală-multivariată" class="nav-link" data-scroll-target="#distribuția-normală-multivariată"><span class="toc-section-number">1.9</span>  Distribuția normală multivariată</a>
+  <li><a href="#distribuția-normală-multivariată" id="toc-distribuția-normală-multivariată" class="nav-link" data-scroll-target="#distribuția-normală-multivariată"><span class="header-section-number">1.9</span> Distribuția normală multivariată</a>
   <ul class="collapse">
-  <li><a href="#caz-particular-componente-independente" id="toc-caz-particular-componente-independente" class="nav-link" data-scroll-target="#caz-particular-componente-independente"><span class="toc-section-number">1.9.1</span>  Caz particular: componente independente</a></li>
-  <li><a href="#caz-particular-distribuție-izotropă" id="toc-caz-particular-distribuție-izotropă" class="nav-link" data-scroll-target="#caz-particular-distribuție-izotropă"><span class="toc-section-number">1.9.2</span>  Caz particular: distribuție izotropă</a></li>
+  <li><a href="#caz-particular-componente-independente" id="toc-caz-particular-componente-independente" class="nav-link" data-scroll-target="#caz-particular-componente-independente"><span class="header-section-number">1.9.2</span> Caz particular: componente independente</a></li>
+  <li><a href="#caz-particular-distribuție-izotropă" id="toc-caz-particular-distribuție-izotropă" class="nav-link" data-scroll-target="#caz-particular-distribuție-izotropă"><span class="header-section-number">1.9.3</span> Caz particular: distribuție izotropă</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -337,7 +338,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Variabile aleatoare</span></h1>
+<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Variabile aleatoare</span></h1>
 </div>
 
 
@@ -359,16 +360,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><strong>Spațiul realizărilor</strong> <span class="math inline">\(\Omega\)</span> este mulțimea tuturor realizărilor (mulțimea tuturor valorilor posibile ale unei variabile aleatoare).</p>
 <p>O variabilă aleatoare este <strong>discretă</strong> dacă <span class="math inline">\(\Omega\)</span> este o mulțime discretă, sau <strong>continuă</strong> dacă <span class="math inline">\(\Omega\)</span> este o mulțime compactă.</p>
 <p>Variabilele aleatoare modelează semnale afectate de <strong>zgomot</strong>, cum ar fi un semnal de tensiune într-un circuit electric (zgomot termic etc), sau imagini afectate de zgomot</p>
-<div class="callout-tip callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-tip no-icon callout-titled" title="Exemple">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Exemple
 </div>
 </div>
-<div class="callout-body-container callout-body" title="Exemple">
+<section id="exemple" class="level3 callout-body-container callout-body" data-number="1.1.1">
+<h3 data-number="1.1.1" class="anchored" data-anchor-id="exemple"><span class="header-section-number">1.1.1</span> Exemple</h3>
 <ul>
 <li><p>Fie <span class="math inline">\(Z\)</span> = numărul obținut prin aruncarea unui zar. Spațiul realizărilor este <span class="math display">\[\Omega = \left\{1, 2, 3, 4, 5, 6\right\}\]</span> <span class="math inline">\(Z\)</span> este o variabilă aleatoare discretă.</p></li>
 <li><p>Fie <span class="math inline">\(V_{in}\)</span> = voltajul măsurat al unei baterii. Spațiul realizărilor este <span class="math display">\[\Omega = [1, 1.7] V\]</span> <span class="math inline">\(V_in\)</span> este o variabilă aleatoare continuă.</p></li>
@@ -472,7 +474,7 @@ Exemple
 <span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">'fig/01_RandomSignals_ImageRandUnif.png'</span>, transparent<span class="op">=</span><span class="va">True</span>, bbox_inches<span class="op">=</span><span class="st">'tight'</span>, dpi<span class="op">=</span><span class="dv">300</span>)</span>
 <span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>plt.close()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><img src="fig/01_RandomSignals_ImageRandUnif.png" class="img-fluid" style="width:70.0%" data-max-width="1000px"></p>
-</div>
+</section>
 </div>
 </section>
 <section id="densitate-de-probabilitate" class="level2" data-number="1.2">
@@ -494,29 +496,30 @@ Exemple
 </ul>
 <p>Între funcția masă de probabilitate și funcția de repartiție există următoarea legătură. FR este suma cumulativă (un fel de “integrală discretă”) a FMP: <span class="math display">\[F_A(x) = \sum_{t = -\infty}^{t = x} w_A(t)\]</span></p>
 <p>FMP mai e numită, în limbaj uzual, “distribuția” variabilei aleatoare.</p>
-<div class="callout-tip callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-tip no-icon callout-titled" title="Exemplu">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Exemplu
 </div>
 </div>
-<div class="callout-body-container callout-body" title="Exemplu">
+<section id="exemplu" class="level4 callout-body-container callout-body" data-number="1.2.1.1">
+<h4 data-number="1.2.1.1" class="anchored" data-anchor-id="exemplu"><span class="header-section-number">1.2.1.1</span> Exemplu</h4>
 <p>Funcția masă de probabilitate pentru valoarile unui zar este următoarea:</p>
 <p><img src="01_01_Zar_Distrib.png" class="img-fluid" style="width:50.0%" data-max-width="1000px"></p>
 <p>Funcția de repartiție a valorilor unui zar este următoarea:</p>
 <p><img src="01_01_Zar_Repart.png" class="img-fluid" style="width:50.0%" data-max-width="1000px"></p>
 <p>Pentru variabile aleatoare discrete, funcția de repartiție este întotdeauna “în trepte”.</p>
-</div>
+</section>
 </div>
 </section>
 <section id="pentru-variabile-aleatoare-continue" class="level3" data-number="1.2.2">
 <h3 data-number="1.2.2" class="anchored" data-anchor-id="pentru-variabile-aleatoare-continue"><span class="header-section-number">1.2.2</span> Pentru variabile aleatoare continue</h3>
 <p>Variabilele aleatoare continue sunt caracterizate prin două funcții: funcția densitate de probabilitate și funcția de repartiție.</p>
 <p>Fie o variabilă aleatoare <strong>continuă</strong> <span class="math inline">\(A\)</span>. <strong>Funcția densitate de probabilitate</strong> (FDP) <span class="math inline">\(w_A(x)\)</span> se definește ca probabilitatea ca valoarea lui <span class="math inline">\(A\)</span> să fie într-o vecinătate <span class="math inline">\(\epsilon\)</span> mică în jurul lui <span class="math inline">\(x\)</span>, împărțit la <span class="math inline">\(\epsilon\)</span> <span class="math display">\[w_A(x) = \lim_{\epsilon \to 0}{\frac{P(A \in [x, x+\epsilon])}{\epsilon}}\]</span></p>
-<div class="callout-tip callout callout-style-simple">
+<div class="callout callout-style-simple callout-tip">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -534,7 +537,7 @@ w_A(x) &amp;= \lim_{\epsilon \to 0}{\frac{P(A \in [x, x+\epsilon])}{\epsilon}} \
 &amp;= \lim_{\epsilon \to 0}{\frac{F_A(x+\epsilon) - F_A(x)}{\epsilon}} \\
 &amp;= \frac{\mathrm{d}F_A(x)}{\mathrm{d}x} = F'_A(x)
 \end{split}\]</span></p>
-<div class="callout-tip callout callout-style-simple">
+<div class="callout callout-style-simple callout-tip">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -620,16 +623,17 @@ w_A(x) &amp;= \lim_{\epsilon \to 0}{\frac{P(A \in [x, x+\epsilon])}{\epsilon}} \
 <li>Probabilitatea unor valori <span class="math inline">\(x\)</span> e mai mică cu cât <span class="math inline">\(x\)</span> este mai îndepărtat de centrul <span class="math inline">\(\mu\)</span>, datorită termenului <span class="math inline">\(-(x - \mu)^2\)</span> de la exponent</li>
 </ul>
 <p>Distribuția exprimă așadar o preferință pentru valori apropiate de <span class="math inline">\(\mu\)</span>, cu probabilitate din ce în ce mai scăzută la valori mai depărtate de <span class="math inline">\(\mu\)</span>.</p>
-<div class="callout-tip callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-tip no-icon callout-titled" title="Exemple">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Exemple
 </div>
 </div>
-<div class="callout-body-container callout-body" title="Exemple">
+<section id="exemple-1" class="level3 callout-body-container callout-body" data-number="1.3.1">
+<h3 data-number="1.3.1" class="anchored" data-anchor-id="exemple-1"><span class="header-section-number">1.3.1</span> Exemple</h3>
 <p>Exemple de valori generate cu distribuția normală standard <span class="math inline">\(\mathcal{N}(\mu=0, \sigma^2=1)\)</span>:</p>
 <div class="sourceCode" id="cb9" data-session="plot"><pre class="sourceCode python cb.run code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt, numpy <span class="im">as</span> np, math<span class="op">;</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>mu <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
@@ -654,7 +658,7 @@ Exemple
 <span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">'fig/01_RandomSignals_DistributionNormalSampleValues2.png'</span>, transparent<span class="op">=</span><span class="va">True</span>, bbox_inches<span class="op">=</span><span class="st">'tight'</span>, dpi<span class="op">=</span><span class="dv">300</span>)</span>
 <span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>plt.close()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><img src="fig/01_RandomSignals_DistributionNormalSampleValues2.png" class="img-fluid" style="width:70.0%" data-max-width="1000px"></p>
-</div>
+</section>
 </div>
 </section>
 <section id="distribuția-uniformă" class="level2" data-number="1.4">
@@ -689,12 +693,12 @@ Exemple
 <h2 data-number="1.5" class="anchored" data-anchor-id="calculul-probabilității-pentru-distribuția-normală"><span class="header-section-number">1.5</span> Calculul probabilității pentru distribuția normală</h2>
 <p>Probabilitatea ca <span class="math inline">\(A\)</span> sa aibă valori între <span class="math inline">\(a\)</span> și <span class="math inline">\(b\)</span> este <span class="math inline">\(\int_a^b w_A(x) dx\)</span>, pentru o distribuție continuă. Însă, pentru distribuția normală această integrală nu se poate calcula prin formula algebrice (este funcție ne-elementară).</p>
 <p>În schimb, pentru calcul se folosesc algoritmi numerici, pe baza <strong>funcției de eroare</strong> <span class="math inline">\(erf(z)\)</span> (“the error function”): <span class="math display">\[erf(z) = \frac{2}{\sqrt{\pi}} \int_0^z e^{-t^2} dt\]</span></p>
-<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Tip
 </div>
 </div>
@@ -708,12 +712,12 @@ Tip
 <li><span class="math inline">\(erf(-\infty) = -1\)</span></li>
 <li><span class="math inline">\(erf(\infty) = 1\)</span></li>
 </ul>
-<div class="callout-note callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Exercițiu
 </div>
 </div>
@@ -722,12 +726,12 @@ Exercițiu
 <p>Calculați probabilitatea ca <span class="math inline">\(A \in [2, 4]\)</span></p>
 </div>
 </div>
-<div class="callout-note callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Exercițiu
 </div>
 </div>
@@ -740,7 +744,7 @@ Exercițiu
 </ol>
 </div>
 </div>
-<div class="callout-tip callout callout-style-simple">
+<div class="callout callout-style-simple callout-tip">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -761,7 +765,7 @@ Exercițiu
 <li><p>Pentru v.a. continue: <span class="math display">\[\overline{A} = E\{A\} = \int_{-\infty}^{\infty} x \cdot w_A(x) dx\]</span></p></li>
 <li><p>Pentru v.a. discrete: <span class="math display">\[\overline{A} = E\{A\} = \sum_{x=-\infty}^{\infty} x \cdot w_A(x)\]</span></p></li>
 </ul>
-<div class="callout-tip callout callout-style-simple">
+<div class="callout callout-style-simple callout-tip">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -772,18 +776,19 @@ Exercițiu
 </div>
 </div>
 <p>In termeni informali, valoarea medie este o sumă în care apar toate valorile posibile <span class="math inline">\(x\)</span> înmulțite cu probabilitatea fiecăreia (pentru cazul continuu, folosim integrala și densitatea de probabilitate, cu aceeași semnificație).</p>
-<div class="callout-tip callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-tip no-icon callout-titled" title="Exemplu">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Exemplu
 </div>
 </div>
-<div class="callout-body-container callout-body" title="Exemplu">
+<section id="exemplu-1" class="level3 callout-body-container callout-body" data-number="1.6.2">
+<h3 data-number="1.6.2" class="anchored" data-anchor-id="exemplu-1"><span class="header-section-number">1.6.2</span> Exemplu</h3>
 <p>Entropia este valoarea medie a informației <span class="math inline">\(i(s_n) = -\log_2{p(s_n)}\)</span> asociată unui eveniment cu probabilitatea <span class="math inline">\(p(s_n)\)</span>: <span class="math display">\[H(X) = \sum p(s_n) i(s_n)) = - \sum p(s_n) log_2(p(s_n))\]</span></p>
-</div>
+</section>
 </div>
 <p>Ce semnificație are, practic, valoarea medie a unei variabile aleatoare? Informal, ea ne dă valoarea numerică centrală în jurul căreia “se învârt” toate valorile pe care le poate lua <span class="math inline">\(A\)</span>. Ca interpretare grafică, de multe ori ea este situată “pe la mijlocul” distribuției.</p>
 <ul>
@@ -803,12 +808,12 @@ Exemplu
 <p>Pentru o distribuție uniformă <span class="math inline">\(\mathcal{U} [a, b]\)</span>, valoarea medie este valoarea de la mijlocul intervalului: <span class="math display">\[\overline{X} = \frac{a + b}{2}\]</span></p>
 <p>Calculul valorii medii este o operație <strong>liniară</strong>. Pentru două variabile aleatoare independente <span class="math inline">\(A\)</span> și <span class="math inline">\(B\)</span>, și oricare două numere reale <span class="math inline">\(c_1\)</span> și <span class="math inline">\(c_2\)</span>, avem: <span class="math display">\[E\{c_1A + c_2B\} = c_1E\{A\} + c_2E\{B\}\]</span></p>
 <p>sau: <span class="math display">\[E\{cA\} = c E\{A\}, \forall c \in \mathbb{R}\]</span> <span class="math display">\[E\{A + B\} = E\{A\} + E\{B\}\]</span></p>
-<div class="callout-note callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Exercițiu
 </div>
 </div>
@@ -818,15 +823,15 @@ Exercițiu
 </div>
 </div>
 </section>
-<section id="valoarea-pătratică-medie" class="level3" data-number="1.6.2">
-<h3 data-number="1.6.2" class="anchored" data-anchor-id="valoarea-pătratică-medie"><span class="header-section-number">1.6.2</span> Valoarea pătratică medie</h3>
+<section id="valoarea-pătratică-medie" class="level3" data-number="1.6.3">
+<h3 data-number="1.6.3" class="anchored" data-anchor-id="valoarea-pătratică-medie"><span class="header-section-number">1.6.3</span> Valoarea pătratică medie</h3>
 <p><strong>Valoarea pătratică medie</strong> (momentul de ordin 2) reprezintă valoarea medie a pătratelor valorilor unei variabile <span class="math inline">\(A\)</span>.</p>
 <p>Pentru variabile aleatoare continue: <span class="math display">\[\overline{A^2} = E\{A^2\} = \int_{-\infty}^{\infty} x^2 \cdot w_A(x) dx\]</span></p>
 <p>Și pentru cele discrete: <span class="math display">\[\overline{A^2} = E\{A^2\} = \sum_{-\infty}^{\infty} x^2 \cdot w_A(x)\]</span></p>
 <p>Valoarea pătratică medie are o interpretare legată de magnitudinea valorilor posibile. Dacă avem de-a face cu un semnal <span class="math inline">\(x(t)\)</span> sau <span class="math inline">\(x[n]\)</span> a cărui valori sunt generate de o distribuție <span class="math inline">\(w_A(x)\)</span>, valoarea pătratică medie a distribuției va fi <strong>puterea medie</strong> a semnalului respectiv.</p>
 </section>
-<section id="varianța" class="level3" data-number="1.6.3">
-<h3 data-number="1.6.3" class="anchored" data-anchor-id="varianța"><span class="header-section-number">1.6.3</span> Varianța</h3>
+<section id="varianța" class="level3" data-number="1.6.4">
+<h3 data-number="1.6.4" class="anchored" data-anchor-id="varianța"><span class="header-section-number">1.6.4</span> Varianța</h3>
 <p><strong>Varianța</strong> (momentul centrat de ordin 2) reprezintă valoarea pătratică medie a abaterilor față de valoarea medie.</p>
 <p>Pentru variabile aleatoare continue: <span class="math display">\[\sigma^2 = \overline{\left\{ A - \mu \right\}^2} = \int_{-\infty}^{\infty} (x-\mu)^2 \cdot w_A(x) dx\]</span></p>
 <p>Pentru variabile aleatoare discrete: <span class="math display">\[\sigma^2 = \overline{\left\{ A - \mu \right\}^2} = \sum_{-\infty}^{\infty} (x-\mu)^2 \cdot w_A(x)\]</span></p>
@@ -839,8 +844,8 @@ Exercițiu
 <li>Dacă avem de-a face cu un semnal <span class="math inline">\(x(t)\)</span> sau <span class="math inline">\(x[n]\)</span> a cărui valori sunt generate de o distribuție <span class="math inline">\(w_A(x)\)</span>, varianța va fi <strong>puterea medie a componentei alternative</strong> a semnalului respectiv (adică puterea medie a semnalului din care am scăzut componenta continuă).</li>
 </ul>
 </section>
-<section id="legătura-între-cele-trei-mărimi-statistice" class="level3" data-number="1.6.4">
-<h3 data-number="1.6.4" class="anchored" data-anchor-id="legătura-între-cele-trei-mărimi-statistice"><span class="header-section-number">1.6.4</span> Legătura între cele trei mărimi statistice</h3>
+<section id="legătura-între-cele-trei-mărimi-statistice" class="level3" data-number="1.6.5">
+<h3 data-number="1.6.5" class="anchored" data-anchor-id="legătura-între-cele-trei-mărimi-statistice"><span class="header-section-number">1.6.5</span> Legătura între cele trei mărimi statistice</h3>
 <p>Pentru orice distribuție, cele trei mărimi statistice satisfac relația următoare: <span class="math display">\[\begin{split}
 \sigma^2 &amp;= \overline{\left\{ A - \mu \right\}^2} \\
 &amp;= \overline{A^2 - 2 \cdot A \cdot \mu + \mu^2} \\
@@ -861,19 +866,20 @@ Exercițiu
 <p>Fie o variabilă aleatoare <span class="math inline">\(A\)</span>, și fie <span class="math inline">\(D = c + A\)</span>, unde <span class="math inline">\(c\)</span> este un număr real.</p>
 <p><span class="math inline">\(D\)</span> este tot o variabilă aleatoare, a cărui distribuție <span class="math inline">\(w_D(x)\)</span> este distribuția lui <span class="math inline">\(A\)</span> “translată” cu <span class="math inline">\(c\)</span> la dreapta:</p>
 <p><span class="math display">\[w_D(x) = w_A(x - c)\]</span></p>
-<div class="callout-tip callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-tip no-icon callout-titled" title="Exemplu">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Exemplu
 </div>
 </div>
-<div class="callout-body-container callout-body" title="Exemplu">
+<section id="exemplu-2" class="level3 callout-body-container callout-body" data-number="1.7.1">
+<h3 data-number="1.7.1" class="anchored" data-anchor-id="exemplu-2"><span class="header-section-number">1.7.1</span> Exemplu</h3>
 <p>Fie A o variabilă aleatoare cu distribuție normală <span class="math inline">\(w_A(x) = \mathcal{N}(\mu=3, \sigma^2=2)\)</span>.</p>
 <p>Distribuția variabilei <span class="math inline">\(D\)</span> definită ca: <span class="math display">\[D = 5 + A\]</span> este: <span class="math display">\[w_D(x) = \mathcal{N}(\mu=8, \sigma^2=2)\]</span></p>
-</div>
+</section>
 </div>
 <p>Suma a două sau mai multe variabile aleatoare <strong>independente</strong> este tot o variabilă aleatoare, a cărei densitate de probabilitate este <strong>convoluția</strong> densităților termenilor.</p>
 <p>Fie două variabile aleatoare <span class="math inline">\(A\)</span> și <span class="math inline">\(B\)</span>, independente. Dacă <span class="math inline">\(C = A + B\)</span>, atunci:</p>
@@ -883,23 +889,24 @@ Exemplu
 <p>iar varianța egală cu suma varianțelor:</p>
 <p><span class="math display">\[\sigma_C^2 = \sigma_A^2 + \sigma_B^2\]</span></p>
 <p>În general, o funcție aplicată unei variabile aleatoare produce o altă variabilă aleatoare, cu altă distribuție, posibil cu totul diferită de cea inițială.</p>
-<div class="callout-tip callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-tip no-icon callout-titled" title="Exemple">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Exemple
 </div>
 </div>
-<div class="callout-body-container callout-body" title="Exemple">
+<section id="exemple-2" class="level3 callout-body-container callout-body" data-number="1.7.2">
+<h3 data-number="1.7.2" class="anchored" data-anchor-id="exemple-2"><span class="header-section-number">1.7.2</span> Exemple</h3>
 <p>Dacă <span class="math inline">\(A\)</span> este o v.a. distribuită <span class="math inline">\(\mathcal{U}\;[0,10]\)</span>, atunci</p>
 <ul>
 <li><span class="math inline">\(B = 5 + A\)</span> este o altă v.a., distribuită <span class="math inline">\(\mathcal{U}\;[5,15]\)</span></li>
 <li><span class="math inline">\(C = A^2\)</span> este de asemenea o v.a.</li>
 <li><span class="math inline">\(D = cos(A)\)</span> este de asemenea o v.a.</li>
 </ul>
-</div>
+</section>
 </div>
 <p>Variabilele A, B, C, D nu sunt însă independente, întrucât o anumită valoare a uneia implică automat și valoarea celorlalte.</p>
 </section>
@@ -916,12 +923,12 @@ Exemple
 <p>Două variabile <span class="math inline">\(A\)</span> și <span class="math inline">\(B\)</span> sunt <strong>independente</strong> dacă se respectă relația: <span class="math display">\[w_{AB}(x,y) = w_A(x) \cdot w_B(y)\]</span></p>
 <p>Ca interpretare, acest lucru înseamnă că valoarea uneia nu influențează în nici un fel valoarea celeilalte.</p>
 <p>Relația este valabilă și pentru funcția de repartiție, atât pentru variabile continue cât și pentru discrete, și se extinde similar pentru cazul în care sunt mai mult de două variabile.</p>
-<div class="callout-note callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Exercițiu
 </div>
 </div>
@@ -946,20 +953,21 @@ e^{-\frac{1}{2}(\mathbf{x} - \boldsymbol{\mu})^T\Sigma^{-1}(\mathbf{x} - \boldsy
 <li>Matrice are <span class="math inline">\(N\)</span> <strong>vectori proprii</strong> <span class="math inline">\(\mathbf{e_i}\)</span> care dau direcțiile ortogonale ale axelor care definesc elipsa;</li>
 <li>Cele <span class="math inline">\(N\)</span> <strong>valori proprii</strong> <span class="math inline">\(\lambda_i\)</span> controlează extinderea elipsei de-a lungul fiecărei axe.</li>
 </ul>
-<div class="callout-tip callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-tip no-icon callout-titled" title="Exemple">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Exemple
 </div>
 </div>
-<div class="callout-body-container callout-body" title="Exemple">
+<section id="exemple-3" class="level3 callout-body-container callout-body" data-number="1.9.1">
+<h3 data-number="1.9.1" class="anchored" data-anchor-id="exemple-3"><span class="header-section-number">1.9.1</span> Exemple</h3>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="img/01_01_BivNorm1.png" class="id img-fluid figure-img" style="width:75.0%"></p>
-<p></p><figcaption class="figure-caption">Distribuția normală 2D (bivariată)</figcaption><p></p>
+<figcaption class="figure-caption">Distribuția normală 2D (bivariată)</figcaption>
 </figure>
 </div>
 <ul>
@@ -968,7 +976,7 @@ Exemple
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="img/01_01_BivNorm2.jpg" class="id img-fluid figure-img" style="width:75.0%"></p>
-<p></p><figcaption class="figure-caption">Distribuții normală 2D (bivariată)</figcaption><p></p>
+<figcaption class="figure-caption">Distribuții normală 2D (bivariată)</figcaption>
 </figure>
 </div>
 <ul>
@@ -978,16 +986,16 @@ Exemple
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="img/01_01_BivNormEig1.png" class="id img-fluid figure-img" style="width:75.0%"></p>
-<p></p><figcaption class="figure-caption">Distribuții normală 2D (bivariată)</figcaption><p></p>
+<figcaption class="figure-caption">Distribuții normală 2D (bivariată)</figcaption>
 </figure>
 </div>
 <ul>
 <li>sursa: https://www.rhayden.us/covariance-matrix-2/the-multivariate-normal-distribution.html</li>
 </ul>
+</section>
 </div>
-</div>
-<section id="caz-particular-componente-independente" class="level3" data-number="1.9.1">
-<h3 data-number="1.9.1" class="anchored" data-anchor-id="caz-particular-componente-independente"><span class="header-section-number">1.9.1</span> Caz particular: componente independente</h3>
+<section id="caz-particular-componente-independente" class="level3" data-number="1.9.2">
+<h3 data-number="1.9.2" class="anchored" data-anchor-id="caz-particular-componente-independente"><span class="header-section-number">1.9.2</span> Caz particular: componente independente</h3>
 <p>În cazul în care matricea de covarianță este o matrice diagonală:</p>
 <p><span class="math display">\[\Sigma =
 \begin{bmatrix}
@@ -1012,11 +1020,11 @@ e^{(-\frac{(\mathbf{x_1} - \boldsymbol{\mu_1})^2}{2\sigma^2_1}) \cdot (-\frac{(\
 <p>Acest lucru înseamnă, practic, că fiecare componentă <span class="math inline">\(x_k\)</span> din vectorul <span class="math inline">\(\mathbf{x}\)</span> este independentă de toate celelalte și respectă o distribuție normală cu media <span class="math inline">\(\mu_k\)</span> și varianța <span class="math inline">\(\sigma^2_k\)</span>. Cu alte cuvinte:</p>
 <p><span class="math display">\[\mathcal{N}(\boldsymbol{\mu}, \Sigma) = \mathcal{N}(\mu_1, \sigma_1) \cdot \mathcal{N}(\mu_2, \sigma_2) \cdot \dots \cdot \mathcal{N}(\mu_N, \sigma_N)\]</span></p>
 </section>
-<section id="caz-particular-distribuție-izotropă" class="level3" data-number="1.9.2">
-<h3 data-number="1.9.2" class="anchored" data-anchor-id="caz-particular-distribuție-izotropă"><span class="header-section-number">1.9.2</span> Caz particular: distribuție izotropă</h3>
+<section id="caz-particular-distribuție-izotropă" class="level3" data-number="1.9.3">
+<h3 data-number="1.9.3" class="anchored" data-anchor-id="caz-particular-distribuție-izotropă"><span class="header-section-number">1.9.3</span> Caz particular: distribuție izotropă</h3>
 <p>În cazul în care matricea de covarianță este de forma unei matrici matricea unitate, având aceeași valoare <span class="math inline">\(\sigma\)</span> pe toate liniile: <span class="math display">\[\Sigma = \sigma^2 \mathbf{I}_N\]</span></p>
 <p>avem o distribuție normală multivariată <strong>izotropă</strong>:</p>
-<div class="callout-tip callout callout-style-simple">
+<div class="callout callout-style-simple callout-tip">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -1090,9 +1098,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -1157,6 +1179,92 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
