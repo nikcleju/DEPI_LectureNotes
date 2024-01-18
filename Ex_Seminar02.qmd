@@ -160,6 +160,8 @@ $$ s(t) = cos(2 \pi f t)$$
 
 Semnalul $s(t)$ este reprezentat mai jos.
 
+![Semnalul $s(t)$](img/Sem2_03_1.png){width=50%}
+
 Pentru semnale continue, valoarea medie temporală reprezintă componenta
 de curent continuu a semnalului.
 Din figură se poate deduce că aceasta este $0$, prin urmare:
@@ -183,6 +185,6 @@ $$\begin{aligned}
 
 Această valoare se putea obține și folosindu-ne de faptul cunoscut că tensiunea efectivă
 a unui semnal sinusoidal de amplitudine $A$ este egală
-cu $\frac{A}{\sqrt{2}}$. Pentru $A=1$, pătratul valorii efective este $\frac{1}{2}$.
+cu $\frac{A}{\sqrt{2}}$. Pentru $A=1$, pătratul valorii efective este deci $\frac{1}{2}$.
 
 TODO restul
