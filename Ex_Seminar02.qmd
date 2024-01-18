@@ -187,4 +187,7 @@ Această valoare se putea obține și folosindu-ne de faptul cunoscut că tensiu
 a unui semnal sinusoidal de amplitudine $A$ este egală
 cu $\frac{A}{\sqrt{2}}$. Pentru $A=1$, pătratul valorii efective este deci $\frac{1}{2}$.
 
+Varianța temporală se obține pe baza primelor două mărimi:
+$$\sigma_s^2 = \overline{s^2(t)} - \overline{s(t)}^2 = \frac{1}{2} - 0^2 = \frac{1}{2}$$
+
 TODO restul
