@@ -51,7 +51,7 @@ e). Distribuția variabilei aleatoare $B$ este distribuția variabilei $A$ trans
 
 ![](img/Sem1_01_5.png){width=75%}
 
-f). Distribuția variabilei aleatoare $C$ este distribuția variabilei $A$ scalată cu 3, așadar o distribuție uniformă între 0 și 18, $\mathcal{U}[0, \; 18]$.
+f). Distribuția variabilei aleatoare $C$ este distribuția variabilei $A$ scalată cu 3. Dacă $A$ ia valori între 0 și 6, atunci $C=3A$ ia valori între 0 și 18, având așadar o distribuție uniformă între 0 și 18, $\mathcal{U}[0, \; 18]$.
 
 ![](img/Sem1_01_6.png){width=75%}
 
@@ -70,6 +70,9 @@ a). Probabilitatea $P(A \in [2, \; 4])$ reprezintă aria de sub densitatea de pr
 $$P(A \in [2, \; 4]) = \int_{2}^{4} w_A(x) dx = F(4) - F(2)$$
 unde $F(x)$ este funcția de repartiție a lui $A$, care se poate calcula cu formula:
 $$F(x) = \frac{1}{2} \left(1 + erf \left(\frac{x - \mu}{\sqrt{2}\sigma}\right)\right)$$
+
+![](img/Sem1_02_1.png){width=75%}
+
 Așadar:
 $$\begin{aligned}
 P(A \in [2, \; 4]) &= F(4) - F(2) \\
@@ -78,6 +81,8 @@ P(A \in [2, \; 4]) &= F(4) - F(2) \\
 \end{aligned}$$
 
 b) Distribuția variabilei aleatoare $B$ este distribuția variabilei $A$ translatată cu 2 unități la stânga, așadar o distribuție normală cu media -1 și cu aceeași varianță, $\mathcal{N}(\mu = -1, \sigma^2 = 20)$.
+
+![](img/Sem1_02_2.png){width=100%}
 
 c) Inspectând graficul funcției de densitate normală, se observă că maximul este atins întotdeauna în dreptul mediei. Aici, media are valoarea 1, deci maximul este:
 $$w_A(1) = \frac{1}{\sqrt{40 \pi}} e^{-\frac{(1 - 1)^2}{40}} = \frac{1}{\sqrt{40 \pi}} e^{-0} = \frac{1}{\sqrt{40 \pi}}$$
@@ -110,6 +115,8 @@ P(IQ > 130) &= \int_{130}^{\infty} w_{IQ}(x) dx \\
 &= 0.0227 = 2.27\%
 \end{aligned}$$
 
+![](img/Sem1_03_1.png){width=75%}
+
 b). Trebuie să calculăm probabilitatea ca o persoană oarecare să aibă IQ < 75, și să înmulțim cu populația globului:
 $$\begin{aligned}
 P(IQ < 75) &= \int_{-\infty}^{75} w_{IQ}(x) dx \\
@@ -132,14 +139,18 @@ toate având aceeași probabilitate.
 
 ### Rezolvare {.unnumbered}
 
-a)
+a) Avem 11 valori posibile, toate cu aceeași probabilitate, așadar distribuția lui A este o distribuție uniformă discretă, $\mathcal{U}[0, \; 10]$. Fiecare realizare are probabilitatea $\frac{1}{11}$.
 
-b). Fiind o variabilă discretă, putem calcula probabilitățile ca număr de cazuri favorabile supra numărul total de cazuri posibile.
+![](img/Sem1_04_1.png){width=75%}
 
-Probabilitatea ca $A$ să ia valori între 3 și 7 este:
+b) Fiind o variabilă discretă, putem calcula probabilitățile prin adunarea
+probabilităților cazurilor favorabile.
+
+Probabilitatea ca $A$ să ia valori între 3 și 7 este sume celor 5 probabilități
+din dreptul valorile 3, 4, 5, 6 și 7:
 $$P(A \in [3, \; 7]) = \frac{5}{11}$$
 
-c). Probabilitatea ca $A$ să fie impar este:
+c). Probabilitatea ca $A$ să fie impar este suma probabilităților din dreptul valorilor 1, 3, 5, 7, 9:
 $$P(A \; \text{impar}) = \frac{5}{11}$$
 
 ## Exercițiul 5
@@ -153,6 +164,8 @@ Fiind variabile independente, probabilitatea că toate să fie pozitive este ega
 $$P(X > 0 \cap Y > 0 \cap Z > 0) = P(X > 0) \cdot P(Y > 0) \cdot P(Z > 0)$$
 
 Întrucât toate urmează aceeași distribuție, probabilitatea ca $X$ să fie pozitivă este egală cu probabilitatea ca $Y$ sau ca Z să fie pozitivă, așadar trebuie de fapt să calculăm o singură probabilitate, și apoi să o ridicăm la puterea 3.
+
+![](img/Sem1_05_1.png){width=75%}
 
 Avem:
 $$\begin{aligned}
