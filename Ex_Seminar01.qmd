@@ -15,34 +15,45 @@ Fie A o variabilă aleatoare continuă cu distribuția $\mathcal{U}[0, \; 6]$
 
 ### Rezolvare {.unnumbered}
 
-a).
+a). Distribuția uniformă $\mathcal{U}[0, \; 6]$ este reprezentată grafic mai jos.
+
+![Distribuția uniformă $\mathcal{U}[0, \; 6]$](img/Sem1_01_1.png){width=75%}
 
 b). Probabilitatea $P(A > 1)$ reprezintă aria de sub densitatea de probabilitate $w_A(x)$, de la 1 la infinit (aici, până la 6).
+
+![](img/Sem1_01_2.png){width=75%}
 $$\begin{aligned}
 P(A > 1) = \int_{1}^{\infty} w_A(x) dx = \int_{1}^{6} \frac{1}{6} dx = \frac{5}{6}
 \end{aligned}$$
 
+
 c). Probabilitatea $P(A \in (0, \; 2))$ reprezintă aria de sub densitatea de probabilitate $w_A(x)$, de la 0 la 2.
+![](img/Sem1_01_3.png){width=75%}
 $$\begin{aligned}
 P(A \in (0, \; 2)) = \int_{0}^{2} w_A(x) dx = \int_{0}^{2} \frac{1}{6} dx = \frac{1}{3}
 \end{aligned}$$
 
-d). Funcția de repartiție $F_A(x)$ este integrala de la $-\infty$ la $x$ a densității de probabilitate $w_A(x)$. Întrucât $w_A(x)$ este constantă între
+d). Funcția de repartiție $F_A(x)$ este integrala de la $-\infty$ la $x$ a densității de probabilitate $w_A$. Întrucât $w_A(x)$ este constantă între
 0 și 6, $F_A(x)$ este o funcție liniară între 0 și 6, și constantă în afara acestui interval.
 
-Așadar, graficul funcției de repartiție este cel de mai jos.
+Așadar, graficul funcției de repartiție, este cel de mai jos.
 
-iar expresia matematică este:
+![](img/Sem1_01_4.png){width=75%}
+
+Expresia matematică este:
 $$F_A(x) = \begin{cases}
 0, &x \leq 0 \\
 \frac{1}{6}x, &x \in (0, \; 6) \\
 1, &x \geq 6
 \end{cases}$$
 
-e). Distribuția variabilei aleatoare $B$ este distribuția variabilei $A$ translatată cu 2 unități la stânga, așadar o distribuție uniformă între -2 și 4,
-$\mathcal{U}[-2, \; 4]$.
+e). Distribuția variabilei aleatoare $B$ este distribuția variabilei $A$ translatată cu 2 unități la stânga, așadar o distribuție uniformă între -2 și 4, $\mathcal{U}[-2, \; 4]$.
+
+![](img/Sem1_01_5.png){width=75%}
 
 f). Distribuția variabilei aleatoare $C$ este distribuția variabilei $A$ scalată cu 3, așadar o distribuție uniformă între 0 și 18, $\mathcal{U}[0, \; 18]$.
+
+![](img/Sem1_01_6.png){width=75%}
 
 ## Exercițiul 2
 
