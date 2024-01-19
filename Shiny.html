@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Nicolae Cleju">
-<meta name="dcterms.date" content="2023-05-25">
 
-<title>Decizie și estimare în prelucrarea informației (DEPI)</title>
+<title>DSP Lecture Notes - 3&nbsp; Shinylive in Quarto example</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -32,7 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./01_Intro.html" rel="next">
+<link href="./references.html" rel="next">
+<link href="./04_FourierTransform.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -42,6 +41,11 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<meta name="shinylive:serviceworker_dir" content=".">
+<script src="site_libs/quarto-contrib/shinylive-0.0.11/shinylive/load-shinylive-sw.js" type="module"></script>
+<script src="site_libs/quarto-contrib/shinylive-0.0.11/shinylive/run-python-blocks.js" type="module"></script>
+<link href="site_libs/quarto-contrib/shinylive-0.0.11/shinylive/shinylive.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/shinylive-quarto-css/shinylive-quarto.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -71,7 +75,7 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Decizie și estimare în prelucrarea informației (DEPI)</h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Shinylive in Quarto example</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -84,7 +88,7 @@ ul.task-list li input[type="checkbox"] {
   <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Decizie și estimare în prelucrarea informației (DEPI)</a> 
+      <a href="./">DSP Lecture Notes</a> 
     </div>
       </div>
       <div class="mt-2 flex-shrink-0 align-items-center">
@@ -96,134 +100,24 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">Prefață</a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Preface</a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01_Intro.html" class="sidebar-item-text sidebar-link">Introducere</a>
+  <a href="./01_Intro.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></a>
   </div>
 </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Semnale Aleatoare</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+        <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01_01_VariabileAleatoare.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Variabile aleatoare</span></a>
+  <a href="./04_FourierTransform.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">DTFT and DFT</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
+        <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01_02_ProceseAleatoare.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Procese aleatoare</span></a>
+  <a href="./Shiny.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Shinylive in Quarto example</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./01_03_Autocorelatia.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Proprietăți ale autocorelației</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">Decizie</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./02_01_Detectia1Esantion.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Decizie cu un singur eșantion</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./02_02_DetectiaMaiMulteEsantioane.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Decizie cu mai multe eșantioane</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./02_03_AlgoritmiPractici.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Algoritmi practici</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">Estimare</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./03_01_Estimare.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Elemente de teoria estimării</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">Exerciții seminar</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./Ex_Seminar01.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Seminar 01: Variabile aleatoare și probabilități</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./Ex_Seminar02.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Seminar 02: Medii statistice și temporale</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./Ex_Seminar03.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Seminar 03: Criteriul de decizie Maximum Likelihood</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./Ex_Seminar04.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Seminar 04: Decizii, decizii</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./Ex_Seminar05.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Seminar 05: Decizii cu mai multe eșantioane</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./Ex_Seminar06.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Seminar 06: K-NN, K-Means, estimare ML</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">Aplicații practice</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./App01_OutlierDetection.html" class="sidebar-item-text sidebar-link">Outlier Detection with the 3-sigma Rule</a>
-  </div>
-</li>
-      </ul>
-  </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./references.html" class="sidebar-item-text sidebar-link">References</a>
@@ -234,40 +128,21 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#prefață" id="toc-prefață" class="nav-link active" data-scroll-target="#prefață">Prefață</a></li>
-  </ul>
-</nav>
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Decizie și estimare în prelucrarea informației (DEPI)</h1>
-<p class="subtitle lead">Note de curs</p>
+<h1 class="title d-none d-lg-block"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Shinylive in Quarto example</span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Nicolae Cleju </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">May 25, 2023</p>
-    </div>
-  </div>
   
     
   </div>
@@ -275,15 +150,152 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="prefață" class="level1 unnumbered">
-<h1 class="unnumbered">Prefață</h1>
-<p>Această carte cuprinde notele de curs pentru disciplina “Decizie și estimare în prelucrarea informației”, predată la Facultatea de Electronică, Telecomunicații și Tehnologia Informației (ETTI), din cadrul Universității Tehnice “Gheorghe Asachi” din Iași.</p>
-<hr>
-<p>This is a Quarto book.</p>
-<p>To learn more about Quarto books visit <a href="https://quarto.org/docs/books" class="uri">https://quarto.org/docs/books</a>.</p>
+<p>This is a Shinylive application embedded in a Quarto doc.</p>
+<pre class="shinylive-python"><code>#| standalone: true
+#| viewerHeight: 2000
+# components: [editor, viewer]
+#| components: [viewer]
+#| layout: vertical
+
+from shiny import *
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+fft = np.fft.fft
+fmin, fmax = 0, 1
+
+app_ui = ui.page_fluid(
+    ui.layout_sidebar(
+        ui.panel_sidebar(
+            ui.input_slider("freq", "Frequency", 0, 0.5, 0.1, step=0.001),
+            ui.input_slider("N", "Length", 10, 200, 30, step=1),
+        ),
+        ui.panel_main(
+            ui.output_plot("plot_signal"),
+            #ui.output_plot("plot_DTFT_per"),
+            ui.output_plot("plot_DTFT_rect"),
+            ui.output_plot("plot_DFT"),
+            ui.output_plot("plot_DTFT_DFT")
+
+        ),
+    ),)
+
+def server(input, output, session):
+
+    def prepare():
+        global f, N, n, x
+
+        # Read inputs
+        f = input.freq()
+        N = input.N()
+
+        # Create the signal
+        n = np.arange(N)
+        x = np.cos(2*np.pi*f*n)
+
+    @output
+    @render.plot(alt="Sine wave")
+    def plot_signal():
+        prepare()
+        fig = plt.figure(figsize=(6, 3))
+        plt.plot(x, '-o')
+        plt.title('The signal $x(t) = \cos(2 \pi f n)$')
+        plt.xlabel('Discrete time $n$')
+        plt.ylabel('Signal $x[n]$')
+        plt.show()
+
+    @output
+    @render.plot(alt="Sine wave")
+    def plot_DTFT_per():
+        prepare()
+
+        # Regenerate the signal so that it fits in one period
+        period = 1000*f
+        ninf = np.arange(period)
+        xinf = np.cos(2*np.pi*f*ninf)
+
+        # Compute the DTFT
+        Sinf = fft(xinf)
+
+        # Create the frequency axis
+        freqinf = np.linspace(fmin, fmax, len(Sinf))
+
+        # Plot the magnitude of the DTFT
+        plt.figure(figsize=(6, 3))
+        plt.title('DTFT of infinitely-long periodic signal')
+        plt.stem(freqinf, np.abs(Sinf), linefmt='b')
+        plt.xlabel('Frequency')
+        plt.ylabel('Magnitude')
+        plt.show()
+
+    @output
+    @render.plot(alt="Sine wave")
+    def plot_DTFT_rect():
+        prepare()
+
+        # Compute the DTFT
+        FFT_points = 10000*n.size
+        S1 = fft(x, FFT_points)
+
+        # Create the frequency axis
+        freq1 = np.linspace(fmin, fmax, len(S1))
+
+        # Plot the magnitude of the DTFT
+        plt.figure(figsize=(6, 3))
+        plt.title('DTFT of windowed signal')
+        plt.plot(freq1, np.abs(S1), 'b')
+        #plt.stem(freqinf, np.abs(Sinf), 'b')
+        plt.xlabel('Frequency')
+        plt.ylabel('Magnitude')
+        plt.show()
 
 
-</section>
+    @output
+    @render.plot(alt="Sine wave")
+    def plot_DFT():
+        prepare()
+        
+        # Compute the DFT
+        S2 = fft(x)
+
+        # Create the frequency axis
+        freq2 = np.linspace(fmin, fmax, len(S2))
+        #freq2 = np.fft.fftfreq(x.size)
+
+        # Plot the magnitude of the DFT
+        plt.figure(figsize=(6, 3))
+        plt.title('Its DFT')
+        plt.stem(freq2, np.abs(S2), linefmt='ro')
+        plt.xlabel('Frequency')
+        plt.ylabel('Magnitude')
+        plt.show()
+
+    @output
+    @render.plot(alt="Sine wave")
+    def plot_DTFT_DFT():
+        prepare()
+
+        # Compute the DTFT
+        FFT_points = 10000*n.size
+        S1 = fft(x, FFT_points)
+        freq1 = np.linspace(fmin, fmax, len(S1))
+
+        # Compute the DFT
+        S2 = fft(x)
+
+        # Plot the DTFT and DFT overlaid
+        freq2 = np.linspace(fmin, fmax, len(S2)+1)
+        plt.figure(figsize=(6, 3))
+        plt.plot(freq1, np.abs(S1), 'b')
+        plt.stem(freq2[:-1], np.abs(S2), linefmt='ro')
+        plt.title('The DFT is just sampled from the DTFT')
+        plt.xlabel('Frequency')
+        plt.ylabel('Magnitude')
+        plt.show()        
+app = App(app_ui, server)</code></pre>
+
+
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -421,10 +433,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./04_FourierTransform.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">DTFT and DFT</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./01_Intro.html" class="pagination-link">
-        <span class="nav-page-text">Introducere</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./references.html" class="pagination-link">
+        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
